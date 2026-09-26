@@ -57,7 +57,11 @@ services:
       context: .
       dockerfile: apps/api/Dockerfile
     container_name: careerpath-worker
-    restart: "no" # run on demand: `docker compose run --rm worker npx tsx scripts/generate-questions.ts`
+    # One-shot jobs only — excluded from plain `docker compose up` so a missing
+    # worker image can never block the main stack (also skips it on rebuilds).
+    # Run on demand: `docker compose --profile tools run --rm worker npx tsx scripts/generate-questions.ts`
+    profiles: ["tools"]
+    restart: "no"
     env_file:
       - path: .env
         required: false
