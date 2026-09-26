@@ -1,0 +1,15 @@
+node_modules/
+dist/
+build/
+.env
+.env.local
+coverage/
+.prisma/
+*.log
+.DS_Store
+# Prisma
+prisma/migrations/**/migration.sql.bak
+# Postgres data lives in a Docker named volume, never in the repo
+pgdata/
+# Vite
+apps/web/dist/

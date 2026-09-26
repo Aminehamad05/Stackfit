@@ -1,0 +1,90 @@
+name: careerpath
+
+services:
+  postgres:
+    # pgvector image ships the `vector` extension required by schema.sql / Prisma `vector` type.
+    # Pin the major version so `vector(1024)` data survives upgrades.
+    image: pgvector/pgvector:pg16
+    container_name: careerpath-postgres
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-careerpath}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-careerpath}
+      POSTGRES_DB: ${POSTGRES_DB:-careerpath}
+    ports:
+      # Host 5433 — 5432 is taken by the machine's local Postgres 16.
+      # In-code / inter-service URL stays postgres:5432; only the host mapping changes.
+      - "5433:5432"
+    volumes:
+      # FIXED named volume: data persists across `down`, rebuilds and image upgrades.
+      # Only `docker compose down -v` (or `docker volume rm`) destroys it — never do that with live data.
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER:-careerpath} -d $${POSTGRES_DB:-careerpath}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    container_name: careerpath-api
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-careerpath}:${POSTGRES_PASSWORD:-careerpath}@postgres:5432/${POSTGRES_DB:-careerpath}?schema=public
+      PORT: 4000
+    ports:
+      - "4000:4000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    # Apply Prisma migrations on boot, then start. Prisma is the ONLY migration path —
+    # never apply db/*.sql by hand against this container (they are the source for `prisma migrate dev`).
+    command: sh -c "npx prisma migrate deploy --schema /app/prisma/schema.prisma && node apps/api/dist/server.js"
+    volumes:
+      - ./prisma:/app/prisma:ro
+
+  worker:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+    container_name: careerpath-worker
+    restart: "no" # run on demand: `docker compose run --rm worker npx tsx scripts/generate-questions.ts`
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-careerpath}:${POSTGRES_PASSWORD:-careerpath}@postgres:5432/${POSTGRES_DB:-careerpath}?schema=public
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./scripts:/app/scripts
+      - ./db:/app/db:ro
+      - ./prisma:/app/prisma:ro
+    command: ["npx", "tsx", "scripts/review-content.ts"]
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    container_name: careerpath-web
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    depends_on:
+      - api
+
+volumes:
+  # FIXED volume declaration: explicit external-style name keeps the same volume
+  # even if the compose project is renamed. Back it up with:
+  #   docker run --rm -v careerpath_pgdata:/data -v $(pwd):/backup alpine tar czf /backup/pgdata-backup.tgz /data
+  pgdata:
+    name: careerpath_pgdata

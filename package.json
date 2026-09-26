@@ -1,0 +1,38 @@
+{
+  "name": "careerpath",
+  "version": "0.1.0",
+  "private": true,
+  "description": "CareerPath hackathon MVP — pick a tech field and prove you understand it.",
+  "workspaces": [
+    "apps/api",
+    "apps/web"
+  ],
+  "scripts": {
+    "dev:api": "npm run dev --workspace apps/api",
+    "dev:web": "npm run dev --workspace apps/web",
+    "dev": "docker compose up --build",
+    "db:up": "docker compose up -d postgres",
+    "db:migrate": "npx prisma migrate dev --schema prisma/schema.prisma",
+    "db:migrate:deploy": "npx prisma migrate deploy --schema prisma/schema.prisma",
+    "db:seed": "tsx db/seed/index.ts",
+    "db:views": "psql $DATABASE_URL -f db/views.sql",
+    "db:reset": "npx prisma migrate reset --schema prisma/schema.prisma",
+    "prisma:generate": "npx prisma generate --schema prisma/schema.prisma",
+    "prisma:studio": "npx prisma studio --schema prisma/schema.prisma",
+    "check-links": "tsx scripts/check-links.ts",
+    "generate-questions": "tsx scripts/generate-questions.ts",
+    "review-content": "tsx scripts/review-content.ts",
+    "typecheck": "tsc -p apps/api/tsconfig.json --noEmit && tsc -p apps/web/tsconfig.json --noEmit && tsc -p tsconfig.scripts.json --noEmit"
+  },
+  "devDependencies": {
+    "prisma": "^5.18.0",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.4"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@prisma/client": "5.18.0"
+  }
+}

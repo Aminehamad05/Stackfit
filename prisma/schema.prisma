@@ -1,0 +1,513 @@
+// CareerPath — Prisma schema (Postgres + pgvector, Docker fixed volume `careerpath_pgdata`).
+//
+// Source of truth for migrations: `npx prisma migrate dev` generates SQL from THIS file.
+// The curated-graph principle from AGENT_SPEC §5 still holds: runtime reads only
+// `approved` rows (via db/views.sql `live_*` views through $queryRaw) — never base tables.
+//
+// Structural fixes applied vs the raw schema.sql + schema_tasters.sql drops
+// (full list in SCHEMA_FIXES.md):
+//   F1  Added `clubs` table + Event.clubId/status/location/description/field tag (API §6 needs club portal + draft->approved flow).
+//   F2  Added User.passwordHash (JWT email/password auth needs it).
+//   F4  PointEventType includes TASTER directly (no DROP/ADD CHECK hack).
+//   F5  Concept.embedding is Unsupported("vector(1024)") — needs pgvector image + CREATE EXTENSION (see migration SQL).
+//   F6  Views (live_*, leaderboard, field_fit_inputs) live in db/views.sql, applied post-migration (Prisma can't own views).
+//   F8  Interview.transcript/scores optional (a session exists before finish scoring).
+//   F9  AiReview entity includes TASTER.
+//   F10 RoadmapStep.status is a real enum, not TEXT+CHECK.
+//   F12 question_options one-correct rule stays a partial unique index in raw SQL (Prisma can't express it).
+//
+// DB runs in the `postgres` compose service (pgvector/pgvector:pg16) on the FIXED
+// named volume `careerpath_pgdata` — survives `compose down` / rebuilds.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ============ Enums ============
+
+enum ContentStatus {
+  draft
+  ai_reviewed
+  approved
+  rejected
+}
+
+enum Level {
+  beginner
+  intermediate
+  advanced
+}
+
+enum BackgroundKind {
+  uni_course
+  skill
+  experience
+}
+
+enum ResourceType {
+  video
+  course
+  book
+  article
+}
+
+enum PointEventType {
+  quiz
+  interview
+  course_completed
+  github_push
+  project
+  taster // F4: was added via ALTER in schema_tasters.sql — now first-class
+}
+
+enum UserTasterStatus {
+  in_progress
+  submitted
+  reviewed
+}
+
+enum KnownSource {
+  background
+  taster
+  quiz
+}
+
+enum EventType {
+  hackathon
+  networking
+  meetup
+  conference
+}
+
+// F1: poster-extraction flow needs draft -> approved gating (spec §7.5)
+enum EventStatus {
+  draft
+  approved
+}
+
+enum RoadmapStepStatus {
+  locked
+  in_progress
+  quiz_passed
+  interview_passed
+}
+
+enum AiReviewEntity {
+  question
+  resource
+  concept
+  roadmap
+  taster // F9
+}
+
+// ============ 1. Curated content graph ============
+
+model Field {
+  id          Int            @id @default(autoincrement())
+  slug        String         @unique
+  name        String
+  description String
+  concepts    FieldConcept[]
+  matches     UserFieldMatch[]
+  roadmaps    Roadmap[]
+  tasters     TasterProject[]
+  events      Event[] // F1: tagged field for GET /events?field=
+
+  @@map("fields")
+}
+
+model Concept {
+  id           Int                    @id @default(autoincrement())
+  slug         String                 @unique
+  name         String
+  description  String
+  level        Level
+  // F5: pgvector column. Requires `CREATE EXTENSION IF NOT EXISTS vector;`
+  // (first migration) + pgvector/pgvector image. Prisma has no native vector type.
+  embedding    Unsupported("vector(1024)")?
+  status       ContentStatus          @default(draft)
+  prereqs      ConceptPrerequisite[]  @relation("concept")
+  requiredBy   ConceptPrerequisite[]  @relation("prereq")
+  fields       FieldConcept[]
+  items        BackgroundItemConcept[]
+  resources    ConceptResource[]
+  questions    Question[]
+  tasters      TasterConcept[]
+  knownBy      UserKnownConcept[]
+  quizAttempts QuizAttempt[]
+  interviews   Interview[]
+  roadmapSteps RoadmapStep[]
+
+  @@map("concepts")
+}
+
+model ConceptPrerequisite {
+  conceptId Int @map("concept_id")
+  prereqId  Int @map("prereq_id")
+  concept   Concept @relation("concept", fields: [conceptId], references: [id], onDelete: Cascade)
+  prereq    Concept @relation("prereq", fields: [prereqId], references: [id], onDelete: Cascade)
+
+  @@id([conceptId, prereqId])
+  @@map("concept_prerequisites")
+}
+
+model FieldConcept {
+  fieldId    Int @map("field_id")
+  conceptId  Int @map("concept_id")
+  importance Int // 1..5 (validated in app + CHECK in migration SQL)
+  field      Field   @relation(fields: [fieldId], references: [id], onDelete: Cascade)
+  concept    Concept @relation(fields: [conceptId], references: [id], onDelete: Cascade)
+
+  @@id([fieldId, conceptId])
+  @@map("field_concepts")
+}
+
+model BackgroundItem {
+  id       Int                     @id @default(autoincrement())
+  kind     BackgroundKind
+  name     String
+  concepts BackgroundItemConcept[]
+  users    UserBackground[]
+
+  @@unique([kind, name])
+  @@map("background_items")
+}
+
+model BackgroundItemConcept {
+  itemId    Int @map("item_id")
+  conceptId Int @map("concept_id")
+  strength  Int             @default(3) // 1..5
+  item      BackgroundItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  concept   Concept        @relation(fields: [conceptId], references: [id], onDelete: Cascade)
+
+  @@id([itemId, conceptId])
+  @@map("background_item_concepts")
+}
+
+model Resource {
+  id          Int               @id @default(autoincrement())
+  title       String
+  url         String
+  provider    String?
+  type        ResourceType
+  isFree      Boolean           @map("is_free")
+  priceCents  Int?              @map("price_cents")
+  currency    String?
+  durationMin Int?              @map("duration_min")
+  level       Level
+  language    String            @default("en")
+  verifiedAt  DateTime?         @map("verified_at") @db.Timestamptz
+  status      ContentStatus     @default(draft)
+  concepts    ConceptResource[]
+  tasters     TasterResource[]
+  roadmapSteps RoadmapStep[]
+
+  @@map("resources")
+}
+
+model ConceptResource {
+  conceptId  Int @map("concept_id")
+  resourceId Int @map("resource_id")
+  rank       Int      @default(1)
+  concept    Concept  @relation(fields: [conceptId], references: [id], onDelete: Cascade)
+  resource   Resource @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+
+  @@id([conceptId, resourceId])
+  @@map("concept_resources")
+}
+
+model Question {
+  id          Int           @id @default(autoincrement())
+  conceptId   Int           @map("concept_id")
+  stem        String
+  difficulty  Level
+  explanation String
+  source      String        @default("ai") // human | ai (CHECK in migration SQL)
+  status      ContentStatus @default(draft)
+  createdAt   DateTime      @default(now()) @map("created_at") @db.Timestamptz
+  concept     Concept       @relation(fields: [conceptId], references: [id], onDelete: Cascade)
+  options     QuestionOption[]
+
+  @@index([conceptId])
+  @@index([status])
+  @@map("questions")
+}
+
+model QuestionOption {
+  id         Int      @id @default(autoincrement())
+  questionId Int      @map("question_id")
+  text       String
+  isCorrect  Boolean  @map("is_correct")
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@index([questionId])
+  @@map("question_options")
+  // F12: "exactly one correct option per question" is a partial unique index
+  // (CREATE UNIQUE INDEX one_correct_option ... WHERE is_correct) in migration SQL — Prisma can't express it.
+}
+
+model AiReview {
+  id         Int            @id @default(autoincrement())
+  entityType AiReviewEntity @map("entity_type")
+  entityId   Int            @map("entity_id")
+  model      String
+  verdict    String // pass | fix | reject (CHECK in migration SQL)
+  issues     Json?
+  createdAt  DateTime       @default(now()) @map("created_at") @db.Timestamptz
+
+  @@index([entityType, entityId])
+  @@map("ai_reviews")
+}
+
+// ============ 2. Users & progress ============
+
+model User {
+  id            Int                @id @default(autoincrement())
+  email         String             @unique
+  passwordHash  String             @map("password_hash") // F2: required for JWT email/password auth
+  displayName   String             @map("display_name")
+  city          String?
+  country       String?
+  budgetCents   Int                @default(0) @map("budget_cents") // 0 = free resources only
+  githubLogin   String?            @map("github_login")
+  createdAt     DateTime           @default(now()) @map("created_at") @db.Timestamptz
+  background    UserBackground[]
+  fieldMatches  UserFieldMatch[]
+  roadmaps      Roadmap[]
+  quizAttempts  QuizAttempt[]
+  interviews    Interview[]
+  pointEvents   PointEvent[]
+  events        UserEvent[]
+  knownConcepts UserKnownConcept[]
+  tasters       UserTaster[]
+
+  @@map("users")
+}
+
+model UserBackground {
+  userId     Int @map("user_id")
+  itemId     Int @map("item_id")
+  confidence Int // 1..5
+  interest   Int // 1..5
+  user       User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  item       BackgroundItem @relation(fields: [itemId], references: [id], onDelete: Cascade)
+
+  @@id([userId, itemId])
+  @@map("user_background")
+}
+
+model UserFieldMatch {
+  userId      Int @map("user_id")
+  fieldId     Int @map("field_id")
+  score       Float
+  explanation String? // LLM "why this fits you" — score itself is deterministic (matching.mjs)
+  chosen      Boolean @default(false)
+  user        User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  field       Field   @relation(fields: [fieldId], references: [id], onDelete: Cascade)
+
+  @@id([userId, fieldId])
+  @@map("user_field_matches")
+}
+
+model Roadmap {
+  id          Int           @id @default(autoincrement())
+  userId      Int           @map("user_id")
+  fieldId     Int           @map("field_id")
+  includePaid Boolean       @default(false) @map("include_paid")
+  createdAt   DateTime      @default(now()) @map("created_at") @db.Timestamptz
+  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  field       Field         @relation(fields: [fieldId], references: [id])
+  steps       RoadmapStep[]
+
+  @@map("roadmaps")
+}
+
+model RoadmapStep {
+  roadmapId  Int               @map("roadmap_id")
+  position   Int
+  conceptId  Int               @map("concept_id")
+  resourceId Int?              @map("resource_id")
+  status     RoadmapStepStatus @default(locked) // F10: proper enum, was TEXT+CHECK
+  roadmap    Roadmap           @relation(fields: [roadmapId], references: [id], onDelete: Cascade)
+  concept    Concept           @relation(fields: [conceptId], references: [id])
+  resource   Resource?         @relation(fields: [resourceId], references: [id])
+
+  @@id([roadmapId, position])
+  @@map("roadmap_steps")
+}
+
+model QuizAttempt {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map("user_id")
+  conceptId Int      @map("concept_id")
+  answers   Json // [{question_id, option_id}, ...]
+  score     Float
+  passed    Boolean
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  concept   Concept  @relation(fields: [conceptId], references: [id])
+
+  @@map("quiz_attempts")
+}
+
+model Interview {
+  id         Int      @id @default(autoincrement())
+  userId     Int      @map("user_id")
+  conceptId  Int      @map("concept_id")
+  transcript Json? // F8: nullable — session exists before finish scoring
+  scores     Json? // F8: {technical, clarity, non_technical, feedback}
+  model      String
+  passed     Boolean
+  createdAt  DateTime @default(now()) @map("created_at") @db.Timestamptz
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  concept    Concept  @relation(fields: [conceptId], references: [id])
+
+  @@map("interviews")
+}
+
+// ============ 3. Gamification (append-only ledger) ============
+
+model PointEvent {
+  id        BigInt         @id @default(autoincrement())
+  userId    Int            @map("user_id")
+  type      PointEventType
+  points    Int
+  refId     String?        @map("ref_id") // quiz id, commit sha... also blocks double-counting
+  createdAt DateTime       @default(now()) @map("created_at") @db.Timestamptz
+  user      User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  // F7: Postgres treats NULLs as distinct, so (user,type,NULL) can repeat.
+  // Always write a deterministic ref_id (e.g. `quiz:<attemptId>`) from code.
+  @@unique([userId, type, refId])
+  @@map("point_events")
+}
+
+// ============ 4. Tasters ============
+
+model TasterProject {
+  id               Int                 @id @default(autoincrement())
+  fieldId          Int                 @map("field_id")
+  slug             String              @unique
+  title            String
+  description      String
+  level            Level               @default(beginner)
+  estHours         Float               @map("est_hours")
+  deliverableType  String              @map("deliverable_type") // github_repo | file_upload | text (CHECK in SQL)
+  starterRepoUrl   String?             @map("starter_repo_url")
+  rubric           Json // [{id, criterion, weight, how_to_check, required?}]
+  status           ContentStatus       @default(draft)
+  field            Field               @relation(fields: [fieldId], references: [id], onDelete: Cascade)
+  resources        TasterResource[]
+  concepts         TasterConcept[]
+  userTasters      UserTaster[]
+
+  @@map("taster_projects")
+}
+
+model TasterResource {
+  tasterId   Int @map("taster_id")
+  resourceId Int @map("resource_id")
+  rank       Int           @default(1)
+  taster     TasterProject @relation(fields: [tasterId], references: [id], onDelete: Cascade)
+  resource   Resource      @relation(fields: [resourceId], references: [id], onDelete: Cascade)
+
+  @@id([tasterId, resourceId])
+  @@map("taster_resources")
+}
+
+model TasterConcept {
+  tasterId  Int @map("taster_id")
+  conceptId Int @map("concept_id")
+  taster    TasterProject @relation(fields: [tasterId], references: [id], onDelete: Cascade)
+  concept   Concept       @relation(fields: [conceptId], references: [id], onDelete: Cascade)
+
+  @@id([tasterId, conceptId])
+  @@map("taster_concepts")
+}
+
+model UserKnownConcept {
+  userId    Int @map("user_id")
+  conceptId Int @map("concept_id")
+  source    KnownSource
+  strength  Float // 0..1
+  updatedAt DateTime    @default(now()) @updatedAt @map("updated_at") @db.Timestamptz
+  user      User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  concept   Concept     @relation(fields: [conceptId], references: [id], onDelete: Cascade)
+
+  @@id([userId, conceptId, source])
+  @@map("user_known_concepts")
+}
+
+model UserTaster {
+  id             Int              @id @default(autoincrement())
+  userId         Int              @map("user_id")
+  tasterId       Int              @map("taster_id")
+  status         UserTasterStatus @default(in_progress)
+  startedAt      DateTime         @default(now()) @map("started_at") @db.Timestamptz
+  submittedAt    DateTime?        @map("submitted_at") @db.Timestamptz
+  submissionUrl  String?          @map("submission_url")
+  submissionText String?          @map("submission_text")
+  enjoyment      Int? // 1..5
+  difficulty     Int? // 1..5
+  wouldContinue  Boolean?         @map("would_continue")
+  reflection     String?
+  aiReview       Json?            @map("ai_review") // full review_taster.md JSON for audit
+  performance    Float? // computed IN CODE from rubric weights (never trust model overall_score)
+  user           User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  taster         TasterProject    @relation(fields: [tasterId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, tasterId])
+  @@map("user_tasters")
+}
+
+// ============ 5. Events & networking ============
+
+// F1: clubs table was referenced by the API (POST /clubs) but absent from the schema.
+model Club {
+  id          Int      @id @default(autoincrement())
+  name        String   @unique
+  description String?
+  contactEmail String? @map("contact_email")
+  createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz
+  events      Event[]
+
+  @@map("clubs")
+}
+
+model Event {
+  id          Int         @id @default(autoincrement())
+  title       String
+  type        EventType
+  city        String?
+  country     String
+  location    String? // F1: venue / address from poster extraction
+  description String?     @db.Text // F1
+  startsAt    DateTime    @map("starts_at") @db.Timestamptz
+  endsAt      DateTime?   @map("ends_at") @db.Timestamptz
+  url         String? // registration URL
+  status      EventStatus @default(draft) // F1: draft until organizer confirms -> approved
+  clubId      Int?        @map("club_id") // F1: which club posted it
+  club        Club?       @relation(fields: [clubId], references: [id], onDelete: SetNull)
+  fieldId     Int?        @map("field_id") // F1: tagged field for GET /events?field=
+  field       Field?      @relation(fields: [fieldId], references: [id], onDelete: SetNull)
+  attendees   UserEvent[]
+
+  @@index([status])
+  @@index([clubId])
+  @@map("events")
+}
+
+model UserEvent {
+  userId  Int @map("user_id")
+  eventId Int @map("event_id")
+  user    User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  event   Event @relation(fields: [eventId], references: [id], onDelete: Cascade)
+
+  @@id([userId, eventId])
+  @@map("user_events")
+}
