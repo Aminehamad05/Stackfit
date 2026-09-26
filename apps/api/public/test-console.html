@@ -57,10 +57,12 @@
   </section>
 
   <section>
-    <h2>3 · Background <span class="badge todo">501 stubs</span></h2>
+    <h2>3 · Background <span class="badge">live</span></h2>
     <div class="row"><button onclick="call('GET','/background-items','user')">List items</button></div>
     <label>Save body (JSON) <textarea id="bg-body">{"items":[{"itemId":3,"confidence":4,"interest":4},{"itemId":14,"confidence":5,"interest":5}]}</textarea></label>
-    <div class="row"><button onclick="call('POST','/users/me/background','user',$('bg-body').value)">Save background</button></div>
+    <div class="row"><button onclick="call('POST','/users/me/background','user',$('bg-body').value)">Save background</button>
+    <button onclick="call('GET','/users/me/background','user')">Read back</button>
+    <button onclick="call('GET','/users/me/background/profile','user')">Knowledge profile</button></div>
   </section>
 
   <section>

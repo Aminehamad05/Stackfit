@@ -83,7 +83,9 @@ is the engineering contract: how to build without breaking the project.
   `postgres:5432`. `.env` is optional for compose (defaults + `required: false`).
 
 ## 6. Status & build order
-- ✅ Working: health, user+club auth, club event CRUD, user subscriptions,
+- ✅ Working: health, user+club auth, background catalogue (concept details) +
+  save/read-back + `…/background/profile` (known/liked inference),
+  club event CRUD, user subscriptions,
   certifications (progress + check/award) + project suggestions, validation/errors,
   seed (4 fields / 56 concepts / 280 QCMs / 36 resources /
   4 tasters / 8 clubs / 16 events / 4 certifications / 8 project suggestions).
