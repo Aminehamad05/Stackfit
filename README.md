@@ -21,7 +21,9 @@ docker compose up --build
 No `.env` needed — defaults kick in. First boot: `postgres` starts → `api`
 runs `migrate deploy` → `bootstrap` creates the 7 views and seeds all content
 (only if empty) → serves. Web: http://localhost:5173 · API:
-http://localhost:4000/api. Copy `.env.example` → `.env` only for host-side
+http://localhost:4000/api · Manual QA console:
+http://localhost:4000/console/test-console.html (no-build vanilla page for
+every working endpoint). Copy `.env.example` → `.env` only for host-side
 commands (`npm run db:seed`, `psql`, `prisma studio`).
 
 Local dev loop:
@@ -57,7 +59,9 @@ npm run dev:api                                # tsx watch on :4000
 ✅ **Working:** `/health`, user register/login, club login, club event CRUD
 (`GET/POST /clubs/me/events`, `PATCH/DELETE /clubs/me/events/:id` —
 ownership-enforced, draft→approved publish), user subscribe/unsubscribe
-(`POST/DELETE /events/:id/subscribe`, `GET /users/me/events` — approved-only).
+(`POST/DELETE /events/:id/subscribe`, `GET /users/me/events` — approved-only),
+certifications (`GET /users/me/certifications`, `POST …/check` auto-award) +
+project suggestions (`GET /users/me/project-suggestions`, ready-first).
 ❌ **Stubs (501, Zod schemas ready):** background, field-matches, tasters,
 roadmap, quiz, leaderboard, public events reads, `.ics`/GCal links.
 ⛔ **AI-blocked (503):** `POST /interviews*`, taster auto-review.

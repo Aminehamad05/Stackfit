@@ -45,7 +45,8 @@ is the engineering contract: how to build without breaking the project.
 - [ ] Map errors: Zod→400 (automatic), conflicts→409 (automatic via P2002),
       missing/foreign→404, AI→503 via `getAi()`.
 - [ ] `npm run typecheck` green + live-probe with curl (200/201 happy path,
-      400 bad body, 401 bad/no token, 404 foreign id).
+      400 bad body, 401 bad/no token, 404 foreign id). Faster: click through
+      `/console/test-console.html` (`apps/api/public/`, served by Express).
 
 ## 4. Database workflow
 - **Source of truth**: `prisma/schema.prisma`. Migration SQL is generated, then
@@ -83,8 +84,12 @@ is the engineering contract: how to build without breaking the project.
 
 ## 6. Status & build order
 - ✅ Working: health, user+club auth, club event CRUD, user subscriptions,
-  validation/errors, seed (4 fields / 56 concepts / 280 QCMs / 36 resources /
-  4 tasters / 8 clubs / 16 events).
+  certifications (progress + check/award) + project suggestions, validation/errors,
+  seed (4 fields / 56 concepts / 280 QCMs / 36 resources /
+  4 tasters / 8 clubs / 16 events / 4 certifications / 8 project suggestions).
+- Next (no AI needed): background → field-matches compute → taster
+  persist-only (then call `evaluateAndAward` on quiz-pass paths) → roadmap → quiz
+  (call `evaluateAndAward` after each pass) → leaderboard → public events reads.
 - Next (no AI needed): background → field-matches compute → taster
   persist-only → roadmap → quiz → leaderboard → public events reads.
 - Blocked on AI: interviews, taster auto-review, question gen/review, poster

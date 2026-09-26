@@ -117,6 +117,8 @@ model Field {
   roadmaps    Roadmap[]
   tasters     TasterProject[]
   events      Event[] // F1: tagged field for GET /events?field=
+  certifications Certification[]
+  projectSuggestions ProjectSuggestion[]
 
   @@map("fields")
 }
@@ -285,6 +287,7 @@ model User {
   events        UserEvent[]
   knownConcepts UserKnownConcept[]
   tasters       UserTaster[]
+  certifications UserCertification[]
 
   @@map("users")
 }
@@ -512,4 +515,56 @@ model UserEvent {
 
   @@id([userId, eventId])
   @@map("user_events")
+}
+
+// ============ 6. Growth: certifications + project suggestions ============
+// Rule-based (no AI): certifications auto-award when "important courses" are
+// done (quizzes passed on required concepts + optional taster/interviews);
+// projects surface when the user masters their required concepts.
+
+model Certification {
+  id          Int           @id @default(autoincrement())
+  slug        String        @unique
+  title       String
+  description String        @db.Text
+  fieldId     Int?          @map("field_id")
+  field       Field?        @relation(fields: [fieldId], references: [id], onDelete: SetNull)
+  level       Level         @default(beginner)
+  // {required_concepts: string[concept slugs], min_score?: number (default 0.7),
+  //  require_taster?: boolean, min_interviews_passed?: number (default 0)}
+  criteria    Json
+  status      ContentStatus @default(draft)
+  createdAt   DateTime      @default(now()) @map("created_at") @db.Timestamptz
+  awards      UserCertification[]
+
+  @@map("certifications")
+}
+
+model UserCertification {
+  userId          Int           @map("user_id")
+  certificationId Int           @map("certification_id")
+  awardedAt       DateTime      @default(now()) @map("awarded_at") @db.Timestamptz
+  evidence        Json? // snapshot: {concepts, best_scores, tasters, interviews} at award time
+  user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  certification   Certification @relation(fields: [certificationId], references: [id], onDelete: Cascade)
+
+  @@id([userId, certificationId])
+  @@map("user_certifications")
+}
+
+model ProjectSuggestion {
+  id               Int           @id @default(autoincrement())
+  slug             String        @unique
+  title            String
+  description      String        @db.Text
+  fieldId          Int?          @map("field_id")
+  field            Field?        @relation(fields: [fieldId], references: [id], onDelete: SetNull)
+  level            Level         @default(intermediate)
+  requiredConcepts Json          @map("required_concepts") // string[] of concept slugs
+  estHours         Float         @map("est_hours")
+  deliverableHint  String?       @map("deliverable_hint")
+  status           ContentStatus @default(draft)
+  createdAt        DateTime      @default(now()) @map("created_at") @db.Timestamptz
+
+  @@map("project_suggestions")
 }

@@ -1,0 +1,90 @@
+[
+  {
+    "slug": "sales-kpi-dashboard",
+    "title": "Sales KPI Dashboard",
+    "description": "You know BI pieces separately — now integrate them: build a dashboard over a real sales CSV with KPIs, drill-downs and a one-page written read-out for a manager.",
+    "field_slug": "data",
+    "level": "intermediate",
+    "required_concepts": ["dashboard-bi", "data-visualization", "business-metrics-kpis"],
+    "est_hours": 6,
+    "deliverable_hint": "Public repo or notebook + screenshots of the dashboard.",
+    "status": "approved"
+  },
+  {
+    "slug": "customer-churn-eda",
+    "title": "Customer Churn Exploratory Analysis",
+    "description": "Apply cleaning and inference skills end-to-end: take a churn dataset, clean it, test two hypotheses statistically and present findings as if to a retention team.",
+    "field_slug": "data",
+    "level": "intermediate",
+    "required_concepts": ["pandas-data-cleaning", "exploratory-data-analysis", "probability-inference"],
+    "est_hours": 5,
+    "deliverable_hint": "Notebook with narrative + charts, runs top to bottom.",
+    "status": "approved"
+  },
+  {
+    "slug": "personal-blog-platform",
+    "title": "Personal Blog Platform",
+    "description": "Wire your frontend and backend knowledge into one deployed app: React blog with Markdown posts served by your own Node/Express + SQL API.",
+    "field_slug": "full-stack-dev",
+    "level": "intermediate",
+    "required_concepts": ["html-css-foundations", "javascript-fundamentals", "react-frontend", "node-express-backend"],
+    "est_hours": 8,
+    "deliverable_hint": "Deployed URL + repo with README setup instructions.",
+    "status": "approved"
+  },
+  {
+    "slug": "secure-notes-api",
+    "title": "Secure Notes API",
+    "description": "Prove backend maturity: a REST API with user accounts, token auth, per-user data isolation and automated tests for the auth flows.",
+    "field_slug": "full-stack-dev",
+    "level": "intermediate",
+    "required_concepts": ["http-rest-apis", "authentication-authorization", "relational-databases-sql"],
+    "est_hours": 6,
+    "deliverable_hint": "Repo with passing test suite + API docs.",
+    "status": "approved"
+  },
+  {
+    "slug": "monitored-web-stack",
+    "title": "Monitored Container Stack",
+    "description": "Combine containers, CI and observability: ship a two-service Docker Compose app with a CI pipeline and dashboards showing request and error metrics.",
+    "field_slug": "cloud-engineering",
+    "level": "intermediate",
+    "required_concepts": ["containers-docker", "observability-monitoring", "cicd-automation"],
+    "est_hours": 7,
+    "deliverable_hint": "Repo with Compose file, CI workflow and dashboard screenshots.",
+    "status": "approved"
+  },
+  {
+    "slug": "terraform-vpc-project",
+    "title": "VPC with Terraform",
+    "description": "Turn cloud theory into infrastructure: define a small network with public/private subnets, security groups and one compute instance, entirely in Terraform on a free-tier account.",
+    "field_slug": "cloud-engineering",
+    "level": "intermediate",
+    "required_concepts": ["cloud-networking-security", "infrastructure-as-code", "cloud-core-services"],
+    "est_hours": 6,
+    "deliverable_hint": "Terraform repo + applied plan output (redact secrets).",
+    "status": "approved"
+  },
+  {
+    "slug": "house-price-predictor",
+    "title": "House Price Predictor",
+    "description": "Your first full modeling project: clean a housing dataset, train and compare two regressors, report honest metrics and failure cases in the README.",
+    "field_slug": "machine-learning",
+    "level": "intermediate",
+    "required_concepts": ["linear-regression", "model-evaluation", "data-preparation-ml"],
+    "est_hours": 6,
+    "deliverable_hint": "Notebook + README with metrics table and limitations.",
+    "status": "approved"
+  },
+  {
+    "slug": "ml-service-ship",
+    "title": "Ship a Classifier as a Service",
+    "description": "Go from notebook to product thinking: wrap a trained tree-ensemble classifier in a small API, document inputs/outputs and how you would monitor it in production.",
+    "field_slug": "machine-learning",
+    "level": "advanced",
+    "required_concepts": ["classification-models", "tree-ensemble-models", "ml-project-delivery"],
+    "est_hours": 8,
+    "deliverable_hint": "Repo with API code + example requests.",
+    "status": "approved"
+  }
+]

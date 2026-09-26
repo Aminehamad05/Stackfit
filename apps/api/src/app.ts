@@ -5,6 +5,7 @@ import express, {
   type Request,
   type Response,
 } from 'express';
+import { join } from 'node:path';
 import cors from 'cors';
 import morgan from 'morgan';
 import { ZodError } from 'zod';
@@ -21,6 +22,7 @@ import interview from './modules/interview/routes.js';
 import points from './modules/points/routes.js';
 import events from './modules/events/routes.js';
 import clubs from './modules/clubs/routes.js';
+import growth from './modules/growth/routes.js';
 
 export function createApp(): Express {
   const app = express();
@@ -29,6 +31,10 @@ export function createApp(): Express {
   app.use(morgan('dev'));
 
   app.get('/api/health', (_req: Request, res: Response) => res.json({ ok: true, aiEnabled: false }));
+
+  // Vanilla JS test console (dev/QA only): open /console/test-console.html.
+  // Served from apps/api/public (CWD-aware: repo root locally, /app in Docker).
+  app.use('/console', express.static(join(process.cwd(), 'apps/api/public')));
 
   app.use('/api/auth', auth);
   app.use('/api', background);
@@ -43,6 +49,7 @@ export function createApp(): Express {
   // unmatched paths (GET /clubs, /clubs/:id/events) fall through to events.
   app.use('/api', clubs);
   app.use('/api', events);
+  app.use('/api', growth);
 
   // 404 + typed error handler (must be last)
   app.use((_req: Request, res: Response) => res.status(404).json({ error: 'not_found' }));

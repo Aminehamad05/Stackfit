@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CareerPath — Test Console</title>
+<style>
+  :root { color-scheme: light; }
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, sans-serif; margin: 0; background: #f4f5f7; color: #222; }
+  header { background: #1c2333; color: #fff; padding: 12px 20px; position: sticky; top: 0; z-index: 10; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  header h1 { font-size: 16px; margin: 0 12px 0 0; }
+  header input { width: 280px; }
+  main { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 12px; max-width: 1400px; margin: 0 auto; }
+  section { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 12px; }
+  section h2 { font-size: 14px; margin: 0 0 8px; text-transform: uppercase; letter-spacing: .04em; color: #555; }
+  label { display: block; font-size: 12px; margin: 6px 0 2px; color: #555; }
+  input, textarea, select { width: 100%; padding: 6px 8px; font-size: 13px; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; }
+  textarea { min-height: 56px; font-family: monospace; }
+  .row { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 8px; }
+  button { padding: 6px 12px; font-size: 13px; border: 1px solid #888; border-radius: 4px; background: #eef; cursor: pointer; }
+  button:hover { background: #dde; }
+  button.warn { background: #fee; }
+  .tok { font-size: 11px; word-break: break-all; background: #f0f0f0; padding: 4px; border-radius: 4px; margin-top: 6px; min-height: 18px; }
+  #log { grid-column: 1 / -1; }
+  #out { background: #111; color: #cfc; font-family: monospace; font-size: 12px; padding: 10px; border-radius: 6px; max-height: 480px; overflow: auto; white-space: pre-wrap; }
+  .q { border-top: 1px dashed #ccc; padding: 6px 0; }
+  .badge { display: inline-block; font-size: 11px; padding: 1px 6px; border-radius: 8px; background: #dfd; margin-left: 6px; }
+  .badge.todo { background: #fdd; }
+</style>
+</head>
+<body>
+<header>
+  <h1>CareerPath Test Console</h1>
+  <label style="color:#ccc">API base <input id="base" value="http://localhost:4000/api" /></label>
+  <span id="who"></span>
+</header>
+<main>
+  <section>
+    <h2>1 · User auth <span class="badge">live</span></h2>
+    <label>Email <input id="u-email" value="tester@example.com" /></label>
+    <label>Password <input id="u-pass" value="password123" /></label>
+    <label>Display name <input id="u-name" value="Tester" /></label>
+    <div class="row">
+      <button onclick="userRegister()">Register</button>
+      <button onclick="userLogin()">Login</button>
+    </div>
+    <div class="tok" id="u-tok">no user token</div>
+  </section>
+
+  <section>
+    <h2>2 · Club auth <span class="badge">live</span></h2>
+    <label>Email <input id="c-email" value="info@ieeeinsatstudentbranch.com" /></label>
+    <label>Password <input id="c-pass" value="club2000" /></label>
+    <div class="row"><button onclick="clubLogin()">Club login</button></div>
+    <div class="tok" id="c-tok">no club token</div>
+  </section>
+
+  <section>
+    <h2>3 · Background <span class="badge todo">501 stubs</span></h2>
+    <div class="row"><button onclick="call('GET','/background-items','user')">List items</button></div>
+    <label>Save body (JSON) <textarea id="bg-body">{"items":[{"itemId":3,"confidence":4,"interest":4},{"itemId":14,"confidence":5,"interest":5}]}</textarea></label>
+    <div class="row"><button onclick="call('POST','/users/me/background','user',$('bg-body').value)">Save background</button></div>
+  </section>
+
+  <section>
+    <h2>4 · Matching <span class="badge todo">501 stubs</span></h2>
+    <div class="row">
+      <button onclick="call('POST','/users/me/field-matches/compute','user','{}')">Compute top-3</button>
+      <button onclick="call('GET','/users/me/field-matches','user')">List matches</button>
+      <button onclick="call('GET','/users/me/field-fit','user')">Fit scores</button>
+    </div>
+    <label>Field id <input id="choice-id" value="4" /></label>
+    <div class="row"><button onclick="call('POST','/users/me/field-choice','user',JSON.stringify({fieldId:+$('choice-id').value}))">Choose field</button></div>
+  </section>
+
+  <section>
+    <h2>5 · Taster <span class="badge todo">501 stubs</span></h2>
+    <label>Field id <input id="t-field" value="4" /></label>
+    <div class="row"><button onclick="call('GET','/fields/'+$('t-field').value+'/taster','user')">Get taster</button></div>
+    <label>Taster id <input id="t-id" value="4" /></label>
+    <div class="row">
+      <button onclick="call('POST','/users/me/tasters/'+$('t-id').value+'/start','user','{}')">Start</button>
+    </div>
+    <label>Submit body <textarea id="t-body">{"enjoyment":5,"difficulty":3,"wouldContinue":true,"reflection":"Loved cleaning the data"}</textarea></label>
+    <div class="row"><button onclick="call('POST','/users/me/tasters/'+$('t-id').value+'/submit','user',$('t-body').value)">Submit</button></div>
+  </section>
+
+  <section>
+    <h2>6 · Roadmap & Quiz <span class="badge todo">501 stubs</span></h2>
+    <label>Roadmap id <input id="r-id" value="1" /></label>
+    <div class="row"><button onclick="call('GET','/roadmaps/'+$('r-id').value,'user')">Get roadmap</button></div>
+    <label>Concept id <input id="q-concept" value="45" /></label>
+    <div class="row"><button onclick="getQuiz()">Get quiz</button></div>
+    <div id="quiz"></div>
+    <div class="row"><button onclick="submitQuiz()">Submit attempt</button></div>
+  </section>
+
+  <section>
+    <h2>7 · Certifications & Projects <span class="badge">live</span></h2>
+    <div class="row">
+      <button onclick="call('GET','/users/me/certifications','user')">My certifications</button>
+      <button onclick="call('POST','/users/me/certifications/check','user','{}')">Check & award</button>
+      <button onclick="call('GET','/users/me/project-suggestions','user')">Project suggestions</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>8 · Club events (club token) <span class="badge">live</span></h2>
+    <div class="row"><button onclick="call('GET','/clubs/me/events','club')">My events</button></div>
+    <label>New event (JSON) <textarea id="e-body">{"title":"Test Workshop","type":"meetup","country":"Tunisia","startsAt":"2026-12-01T17:00:00Z"}</textarea></label>
+    <div class="row"><button onclick="call('POST','/clubs/me/events','club',$('e-body').value)">Create (draft)</button></div>
+    <label>Event id <input id="e-id" value="" /></label>
+    <label>Patch (JSON) <textarea id="e-patch">{"status":"approved"}</textarea></label>
+    <div class="row">
+      <button onclick="call('PATCH','/clubs/me/events/'+$('e-id').value,'club',$('e-patch').value)">Update</button>
+      <button class="warn" onclick="call('DELETE','/clubs/me/events/'+$('e-id').value,'club')">Delete</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>9 · User events (user token) <span class="badge">live</span></h2>
+    <label>Event id <input id="s-id" value="1" /></label>
+    <div class="row">
+      <button onclick="call('POST','/events/'+$('s-id').value+'/subscribe','user','{}')">Subscribe</button>
+      <button onclick="call('DELETE','/events/'+$('s-id').value+'/subscribe','user')">Unsubscribe</button>
+      <button onclick="call('GET','/users/me/events','user')">My events</button>
+      <button onclick="call('GET','/leaderboard','user')">Leaderboard (501)</button>
+    </div>
+  </section>
+
+  <section>
+    <h2>10 · Interviews <span class="badge todo">503 disabled</span></h2>
+    <div class="row"><button onclick="call('POST','/interviews','user',JSON.stringify({conceptId:45}))">Start interview</button></div>
+  </section>
+
+  <section id="log">
+    <h2>Response log (latest first)</h2>
+    <div id="out">Ready. Register/login first, then exercise the sections top to bottom.</div>
+  </section>
+</main>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const S = { userToken: null, clubToken: null, quiz: [] };
+
+function base() { return $('base').value.replace(/\/$/, ''); }
+function log(method, path, status, body) {
+  const line = `\n### ${method} ${path} → ${status}\n` +
+    (typeof body === 'string' ? body : JSON.stringify(body, null, 2));
+  $('out').textContent = line + '\n' + $('out').textContent.slice(0, 20000);
+}
+function headers(role) {
+  const h = { 'Content-Type': 'application/json' };
+  const t = role === 'club' ? S.clubToken : S.userToken;
+  if (t) h.Authorization = 'Bearer ' + t;
+  return h;
+}
+async function call(method, path, role, rawBody) {
+  let res, data;
+  try {
+    res = await fetch(base() + path, {
+      method, headers: headers(role),
+      body: rawBody !== undefined ? rawBody : undefined,
+    });
+    const text = await res.text();
+    try { data = JSON.parse(text); } catch { data = text; }
+  } catch (e) { log(method, path, 'NETWORK-ERR', String(e)); return null; }
+  log(method, path, res.status, data);
+  return { status: res.status, data };
+}
+function showTokens() {
+  $('u-tok').textContent = S.userToken ? 'user: ' + S.userToken.slice(0, 40) + '…' : 'no user token';
+  $('c-tok').textContent = S.clubToken ? 'club: ' + S.clubToken.slice(0, 40) + '…' : 'no club token';
+  $('who').textContent = (S.userToken ? '🧑 user ' : '') + (S.clubToken ? '🏛️ club' : '');
+}
+
+async function userRegister() {
+  const r = await call('POST', '/auth/register', 'none', JSON.stringify({
+    email: $('u-email').value, password: $('u-pass').value, displayName: $('u-name').value,
+  }));
+  if (r && r.status === 201) { S.userToken = r.data.token; showTokens(); }
+}
+async function userLogin() {
+  const r = await call('POST', '/auth/login', 'none', JSON.stringify({
+    email: $('u-email').value, password: $('u-pass').value,
+  }));
+  if (r && r.status === 200) { S.userToken = r.data.token; showTokens(); }
+}
+async function clubLogin() {
+  const r = await call('POST', '/clubs/login', 'none', JSON.stringify({
+    email: $('c-email').value, password: $('c-pass').value,
+  }));
+  if (r && r.status === 200) { S.clubToken = r.data.token; showTokens(); }
+}
+
+async function getQuiz() {
+  const r = await call('GET', '/concepts/' + $('q-concept').value + '/quiz', 'user');
+  const box = $('quiz'); box.innerHTML = '';
+  S.quiz = [];
+  if (!r || r.status !== 200 || !Array.isArray(r.data.questions)) return;
+  S.quiz = r.data.questions;
+  r.data.questions.forEach((q, qi) => {
+    const div = document.createElement('div');
+    div.className = 'q';
+    div.innerHTML = '<b>Q' + q.id + ':</b> ' + escapeHtml(q.stem);
+    q.options.forEach((o) => {
+      const lab = document.createElement('label');
+      lab.innerHTML = '<input type="radio" name="q' + qi + '" value="' + o.id + '" /> ' + escapeHtml(o.text);
+      div.appendChild(lab);
+    });
+    box.appendChild(div);
+  });
+}
+async function submitQuiz() {
+  const answers = [];
+  S.quiz.forEach((q, qi) => {
+    const sel = document.querySelector('input[name="q' + qi + '"]:checked');
+    if (sel) answers.push({ questionId: q.id, optionId: +sel.value });
+  });
+  await call('POST', '/concepts/' + $('q-concept').value + '/quiz/attempt', 'user', JSON.stringify({ answers }));
+}
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+showTokens();
+</script>
+</body>
+</html>

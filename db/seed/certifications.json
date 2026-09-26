@@ -1,0 +1,58 @@
+[
+  {
+    "slug": "data-foundations",
+    "title": "Data Analysis Foundations",
+    "description": "Awarded when you pass the core data courses: SQL querying, Python data work, cleaning with pandas, exploratory analysis and visualization — plus a reviewed taster.",
+    "field_slug": "data",
+    "level": "beginner",
+    "criteria": {
+      "required_concepts": ["sql-data-querying", "python-data-basics", "pandas-data-cleaning", "exploratory-data-analysis", "data-visualization"],
+      "min_score": 0.7,
+      "require_taster": true,
+      "min_interviews_passed": 0
+    },
+    "status": "approved"
+  },
+  {
+    "slug": "full-stack-foundations",
+    "title": "Full-Stack Web Foundations",
+    "description": "Awarded when you pass the core web courses: HTML/CSS, JavaScript, React, REST backends with Node/Express and relational databases — plus a reviewed taster.",
+    "field_slug": "full-stack-dev",
+    "level": "beginner",
+    "criteria": {
+      "required_concepts": ["html-css-foundations", "javascript-fundamentals", "react-frontend", "node-express-backend", "relational-databases-sql"],
+      "min_score": 0.7,
+      "require_taster": true,
+      "min_interviews_passed": 0
+    },
+    "status": "approved"
+  },
+  {
+    "slug": "cloud-foundations",
+    "title": "Cloud Engineering Foundations",
+    "description": "Awarded when you pass the core cloud courses: Linux CLI, cloud concepts, containers, CI/CD and infrastructure as code — plus a reviewed taster.",
+    "field_slug": "cloud-engineering",
+    "level": "beginner",
+    "criteria": {
+      "required_concepts": ["linux-cli", "cloud-concepts", "containers-docker", "cicd-automation", "infrastructure-as-code"],
+      "min_score": 0.7,
+      "require_taster": true,
+      "min_interviews_passed": 0
+    },
+    "status": "approved"
+  },
+  {
+    "slug": "ml-foundations",
+    "title": "Machine Learning Foundations",
+    "description": "Awarded when you pass the core ML courses: Python for ML, data preparation, classification, model evaluation and linear regression — plus a reviewed taster.",
+    "field_slug": "machine-learning",
+    "level": "beginner",
+    "criteria": {
+      "required_concepts": ["python-for-ml", "data-preparation-ml", "classification-models", "model-evaluation", "linear-regression"],
+      "min_score": 0.7,
+      "require_taster": true,
+      "min_interviews_passed": 0
+    },
+    "status": "approved"
+  }
+]

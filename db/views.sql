@@ -17,6 +17,12 @@ CREATE OR REPLACE VIEW live_tasters AS
 CREATE OR REPLACE VIEW live_events AS
   SELECT * FROM events WHERE status = 'approved';
 
+CREATE OR REPLACE VIEW live_certifications AS
+  SELECT * FROM certifications WHERE status = 'approved';
+
+CREATE OR REPLACE VIEW live_project_suggestions AS
+  SELECT * FROM project_suggestions WHERE status = 'approved';
+
 CREATE OR REPLACE VIEW leaderboard AS
   SELECT u.id, u.display_name, COALESCE(SUM(p.points), 0) AS total_points
   FROM users u LEFT JOIN point_events p ON p.user_id = u.id

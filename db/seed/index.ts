@@ -47,6 +47,16 @@ interface TasterRow {
 interface TasterConceptRow { taster_slug: string; concept_slug: string }
 interface TasterResourceRow { taster_slug: string; resource_url: string; rank: number }
 interface ClubRow { name: string; email: string; description: string | null; contact_email: string | null }
+interface CertRow {
+  slug: string; title: string; description: string; field_slug: string | null;
+  level: 'beginner' | 'intermediate' | 'advanced'; criteria: unknown; status: 'draft' | 'ai_reviewed' | 'approved' | 'rejected';
+}
+interface ProjRow {
+  slug: string; title: string; description: string; field_slug: string | null;
+  level: 'beginner' | 'intermediate' | 'advanced'; required_concepts: string[];
+  est_hours: number; deliverable_hint: string | null;
+  status: 'draft' | 'ai_reviewed' | 'approved' | 'rejected';
+}
 interface EventRow {
   title: string; type: EventType; city: string | null; country: string; location: string | null;
   description: string | null; starts_at: string; ends_at: string | null; url: string | null;
@@ -208,9 +218,46 @@ async function main(): Promise<void> {
   });
   console.log(`[seed] tasters: ${tasters.length}, links: ${tcs.length + trs.length}`);
 
+  // 7b. Growth: certifications + project suggestions (criteria reference slugs)
+  const certs = load<CertRow[]>('certifications.json');
+  for (const c of certs) {
+    await prisma.certification.upsert({
+      where: { slug: c.slug },
+      update: {
+        title: c.title, description: c.description, level: c.level,
+        criteria: c.criteria as object, status: c.status,
+        fieldId: c.field_slug ? await fieldId(c.field_slug) : null,
+      },
+      create: {
+        slug: c.slug, title: c.title, description: c.description, level: c.level,
+        criteria: c.criteria as object, status: c.status,
+        fieldId: c.field_slug ? await fieldId(c.field_slug) : null,
+      },
+    });
+  }
+  const projs = load<ProjRow[]>('project_suggestions.json');
+  for (const p of projs) {
+    await prisma.projectSuggestion.upsert({
+      where: { slug: p.slug },
+      update: {
+        title: p.title, description: p.description, level: p.level,
+        requiredConcepts: p.required_concepts, estHours: p.est_hours,
+        deliverableHint: p.deliverable_hint, status: p.status,
+        fieldId: p.field_slug ? await fieldId(p.field_slug) : null,
+      },
+      create: {
+        slug: p.slug, title: p.title, description: p.description, level: p.level,
+        requiredConcepts: p.required_concepts, estHours: p.est_hours,
+        deliverableHint: p.deliverable_hint, status: p.status,
+        fieldId: p.field_slug ? await fieldId(p.field_slug) : null,
+      },
+    });
+  }
+  console.log(`[seed] certifications: ${certs.length}, project_suggestions: ${projs.length}`);
+
   // 8. Clubs + events (club login: email explicit in JSON, demo password from env)
   const clubs = load<ClubRow[]>('clubs.json');
-  const bcrypt = await import('bcryptjs');
+  const { default: bcrypt } = await import('bcryptjs');
   const clubPasswordHash = await bcrypt.hash(process.env.CLUB_SEED_PASSWORD ?? 'club2000', 10);
   for (const c of clubs) {
     await prisma.club.upsert({
