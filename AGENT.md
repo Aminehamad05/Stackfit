@@ -85,6 +85,7 @@ is the engineering contract: how to build without breaking the project.
 ## 6. Status & build order
 - ✅ Working: health, user+club auth, background catalogue (concept details) +
   save/read-back + `…/background/profile` (known/liked inference),
+  field matching (compute/list/fit/choice with compatibility %),
   club event CRUD, user subscriptions,
   certifications (progress + check/award) + project suggestions, validation/errors,
   seed (4 fields / 56 concepts / 280 QCMs / 36 resources /

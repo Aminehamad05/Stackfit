@@ -58,7 +58,7 @@ npm run dev:api                                # tsx watch on :4000
 ## Endpoint status
 ✅ **Working:** `/health`, user register/login, club login, background
 catalogue (with concept details) + save/read-back + knowledge profile,
-club event CRUD
+field matching (top-3 % + fit + choice), club event CRUD
 (`GET/POST /clubs/me/events`, `PATCH/DELETE /clubs/me/events/:id` —
 ownership-enforced, draft→approved publish), user subscribe/unsubscribe
 (`POST/DELETE /events/:id/subscribe`, `GET /users/me/events` — approved-only),
