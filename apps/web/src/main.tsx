@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import { AuthProvider } from './features/auth/auth-context';
+import { ThemeProvider } from './features/theme/theme-context';
+import './index.css';
 
 const root = document.getElementById('root');
 if (!root) throw new Error('#root element missing');
@@ -9,7 +12,11 @@ if (!root) throw new Error('#root element missing');
 ReactDOM.createRoot(root).render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <ThemeProvider>
+        <AuthProvider>
+          <App />
+        </AuthProvider>
+      </ThemeProvider>
     </BrowserRouter>
   </React.StrictMode>,
 );
