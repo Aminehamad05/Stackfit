@@ -471,6 +471,8 @@ model UserTaster {
 model Club {
   id          Int      @id @default(autoincrement())
   name        String   @unique
+  email       String   @unique // club login identity (e.g. info@ieeeinsatstudentbranch.com)
+  passwordHash String  @map("password_hash") // bcrypt; demo default 'club2000' for seeded clubs
   description String?
   contactEmail String? @map("contact_email")
   createdAt   DateTime @default(now()) @map("created_at") @db.Timestamptz

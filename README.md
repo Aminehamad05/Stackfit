@@ -1,58 +1,84 @@
 # CareerPath — hackathon MVP
 
-CS students pick a tech field and prove they understand it. Single source of truth: `AGENT_SPEC(1).md`.
+An app for CS students and career switchers: pick a tech field, prove you
+understand it through tasters → roadmap → quizzes, climb the leaderboard,
+join club events. Spec: `AGENT_SPEC(1).md`. Agent playbook: `AGENT.md`.
 
 ## Stack
-TypeScript (strict) · Postgres 16 + pgvector · Node 20 + Express (`apps/api`) ·
-React + Vite (`apps/web`) · Zod request validation · Prisma migrations ·
-Docker Compose (`web`, `api`, `worker`, `postgres`).
+TypeScript (strict) · Node 20 + Express (`apps/api`) · React + Vite (`apps/web`) ·
+Postgres 16 + pgvector · Prisma migrations · Zod validation · Docker Compose
+(`postgres`, `api`, `worker`, `web`).
 
-> **AI layer: DISABLED.** The app is fully independent of any LLM provider —
-> no `openai` dependency, no LLM imports anywhere. AI-backed endpoints
-> (`POST /api/interviews/*`) return `503 ai_disabled`; AI scripts exit with a
-> SKIP message. Re-enable via `apps/api/src/ai/` + `AI_ENABLED=true`.
+> **AI layer: DISABLED.** No LLM dependency, no LLM imports. AI routes return
+> `503 ai_disabled`; AI scripts exit with SKIP. Re-enable via `apps/api/src/ai/`
+> + `AI_ENABLED=true` (see `AGENT.md`).
 
 ## Quickstart (teammates: one command)
 ```bash
 git clone <repo> && cd <repo>
 docker compose up --build
 ```
-That's it — no `.env` needed for the compose path (sane defaults kick in).
-First boot does everything automatically: `postgres` starts on the fixed
-volume → `api` runs `migrate deploy`, then `bootstrap` (creates the 7 views,
-seeds all content **only if the DB is empty**), then serves. Open
-http://localhost:5173 (web) — API at http://localhost:4000/api.
-Copy `.env.example` → `.env` only if you run host-side commands
-(`npm run db:seed`, `psql`, `prisma studio`).
+No `.env` needed — defaults kick in. First boot: `postgres` starts → `api`
+runs `migrate deploy` → `bootstrap` creates the 7 views and seeds all content
+(only if empty) → serves. Web: http://localhost:5173 · API:
+http://localhost:4000/api. Copy `.env.example` → `.env` only for host-side
+commands (`npm run db:seed`, `psql`, `prisma studio`).
 
-Local dev loop (host):
+Local dev loop:
 ```bash
-npm install                   # single workspace install (root lockfile)
+npm install                                    # single root lockfile, all workspaces
 npx prisma generate --schema prisma/schema.prisma
-docker compose up -d postgres # fixed volume careerpath_pgdata — survives down/rebuilds
+docker compose up -d postgres
 npx prisma migrate deploy --schema prisma/schema.prisma
-psql $DATABASE_URL -f db/views.sql   # or: npm run db:views
-npm run db:seed
-npm run typecheck             # tsc --noEmit for api + web + scripts
-npm run dev:api                # tsx watch (or: docker compose up --build)
+npx tsx scripts/bootstrap.ts                   # views + seed-if-empty
+npm run typecheck                              # api + web + scripts, must be green
+npm run dev:api                                # tsx watch on :4000
 ```
-API `:4000` · Web `:5173` (nginx `:80` in compose).
+
+## Auth: two worlds
+- **Users** (students): `POST /api/auth/register` + `/login` → JWT `{sub, email}`.
+  Guard protected routes with `requireAuth` (`req.user`).
+- **Clubs** (organisations): `POST /api/clubs/login` → JWT `{type:'club', clubId}`.
+  Guard with `requireClub` (`req.club`) — it rejects user tokens too. Seeded
+  clubs all use password **`club2000`**:
+
+| Club | Email |
+|---|---|
+| IEEE INSAT | info@ieeeinsatstudentbranch.com |
+| IEEE SUP'COM | info@ieeesupcomstudentbranch.com |
+| IEEE ESSTHS | info@ieeeessthsstudentbranch.com |
+| IEEE ISIMM | info@ieeeisimmstudentbranch.com |
+| IEEE ENIS | info@ieeeenisstudentbranch.com |
+| IEEE FST | info@ieeefststudentbranch.com |
+| IEEE CS ISIMA | info@ieeecsisimastudentbranchchapter.com |
+| IEEE CS EPS | info@ieeecsepsstudentbranchchapter.com |
+
+## Endpoint status
+✅ **Working:** `/health`, user register/login, club login, club event CRUD
+(`GET/POST /clubs/me/events`, `PATCH/DELETE /clubs/me/events/:id` —
+ownership-enforced, draft→approved publish), user subscribe/unsubscribe
+(`POST/DELETE /events/:id/subscribe`, `GET /users/me/events` — approved-only).
+❌ **Stubs (501, Zod schemas ready):** background, field-matches, tasters,
+roadmap, quiz, leaderboard, public events reads, `.ics`/GCal links.
+⛔ **AI-blocked (503):** `POST /interviews*`, taster auto-review.
+
+## Data (seeded)
+4 fields · 56 concepts (81 prereq edges) · **280 QCMs + 1120 options (5/concept)**
+· 36 resources · 4 tasters · 8 clubs · 16 events — all `approved`, all served
+via `live_*` views. Reseed: `npm run db:seed` (idempotent upserts). Clean slate:
+`docker compose down -v && docker compose up --build`.
 
 ## Rules that matter
-- Runtime reads only `approved` rows via `live_*` views — never base tables.
-- Matching/roadmap is deterministic (`apps/api/src/matching/matching.ts`, typed port of the verbatim `.mjs` — logic unchanged, no DB/AI calls inside). The (disabled) LLM would only write "why this fits" text, review tasters, interview, extract poster events.
-- Taster `performance` is computed **in code** from rubric weights — never trust the model's `overall_score`.
-- `status: draft → ai_reviewed → approved`; poster events never auto-publish.
-- All API input is Zod-validated (`validate({ body, params, query })` middleware +
-  per-module `schemas.ts`): 400 `validation_error` on bad input, 409 on unique
-  conflicts, 503 `ai_disabled` on AI routes.
-- Prisma owns migrations. `db/schema.sql` + `db/schema_tasters.sql` are the reviewable reference (apply order: schema → tasters → `views.sql`). Structural fixes: `SCHEMA_FIXES.md`.
+- Reads go through `live_*` views (approved only) — never base tables.
+- Matching/roadmap is deterministic (`matching.ts`, no DB/AI calls); the LLM
+  would only write explanations, review tasters, interview, extract posters.
+- Taster `performance` is computed **in code** from rubric weights.
+- All input is Zod-validated: 400 `validation_error`, 409 conflicts, 503 on AI routes.
+- Prisma owns migrations; `db/*.sql` is the reviewable reference (`SCHEMA_FIXES.md`).
 
 ## Postgres volume
-Named volume `careerpath_pgdata` (explicit `name:`) persists across `compose down`. Only `compose down -v` destroys it. Backup:
+Fixed named volume `careerpath_pgdata` survives `compose down`. Only
+`down -v` destroys it. Backup:
 ```bash
 docker run --rm -v careerpath_pgdata:/data -v $(pwd):/backup alpine tar czf /backup/pgdata-backup.tgz /data
 ```
-
-## Demo path (§8)
-Seed → onboarding/`rankFields` top-3 → taster submit/AI review/`fitScore` → field pick → `buildRoadmap` → QCM gate → AI interview → leaderboard. Run once end-to-end from a clean seeded DB before demo day; keep the Brev endpoint fallback in `.env`.

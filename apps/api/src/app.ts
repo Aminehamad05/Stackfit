@@ -20,6 +20,7 @@ import quiz from './modules/quiz/routes.js';
 import interview from './modules/interview/routes.js';
 import points from './modules/points/routes.js';
 import events from './modules/events/routes.js';
+import clubs from './modules/clubs/routes.js';
 
 export function createApp(): Express {
   const app = express();
@@ -37,6 +38,10 @@ export function createApp(): Express {
   app.use('/api', quiz);
   app.use('/api', interview);
   app.use('/api', points);
+  // NOTE: clubs BEFORE events — both define /clubs/* paths and Express matches
+  // in mount order. /clubs/login + /clubs/me/* must hit the club router first;
+  // unmatched paths (GET /clubs, /clubs/:id/events) fall through to events.
+  app.use('/api', clubs);
   app.use('/api', events);
 
   // 404 + typed error handler (must be last)

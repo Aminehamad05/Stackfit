@@ -46,7 +46,7 @@ interface TasterRow {
 }
 interface TasterConceptRow { taster_slug: string; concept_slug: string }
 interface TasterResourceRow { taster_slug: string; resource_url: string; rank: number }
-interface ClubRow { name: string; description: string | null; contact_email: string | null }
+interface ClubRow { name: string; email: string; description: string | null; contact_email: string | null }
 interface EventRow {
   title: string; type: EventType; city: string | null; country: string; location: string | null;
   description: string | null; starts_at: string; ends_at: string | null; url: string | null;
@@ -208,13 +208,18 @@ async function main(): Promise<void> {
   });
   console.log(`[seed] tasters: ${tasters.length}, links: ${tcs.length + trs.length}`);
 
-  // 8. Clubs + events
+  // 8. Clubs + events (club login: email explicit in JSON, demo password from env)
   const clubs = load<ClubRow[]>('clubs.json');
+  const bcrypt = await import('bcryptjs');
+  const clubPasswordHash = await bcrypt.hash(process.env.CLUB_SEED_PASSWORD ?? 'club2000', 10);
   for (const c of clubs) {
     await prisma.club.upsert({
       where: { name: c.name },
-      update: { description: c.description, contactEmail: c.contact_email },
-      create: { name: c.name, description: c.description, contactEmail: c.contact_email },
+      update: { email: c.email, description: c.description, contactEmail: c.contact_email },
+      create: {
+        name: c.name, email: c.email, passwordHash: clubPasswordHash,
+        description: c.description, contactEmail: c.contact_email,
+      },
     });
   }
   const clubId = async (name: string): Promise<number> =>
