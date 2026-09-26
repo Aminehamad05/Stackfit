@@ -23,6 +23,7 @@ import points from './modules/points/routes.js';
 import events from './modules/events/routes.js';
 import clubs from './modules/clubs/routes.js';
 import growth from './modules/growth/routes.js';
+import fields from './modules/fields/routes.js';
 
 export function createApp(): Express {
   const app = express();
@@ -50,6 +51,7 @@ export function createApp(): Express {
   app.use('/api', clubs);
   app.use('/api', events);
   app.use('/api', growth);
+  app.use('/api', fields);
 
   // 404 + typed error handler (must be last)
   app.use((_req: Request, res: Response) => res.status(404).json({ error: 'not_found' }));

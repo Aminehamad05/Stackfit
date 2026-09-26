@@ -11,14 +11,18 @@ import Quiz from './pages/Quiz';
 import Interview from './pages/Interview';
 import Leaderboard from './pages/Leaderboard';
 import Events from './pages/Events';
+import Certs from './pages/Certs';
+import Projects from './pages/Projects';
+import DashboardPage from './pages/Dashboard';
+import Networking from './pages/Networking';
+import Org from './pages/Org';
+import { RequireOrg } from './components/guards';
 import {
   Assessment,
   CareerDetail,
   Careers,
-  Clubs,
   Dashboard,
   Profile,
-  Projects,
   Resources,
 } from './pages/Placeholders';
 
@@ -42,11 +46,15 @@ export default function App(): JSX.Element {
         <Route path="/taster" element={<Taster />} />
         <Route path="/interview" element={<Interview />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/certs" element={<Certs />} />
+        <Route path="/networking" element={<Networking />} />
+        <Route path="/org" element={<RequireOrg><Org /></RequireOrg>} />
         <Route path="/resources" element={<Resources />} />
-        <Route path="/clubs" element={<Clubs />} />
+        {/* Legacy: standalone Clubs section removed (Step 3) — events live under Networking. */}
+        <Route path="/clubs" element={<Navigate to="/networking" replace />} />
         <Route path="/events" element={<Events />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/profile" element={<Profile />} />
 
         {/* Legacy deep links */}

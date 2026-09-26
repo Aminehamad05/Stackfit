@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS taster_concepts (
 CREATE TABLE IF NOT EXISTS user_known_concepts (
   user_id    INT REFERENCES users(id) ON DELETE CASCADE,
   concept_id INT REFERENCES concepts(id) ON DELETE CASCADE,
-  source     TEXT NOT NULL CHECK (source IN ('background', 'taster', 'quiz')),
+  source     TEXT NOT NULL CHECK (source IN ('background', 'taster', 'quiz', 'experience_ai')),
   strength   REAL NOT NULL CHECK (strength BETWEEN 0 AND 1),
   updated_at TIMESTAMPTZ NOT NULL DEFAULT now(),
   PRIMARY KEY (user_id, concept_id, source)

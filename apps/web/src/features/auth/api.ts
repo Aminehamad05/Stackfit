@@ -36,6 +36,18 @@ export async function loginClub(input: { email: string; password: string }): Pro
   return session;
 }
 
+export async function registerClub(input: {
+  name: string;
+  email: string;
+  password: string;
+}): Promise<ClubSession> {
+  // POST /api/clubs/register — organisation signup ("I represent a club").
+  // Trust/verification is phase-2; anyone can claim a name for the demo.
+  const session = await api<ClubSession>('/clubs/register', { method: 'POST', body: input });
+  setClubToken(session.token);
+  return session;
+}
+
 export function logout(account?: AccountType): void {
   if (account === 'person') setUserToken(null);
   else if (account === 'organisation') setClubToken(null);

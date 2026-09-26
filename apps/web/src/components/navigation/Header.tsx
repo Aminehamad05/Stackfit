@@ -3,12 +3,27 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../features/auth/auth-context';
 import { useTheme } from '../../features/theme/theme-context';
 
-const LINKS = [
+// Step 3: fully separate navigation — no shared "Clubs" item, no org controls
+// in the student nav and nothing but event management in the org nav.
+const GUEST_LINKS = [
   { to: '/careers', label: 'Explore' },
-  { to: '/roadmap', label: 'Roadmap' },
-  { to: '/projects', label: 'Projects' },
-  { to: '/clubs', label: 'Clubs' },
+  { to: '/networking', label: 'Networking' },
 ];
+
+const PERSON_LINKS = [
+  { to: '/dashboard', label: 'Dashboard' },
+  { to: '/careers', label: 'Explore' },
+  { to: '/onboarding', label: 'Onboarding' },
+  { to: '/field-choice', label: 'My fields' },
+  { to: '/roadmap', label: 'Roadmap' },
+  { to: '/quiz', label: 'Quiz' },
+  { to: '/projects', label: 'Projects' },
+  { to: '/certs', label: 'Certs' },
+  { to: '/networking', label: 'Networking' },
+  { to: '/leaderboard', label: 'Ranks' },
+];
+
+const ORG_LINKS = [{ to: '/org', label: 'Org dashboard' }];
 
 export function Header(): JSX.Element {
   const { account, userEmail, clubName, logout } = useAuth();
@@ -17,6 +32,7 @@ export function Header(): JSX.Element {
   const navigate = useNavigate();
 
   const signedIn = account !== null;
+  const links = !signedIn ? GUEST_LINKS : account === 'organisation' ? ORG_LINKS : PERSON_LINKS;
 
   function handleLogout(): void {
     logout();
@@ -34,7 +50,7 @@ export function Header(): JSX.Element {
           </span>
         </Link>
         <nav className="nav-links" aria-label="Primary">
-          {LINKS.map((l) => (
+          {links.map((l) => (
             <NavLink key={l.to} to={l.to} className={({ isActive }) => (isActive ? 'active' : '')}>
               {l.label}
             </NavLink>
@@ -82,7 +98,7 @@ export function Header(): JSX.Element {
       </div>
       {open ? (
         <nav className="mobile-nav" aria-label="Mobile">
-          {LINKS.map((l) => (
+          {links.map((l) => (
             <NavLink
               key={l.to}
               to={l.to}

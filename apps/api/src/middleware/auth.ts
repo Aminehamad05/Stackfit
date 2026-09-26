@@ -36,9 +36,20 @@ export function requireAuth(req: AuthenticatedRequest, res: Response, next: Next
     res.status(401).json({ error: 'missing_token' });
     return;
   }
+  let decoded: unknown;
   try {
-    const payload = tokenPayloadSchema.parse(jwt.verify(token, jwtSecret()));
-    req.user = payload;
+    decoded = jwt.verify(token, jwtSecret());
+  } catch {
+    res.status(401).json({ error: 'invalid_token' });
+    return;
+  }
+  // Cross-role guard (Step 3): organisation tokens on student routes → 403, not 401.
+  if (clubPayloadSchema.safeParse(decoded).success) {
+    res.status(403).json({ error: 'forbidden', message: 'organisation accounts cannot use student routes' });
+    return;
+  }
+  try {
+    req.user = tokenPayloadSchema.parse(decoded);
     next();
   } catch {
     res.status(401).json({ error: 'invalid_token' });
@@ -55,7 +66,7 @@ export function signClubToken(club: { id: number; email: string }): string {
   });
 }
 
-/** Club-only guard: rejects missing/invalid tokens AND valid user tokens. */
+/** Club-only guard: rejects missing/invalid tokens AND valid user tokens (403). */
 export function requireClub(req: AuthenticatedRequest, res: Response, next: NextFunction): void {
   const header = req.headers.authorization ?? '';
   const token = header.startsWith('Bearer ') ? header.slice(7) : null;
@@ -63,8 +74,20 @@ export function requireClub(req: AuthenticatedRequest, res: Response, next: Next
     res.status(401).json({ error: 'missing_token' });
     return;
   }
+  let decoded: unknown;
   try {
-    req.club = clubPayloadSchema.parse(jwt.verify(token, jwtSecret()));
+    decoded = jwt.verify(token, jwtSecret());
+  } catch {
+    res.status(401).json({ error: 'invalid_token' });
+    return;
+  }
+  // Cross-role guard (Step 3): student tokens on organisation routes → 403.
+  if (tokenPayloadSchema.safeParse(decoded).success) {
+    res.status(403).json({ error: 'forbidden', message: 'student accounts cannot use organisation routes' });
+    return;
+  }
+  try {
+    req.club = clubPayloadSchema.parse(decoded);
     next();
   } catch {
     res.status(401).json({ error: 'invalid_token' });

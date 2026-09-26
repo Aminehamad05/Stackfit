@@ -4,6 +4,7 @@ import { paginationQuery } from '../../schemas/common.js';
 export const eventsQuery = paginationQuery.extend({
   field: z.string().max(100).optional(),
   city: z.string().max(100).optional(),
+  from: z.string().datetime().optional(),
 });
 
 export const clubBody = z.object({

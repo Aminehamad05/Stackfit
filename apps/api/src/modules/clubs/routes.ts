@@ -1,12 +1,58 @@
 import { Router, type NextFunction, type Request, type Response } from 'express';
 import bcrypt from 'bcryptjs';
+import { z } from 'zod';
 import { prisma } from '../../prisma.js';
 import { requireClub, signClubToken, type AuthenticatedRequest } from '../../middleware/auth.js';
 import { validate } from '../../middleware/validate.js';
+import { emailSchema } from '../../schemas/common.js';
 import { idParam } from '../../schemas/common.js';
 import { clubLoginSchema, eventBody, eventUpdateSchema } from '../events/schemas.js';
 
 const r = Router();
+
+const clubRegisterSchema = z.object({
+  name: z.string().min(1).max(200),
+  email: emailSchema,
+  password: z.string().min(8).max(128),
+  description: z.string().max(5000).optional(),
+  contactEmail: z.string().email().max(255).optional(),
+});
+
+// POST /api/clubs/register — organisation signup ("I represent a club").
+// Trust/verification that the account genuinely represents the club is
+// explicitly out of scope (phase-2); anyone can claim a name for the demo.
+r.post(
+  '/clubs/register',
+  validate({ body: clubRegisterSchema }),
+  async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const b = clubRegisterSchema.parse(req.body);
+      const clash = await prisma.club.findFirst({
+        where: { OR: [{ email: b.email }, { name: b.name }] },
+        select: { id: true },
+      });
+      if (clash) {
+        res.status(409).json({ error: 'conflict', message: 'club name or email already registered' });
+        return;
+      }
+      const club = await prisma.club.create({
+        data: {
+          name: b.name,
+          email: b.email,
+          passwordHash: await bcrypt.hash(b.password, 10),
+          description: b.description,
+          contactEmail: b.contactEmail,
+        },
+      });
+      res.status(201).json({
+        token: signClubToken(club),
+        club: { id: club.id, name: club.name, email: club.email },
+      });
+    } catch (e) {
+      next(e);
+    }
+  },
+);
 
 // POST /api/clubs/login — organisation login (club email + password) → club JWT.
 // Demo credentials for seeded clubs: info@<name>.com / club2000 (see migration 0001).

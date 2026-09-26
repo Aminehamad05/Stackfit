@@ -90,6 +90,14 @@ is the engineering contract: how to build without breaking the project.
   certifications (progress + check/award) + project suggestions, validation/errors,
   seed (4 fields / 56 concepts / 280 QCMs / 36 resources /
   4 tasters / 8 clubs / 16 events / 4 certifications / 8 project suggestions).
+- ✅ Web (`apps/web`): Landing + person/org auth, Dashboard (greeting, progress,
+  next action, points — ≤4 blocks), Onboarding picker, FieldChoice %,
+  Taster flow, Roadmap, Quiz runner, Certs, Projects, Events + club portal,
+  Leaderboard, Interview (disabled state). Same-origin `/api` via nginx.
+  NOTE: nav is still shared — org/student split + 403 guards land in Step 3.
+- ✅ Onboarding has zero pro-experience fields; deferred free-text AI step is a
+  documented backlog item (`ONBOARDING_STEPS` in Onboarding page,
+  `KnownSource.experience_ai` reserved in DB via 0003 migration).
 - Next (no AI needed): background → field-matches compute → taster
   persist-only (then call `evaluateAndAward` on quiz-pass paths) → roadmap → quiz
   (call `evaluateAndAward` after each pass) → leaderboard → public events reads.

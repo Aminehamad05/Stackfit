@@ -75,6 +75,9 @@ enum KnownSource {
   background
   taster
   quiz
+  // Reserved for the deferred free-text experience step (spec Step 2):
+  // backend LLM parses bio/CV into concepts with this source. No writer yet.
+  experience_ai
 }
 
 enum EventType {
