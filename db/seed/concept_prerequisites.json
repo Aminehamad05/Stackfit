@@ -1,0 +1,326 @@
+[
+  {
+    "concept_slug": "responsive-accessible-web",
+    "prereq_slug": "html-css-foundations"
+  },
+  {
+    "concept_slug": "javascript-fundamentals",
+    "prereq_slug": "html-css-foundations"
+  },
+  {
+    "concept_slug": "dom-browser-apis",
+    "prereq_slug": "javascript-fundamentals"
+  },
+  {
+    "concept_slug": "react-frontend",
+    "prereq_slug": "javascript-fundamentals"
+  },
+  {
+    "concept_slug": "react-frontend",
+    "prereq_slug": "git-github-workflow"
+  },
+  {
+    "concept_slug": "typescript-basics",
+    "prereq_slug": "react-frontend"
+  },
+  {
+    "concept_slug": "http-rest-apis",
+    "prereq_slug": "dom-browser-apis"
+  },
+  {
+    "concept_slug": "node-express-backend",
+    "prereq_slug": "javascript-fundamentals"
+  },
+  {
+    "concept_slug": "node-express-backend",
+    "prereq_slug": "http-rest-apis"
+  },
+  {
+    "concept_slug": "node-express-backend",
+    "prereq_slug": "relational-databases-sql"
+  },
+  {
+    "concept_slug": "authentication-authorization",
+    "prereq_slug": "node-express-backend"
+  },
+  {
+    "concept_slug": "authentication-authorization",
+    "prereq_slug": "http-rest-apis"
+  },
+  {
+    "concept_slug": "testing-web-applications",
+    "prereq_slug": "node-express-backend"
+  },
+  {
+    "concept_slug": "testing-web-applications",
+    "prereq_slug": "react-frontend"
+  },
+  {
+    "concept_slug": "deployment-web-apps",
+    "prereq_slug": "authentication-authorization"
+  },
+  {
+    "concept_slug": "deployment-web-apps",
+    "prereq_slug": "testing-web-applications"
+  },
+  {
+    "concept_slug": "production-full-stack-integration",
+    "prereq_slug": "deployment-web-apps"
+  },
+  {
+    "concept_slug": "production-full-stack-integration",
+    "prereq_slug": "typescript-basics"
+  },
+  {
+    "concept_slug": "production-full-stack-integration",
+    "prereq_slug": "relational-databases-sql"
+  },
+  {
+    "concept_slug": "networking-fundamentals",
+    "prereq_slug": "linux-cli"
+  },
+  {
+    "concept_slug": "cloud-concepts",
+    "prereq_slug": "linux-cli"
+  },
+  {
+    "concept_slug": "cloud-networking-security",
+    "prereq_slug": "networking-fundamentals"
+  },
+  {
+    "concept_slug": "cloud-core-services",
+    "prereq_slug": "cloud-concepts"
+  },
+  {
+    "concept_slug": "cloud-networking-security",
+    "prereq_slug": "cloud-core-services"
+  },
+  {
+    "concept_slug": "infrastructure-as-code",
+    "prereq_slug": "cloud-core-services"
+  },
+  {
+    "concept_slug": "infrastructure-as-code",
+    "prereq_slug": "linux-cli"
+  },
+  {
+    "concept_slug": "containers-docker",
+    "prereq_slug": "cloud-core-services"
+  },
+  {
+    "concept_slug": "kubernetes-basics",
+    "prereq_slug": "containers-docker"
+  },
+  {
+    "concept_slug": "cicd-automation",
+    "prereq_slug": "linux-cli"
+  },
+  {
+    "concept_slug": "cicd-automation",
+    "prereq_slug": "containers-docker"
+  },
+  {
+    "concept_slug": "configuration-automation",
+    "prereq_slug": "infrastructure-as-code"
+  },
+  {
+    "concept_slug": "configuration-automation",
+    "prereq_slug": "cicd-automation"
+  },
+  {
+    "concept_slug": "observability-monitoring",
+    "prereq_slug": "cloud-core-services"
+  },
+  {
+    "concept_slug": "observability-monitoring",
+    "prereq_slug": "cicd-automation"
+  },
+  {
+    "concept_slug": "cloud-cost-reliability",
+    "prereq_slug": "observability-monitoring"
+  },
+  {
+    "concept_slug": "cloud-security-practices",
+    "prereq_slug": "cloud-networking-security"
+  },
+  {
+    "concept_slug": "cloud-security-practices",
+    "prereq_slug": "infrastructure-as-code"
+  },
+  {
+    "concept_slug": "production-cloud-project",
+    "prereq_slug": "kubernetes-basics"
+  },
+  {
+    "concept_slug": "production-cloud-project",
+    "prereq_slug": "configuration-automation"
+  },
+  {
+    "concept_slug": "production-cloud-project",
+    "prereq_slug": "observability-monitoring"
+  },
+  {
+    "concept_slug": "production-cloud-project",
+    "prereq_slug": "cloud-security-practices"
+  },
+  {
+    "concept_slug": "numpy-data-arrays",
+    "prereq_slug": "linear-algebra-for-ml"
+  },
+  {
+    "concept_slug": "data-preparation-ml",
+    "prereq_slug": "probability-statistics-for-ml"
+  },
+  {
+    "concept_slug": "numpy-data-arrays",
+    "prereq_slug": "python-for-ml"
+  },
+  {
+    "concept_slug": "data-preparation-ml",
+    "prereq_slug": "python-for-ml"
+  },
+  {
+    "concept_slug": "data-preparation-ml",
+    "prereq_slug": "numpy-data-arrays"
+  },
+  {
+    "concept_slug": "linear-regression",
+    "prereq_slug": "data-preparation-ml"
+  },
+  {
+    "concept_slug": "classification-models",
+    "prereq_slug": "data-preparation-ml"
+  },
+  {
+    "concept_slug": "model-evaluation",
+    "prereq_slug": "linear-regression"
+  },
+  {
+    "concept_slug": "model-evaluation",
+    "prereq_slug": "classification-models"
+  },
+  {
+    "concept_slug": "tree-ensemble-models",
+    "prereq_slug": "classification-models"
+  },
+  {
+    "concept_slug": "unsupervised-learning",
+    "prereq_slug": "data-preparation-ml"
+  },
+  {
+    "concept_slug": "unsupervised-learning",
+    "prereq_slug": "model-evaluation"
+  },
+  {
+    "concept_slug": "ml-pipelines",
+    "prereq_slug": "model-evaluation"
+  },
+  {
+    "concept_slug": "ml-pipelines",
+    "prereq_slug": "data-preparation-ml"
+  },
+  {
+    "concept_slug": "neural-network-foundations",
+    "prereq_slug": "linear-algebra-for-ml"
+  },
+  {
+    "concept_slug": "neural-network-foundations",
+    "prereq_slug": "python-for-ml"
+  },
+  {
+    "concept_slug": "pytorch-deep-learning",
+    "prereq_slug": "neural-network-foundations"
+  },
+  {
+    "concept_slug": "ml-project-delivery",
+    "prereq_slug": "ml-pipelines"
+  },
+  {
+    "concept_slug": "ml-project-delivery",
+    "prereq_slug": "pytorch-deep-learning"
+  },
+  {
+    "concept_slug": "ml-project-delivery",
+    "prereq_slug": "model-evaluation"
+  },
+  {
+    "concept_slug": "advanced-sql-analytics",
+    "prereq_slug": "sql-data-querying"
+  },
+  {
+    "concept_slug": "pandas-data-cleaning",
+    "prereq_slug": "python-data-basics"
+  },
+  {
+    "concept_slug": "pandas-data-cleaning",
+    "prereq_slug": "data-types-quality"
+  },
+  {
+    "concept_slug": "exploratory-data-analysis",
+    "prereq_slug": "pandas-data-cleaning"
+  },
+  {
+    "concept_slug": "exploratory-data-analysis",
+    "prereq_slug": "descriptive-statistics"
+  },
+  {
+    "concept_slug": "exploratory-data-analysis",
+    "prereq_slug": "probability-inference"
+  },
+  {
+    "concept_slug": "data-visualization",
+    "prereq_slug": "exploratory-data-analysis"
+  },
+  {
+    "concept_slug": "dashboard-bi",
+    "prereq_slug": "exploratory-data-analysis"
+  },
+  {
+    "concept_slug": "dashboard-bi",
+    "prereq_slug": "sql-data-querying"
+  },
+  {
+    "concept_slug": "data-modeling-bi",
+    "prereq_slug": "dashboard-bi"
+  },
+  {
+    "concept_slug": "data-modeling-bi",
+    "prereq_slug": "sql-data-querying"
+  },
+  {
+    "concept_slug": "business-metrics-kpis",
+    "prereq_slug": "exploratory-data-analysis"
+  },
+  {
+    "concept_slug": "business-metrics-kpis",
+    "prereq_slug": "data-modeling-bi"
+  },
+  {
+    "concept_slug": "data-storytelling",
+    "prereq_slug": "data-visualization"
+  },
+  {
+    "concept_slug": "data-storytelling",
+    "prereq_slug": "business-metrics-kpis"
+  },
+  {
+    "concept_slug": "data-storytelling",
+    "prereq_slug": "dashboard-bi"
+  },
+  {
+    "concept_slug": "end-to-end-data-analysis",
+    "prereq_slug": "advanced-sql-analytics"
+  },
+  {
+    "concept_slug": "end-to-end-data-analysis",
+    "prereq_slug": "data-storytelling"
+  },
+  {
+    "concept_slug": "end-to-end-data-analysis",
+    "prereq_slug": "dashboard-bi"
+  },
+  {
+    "concept_slug": "end-to-end-data-analysis",
+    "prereq_slug": "pandas-data-cleaning"
+  }
+]

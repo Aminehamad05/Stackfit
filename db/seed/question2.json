@@ -1,0 +1,1573 @@
+[
+  {
+    "concept_slug": "cicd-automation",
+    "stem": "What is the primary operational objective of Continuous Integration (CI)?",
+    "difficulty": "intermediate",
+    "explanation": "CI automatically builds, tests, and verifies code changes upon every push to catch integration errors early.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Automatically run build and test pipelines on code updates", "is_correct": true},
+      {"text": "Manually deploy code directly into production servers", "is_correct": false},
+      {"text": "Replace source control systems like Git", "is_correct": false},
+      {"text": "Provision physical server hardware in remote datacenters", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "cicd-automation",
+    "stem": "In GitHub Actions, which file path stores declarative pipeline configurations?",
+    "difficulty": "intermediate",
+    "explanation": "GitHub Actions reads workflow YAML definitions located inside the .github/workflows directory of a repository.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": ".github/workflows/*.yml", "is_correct": true},
+      {"text": ".config/ci.json", "is_correct": false},
+      {"text": "scripts/pipeline.sh", "is_correct": false},
+      {"text": "public/github-actions.xml", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "cloud-concepts",
+    "stem": "Which cloud service delivery model manages OS, runtime, and hardware while allowing developers to deploy code directly?",
+    "difficulty": "beginner",
+    "explanation": "Platform as a Service (PaaS) abstracts OS and runtime management, letting users focus solely on application deployment.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Platform as a Service (PaaS)", "is_correct": true},
+      {"text": "Infrastructure as a Service (IaaS)", "is_correct": false},
+      {"text": "Software as a Service (SaaS)", "is_correct": false},
+      {"text": "On-Premises Bare Metal", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "cloud-concepts",
+    "stem": "What defines elasticity in cloud infrastructure?",
+    "difficulty": "beginner",
+    "explanation": "Elasticity allows cloud computing resources to scale up or down dynamically based on live traffic demand.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Dynamically adapting compute resources to meet changing load", "is_correct": true},
+      {"text": "Storing data exclusively in physical tape backups", "is_correct": false},
+      {"text": "Running code without network interfaces", "is_correct": false},
+      {"text": "Locking hardware resources to fixed annual quotas", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "cloud-core-services",
+    "stem": "Which AWS core service provides resizable virtual machine compute instances?",
+    "difficulty": "intermediate",
+    "explanation": "Amazon EC2 (Elastic Compute Cloud) provides scalable virtual servers in the AWS cloud.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Amazon EC2", "is_correct": true},
+      {"text": "Amazon S3", "is_correct": false},
+      {"text": "Amazon DynamoDB", "is_correct": false},
+      {"text": "AWS Route 53", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "cloud-core-services",
+    "stem": "Which object storage service in AWS is designed for high durability unstructured file storage?",
+    "difficulty": "intermediate",
+    "explanation": "Amazon S3 (Simple Storage Service) offers scalable object storage for files, backups, and media assets.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Amazon S3", "is_correct": true},
+      {"text": "Amazon EBS", "is_correct": false},
+      {"text": "Amazon RDS", "is_correct": false},
+      {"text": "AWS ElastiCache", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "cloud-cost-reliability",
+    "stem": "What primary operational benefit does deploying application nodes across multiple Availability Zones (AZs) provide?",
+    "difficulty": "advanced",
+    "explanation": "Spreading workloads across distinct Availability Zones isolates failures and provides High Availability.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "High Availability and fault tolerance against zone outages", "is_correct": true},
+      {"text": "Elimination of all network bandwidth costs", "is_correct": false},
+      {"text": "Automatic translation of source code languages", "is_correct": false},
+      {"text": "Guaranteed zero-latency data transfers worldwide", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "cloud-cost-reliability",
+    "stem": "Which AWS billing model offers significant discounts in exchange for a 1- or 3-year consistent commitment?",
+    "difficulty": "advanced",
+    "explanation": "Reserved Instances and Savings Plans provide heavily discounted rates when committing to consistent compute usage.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Reserved Instances / Savings Plans", "is_correct": true},
+      {"text": "On-Demand Instances", "is_correct": false},
+      {"text": "Spot Instances", "is_correct": false},
+      {"text": "Pay-As-You-Go Standard", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "cloud-networking-security",
+    "stem": "What component allows instances in a private subnet to initiate outbound internet traffic while blocking inbound connections?",
+    "difficulty": "intermediate",
+    "explanation": "A NAT Gateway enables private subnet resources to reach the internet externally without exposing them to incoming connections.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "NAT Gateway", "is_correct": true},
+      {"text": "Internet Gateway", "is_correct": false},
+      {"text": "Egress Firewall Rule", "is_correct": false},
+      {"text": "VPC Peering Connection", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "cloud-networking-security",
+    "stem": "How do Security Groups differ from Network Access Control Lists (NACLs) in AWS?",
+    "difficulty": "intermediate",
+    "explanation": "Security Groups are stateful and applied at the instance level, whereas NACLs are stateless and operate at the subnet boundary.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Security Groups are stateful; NACLs are stateless at the subnet level", "is_correct": true},
+      {"text": "NACLs are stateful; Security Groups evaluate outbound rules only", "is_correct": false},
+      {"text": "Both operate identically at the DNS routing layer", "is_correct": false},
+      {"text": "Security Groups apply exclusively to Amazon S3 buckets", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "cloud-security-practices",
+    "stem": "What is the core directive of the Principle of Least Privilege in cloud IAM?",
+    "difficulty": "advanced",
+    "explanation": "The Principle of Least Privilege dictates granting users or roles only the minimum permissions required to perform tasks.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Granting only the minimum necessary permissions required for a role", "is_correct": true},
+      {"text": "Assigning full administrator access to all software developers", "is_correct": false},
+      {"text": "Enforcing mandatory weekly password resets without MFA", "is_correct": false},
+      {"text": "Disabling logging across public security endpoints", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "cloud-security-practices",
+    "stem": "Which security measure prevents accidental exposure of cloud API keys inside Git code repositories?",
+    "difficulty": "advanced",
+    "explanation": "Automated secret scanning utilities detect and intercept API credentials before code commit/push steps.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Pre-commit secret scanning hooks and secret management vaults", "is_correct": true},
+      {"text": "Compressing source files into ZIP archives before pushing", "is_correct": false},
+      {"text": "Encrypting public DNS records", "is_correct": false},
+      {"text": "Renaming repository branches from main to production", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "configuration-automation",
+    "stem": "Which architecture characterizes Ansible for system configuration management?",
+    "difficulty": "advanced",
+    "explanation": "Ansible operates agentlessly using standard SSH sessions to execute playbooks on remote target hosts.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Agentless operation connecting via standard SSH", "is_correct": true},
+      {"text": "Heavy background daemon agents on every target server", "is_correct": false},
+      {"text": "Direct REST API manipulation without operating system access", "is_correct": false},
+      {"text": "Compiled binary installation directly in hardware BIOS", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "configuration-automation",
+    "stem": "What does idempotency mean in automated configuration management scripts?",
+    "difficulty": "advanced",
+    "explanation": "An idempotent script produces the exact same system state regardless of how many times it is re-executed.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Re-executing a script yields the same end state without duplicate side-effects", "is_correct": true},
+      {"text": "The script runs twice as fast on consecutive executions", "is_correct": false},
+      {"text": "Every execution automatically generates new encryption keys", "is_correct": false},
+      {"text": "The script fails unless run on clean bare-metal hardware", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "containers-docker",
+    "stem": "Which Docker CLI command compiles a Dockerfile into a usable container image?",
+    "difficulty": "intermediate",
+    "explanation": "docker build compiles instructions in a Dockerfile into a container image artifact.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "docker build -t my-app .", "is_correct": true},
+      {"text": "docker run my-app", "is_correct": false},
+      {"text": "docker compile Dockerfile", "is_correct": false},
+      {"text": "docker create image my-app", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "containers-docker",
+    "stem": "What is the primary architectural advantage of multi-stage Docker builds?",
+    "difficulty": "intermediate",
+    "explanation": "Multi-stage builds allow build-time compilers and dependencies to be discarded, resulting in lean production container images.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Reducing final image size by discarding build dependencies", "is_correct": true},
+      {"text": "Running multiple operating system kernels inside one container", "is_correct": false},
+      {"text": "Automating continuous database schema migrations", "is_correct": false},
+      {"text": "Bypassing container network port mapping requirements", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "infrastructure-as-code",
+    "stem": "In Terraform, what primary purpose does the terraform.tfstate file serve?",
+    "difficulty": "intermediate",
+    "explanation": "The tfstate file records metadata mapping declared configuration resources to real-world infrastructure objects.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Tracking current real-world state and resource metadata", "is_correct": true},
+      {"text": "Storing root database user passwords in plain text", "is_correct": false},
+      {"text": "Compiling HCL syntax into C++ source files", "is_correct": false},
+      {"text": "Serving as the entrypoint for HTTP incoming web requests", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "infrastructure-as-code",
+    "stem": "Which Terraform command analyzes configurations and previews structural changes before execution?",
+    "difficulty": "intermediate",
+    "explanation": "terraform plan inspects configurations and displays proposed infrastructure modifications without modifying resources.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "terraform plan", "is_correct": true},
+      {"text": "terraform apply --force", "is_correct": false},
+      {"text": "terraform init", "is_correct": false},
+      {"text": "terraform validate --deploy", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "kubernetes-basics",
+    "stem": "What is the smallest deployable computing unit in Kubernetes?",
+    "difficulty": "advanced",
+    "explanation": "A Pod is the fundamental deployment unit in Kubernetes, encapsulating one or more co-located containers.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Pod", "is_correct": true},
+      {"text": "Container", "is_correct": false},
+      {"text": "Cluster Node", "is_correct": false},
+      {"text": "Service", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "kubernetes-basics",
+    "stem": "Which Kubernetes controller maintains a defined count of running pod replicas?",
+    "difficulty": "advanced",
+    "explanation": "A Deployment (via its ReplicaSet) monitors pod state and automatically scales instances to keep desired replica counts.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Deployment / ReplicaSet", "is_correct": true},
+      {"text": "Ingress Controller", "is_correct": false},
+      {"text": "ConfigMap", "is_correct": false},
+      {"text": "Kubelet Service", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "linux-cli",
+    "stem": "Which Linux permissions command restricts file access to read and write for the owner only?",
+    "difficulty": "beginner",
+    "explanation": "chmod 600 assigns read (4) + write (2) to owner, and zero permissions to group and others.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "chmod 600 file.txt", "is_correct": true},
+      {"text": "chmod 777 file.txt", "is_correct": false},
+      {"text": "chmod 644 file.txt", "is_correct": false},
+      {"text": "chown root file.txt", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "linux-cli",
+    "stem": "Which CLI command searches files line-by-line for specified matching text patterns?",
+    "difficulty": "beginner",
+    "explanation": "grep searches target input files and prints lines matching regular expressions or plain text strings.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "grep", "is_correct": true},
+      {"text": "find", "is_correct": false},
+      {"text": "sed", "is_correct": false},
+      {"text": "cat", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "networking-fundamentals",
+    "stem": "Which Transport Layer protocol guarantees connection-oriented, ordered delivery of data packets?",
+    "difficulty": "beginner",
+    "explanation": "TCP (Transmission Control Protocol) establishes connections and guarantees ordered, error-checked packet delivery.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "TCP", "is_correct": true},
+      {"text": "UDP", "is_correct": false},
+      {"text": "ICMP", "is_correct": false},
+      {"text": "IP", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "networking-fundamentals",
+    "stem": "What is the primary network responsibility of the Domain Name System (DNS)?",
+    "difficulty": "beginner",
+    "explanation": "DNS translates human-friendly domain names (e.g., example.com) into numerical IP addresses.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Translating domain names to IP addresses", "is_correct": true},
+      {"text": "Encrypting data packets at rest", "is_correct": false},
+      {"text": "Assigning MAC addresses to physical network cards", "is_correct": false},
+      {"text": "Managing database connection pooling", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "observability-monitoring",
+    "stem": "What comprise the 'Three Pillars of Observability' in modern system monitoring?",
+    "difficulty": "intermediate",
+    "explanation": "Metrics, Logs, and Traces represent the core telemetry sources required to observe complex distributed applications.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Metrics, Logs, and Traces", "is_correct": true},
+      {"text": "CPUs, Disks, and Networks", "is_correct": false},
+      {"text": "Alerts, Dashboards, and Reports", "is_correct": false},
+      {"text": "Pings, Requests, and Responses", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "observability-monitoring",
+    "stem": "Which open-source telemetry engine scrapes numeric time-series metrics from application endpoints?",
+    "difficulty": "intermediate",
+    "explanation": "Prometheus is a time-series monitoring system that pulls metrics over HTTP endpoints.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Prometheus", "is_correct": true},
+      {"text": "Elasticsearch", "is_correct": false},
+      {"text": "Fluentd", "is_correct": false},
+      {"text": "Jaeger", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "production-cloud-project",
+    "stem": "What defines a Blue-Green deployment strategy?",
+    "difficulty": "advanced",
+    "explanation": "Blue-Green deployment runs two identical environments, switching live router traffic from old (Blue) to new (Green).",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Maintaining two identical production environments and switching traffic routers", "is_correct": true},
+      {"text": "Deploying updates directly to live production servers without testing", "is_correct": false},
+      {"text": "Gradually upgrading individual server OS kernels over several weeks", "is_correct": false},
+      {"text": "Rebuilding the database schema on every incoming user request", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "production-cloud-project",
+    "stem": "Why are health check endpoints vital for cloud load balancers?",
+    "difficulty": "advanced",
+    "explanation": "Load balancers poll health check endpoints to detect failing instances and route traffic away from compromised nodes.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "To detect failing instances and automatically redirect traffic to healthy nodes", "is_correct": true},
+      {"text": "To benchmark database CPU speed on user logins", "is_correct": false},
+      {"text": "To verify that developer SSL certificates are stored in Git", "is_correct": false},
+      {"text": "To calculate monthly bandwidth charges for cloud billing", "is_correct": false}
+    ]
+  },
+
+  {
+    "concept_slug": "advanced-sql-analytics",
+    "stem": "Which SQL syntax computes running totals across ordered records without collapsing dataset rows?",
+    "difficulty": "advanced",
+    "explanation": "OVER (ORDER BY ...) defines a window frame that aggregates cumulative values while keeping distinct rows intact.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "SUM(val) OVER (ORDER BY date_col)", "is_correct": true},
+      {"text": "SUM(val) GROUP BY date_col", "is_correct": false},
+      {"text": "AGGREGATE(val) HAVING date_col > NOW()", "is_correct": false},
+      {"text": "CUMULATIVE(val) WHERE date_col IS NOT NULL", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "advanced-sql-analytics",
+    "stem": "How does DENSE_RANK() differ from RANK() in SQL window functions?",
+    "difficulty": "advanced",
+    "explanation": "RANK() skips ranking numbers after ties, whereas DENSE_RANK() assigns consecutive integer rankings without gaps.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "DENSE_RANK() leaves no gaps in ranking sequence after ties", "is_correct": true},
+      {"text": "RANK() produces non-numeric text labels for ties", "is_correct": false},
+      {"text": "DENSE_RANK() works only on string columns", "is_correct": false},
+      {"text": "RANK() ignores NULL values completely during calculation", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "business-metrics-kpis",
+    "stem": "What business KPI measures the percentage of subscribed customers who cancel during a given period?",
+    "difficulty": "intermediate",
+    "explanation": "Churn Rate tracks the proportion of lost customers or subscribers over a defined interval.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Churn Rate", "is_correct": true},
+      {"text": "Retention Yield", "is_correct": false},
+      {"text": "Conversion Rate", "is_correct": false},
+      {"text": "Average Revenue Per User (ARPU)", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "business-metrics-kpis",
+    "stem": "How is Customer Acquisition Cost (CAC) calculated?",
+    "difficulty": "intermediate",
+    "explanation": "CAC divides the sum of all sales and marketing costs by the total number of new customers acquired.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Total Sales & Marketing Costs / New Customers Acquired", "is_correct": true},
+      {"text": "Total Revenue / Total Employees", "is_correct": false},
+      {"text": "Net Profit / Monthly Active Users", "is_correct": false},
+      {"text": "Customer Lifetime Value * Churn Rate", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "dashboard-bi",
+    "stem": "Which native formula language is used in Microsoft Power BI to create dynamic calculations and aggregations?",
+    "difficulty": "intermediate",
+    "explanation": "DAX (Data Analysis Expressions) is the formula language used in Power BI for custom calculations.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "DAX", "is_correct": true},
+      {"text": "VBA", "is_correct": false},
+      {"text": "SQL", "is_correct": false},
+      {"text": "M Scripting", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "dashboard-bi",
+    "stem": "What visual design element on a BI dashboard allows users to dynamically filter report metrics by category or date?",
+    "difficulty": "intermediate",
+    "explanation": "Slicers are interactive visual controls used to filter report pages by specific dimensions.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Slicer", "is_correct": true},
+      {"text": "KPI Card", "is_correct": false},
+      {"text": "Sparkline", "is_correct": false},
+      {"text": "Tooltip", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "data-modeling-bi",
+    "stem": "In a star schema dimensional model, what primary information resides in Fact tables?",
+    "difficulty": "intermediate",
+    "explanation": "Fact tables contain quantitative numerical metrics (e.g., sales revenue, quantities) alongside foreign keys.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Quantitative numerical measurements and dimension foreign keys", "is_correct": true},
+      {"text": "Descriptive text attributes and customer addresses", "is_correct": false},
+      {"text": "Database user permission settings and security logs", "is_correct": false},
+      {"text": "Unstructured media assets and raw HTML templates", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "data-modeling-bi",
+    "stem": "What defines a Slowly Changing Dimension (SCD) Type 2 strategy?",
+    "difficulty": "intermediate",
+    "explanation": "SCD Type 2 retains full history by inserting a new record with effective start and end dates when attributes change.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Preserving historical records by appending new rows with validity timestamps", "is_correct": true},
+      {"text": "Overwriting existing attribute data in place directly", "is_correct": false},
+      {"text": "Deleting historical records older than 30 days", "is_correct": false},
+      {"text": "Creating duplicate database tables for every application user", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "data-storytelling",
+    "stem": "What is the main strategic goal of data storytelling when delivering analytical findings to executives?",
+    "difficulty": "intermediate",
+    "explanation": "Data storytelling synthesizes data and context to guide stakeholders toward clear business decisions.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Connecting analytical insights to actionable business decisions", "is_correct": true},
+      {"text": "Displaying as many visual charts as possible on one slide", "is_correct": false},
+      {"text": "Explaining the mathematical proof of complex algorithms", "is_correct": false},
+      {"text": "Hiding unexpected data anomalies from final slide decks", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "data-storytelling",
+    "stem": "According to visualization best practices, what action optimizes the data-ink ratio on a slide?",
+    "difficulty": "intermediate",
+    "explanation": "Maximizing the data-ink ratio involves removing unnecessary gridlines, background borders, and visual clutter.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Removing non-essential visual clutter, borders, and heavy gridlines", "is_correct": true},
+      {"text": "Adding 3D effects and drop shadows to bar charts", "is_correct": false},
+      {"text": "Using dark saturated background colors across all graphs", "is_correct": false},
+      {"text": "Replacing numeric chart labels with artistic icons", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "data-types-quality",
+    "stem": "Which dimension of data quality measures whether field entries adhere to expected formats and structural definitions?",
+    "difficulty": "beginner",
+    "explanation": "Validity verifies that data values comply with defined rules, data types, and standard domain formats.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Validity", "is_correct": true},
+      {"text": "Completeness", "is_correct": false},
+      {"text": "Timeliness", "is_correct": false},
+      {"text": "Uniqueness", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "data-types-quality",
+    "stem": "What statistical data classification applies to customer ratings categorized as 'Poor', 'Average', and 'Excellent'?",
+    "difficulty": "beginner",
+    "explanation": "Ordinal data consists of categorical values that follow a clear natural order.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Ordinal Data", "is_correct": true},
+      {"text": "Nominal Data", "is_correct": false},
+      {"text": "Continuous Numerical Data", "is_correct": false},
+      {"text": "Discrete Quantitative Data", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "data-visualization",
+    "stem": "Which chart type is best suited for illustrating the continuous frequency distribution of a single numerical variable?",
+    "difficulty": "intermediate",
+    "explanation": "Histograms group continuous values into sequential bins to depict frequency distributions.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Histogram", "is_correct": true},
+      {"text": "Pie Chart", "is_correct": false},
+      {"text": "Scatter Plot", "is_correct": false},
+      {"text": "Treemap", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "data-visualization",
+    "stem": "Which Seaborn visualization effectively displays pairwise linear correlation coefficients across multiple numerical variables?",
+    "difficulty": "intermediate",
+    "explanation": "Heatmaps map correlation matrix values to color gradients for visual inspection of feature relationships.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Heatmap (sns.heatmap)", "is_correct": true},
+      {"text": "Boxplot (sns.boxplot)", "is_correct": false},
+      {"text": "Lineplot (sns.lineplot)", "is_correct": false},
+      {"text": "Countplot (sns.countplot)", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "descriptive-statistics",
+    "stem": "Which metric of central tendency remains most resilient against extreme numerical outliers?",
+    "difficulty": "beginner",
+    "explanation": "The median selects the middle value of sorted data, making it resistant to extreme skewness or outliers.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Median", "is_correct": true},
+      {"text": "Mean", "is_correct": false},
+      {"text": "Range", "is_correct": false},
+      {"text": "Variance", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "descriptive-statistics",
+    "stem": "What does standard deviation quantify in a statistical sample?",
+    "difficulty": "beginner",
+    "explanation": "Standard deviation measures the average dispersion or spread of data values relative to the sample mean.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "The dispersion or spread of data points relative to the mean", "is_correct": true},
+      {"text": "The exact difference between the maximum and minimum values", "is_correct": false},
+      {"text": "The total sum of all values divided by the median", "is_correct": false},
+      {"text": "The ratio of missing values to total rows", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "end-to-end-data-analysis",
+    "stem": "What is the foundational first step in a structured data analysis project lifecycle?",
+    "difficulty": "advanced",
+    "explanation": "Defining clear business objectives and core questions precedes data collection and technical manipulation.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Defining core business questions and analytical scope", "is_correct": true},
+      {"text": "Writing SQL query JOINs", "is_correct": false},
+      {"text": "Designing dashboard color palettes", "is_correct": false},
+      {"text": "Exporting clean datasets to CSV files", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "end-to-end-data-analysis",
+    "stem": "Why is cross-validating business logic with domain stakeholders necessary before finalizing reporting models?",
+    "difficulty": "advanced",
+    "explanation": "Domain context checks ensure analytical assumptions align with real-world operational workflows.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "To verify that analytical assumptions reflect operational realities", "is_correct": true},
+      {"text": "To ensure Python scripts pass PEP8 linting syntax rules", "is_correct": false},
+      {"text": "To reduce local database CPU consumption", "is_correct": false},
+      {"text": "To convert tabular relational tables into NOSQL JSON structures", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "exploratory-data-analysis",
+    "stem": "Which visual plot format is explicitly designed to reveal univariate outliers and interquartile ranges (IQR)?",
+    "difficulty": "intermediate",
+    "explanation": "Box plots render the median, IQR box, whiskers, and individual outlier points beyond 1.5x IQR.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Box plot", "is_correct": true},
+      {"text": "Stacked bar chart", "is_correct": false},
+      {"text": "Pie chart", "is_correct": false},
+      {"text": "Line graph", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "exploratory-data-analysis",
+    "stem": "What does a Pearson correlation coefficient of r = +0.92 indicate between two continuous variables?",
+    "difficulty": "intermediate",
+    "explanation": "A correlation near +1 indicates a strong positive linear relationship where variables increase together.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "A strong positive linear relationship", "is_correct": true},
+      {"text": "A strong negative relationship", "is_correct": false},
+      {"text": "Complete statistical independence", "is_correct": false},
+      {"text": "Non-linear cyclical causation", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "pandas-data-cleaning",
+    "stem": "Which Pandas call drops rows containing missing NaN values by default?",
+    "difficulty": "beginner",
+    "explanation": "df.dropna() removes rows containing null/NaN values by default.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "df.dropna()", "is_correct": true},
+      {"text": "df.fillna(0)", "is_correct": false},
+      {"text": "df.isnull()", "is_correct": false},
+      {"text": "df.drop_duplicates()", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "pandas-data-cleaning",
+    "stem": "How do you substitute missing NaN values in a Pandas column with the column median?",
+    "difficulty": "beginner",
+    "explanation": "fillna() replaces null values with specified statistical measures such as the median.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "df['col'].fillna(df['col'].median())", "is_correct": true},
+      {"text": "df['col'].replace_na(median)", "is_correct": false},
+      {"text": "df['col'].apply(lambda x: median)", "is_correct": false},
+      {"text": "df['col'].drop_nulls(strategy='median')", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "probability-inference",
+    "stem": "In formal hypothesis testing, what does a calculated p-value below 0.05 signify?",
+    "difficulty": "intermediate",
+    "explanation": "A p-value below 0.05 indicates sufficient statistical evidence to reject the null hypothesis at the 5% significance level.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Statistically significant evidence to reject the null hypothesis", "is_correct": true},
+      {"text": "Proof that the sample contains zero measurement errors", "is_correct": false},
+      {"text": "Complete confirmation that the null hypothesis is true", "is_correct": false},
+      {"text": "That the dataset sample size is too small for analysis", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "probability-inference",
+    "stem": "What does the Central Limit Theorem state regarding the sampling distribution of sample means for large samples?",
+    "difficulty": "intermediate",
+    "explanation": "The Central Limit Theorem states that sample means approach a normal distribution as sample size increases, regardless of population distribution shape.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Sample means approximate a normal distribution as sample size grows", "is_correct": true},
+      {"text": "Population variance automatically decreases to zero", "is_correct": false},
+      {"text": "Sample standard deviation equals the population mean", "is_correct": false},
+      {"text": "All real-world variables follow uniform distributions", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "python-data-basics",
+    "stem": "Which built-in Python data structure is ordered and immutable?",
+    "difficulty": "beginner",
+    "explanation": "Tuples preserve element order and cannot be modified after instantiation (immutable).",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Tuple", "is_correct": true},
+      {"text": "List", "is_correct": false},
+      {"text": "Dictionary", "is_correct": false},
+      {"text": "Set", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "python-data-basics",
+    "stem": "What value is returned by evaluating the list comprehension [x**2 for x in range(4)] in Python?",
+    "difficulty": "beginner",
+    "explanation": "range(4) produces 0, 1, 2, 3; squaring each yields [0, 1, 4, 9].",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "[0, 1, 4, 9]", "is_correct": true},
+      {"text": "[1, 4, 9, 16]", "is_correct": false},
+      {"text": "[0, 2, 4, 6]", "is_correct": false},
+      {"text": "[1, 2, 3, 4]", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "sql-data-querying",
+    "stem": "Which SQL clause filters aggregated groups after a GROUP BY statement has executed?",
+    "difficulty": "beginner",
+    "explanation": "HAVING filters aggregated output rows, whereas WHERE filters individual rows before grouping.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "HAVING", "is_correct": true},
+      {"text": "WHERE", "is_correct": false},
+      {"text": "FILTER BY", "is_correct": false},
+      {"text": "ORDER BY", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "sql-data-querying",
+    "stem": "Which JOIN returns all records from the left table and matched rows from the right table, filling unmatched right side fields with NULL?",
+    "difficulty": "beginner",
+    "explanation": "LEFT JOIN retains all rows from the left table regardless of whether matches exist in the right table.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "LEFT JOIN", "is_correct": true},
+      {"text": "INNER JOIN", "is_correct": false},
+      {"text": "RIGHT JOIN", "is_correct": false},
+      {"text": "CROSS JOIN", "is_correct": false}
+    ]
+  },
+
+  {
+    "concept_slug": "authentication-authorization",
+    "stem": "Which component of a JSON Web Token (JWT) contains user identity claims and expiration timestamps?",
+    "difficulty": "intermediate",
+    "explanation": "The Payload contains encoded JSON claims such as user ID, permissions, and token expiration.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Payload", "is_correct": true},
+      {"text": "Header", "is_correct": false},
+      {"text": "Signature", "is_correct": false},
+      {"text": "Secret Key", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "authentication-authorization",
+    "stem": "What fundamental boundary separates Authentication from Authorization?",
+    "difficulty": "intermediate",
+    "explanation": "Authentication verifies WHO a user is, while Authorization checks WHAT permissions they hold.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Authentication verifies identity; Authorization determines resource access permissions", "is_correct": true},
+      {"text": "Authorization handles password encryption; Authentication runs SQL queries", "is_correct": false},
+      {"text": "Authentication takes place on the client; Authorization runs in CSS", "is_correct": false},
+      {"text": "Both processes perform identical database schema validations", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "deployment-web-apps",
+    "stem": "Why should sensitive environment variables (e.g., DATABASE_URL) be kept out of Git repositories?",
+    "difficulty": "advanced",
+    "explanation": "Storing keys in Git risks exposing credentials publicly; environment variables keep production credentials separate from application code.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "To prevent exposing production credentials in source code history", "is_correct": true},
+      {"text": "To speed up Webpack JavaScript compilation speed", "is_correct": false},
+      {"text": "To allow HTML templates to load dynamic images", "is_correct": false},
+      {"text": "To enable automatic database normalization on deploy", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "deployment-web-apps",
+    "stem": "What primary role does Nginx serve when deployed as a reverse proxy ahead of Node.js web apps?",
+    "difficulty": "advanced",
+    "explanation": "Nginx manages SSL termination, serves static files efficiently, and load-balances incoming web requests.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Managing SSL termination, static file delivery, and load balancing", "is_correct": true},
+      {"text": "Executing server-side React JSX rendering", "is_correct": false},
+      {"text": "Replacing relational database storage engines", "is_correct": false},
+      {"text": "Transpiling TypeScript code into ES5 JavaScript", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "dom-browser-apis",
+    "stem": "Which standard DOM method registers an event handler function for user interactions?",
+    "difficulty": "beginner",
+    "explanation": "addEventListener() attaches event handler callbacks to DOM elements without overwriting existing listeners.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "element.addEventListener('click', callback)", "is_correct": true},
+      {"text": "element.attachEvent('onclick')", "is_correct": false},
+      {"text": "element.on('click', callback)", "is_correct": false},
+      {"text": "element.bindEvent('click')", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "dom-browser-apis",
+    "stem": "How does localStorage differ from sessionStorage in browser storage APIs?",
+    "difficulty": "beginner",
+    "explanation": "localStorage data persists indefinitely until cleared, while sessionStorage data is erased when the tab closes.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "localStorage persists across tab closes; sessionStorage clears when tab closes", "is_correct": true},
+      {"text": "sessionStorage stores data on remote servers automatically", "is_correct": false},
+      {"text": "localStorage allows storing up to 500GB of video files", "is_correct": false},
+      {"text": "sessionStorage can only store numeric integers", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "git-github-workflow",
+    "stem": "Which Git command creates and checks out a new feature branch in a single execution step?",
+    "difficulty": "beginner",
+    "explanation": "git checkout -b creates the specified branch name and immediately switches workspace HEAD to it.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "git checkout -b feature-branch", "is_correct": true},
+      {"text": "git branch --create feature-branch", "is_correct": false},
+      {"text": "git init feature-branch", "is_correct": false},
+      {"text": "git merge --new feature-branch", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "git-github-workflow",
+    "stem": "What is the function of a GitHub Pull Request (PR)?",
+    "difficulty": "beginner",
+    "explanation": "A Pull Request proposes merging code from one branch to another, inviting code review and discussion.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Proposing code integration from one branch to another with peer review", "is_correct": true},
+      {"text": "Downloading external open-source packages into node_modules", "is_correct": false},
+      {"text": "Automatically formatting CSS code style guidelines", "is_correct": false},
+      {"text": "Deleting abandoned remote repositories from user accounts", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "html-css-foundations",
+    "stem": "Which semantic HTML5 tag should enclose independent self-contained content like a news post?",
+    "difficulty": "beginner",
+    "explanation": "<article> signifies self-contained compositions intended for independent distribution or reuse.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "<article>", "is_correct": true},
+      {"text": "<section>", "is_correct": false},
+      {"text": "<div>", "is_correct": false},
+      {"text": "<span>", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "html-css-foundations",
+    "stem": "In the CSS box model, what space area lies between an element's inner content and its outer border?",
+    "difficulty": "beginner",
+    "explanation": "Padding surrounds the content inside an element's border, whereas margin lies outside the border.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Padding", "is_correct": true},
+      {"text": "Margin", "is_correct": false},
+      {"text": "Outline", "is_correct": false},
+      {"text": "Gap", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "http-rest-apis",
+    "stem": "Which HTTP verb is designated for idempotent requests that replace an entire target resource?",
+    "difficulty": "intermediate",
+    "explanation": "PUT completely replaces the target resource state with request payload state and is defined as idempotent.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "PUT", "is_correct": true},
+      {"text": "POST", "is_correct": false},
+      {"text": "PATCH", "is_correct": false},
+      {"text": "GET", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "http-rest-apis",
+    "stem": "What does an HTTP 401 response status code signify to a web client?",
+    "difficulty": "intermediate",
+    "explanation": "HTTP 401 Unauthorized indicates that the request lacks valid authentication credentials.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Unauthorized: Request lacks valid authentication credentials", "is_correct": true},
+      {"text": "Forbidden: Server refuses permission despite valid identity", "is_correct": false},
+      {"text": "Not Found: Target endpoint URL does not exist", "is_correct": false},
+      {"text": "Internal Server Error: Unhandled backend exception occurred", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "javascript-fundamentals",
+    "stem": "What value is returned by evaluating typeof [] in JavaScript?",
+    "difficulty": "beginner",
+    "explanation": "In JavaScript, arrays are objects, so typeof [] returns 'object'. Array.isArray() checks specifically for arrays.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "\"object\"", "is_correct": true},
+      {"text": "\"array\"", "is_correct": false},
+      {"text": "\"list\"", "is_correct": false},
+      {"text": "\"undefined\"", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "javascript-fundamentals",
+    "stem": "How does let differ from var regarding variable scope in modern ECMAScript?",
+    "difficulty": "beginner",
+    "explanation": "let produces block-scoped variable bindings, while var produces function-scoped bindings.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "let is block-scoped; var is function-scoped", "is_correct": true},
+      {"text": "var is block-scoped; let is globally scoped", "is_correct": false},
+      {"text": "let cannot be reassigned after declaration", "is_correct": false},
+      {"text": "var variables are immune to hoisting", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "node-express-backend",
+    "stem": "In Express.js middleware functions, what does calling the next() argument trigger?",
+    "difficulty": "intermediate",
+    "explanation": "next() passes execution control to the subsequent middleware function in the stack handler chain.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Passes control to the next middleware function in the chain", "is_correct": true},
+      {"text": "Immediately terminates the Node.js server process", "is_correct": false},
+      {"text": "Sends a 200 OK HTTP response to the client", "is_correct": false},
+      {"text": "Rolls back open database transactions", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "node-express-backend",
+    "stem": "What is the primary role of package.json in a Node.js project?",
+    "difficulty": "intermediate",
+    "explanation": "package.json defines project metadata, scripts, version constraints, and dependency manifest lists.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Manifest tracking project dependencies, scripts, and metadata", "is_correct": true},
+      {"text": "Database configuration file storing binary SQL tables", "is_correct": false},
+      {"text": "Compiled JavaScript runtime engine binaries", "is_correct": false},
+      {"text": "Web server routing template specifying HTML layouts", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "production-full-stack-integration",
+    "stem": "Which HTTP security response header helps prevent Cross-Site Scripting (XSS) by restricting trusted script origins?",
+    "difficulty": "advanced",
+    "explanation": "Content-Security-Policy (CSP) headers instruct browsers on allowed sources for scripts, stylesheets, and assets.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Content-Security-Policy", "is_correct": true},
+      {"text": "Access-Control-Allow-Origin", "is_correct": false},
+      {"text": "X-Powered-By", "is_correct": false},
+      {"text": "Strict-Transport-Security", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "production-full-stack-integration",
+    "stem": "What browser mechanism regulates API cross-origin fetch requests from external domains?",
+    "difficulty": "advanced",
+    "explanation": "Cross-Origin Resource Sharing (CORS) relies on HTTP headers to authorize cross-domain browser requests.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Cross-Origin Resource Sharing (CORS)", "is_correct": true},
+      {"text": "Domain Name System (DNS) SEC", "is_correct": false},
+      {"text": "Content Delivery Network (CDN) Caching", "is_correct": false},
+      {"text": "Transport Layer Security (TLS) Handshake", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "react-frontend",
+    "stem": "Which React Hook executes side effects (such as data fetching) after component rendering?",
+    "difficulty": "intermediate",
+    "explanation": "useEffect lets developers synchronize components with external systems and perform post-render side effects.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "useEffect", "is_correct": true},
+      {"text": "useState", "is_correct": false},
+      {"text": "useMemo", "is_correct": false},
+      {"text": "useRef", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "react-frontend",
+    "stem": "When rendering dynamic lists in React, what requirement applies to the 'key' prop?",
+    "difficulty": "intermediate",
+    "explanation": "Keys must be unique and stable string or numeric identifiers among sibling elements to optimize DOM reconciliation.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Keys must be unique and stable among sibling elements", "is_correct": true},
+      {"text": "Keys must be randomly generated on every render pass", "is_correct": false},
+      {"text": "Keys are optional and ignored by React reconciliation", "is_correct": false},
+      {"text": "Keys must match the CSS class names of elements", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "relational-databases-sql",
+    "stem": "What requirement must a table meet to satisfy First Normal Form (1NF)?",
+    "difficulty": "intermediate",
+    "explanation": "1NF requires each column cell to hold atomic (indivisible) values with no repeating groups.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Every column cell must contain atomic values with no repeating groups", "is_correct": true},
+      {"text": "All non-key columns must depend entirely on composite keys", "is_correct": false},
+      {"text": "The table must contain fewer than 10 total columns", "is_correct": false},
+      {"text": "Foreign keys must be indexed using B-tree structures", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "relational-databases-sql",
+    "stem": "What relational database constraint guarantees referential integrity between linked tables?",
+    "difficulty": "intermediate",
+    "explanation": "A Foreign Key constraint enforces valid relationships between child table values and parent table keys.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Foreign Key", "is_correct": true},
+      {"text": "Primary Key", "is_correct": false},
+      {"text": "UNIQUE Constraint", "is_correct": false},
+      {"text": "CHECK Constraint", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "responsive-accessible-web",
+    "stem": "Which CSS media query targets screen viewports with a maximum width of 768 pixels?",
+    "difficulty": "beginner",
+    "explanation": "@media (max-width: 768px) applies enclosed styles when viewport widths are 768px or smaller.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "@media (max-width: 768px)", "is_correct": true},
+      {"text": "@media (screen-width: 768px)", "is_correct": false},
+      {"text": "@responsive (width <= 768px)", "is_correct": false},
+      {"text": "@device (max-device: 768px)", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "responsive-accessible-web",
+    "stem": "Why are informative 'alt' attributes mandatory on non-decorative HTML <img> tags?",
+    "difficulty": "beginner",
+    "explanation": "Alt attributes provide accessible text descriptions for screen readers and render fallback text if images fail to load.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Providing accessible context for screen readers and image load failures", "is_correct": true},
+      {"text": "Setting explicit physical pixel dimensions on screen layouts", "is_correct": false},
+      {"text": "Accelerating image file compression algorithms", "is_correct": false},
+      {"text": "Enabling CSS hover animation effects", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "testing-web-applications",
+    "stem": "How does Unit Testing differ fundamentally from Integration Testing?",
+    "difficulty": "intermediate",
+    "explanation": "Unit testing isolates individual functions/modules, while integration testing verifies combined interaction between modules.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Unit testing isolates single code functions; Integration testing verifies combined interactions", "is_correct": true},
+      {"text": "Unit testing runs only in production environments", "is_correct": false},
+      {"text": "Integration testing avoids running backend code completely", "is_correct": false},
+      {"text": "Unit tests are written exclusively by QA engineers", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "testing-web-applications",
+    "stem": "In automated JavaScript testing frameworks (such as Jest), what feature creates mock replacement functions for dependencies?",
+    "difficulty": "intermediate",
+    "explanation": "jest.fn() creates mock functions to isolate unit tests from external dependencies.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "jest.fn()", "is_correct": true},
+      {"text": "jest.compile()", "is_correct": false},
+      {"text": "jest.async()", "is_correct": false},
+      {"text": "jest.render()", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "typescript-basics",
+    "stem": "Which TypeScript keyword defines custom structural object types and contracts?",
+    "difficulty": "intermediate",
+    "explanation": "interface declares object contracts specifying property names and types in TypeScript.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "interface", "is_correct": true},
+      {"text": "struct", "is_correct": false},
+      {"text": "declare class", "is_correct": false},
+      {"text": "typeform", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "typescript-basics",
+    "stem": "Why is the unknown type preferred over any in TypeScript for unvalidated input data?",
+    "difficulty": "intermediate",
+    "explanation": "unknown enforces type checking or assertions before performing operations, whereas any disables type safety entirely.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "unknown forces explicit type checks before performing operations on the value", "is_correct": true},
+      {"text": "any completely disables JavaScript execution", "is_correct": false},
+      {"text": "unknown automatically converts input strings into numeric values", "is_correct": false},
+      {"text": "any restricts objects from having dynamic properties", "is_correct": false}
+    ]
+  },
+
+  {
+    "concept_slug": "classification-models",
+    "stem": "Which supervised algorithm finds an optimal decision boundary hyperplane that maximizes class margins?",
+    "difficulty": "intermediate",
+    "explanation": "Support Vector Machines (SVM) optimize a decision hyperplane that maximizes the margin separating data classes.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Support Vector Machine (SVM)", "is_correct": true},
+      {"text": "K-Means", "is_correct": false},
+      {"text": "Linear Regression", "is_correct": false},
+      {"text": "Principal Component Analysis", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "classification-models",
+    "stem": "In Logistic Regression, which mathematical activation function maps continuous real outputs to probabilities between 0 and 1?",
+    "difficulty": "intermediate",
+    "explanation": "The Sigmoid function maps raw numerical log-odds into probability bounds between 0 and 1.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Sigmoid function", "is_correct": true},
+      {"text": "ReLU function", "is_correct": false},
+      {"text": "Softplus function", "is_correct": false},
+      {"text": "Identity function", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "data-preparation-ml",
+    "stem": "Why is One-Hot Encoding preferred over Label Encoding for unordered nominal categorical features?",
+    "difficulty": "intermediate",
+    "explanation": "One-Hot Encoding avoids introducing implicit ordinal relationships (e.g., 2 > 1) where no natural order exists.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "To prevent algorithms from assuming non-existent numerical order between categories", "is_correct": true},
+      {"text": "To reduce total matrix dimensionality", "is_correct": false},
+      {"text": "To convert numeric integers into continuous floats", "is_correct": false},
+      {"text": "To eliminate missing NaN values automatically", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "data-preparation-ml",
+    "stem": "What transformation does Scikit-Learn's StandardScaler apply to input features?",
+    "difficulty": "intermediate",
+    "explanation": "StandardScaler centers data by subtracting the feature mean and scales to unit variance ($z = (x - \\mu) / \\sigma$).",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Rescaling features to zero mean and unit variance", "is_correct": true},
+      {"text": "Bounding all values strictly between 0 and 1", "is_correct": false},
+      {"text": "Replacing negative values with absolute positive numbers", "is_correct": false},
+      {"text": "Converting continuous numerical values into categorical strings", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "linear-algebra-for-ml",
+    "stem": "What operation computes a scalar value by multiplying corresponding elements of two equal-length vectors and summing the results?",
+    "difficulty": "beginner",
+    "explanation": "The Dot Product multiplies corresponding vector elements and sums them into a single scalar value.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Dot Product", "is_correct": true},
+      {"text": "Outer Product", "is_correct": false},
+      {"text": "Cross Product", "is_correct": false},
+      {"text": "Matrix Determinant", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "linear-algebra-for-ml",
+    "stem": "What property defines an eigenvector v for a square transformation matrix A?",
+    "difficulty": "beginner",
+    "explanation": "An eigenvector v changes only by a scalar factor ($\\lambda$, the eigenvalue) when transformed by matrix A ($Av = \\lambda v$).",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Its direction remains unchanged when multiplied by A (Av = λv)", "is_correct": true},
+      {"text": "Its length is strictly reduced to zero during transformation", "is_correct": false},
+      {"text": "Its matrix inverse equals its transpose matrix", "is_correct": false},
+      {"text": "It contains only non-zero positive integer entries", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "linear-regression",
+    "stem": "Which loss metric is directly minimized during Ordinary Least Squares (OLS) linear regression model fitting?",
+    "difficulty": "intermediate",
+    "explanation": "OLS minimizes Mean Squared Error (MSE), the sum of squared differences between predictions and target labels.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Mean Squared Error (MSE)", "is_correct": true},
+      {"text": "Mean Absolute Percentage Error (MAPE)", "is_correct": false},
+      {"text": "Binary Cross-Entropy", "is_correct": false},
+      {"text": "Hinge Loss", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "linear-regression",
+    "stem": "How does L1 regularization (Lasso) differ from L2 regularization (Ridge) in linear regression?",
+    "difficulty": "intermediate",
+    "explanation": "Lasso adds an absolute magnitude penalty ($|\beta|$), driving uninformative feature weights to zero for feature selection.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "L1 adds absolute coefficient penalties and can set feature weights to zero", "is_correct": true},
+      {"text": "L2 completely removes correlated features from datasets", "is_correct": false},
+      {"text": "L1 works exclusively on tree ensemble classification models", "is_correct": false},
+      {"text": "L2 adds squared penalties that eliminate model intercept terms", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "ml-pipelines",
+    "stem": "What causes data leakage during the training phase of a machine learning pipeline?",
+    "difficulty": "advanced",
+    "explanation": "Data leakage happens when information from test/validation datasets influences training transformations or scaling.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Inadvertently incorporating test dataset information during training preprocessing", "is_correct": true},
+      {"text": "Using open-source libraries without commercial licenses", "is_correct": false},
+      {"text": "Training a model with fewer than 100 sample instances", "is_correct": false},
+      {"text": "Executing Python scripts inside isolated Jupyter notebooks", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "ml-pipelines",
+    "stem": "Which Scikit-Learn class chains preprocessing transformers and model estimators into a single reproducible unit?",
+    "difficulty": "advanced",
+    "explanation": "sklearn.pipeline.Pipeline bundles transformers and estimators to execute sequential data transformations safely.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Pipeline", "is_correct": true},
+      {"text": "GridSearchCV", "is_correct": false},
+      {"text": "ColumnTransformer", "is_correct": false},
+      {"text": "FeatureUnion", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "ml-project-delivery",
+    "stem": "What defines Concept Drift in production machine learning systems?",
+    "difficulty": "advanced",
+    "explanation": "Concept Drift occurs when statistical relationships between target labels and input features change over time.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "A shift in the underlying statistical relationship between features and target labels", "is_correct": true},
+      {"text": "Hardware CPU degradation in hosting datacenters", "is_correct": false},
+      {"text": "Incompatible updates to open-source Python packages", "is_correct": false},
+      {"text": "Changes to developer Git commit commit messages", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "ml-project-delivery",
+    "stem": "What primary capability do model registry tools (such as MLflow) provide in production systems?",
+    "difficulty": "advanced",
+    "explanation": "Model registries version model artifacts, log metrics, track parameters, and govern deployment stage promotions.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Tracking experiment metrics, hyperparameters, and model artifact versions", "is_correct": true},
+      {"text": "Writing unit tests automatically from raw CSV files", "is_correct": false},
+      {"text": "Replacing cloud load balancers with DNS servers", "is_correct": false},
+      {"text": "Generating frontend React user interfaces from models", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "model-evaluation",
+    "stem": "When evaluating a medical diagnosis model where missing a positive disease case is catastrophic, which metric should be prioritized?",
+    "difficulty": "intermediate",
+    "explanation": "Recall measures the proportion of actual positive cases identified ($TP / (TP + FN)$), minimizing false negatives.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Recall (Sensitivity)", "is_correct": true},
+      {"text": "Precision", "is_correct": false},
+      {"text": "Accuracy", "is_correct": false},
+      {"text": "Specificity", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "model-evaluation",
+    "stem": "What performance capability does an Area Under the ROC Curve (ROC-AUC) score of 0.5 represent?",
+    "difficulty": "intermediate",
+    "explanation": "An ROC-AUC score of 0.5 represents performance equivalent to random guessing.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Performance no better than random guessing", "is_correct": true},
+      {"text": "Flawless prediction accuracy with zero errors", "is_correct": false},
+      {"text": "A total failure due to inverted class labels", "is_correct": false},
+      {"text": "High model precision combined with low recall", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "neural-network-foundations",
+    "stem": "What structural issue arises in deep networks when backpropagated gradients shrink exponentially towards zero?",
+    "difficulty": "advanced",
+    "explanation": "The Vanishing Gradient Problem occurs when early network layer weights fail to update due to near-zero gradients.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Vanishing Gradient Problem", "is_correct": true},
+      {"text": "Exploding Gradient Problem", "is_correct": false},
+      {"text": "Covariate Shift", "is_correct": false},
+      {"text": "Dead Neuron Saturation", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "neural-network-foundations",
+    "stem": "What mathematical function defines the Rectified Linear Unit (ReLU) activation?",
+    "difficulty": "advanced",
+    "explanation": "ReLU returns max(0, x), outputting zero for negative inputs and linear values for positive inputs.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "f(x) = max(0, x)", "is_correct": true},
+      {"text": "f(x) = 1 / (1 + e^-x)", "is_correct": false},
+      {"text": "f(x) = tanh(x)", "is_correct": false},
+      {"text": "f(x) = e^x / sum(e^x)", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "numpy-data-arrays",
+    "stem": "What mechanism enables NumPy to execute element-wise operations on arrays of differing shapes automatically?",
+    "difficulty": "beginner",
+    "explanation": "Broadcasting expands smaller array dimensions to match larger array shapes during numerical operations.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Broadcasting", "is_correct": true},
+      {"text": "Vectorization", "is_correct": false},
+      {"text": "Type Casting", "is_correct": false},
+      {"text": "Flattening", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "numpy-data-arrays",
+    "stem": "Which NumPy method flattens a multi-dimensional array into a 1D vector?",
+    "difficulty": "beginner",
+    "explanation": "flatten() returns a 1D copy of a multi-dimensional matrix.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "array.flatten()", "is_correct": true},
+      {"text": "array.reshape(-1, -1)", "is_correct": false},
+      {"text": "array.squeeze(0)", "is_correct": false},
+      {"text": "array.transpose()", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "probability-statistics-for-ml",
+    "stem": "Which theorem calculates conditional probability P(A|B) using prior probability P(A) and likelihood P(B|A)?",
+    "difficulty": "beginner",
+    "explanation": "Bayes' Theorem updates conditional probability based on prior beliefs and new observed evidence.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Bayes' Theorem", "is_correct": true},
+      {"text": "Law of Large Numbers", "is_correct": false},
+      {"text": "Markov's Inequality", "is_correct": false},
+      {"text": "Chebyshev's Inequality", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "probability-statistics-for-ml",
+    "stem": "Which probability distribution models the number of successes in n independent trials with probability p?",
+    "difficulty": "beginner",
+    "explanation": "The Binomial distribution models discrete success counts across n independent Bernoulli trials.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Binomial Distribution", "is_correct": true},
+      {"text": "Poisson Distribution", "is_correct": false},
+      {"text": "Gaussian Distribution", "is_correct": false},
+      {"text": "Exponential Distribution", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "python-for-ml",
+    "stem": "What list slice syntax in Python returns a reversed copy of sequence lst?",
+    "difficulty": "beginner",
+    "explanation": "lst[::-1] steps through the sequence backward with a stride of -1.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "lst[::-1]", "is_correct": true},
+      {"text": "lst[1:-1]", "is_correct": false},
+      {"text": "lst[reverse]", "is_correct": false},
+      {"text": "lst[-1:0]", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "python-for-ml",
+    "stem": "Why are generator expressions (using yield) preferred over list comprehensions when streaming large datasets?",
+    "difficulty": "beginner",
+    "explanation": "Generators evaluate items lazily one at a time, avoiding loading entire datasets into memory.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Generators yield values lazily, minimizing RAM consumption", "is_correct": true},
+      {"text": "Generators execute C++ native code automatically", "is_correct": false},
+      {"text": "Generators allow modifying items in place inside tuples", "is_correct": false},
+      {"text": "Generators bypass Python global interpreter lock (GIL)", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "pytorch-deep-learning",
+    "stem": "Which method on a PyTorch loss tensor triggers automatic gradient computation across the computational graph?",
+    "difficulty": "advanced",
+    "explanation": "loss.backward() computes gradients via autograd and accumulates them in parameter .grad attributes.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "loss.backward()", "is_correct": true},
+      {"text": "loss.step()", "is_correct": false},
+      {"text": "torch.autograd.compute()", "is_correct": false},
+      {"text": "model.zero_grad()", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "pytorch-deep-learning",
+    "stem": "Why must optimizer.zero_grad() be called before computing backward passes in PyTorch training loops?",
+    "difficulty": "advanced",
+    "explanation": "PyTorch accumulates gradients on consecutive backward passes; zero_grad() clears old gradients before new steps.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "To prevent gradients from accumulating across consecutive training iterations", "is_correct": true},
+      {"text": "To reset neural network weights back to zero", "is_correct": false},
+      {"text": "To clear GPU memory allocated for dataset batches", "is_correct": false},
+      {"text": "To convert 64-bit float tensors into 32-bit float tensors", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "tree-ensemble-models",
+    "stem": "How does Random Forest reduce model variance compared to individual decision trees?",
+    "difficulty": "intermediate",
+    "explanation": "Random Forests average predictions across independent trees trained on bootstrap samples and random feature subsets.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Averaging predictions of diverse decision trees built on bootstrapped subsets", "is_correct": true},
+      {"text": "Increasing decision tree depth limits infinitely", "is_correct": false},
+      {"text": "Converting decision trees into neural activation layers", "is_correct": false},
+      {"text": "Using L1 regularization on tree split thresholds", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "tree-ensemble-models",
+    "stem": "What sequential technique characterizes Gradient Boosted Decision Trees (e.g., XGBoost)?",
+    "difficulty": "intermediate",
+    "explanation": "Gradient Boosting builds trees sequentially, with each new tree trained to predict the residual errors of preceding trees.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Training each consecutive tree on residual errors of prior trees", "is_correct": true},
+      {"text": "Training thousands of trees in parallel independently", "is_correct": false},
+      {"text": "Pruning trees until only single leaf node rules remain", "is_correct": false},
+      {"text": "Selecting random class labels during split evaluations", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "unsupervised-learning",
+    "stem": "What objective function does the K-Means clustering algorithm minimize?",
+    "difficulty": "intermediate",
+    "explanation": "K-Means minimizes within-cluster sum-of-squares (inertia), the squared distances between points and their centroid.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Within-cluster sum-of-squares (Inertia)", "is_correct": true},
+      {"text": "Cross-entropy loss between cluster bounds", "is_correct": false},
+      {"text": "The total count of dimensions in the dataset", "is_correct": false},
+      {"text": "Between-cluster variance max-distance", "is_correct": false}
+    ]
+  },
+  {
+    "concept_slug": "unsupervised-learning",
+    "stem": "What primary purpose does Principal Component Analysis (PCA) serve in unsupervised data workflows?",
+    "difficulty": "intermediate",
+    "explanation": "PCA projects high-dimensional data onto orthogonal axes (principal components) to maximize variance and reduce dimensions.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {"text": "Reducing dimensionality while retaining maximum dataset variance", "is_correct": true},
+      {"text": "Predicting continuous numeric target labels", "is_correct": false},
+      {"text": "Imputing missing string entries in dataframes", "is_correct": false},
+      {"text": "Generating synthetic image samples", "is_correct": false}
+    ]
+  }
+]

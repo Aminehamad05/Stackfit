@@ -1,0 +1,57 @@
+[
+  {
+    "taster_slug": "full-stack-crud-taster",
+    "resource_url": "https://fullstackopen.com/en/",
+    "rank": 1
+  },
+  {
+    "taster_slug": "full-stack-crud-taster",
+    "resource_url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core",
+    "rank": 2
+  },
+  {
+    "taster_slug": "container-ci-cloud-taster",
+    "resource_url": "https://docs.docker.com/get-started/",
+    "rank": 1
+  },
+  {
+    "taster_slug": "container-ci-cloud-taster",
+    "resource_url": "https://docs.github.com/en/actions/get-started",
+    "rank": 2
+  },
+  {
+    "taster_slug": "container-ci-cloud-taster",
+    "resource_url": "https://aws.amazon.com/free/",
+    "rank": 3
+  },
+  {
+    "taster_slug": "classifier-taster",
+    "resource_url": "https://developers.google.com/machine-learning/crash-course",
+    "rank": 1
+  },
+  {
+    "taster_slug": "classifier-taster",
+    "resource_url": "https://developers.google.com/machine-learning/crash-course/classification",
+    "rank": 2
+  },
+  {
+    "taster_slug": "classifier-taster",
+    "resource_url": "https://developers.google.com/machine-learning/crash-course/classification",
+    "rank": 3
+  },
+  {
+    "taster_slug": "messy-dataset-insights-taster",
+    "resource_url": "https://www.kaggle.com/learn/pandas/1000",
+    "rank": 1
+  },
+  {
+    "taster_slug": "messy-dataset-insights-taster",
+    "resource_url": "https://www.kaggle.com/learn/data-visualization/course",
+    "rank": 2
+  },
+  {
+    "taster_slug": "messy-dataset-insights-taster",
+    "resource_url": "https://www.coursera.org/professional-certificates/google-data-analytics",
+    "rank": 3
+  }
+]

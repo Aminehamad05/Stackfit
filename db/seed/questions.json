@@ -1,1 +1,4370 @@
-{"todo":"questions seed data per AGENT_SPEC §8"}
+[
+  {
+    "concept_slug": "cicd-automation",
+    "stem": "Which statement best describes cicd automation?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of cicd automation: automate build/test/deploy workflows.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "automate build/test/deploy workflows",
+        "is_correct": true
+      },
+      {
+        "text": "CSS styling",
+        "is_correct": false
+      },
+      {
+        "text": "database normalization",
+        "is_correct": false
+      },
+      {
+        "text": "image editing",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "cicd-automation",
+    "stem": "What is the primary reason to learn cicd automation?",
+    "difficulty": "intermediate",
+    "explanation": "cicd automation is useful because it enables the capability described by the correct option: automate build/test/deploy workflows.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "CSS styling",
+        "is_correct": false
+      },
+      {
+        "text": "database normalization",
+        "is_correct": false
+      },
+      {
+        "text": "image editing",
+        "is_correct": false
+      },
+      {
+        "text": "automate build/test/deploy workflows",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "cicd-automation",
+    "stem": "Which task is most directly associated with cicd automation?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of cicd automation: automate build/test/deploy workflows.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "database normalization",
+        "is_correct": false
+      },
+      {
+        "text": "image editing",
+        "is_correct": false
+      },
+      {
+        "text": "automate build/test/deploy workflows",
+        "is_correct": true
+      },
+      {
+        "text": "CSS styling",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "cloud-concepts",
+    "stem": "Which statement best describes cloud concepts?",
+    "difficulty": "beginner",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of cloud concepts: provide on-demand computing resources over a network.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "provide on-demand computing resources over a network",
+        "is_correct": true
+      },
+      {
+        "text": "compile JavaScript",
+        "is_correct": false
+      },
+      {
+        "text": "store only passwords",
+        "is_correct": false
+      },
+      {
+        "text": "design web pages",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "cloud-concepts",
+    "stem": "What is the primary reason to learn cloud concepts?",
+    "difficulty": "beginner",
+    "explanation": "cloud concepts is useful because it enables the capability described by the correct option: provide on-demand computing resources over a network.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "compile JavaScript",
+        "is_correct": false
+      },
+      {
+        "text": "store only passwords",
+        "is_correct": false
+      },
+      {
+        "text": "design web pages",
+        "is_correct": false
+      },
+      {
+        "text": "provide on-demand computing resources over a network",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "cloud-concepts",
+    "stem": "Which task is most directly associated with cloud concepts?",
+    "difficulty": "beginner",
+    "explanation": "The correct task matches the central responsibility of cloud concepts: provide on-demand computing resources over a network.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "store only passwords",
+        "is_correct": false
+      },
+      {
+        "text": "design web pages",
+        "is_correct": false
+      },
+      {
+        "text": "provide on-demand computing resources over a network",
+        "is_correct": true
+      },
+      {
+        "text": "compile JavaScript",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "cloud-core-services",
+    "stem": "Which statement best describes cloud core services?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of cloud core services: provide compute, storage, databases, and networking as managed cloud capabilities.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "provide compute, storage, databases, and networking as managed cloud capabilities",
+        "is_correct": true
+      },
+      {
+        "text": "write CSS",
+        "is_correct": false
+      },
+      {
+        "text": "manage Git history",
+        "is_correct": false
+      },
+      {
+        "text": "edit images",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "cloud-core-services",
+    "stem": "What is the primary reason to learn cloud core services?",
+    "difficulty": "intermediate",
+    "explanation": "cloud core services is useful because it enables the capability described by the correct option: provide compute, storage, databases, and networking as managed cloud capabilities.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "write CSS",
+        "is_correct": false
+      },
+      {
+        "text": "manage Git history",
+        "is_correct": false
+      },
+      {
+        "text": "edit images",
+        "is_correct": false
+      },
+      {
+        "text": "provide compute, storage, databases, and networking as managed cloud capabilities",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "cloud-core-services",
+    "stem": "Which task is most directly associated with cloud core services?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of cloud core services: provide compute, storage, databases, and networking as managed cloud capabilities.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "manage Git history",
+        "is_correct": false
+      },
+      {
+        "text": "edit images",
+        "is_correct": false
+      },
+      {
+        "text": "provide compute, storage, databases, and networking as managed cloud capabilities",
+        "is_correct": true
+      },
+      {
+        "text": "write CSS",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "cloud-cost-reliability",
+    "stem": "Which statement best describes cloud cost reliability?",
+    "difficulty": "advanced",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of cloud cost reliability: balance cloud spending with availability and recovery requirements.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "balance cloud spending with availability and recovery requirements",
+        "is_correct": true
+      },
+      {
+        "text": "remove all monitoring",
+        "is_correct": false
+      },
+      {
+        "text": "make every resource public",
+        "is_correct": false
+      },
+      {
+        "text": "avoid backups",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "cloud-cost-reliability",
+    "stem": "What is the primary reason to learn cloud cost reliability?",
+    "difficulty": "advanced",
+    "explanation": "cloud cost reliability is useful because it enables the capability described by the correct option: balance cloud spending with availability and recovery requirements.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "remove all monitoring",
+        "is_correct": false
+      },
+      {
+        "text": "make every resource public",
+        "is_correct": false
+      },
+      {
+        "text": "avoid backups",
+        "is_correct": false
+      },
+      {
+        "text": "balance cloud spending with availability and recovery requirements",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "cloud-cost-reliability",
+    "stem": "Which task is most directly associated with cloud cost reliability?",
+    "difficulty": "advanced",
+    "explanation": "The correct task matches the central responsibility of cloud cost reliability: balance cloud spending with availability and recovery requirements.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "make every resource public",
+        "is_correct": false
+      },
+      {
+        "text": "avoid backups",
+        "is_correct": false
+      },
+      {
+        "text": "balance cloud spending with availability and recovery requirements",
+        "is_correct": true
+      },
+      {
+        "text": "remove all monitoring",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "cloud-networking-security",
+    "stem": "Which statement best describes cloud networking security?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of cloud networking security: control connectivity and network exposure between cloud resources.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "control connectivity and network exposure between cloud resources",
+        "is_correct": true
+      },
+      {
+        "text": "format HTML",
+        "is_correct": false
+      },
+      {
+        "text": "train ML models",
+        "is_correct": false
+      },
+      {
+        "text": "compress files",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "cloud-networking-security",
+    "stem": "What is the primary reason to learn cloud networking security?",
+    "difficulty": "intermediate",
+    "explanation": "cloud networking security is useful because it enables the capability described by the correct option: control connectivity and network exposure between cloud resources.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "format HTML",
+        "is_correct": false
+      },
+      {
+        "text": "train ML models",
+        "is_correct": false
+      },
+      {
+        "text": "compress files",
+        "is_correct": false
+      },
+      {
+        "text": "control connectivity and network exposure between cloud resources",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "cloud-networking-security",
+    "stem": "Which task is most directly associated with cloud networking security?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of cloud networking security: control connectivity and network exposure between cloud resources.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "train ML models",
+        "is_correct": false
+      },
+      {
+        "text": "compress files",
+        "is_correct": false
+      },
+      {
+        "text": "control connectivity and network exposure between cloud resources",
+        "is_correct": true
+      },
+      {
+        "text": "format HTML",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "cloud-security-practices",
+    "stem": "Which statement best describes cloud security practices?",
+    "difficulty": "advanced",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of cloud security practices: protect identities, secrets, data, and workloads using least privilege and secure controls.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "protect identities, secrets, data, and workloads using least privilege and secure controls",
+        "is_correct": true
+      },
+      {
+        "text": "disable authentication",
+        "is_correct": false
+      },
+      {
+        "text": "share administrator credentials",
+        "is_correct": false
+      },
+      {
+        "text": "publish secrets",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "cloud-security-practices",
+    "stem": "What is the primary reason to learn cloud security practices?",
+    "difficulty": "advanced",
+    "explanation": "cloud security practices is useful because it enables the capability described by the correct option: protect identities, secrets, data, and workloads using least privilege and secure controls.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "disable authentication",
+        "is_correct": false
+      },
+      {
+        "text": "share administrator credentials",
+        "is_correct": false
+      },
+      {
+        "text": "publish secrets",
+        "is_correct": false
+      },
+      {
+        "text": "protect identities, secrets, data, and workloads using least privilege and secure controls",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "cloud-security-practices",
+    "stem": "Which task is most directly associated with cloud security practices?",
+    "difficulty": "advanced",
+    "explanation": "The correct task matches the central responsibility of cloud security practices: protect identities, secrets, data, and workloads using least privilege and secure controls.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "share administrator credentials",
+        "is_correct": false
+      },
+      {
+        "text": "publish secrets",
+        "is_correct": false
+      },
+      {
+        "text": "protect identities, secrets, data, and workloads using least privilege and secure controls",
+        "is_correct": true
+      },
+      {
+        "text": "disable authentication",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "configuration-automation",
+    "stem": "Which statement best describes configuration automation?",
+    "difficulty": "advanced",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of configuration automation: make infrastructure and system configuration repeatable and consistent.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "make infrastructure and system configuration repeatable and consistent",
+        "is_correct": true
+      },
+      {
+        "text": "design logos",
+        "is_correct": false
+      },
+      {
+        "text": "write SQL queries only",
+        "is_correct": false
+      },
+      {
+        "text": "edit photos",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "configuration-automation",
+    "stem": "What is the primary reason to learn configuration automation?",
+    "difficulty": "advanced",
+    "explanation": "configuration automation is useful because it enables the capability described by the correct option: make infrastructure and system configuration repeatable and consistent.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "design logos",
+        "is_correct": false
+      },
+      {
+        "text": "write SQL queries only",
+        "is_correct": false
+      },
+      {
+        "text": "edit photos",
+        "is_correct": false
+      },
+      {
+        "text": "make infrastructure and system configuration repeatable and consistent",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "configuration-automation",
+    "stem": "Which task is most directly associated with configuration automation?",
+    "difficulty": "advanced",
+    "explanation": "The correct task matches the central responsibility of configuration automation: make infrastructure and system configuration repeatable and consistent.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "write SQL queries only",
+        "is_correct": false
+      },
+      {
+        "text": "edit photos",
+        "is_correct": false
+      },
+      {
+        "text": "make infrastructure and system configuration repeatable and consistent",
+        "is_correct": true
+      },
+      {
+        "text": "design logos",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "containers-docker",
+    "stem": "Which statement best describes containers docker?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of containers docker: package applications with their runtime dependencies in isolated containers.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "package applications with their runtime dependencies in isolated containers",
+        "is_correct": true
+      },
+      {
+        "text": "replace DNS",
+        "is_correct": false
+      },
+      {
+        "text": "store Git commits",
+        "is_correct": false
+      },
+      {
+        "text": "create spreadsheets",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "containers-docker",
+    "stem": "What is the primary reason to learn containers docker?",
+    "difficulty": "intermediate",
+    "explanation": "containers docker is useful because it enables the capability described by the correct option: package applications with their runtime dependencies in isolated containers.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "replace DNS",
+        "is_correct": false
+      },
+      {
+        "text": "store Git commits",
+        "is_correct": false
+      },
+      {
+        "text": "create spreadsheets",
+        "is_correct": false
+      },
+      {
+        "text": "package applications with their runtime dependencies in isolated containers",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "containers-docker",
+    "stem": "Which task is most directly associated with containers docker?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of containers docker: package applications with their runtime dependencies in isolated containers.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "store Git commits",
+        "is_correct": false
+      },
+      {
+        "text": "create spreadsheets",
+        "is_correct": false
+      },
+      {
+        "text": "package applications with their runtime dependencies in isolated containers",
+        "is_correct": true
+      },
+      {
+        "text": "replace DNS",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "infrastructure-as-code",
+    "stem": "Which statement best describes infrastructure as code?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of infrastructure as code: define and manage infrastructure through version-controlled configuration.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "define and manage infrastructure through version-controlled configuration",
+        "is_correct": true
+      },
+      {
+        "text": "write UI copy",
+        "is_correct": false
+      },
+      {
+        "text": "replace databases with files",
+        "is_correct": false
+      },
+      {
+        "text": "edit videos",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "infrastructure-as-code",
+    "stem": "What is the primary reason to learn infrastructure as code?",
+    "difficulty": "intermediate",
+    "explanation": "infrastructure as code is useful because it enables the capability described by the correct option: define and manage infrastructure through version-controlled configuration.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "write UI copy",
+        "is_correct": false
+      },
+      {
+        "text": "replace databases with files",
+        "is_correct": false
+      },
+      {
+        "text": "edit videos",
+        "is_correct": false
+      },
+      {
+        "text": "define and manage infrastructure through version-controlled configuration",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "infrastructure-as-code",
+    "stem": "Which task is most directly associated with infrastructure as code?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of infrastructure as code: define and manage infrastructure through version-controlled configuration.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "replace databases with files",
+        "is_correct": false
+      },
+      {
+        "text": "edit videos",
+        "is_correct": false
+      },
+      {
+        "text": "define and manage infrastructure through version-controlled configuration",
+        "is_correct": true
+      },
+      {
+        "text": "write UI copy",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "kubernetes-basics",
+    "stem": "Which statement best describes kubernetes basics?",
+    "difficulty": "advanced",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of kubernetes basics: orchestrate containerized workloads and manage their deployment and networking.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "orchestrate containerized workloads and manage their deployment and networking",
+        "is_correct": true
+      },
+      {
+        "text": "design HTML",
+        "is_correct": false
+      },
+      {
+        "text": "hash passwords",
+        "is_correct": false
+      },
+      {
+        "text": "write SQL only",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "kubernetes-basics",
+    "stem": "What is the primary reason to learn kubernetes basics?",
+    "difficulty": "advanced",
+    "explanation": "kubernetes basics is useful because it enables the capability described by the correct option: orchestrate containerized workloads and manage their deployment and networking.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "design HTML",
+        "is_correct": false
+      },
+      {
+        "text": "hash passwords",
+        "is_correct": false
+      },
+      {
+        "text": "write SQL only",
+        "is_correct": false
+      },
+      {
+        "text": "orchestrate containerized workloads and manage their deployment and networking",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "kubernetes-basics",
+    "stem": "Which task is most directly associated with kubernetes basics?",
+    "difficulty": "advanced",
+    "explanation": "The correct task matches the central responsibility of kubernetes basics: orchestrate containerized workloads and manage their deployment and networking.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "hash passwords",
+        "is_correct": false
+      },
+      {
+        "text": "write SQL only",
+        "is_correct": false
+      },
+      {
+        "text": "orchestrate containerized workloads and manage their deployment and networking",
+        "is_correct": true
+      },
+      {
+        "text": "design HTML",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "linux-cli",
+    "stem": "Which statement best describes linux cli?",
+    "difficulty": "beginner",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of linux cli: use shell commands to inspect, manipulate, and administer Linux systems.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "use shell commands to inspect, manipulate, and administer Linux systems",
+        "is_correct": true
+      },
+      {
+        "text": "design React components",
+        "is_correct": false
+      },
+      {
+        "text": "query BI dashboards",
+        "is_correct": false
+      },
+      {
+        "text": "train classifiers",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "linux-cli",
+    "stem": "What is the primary reason to learn linux cli?",
+    "difficulty": "beginner",
+    "explanation": "linux cli is useful because it enables the capability described by the correct option: use shell commands to inspect, manipulate, and administer Linux systems.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "design React components",
+        "is_correct": false
+      },
+      {
+        "text": "query BI dashboards",
+        "is_correct": false
+      },
+      {
+        "text": "train classifiers",
+        "is_correct": false
+      },
+      {
+        "text": "use shell commands to inspect, manipulate, and administer Linux systems",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "linux-cli",
+    "stem": "Which task is most directly associated with linux cli?",
+    "difficulty": "beginner",
+    "explanation": "The correct task matches the central responsibility of linux cli: use shell commands to inspect, manipulate, and administer Linux systems.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "query BI dashboards",
+        "is_correct": false
+      },
+      {
+        "text": "train classifiers",
+        "is_correct": false
+      },
+      {
+        "text": "use shell commands to inspect, manipulate, and administer Linux systems",
+        "is_correct": true
+      },
+      {
+        "text": "design React components",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "networking-fundamentals",
+    "stem": "Which statement best describes networking fundamentals?",
+    "difficulty": "beginner",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of networking fundamentals: understand IP addressing, DNS, routing, ports, and common network protocols.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "understand IP addressing, DNS, routing, ports, and common network protocols",
+        "is_correct": true
+      },
+      {
+        "text": "style web pages",
+        "is_correct": false
+      },
+      {
+        "text": "normalize SQL tables",
+        "is_correct": false
+      },
+      {
+        "text": "compile Python",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "networking-fundamentals",
+    "stem": "What is the primary reason to learn networking fundamentals?",
+    "difficulty": "beginner",
+    "explanation": "networking fundamentals is useful because it enables the capability described by the correct option: understand IP addressing, DNS, routing, ports, and common network protocols.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "style web pages",
+        "is_correct": false
+      },
+      {
+        "text": "normalize SQL tables",
+        "is_correct": false
+      },
+      {
+        "text": "compile Python",
+        "is_correct": false
+      },
+      {
+        "text": "understand IP addressing, DNS, routing, ports, and common network protocols",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "networking-fundamentals",
+    "stem": "Which task is most directly associated with networking fundamentals?",
+    "difficulty": "beginner",
+    "explanation": "The correct task matches the central responsibility of networking fundamentals: understand IP addressing, DNS, routing, ports, and common network protocols.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "normalize SQL tables",
+        "is_correct": false
+      },
+      {
+        "text": "compile Python",
+        "is_correct": false
+      },
+      {
+        "text": "understand IP addressing, DNS, routing, ports, and common network protocols",
+        "is_correct": true
+      },
+      {
+        "text": "style web pages",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "observability-monitoring",
+    "stem": "Which statement best describes observability monitoring?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of observability monitoring: measure, log, trace, and alert on system behavior.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "measure, log, trace, and alert on system behavior",
+        "is_correct": true
+      },
+      {
+        "text": "replace version control",
+        "is_correct": false
+      },
+      {
+        "text": "design databases",
+        "is_correct": false
+      },
+      {
+        "text": "write HTML",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "observability-monitoring",
+    "stem": "What is the primary reason to learn observability monitoring?",
+    "difficulty": "intermediate",
+    "explanation": "observability monitoring is useful because it enables the capability described by the correct option: measure, log, trace, and alert on system behavior.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "replace version control",
+        "is_correct": false
+      },
+      {
+        "text": "design databases",
+        "is_correct": false
+      },
+      {
+        "text": "write HTML",
+        "is_correct": false
+      },
+      {
+        "text": "measure, log, trace, and alert on system behavior",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "observability-monitoring",
+    "stem": "Which task is most directly associated with observability monitoring?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of observability monitoring: measure, log, trace, and alert on system behavior.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "design databases",
+        "is_correct": false
+      },
+      {
+        "text": "write HTML",
+        "is_correct": false
+      },
+      {
+        "text": "measure, log, trace, and alert on system behavior",
+        "is_correct": true
+      },
+      {
+        "text": "replace version control",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "production-cloud-project",
+    "stem": "Which statement best describes production cloud project?",
+    "difficulty": "advanced",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of production cloud project: combine deployment, security, observability, backups, and reliability practices in a live cloud workload.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "combine deployment, security, observability, backups, and reliability practices in a live cloud workload",
+        "is_correct": true
+      },
+      {
+        "text": "make a logo",
+        "is_correct": false
+      },
+      {
+        "text": "write only local code",
+        "is_correct": false
+      },
+      {
+        "text": "remove all operational controls",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "production-cloud-project",
+    "stem": "What is the primary reason to learn production cloud project?",
+    "difficulty": "advanced",
+    "explanation": "production cloud project is useful because it enables the capability described by the correct option: combine deployment, security, observability, backups, and reliability practices in a live cloud workload.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "make a logo",
+        "is_correct": false
+      },
+      {
+        "text": "write only local code",
+        "is_correct": false
+      },
+      {
+        "text": "remove all operational controls",
+        "is_correct": false
+      },
+      {
+        "text": "combine deployment, security, observability, backups, and reliability practices in a live cloud workload",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "production-cloud-project",
+    "stem": "Which task is most directly associated with production cloud project?",
+    "difficulty": "advanced",
+    "explanation": "The correct task matches the central responsibility of production cloud project: combine deployment, security, observability, backups, and reliability practices in a live cloud workload.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "write only local code",
+        "is_correct": false
+      },
+      {
+        "text": "remove all operational controls",
+        "is_correct": false
+      },
+      {
+        "text": "combine deployment, security, observability, backups, and reliability practices in a live cloud workload",
+        "is_correct": true
+      },
+      {
+        "text": "make a logo",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "advanced-sql-analytics",
+    "stem": "Which statement best describes advanced sql analytics?",
+    "difficulty": "advanced",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of advanced sql analytics: use SQL windows, aggregation, joins, and analytical expressions for deeper analysis.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "use SQL windows, aggregation, joins, and analytical expressions for deeper analysis",
+        "is_correct": true
+      },
+      {
+        "text": "style dashboards only",
+        "is_correct": false
+      },
+      {
+        "text": "manage Linux permissions",
+        "is_correct": false
+      },
+      {
+        "text": "train neural networks",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "advanced-sql-analytics",
+    "stem": "What is the primary reason to learn advanced sql analytics?",
+    "difficulty": "advanced",
+    "explanation": "advanced sql analytics is useful because it enables the capability described by the correct option: use SQL windows, aggregation, joins, and analytical expressions for deeper analysis.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "style dashboards only",
+        "is_correct": false
+      },
+      {
+        "text": "manage Linux permissions",
+        "is_correct": false
+      },
+      {
+        "text": "train neural networks",
+        "is_correct": false
+      },
+      {
+        "text": "use SQL windows, aggregation, joins, and analytical expressions for deeper analysis",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "advanced-sql-analytics",
+    "stem": "Which task is most directly associated with advanced sql analytics?",
+    "difficulty": "advanced",
+    "explanation": "The correct task matches the central responsibility of advanced sql analytics: use SQL windows, aggregation, joins, and analytical expressions for deeper analysis.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "manage Linux permissions",
+        "is_correct": false
+      },
+      {
+        "text": "train neural networks",
+        "is_correct": false
+      },
+      {
+        "text": "use SQL windows, aggregation, joins, and analytical expressions for deeper analysis",
+        "is_correct": true
+      },
+      {
+        "text": "style dashboards only",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "business-metrics-kpis",
+    "stem": "Which statement best describes business metrics kpis?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of business metrics kpis: define measurable indicators that track important business outcomes.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "define measurable indicators that track important business outcomes",
+        "is_correct": true
+      },
+      {
+        "text": "compile source code",
+        "is_correct": false
+      },
+      {
+        "text": "create Docker images",
+        "is_correct": false
+      },
+      {
+        "text": "configure DNS",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "business-metrics-kpis",
+    "stem": "What is the primary reason to learn business metrics kpis?",
+    "difficulty": "intermediate",
+    "explanation": "business metrics kpis is useful because it enables the capability described by the correct option: define measurable indicators that track important business outcomes.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "compile source code",
+        "is_correct": false
+      },
+      {
+        "text": "create Docker images",
+        "is_correct": false
+      },
+      {
+        "text": "configure DNS",
+        "is_correct": false
+      },
+      {
+        "text": "define measurable indicators that track important business outcomes",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "business-metrics-kpis",
+    "stem": "Which task is most directly associated with business metrics kpis?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of business metrics kpis: define measurable indicators that track important business outcomes.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "create Docker images",
+        "is_correct": false
+      },
+      {
+        "text": "configure DNS",
+        "is_correct": false
+      },
+      {
+        "text": "define measurable indicators that track important business outcomes",
+        "is_correct": true
+      },
+      {
+        "text": "compile source code",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "dashboard-bi",
+    "stem": "Which statement best describes dashboard bi?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of dashboard bi: present interactive metrics and trends for business monitoring and exploration.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "present interactive metrics and trends for business monitoring and exploration",
+        "is_correct": true
+      },
+      {
+        "text": "replace databases",
+        "is_correct": false
+      },
+      {
+        "text": "encrypt passwords",
+        "is_correct": false
+      },
+      {
+        "text": "build Linux kernels",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "dashboard-bi",
+    "stem": "What is the primary reason to learn dashboard bi?",
+    "difficulty": "intermediate",
+    "explanation": "dashboard bi is useful because it enables the capability described by the correct option: present interactive metrics and trends for business monitoring and exploration.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "replace databases",
+        "is_correct": false
+      },
+      {
+        "text": "encrypt passwords",
+        "is_correct": false
+      },
+      {
+        "text": "build Linux kernels",
+        "is_correct": false
+      },
+      {
+        "text": "present interactive metrics and trends for business monitoring and exploration",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "dashboard-bi",
+    "stem": "Which task is most directly associated with dashboard bi?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of dashboard bi: present interactive metrics and trends for business monitoring and exploration.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "encrypt passwords",
+        "is_correct": false
+      },
+      {
+        "text": "build Linux kernels",
+        "is_correct": false
+      },
+      {
+        "text": "present interactive metrics and trends for business monitoring and exploration",
+        "is_correct": true
+      },
+      {
+        "text": "replace databases",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "data-modeling-bi",
+    "stem": "Which statement best describes data modeling bi?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of data modeling bi: organize analytical data into facts, dimensions, and relationships for reporting.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "organize analytical data into facts, dimensions, and relationships for reporting",
+        "is_correct": true
+      },
+      {
+        "text": "write CSS",
+        "is_correct": false
+      },
+      {
+        "text": "configure firewalls",
+        "is_correct": false
+      },
+      {
+        "text": "train classifiers",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "data-modeling-bi",
+    "stem": "What is the primary reason to learn data modeling bi?",
+    "difficulty": "intermediate",
+    "explanation": "data modeling bi is useful because it enables the capability described by the correct option: organize analytical data into facts, dimensions, and relationships for reporting.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "write CSS",
+        "is_correct": false
+      },
+      {
+        "text": "configure firewalls",
+        "is_correct": false
+      },
+      {
+        "text": "train classifiers",
+        "is_correct": false
+      },
+      {
+        "text": "organize analytical data into facts, dimensions, and relationships for reporting",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "data-modeling-bi",
+    "stem": "Which task is most directly associated with data modeling bi?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of data modeling bi: organize analytical data into facts, dimensions, and relationships for reporting.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "configure firewalls",
+        "is_correct": false
+      },
+      {
+        "text": "train classifiers",
+        "is_correct": false
+      },
+      {
+        "text": "organize analytical data into facts, dimensions, and relationships for reporting",
+        "is_correct": true
+      },
+      {
+        "text": "write CSS",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "data-storytelling",
+    "stem": "Which statement best describes data storytelling?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of data storytelling: communicate findings with context, evidence, and a clear decision-oriented message.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "communicate findings with context, evidence, and a clear decision-oriented message",
+        "is_correct": true
+      },
+      {
+        "text": "hide uncertainty",
+        "is_correct": false
+      },
+      {
+        "text": "show every column equally",
+        "is_correct": false
+      },
+      {
+        "text": "replace evidence with decoration",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "data-storytelling",
+    "stem": "What is the primary reason to learn data storytelling?",
+    "difficulty": "intermediate",
+    "explanation": "data storytelling is useful because it enables the capability described by the correct option: communicate findings with context, evidence, and a clear decision-oriented message.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "hide uncertainty",
+        "is_correct": false
+      },
+      {
+        "text": "show every column equally",
+        "is_correct": false
+      },
+      {
+        "text": "replace evidence with decoration",
+        "is_correct": false
+      },
+      {
+        "text": "communicate findings with context, evidence, and a clear decision-oriented message",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "data-storytelling",
+    "stem": "Which task is most directly associated with data storytelling?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of data storytelling: communicate findings with context, evidence, and a clear decision-oriented message.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "show every column equally",
+        "is_correct": false
+      },
+      {
+        "text": "replace evidence with decoration",
+        "is_correct": false
+      },
+      {
+        "text": "communicate findings with context, evidence, and a clear decision-oriented message",
+        "is_correct": true
+      },
+      {
+        "text": "hide uncertainty",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "data-types-quality",
+    "stem": "Which statement best describes data types quality?",
+    "difficulty": "beginner",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of data types quality: identify data types, missing values, duplicates, and quality problems.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "identify data types, missing values, duplicates, and quality problems",
+        "is_correct": true
+      },
+      {
+        "text": "deploy containers",
+        "is_correct": false
+      },
+      {
+        "text": "write API routes",
+        "is_correct": false
+      },
+      {
+        "text": "configure IAM",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "data-types-quality",
+    "stem": "What is the primary reason to learn data types quality?",
+    "difficulty": "beginner",
+    "explanation": "data types quality is useful because it enables the capability described by the correct option: identify data types, missing values, duplicates, and quality problems.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "deploy containers",
+        "is_correct": false
+      },
+      {
+        "text": "write API routes",
+        "is_correct": false
+      },
+      {
+        "text": "configure IAM",
+        "is_correct": false
+      },
+      {
+        "text": "identify data types, missing values, duplicates, and quality problems",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "data-types-quality",
+    "stem": "Which task is most directly associated with data types quality?",
+    "difficulty": "beginner",
+    "explanation": "The correct task matches the central responsibility of data types quality: identify data types, missing values, duplicates, and quality problems.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "write API routes",
+        "is_correct": false
+      },
+      {
+        "text": "configure IAM",
+        "is_correct": false
+      },
+      {
+        "text": "identify data types, missing values, duplicates, and quality problems",
+        "is_correct": true
+      },
+      {
+        "text": "deploy containers",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "data-visualization",
+    "stem": "Which statement best describes data visualization?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of data visualization: choose charts and visual encodings that accurately communicate patterns.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "choose charts and visual encodings that accurately communicate patterns",
+        "is_correct": true
+      },
+      {
+        "text": "replace SQL",
+        "is_correct": false
+      },
+      {
+        "text": "manage Git branches",
+        "is_correct": false
+      },
+      {
+        "text": "store passwords",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "data-visualization",
+    "stem": "What is the primary reason to learn data visualization?",
+    "difficulty": "intermediate",
+    "explanation": "data visualization is useful because it enables the capability described by the correct option: choose charts and visual encodings that accurately communicate patterns.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "replace SQL",
+        "is_correct": false
+      },
+      {
+        "text": "manage Git branches",
+        "is_correct": false
+      },
+      {
+        "text": "store passwords",
+        "is_correct": false
+      },
+      {
+        "text": "choose charts and visual encodings that accurately communicate patterns",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "data-visualization",
+    "stem": "Which task is most directly associated with data visualization?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of data visualization: choose charts and visual encodings that accurately communicate patterns.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "manage Git branches",
+        "is_correct": false
+      },
+      {
+        "text": "store passwords",
+        "is_correct": false
+      },
+      {
+        "text": "choose charts and visual encodings that accurately communicate patterns",
+        "is_correct": true
+      },
+      {
+        "text": "replace SQL",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "descriptive-statistics",
+    "stem": "Which statement best describes descriptive statistics?",
+    "difficulty": "beginner",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of descriptive statistics: summarize distributions using measures such as mean, median, variance, and spread.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "summarize distributions using measures such as mean, median, variance, and spread",
+        "is_correct": true
+      },
+      {
+        "text": "deploy cloud services",
+        "is_correct": false
+      },
+      {
+        "text": "create React components",
+        "is_correct": false
+      },
+      {
+        "text": "write firewall rules",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "descriptive-statistics",
+    "stem": "What is the primary reason to learn descriptive statistics?",
+    "difficulty": "beginner",
+    "explanation": "descriptive statistics is useful because it enables the capability described by the correct option: summarize distributions using measures such as mean, median, variance, and spread.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "deploy cloud services",
+        "is_correct": false
+      },
+      {
+        "text": "create React components",
+        "is_correct": false
+      },
+      {
+        "text": "write firewall rules",
+        "is_correct": false
+      },
+      {
+        "text": "summarize distributions using measures such as mean, median, variance, and spread",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "descriptive-statistics",
+    "stem": "Which task is most directly associated with descriptive statistics?",
+    "difficulty": "beginner",
+    "explanation": "The correct task matches the central responsibility of descriptive statistics: summarize distributions using measures such as mean, median, variance, and spread.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "create React components",
+        "is_correct": false
+      },
+      {
+        "text": "write firewall rules",
+        "is_correct": false
+      },
+      {
+        "text": "summarize distributions using measures such as mean, median, variance, and spread",
+        "is_correct": true
+      },
+      {
+        "text": "deploy cloud services",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "end-to-end-data-analysis",
+    "stem": "Which statement best describes end to end data analysis?",
+    "difficulty": "advanced",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of end to end data analysis: move from a question and data preparation through analysis to documented findings.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "move from a question and data preparation through analysis to documented findings",
+        "is_correct": true
+      },
+      {
+        "text": "skip data validation",
+        "is_correct": false
+      },
+      {
+        "text": "choose conclusions before analysis",
+        "is_correct": false
+      },
+      {
+        "text": "publish without checking assumptions",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "end-to-end-data-analysis",
+    "stem": "What is the primary reason to learn end to end data analysis?",
+    "difficulty": "advanced",
+    "explanation": "end to end data analysis is useful because it enables the capability described by the correct option: move from a question and data preparation through analysis to documented findings.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "skip data validation",
+        "is_correct": false
+      },
+      {
+        "text": "choose conclusions before analysis",
+        "is_correct": false
+      },
+      {
+        "text": "publish without checking assumptions",
+        "is_correct": false
+      },
+      {
+        "text": "move from a question and data preparation through analysis to documented findings",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "end-to-end-data-analysis",
+    "stem": "Which task is most directly associated with end to end data analysis?",
+    "difficulty": "advanced",
+    "explanation": "The correct task matches the central responsibility of end to end data analysis: move from a question and data preparation through analysis to documented findings.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "choose conclusions before analysis",
+        "is_correct": false
+      },
+      {
+        "text": "publish without checking assumptions",
+        "is_correct": false
+      },
+      {
+        "text": "move from a question and data preparation through analysis to documented findings",
+        "is_correct": true
+      },
+      {
+        "text": "skip data validation",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "exploratory-data-analysis",
+    "stem": "Which statement best describes exploratory data analysis?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of exploratory data analysis: inspect distributions, relationships, anomalies, and patterns before formal conclusions.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "inspect distributions, relationships, anomalies, and patterns before formal conclusions",
+        "is_correct": true
+      },
+      {
+        "text": "replace data collection",
+        "is_correct": false
+      },
+      {
+        "text": "deploy APIs",
+        "is_correct": false
+      },
+      {
+        "text": "delete unusual rows automatically",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "exploratory-data-analysis",
+    "stem": "What is the primary reason to learn exploratory data analysis?",
+    "difficulty": "intermediate",
+    "explanation": "exploratory data analysis is useful because it enables the capability described by the correct option: inspect distributions, relationships, anomalies, and patterns before formal conclusions.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "replace data collection",
+        "is_correct": false
+      },
+      {
+        "text": "deploy APIs",
+        "is_correct": false
+      },
+      {
+        "text": "delete unusual rows automatically",
+        "is_correct": false
+      },
+      {
+        "text": "inspect distributions, relationships, anomalies, and patterns before formal conclusions",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "exploratory-data-analysis",
+    "stem": "Which task is most directly associated with exploratory data analysis?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of exploratory data analysis: inspect distributions, relationships, anomalies, and patterns before formal conclusions.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "deploy APIs",
+        "is_correct": false
+      },
+      {
+        "text": "delete unusual rows automatically",
+        "is_correct": false
+      },
+      {
+        "text": "inspect distributions, relationships, anomalies, and patterns before formal conclusions",
+        "is_correct": true
+      },
+      {
+        "text": "replace data collection",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "pandas-data-cleaning",
+    "stem": "Which statement best describes pandas data cleaning?",
+    "difficulty": "beginner",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of pandas data cleaning: clean tabular data with pandas operations for missing values, duplicates, types, and transformations.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "clean tabular data with pandas operations for missing values, duplicates, types, and transformations",
+        "is_correct": true
+      },
+      {
+        "text": "manage Kubernetes pods",
+        "is_correct": false
+      },
+      {
+        "text": "write CSS",
+        "is_correct": false
+      },
+      {
+        "text": "configure IAM",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "pandas-data-cleaning",
+    "stem": "What is the primary reason to learn pandas data cleaning?",
+    "difficulty": "beginner",
+    "explanation": "pandas data cleaning is useful because it enables the capability described by the correct option: clean tabular data with pandas operations for missing values, duplicates, types, and transformations.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "manage Kubernetes pods",
+        "is_correct": false
+      },
+      {
+        "text": "write CSS",
+        "is_correct": false
+      },
+      {
+        "text": "configure IAM",
+        "is_correct": false
+      },
+      {
+        "text": "clean tabular data with pandas operations for missing values, duplicates, types, and transformations",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "pandas-data-cleaning",
+    "stem": "Which task is most directly associated with pandas data cleaning?",
+    "difficulty": "beginner",
+    "explanation": "The correct task matches the central responsibility of pandas data cleaning: clean tabular data with pandas operations for missing values, duplicates, types, and transformations.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "write CSS",
+        "is_correct": false
+      },
+      {
+        "text": "configure IAM",
+        "is_correct": false
+      },
+      {
+        "text": "clean tabular data with pandas operations for missing values, duplicates, types, and transformations",
+        "is_correct": true
+      },
+      {
+        "text": "manage Kubernetes pods",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "probability-inference",
+    "stem": "Which statement best describes probability inference?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of probability inference: reason about uncertainty, probability, sampling, and statistical inference.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "reason about uncertainty, probability, sampling, and statistical inference",
+        "is_correct": true
+      },
+      {
+        "text": "compile Python",
+        "is_correct": false
+      },
+      {
+        "text": "design web pages",
+        "is_correct": false
+      },
+      {
+        "text": "manage containers",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "probability-inference",
+    "stem": "What is the primary reason to learn probability inference?",
+    "difficulty": "intermediate",
+    "explanation": "probability inference is useful because it enables the capability described by the correct option: reason about uncertainty, probability, sampling, and statistical inference.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "compile Python",
+        "is_correct": false
+      },
+      {
+        "text": "design web pages",
+        "is_correct": false
+      },
+      {
+        "text": "manage containers",
+        "is_correct": false
+      },
+      {
+        "text": "reason about uncertainty, probability, sampling, and statistical inference",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "probability-inference",
+    "stem": "Which task is most directly associated with probability inference?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of probability inference: reason about uncertainty, probability, sampling, and statistical inference.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "design web pages",
+        "is_correct": false
+      },
+      {
+        "text": "manage containers",
+        "is_correct": false
+      },
+      {
+        "text": "reason about uncertainty, probability, sampling, and statistical inference",
+        "is_correct": true
+      },
+      {
+        "text": "compile Python",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "python-data-basics",
+    "stem": "Which statement best describes python data basics?",
+    "difficulty": "beginner",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of python data basics: use Python data structures, control flow, functions, and libraries for data work.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "use Python data structures, control flow, functions, and libraries for data work",
+        "is_correct": true
+      },
+      {
+        "text": "configure routers",
+        "is_correct": false
+      },
+      {
+        "text": "write HTML only",
+        "is_correct": false
+      },
+      {
+        "text": "manage cloud billing",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "python-data-basics",
+    "stem": "What is the primary reason to learn python data basics?",
+    "difficulty": "beginner",
+    "explanation": "python data basics is useful because it enables the capability described by the correct option: use Python data structures, control flow, functions, and libraries for data work.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "configure routers",
+        "is_correct": false
+      },
+      {
+        "text": "write HTML only",
+        "is_correct": false
+      },
+      {
+        "text": "manage cloud billing",
+        "is_correct": false
+      },
+      {
+        "text": "use Python data structures, control flow, functions, and libraries for data work",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "python-data-basics",
+    "stem": "Which task is most directly associated with python data basics?",
+    "difficulty": "beginner",
+    "explanation": "The correct task matches the central responsibility of python data basics: use Python data structures, control flow, functions, and libraries for data work.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "write HTML only",
+        "is_correct": false
+      },
+      {
+        "text": "manage cloud billing",
+        "is_correct": false
+      },
+      {
+        "text": "use Python data structures, control flow, functions, and libraries for data work",
+        "is_correct": true
+      },
+      {
+        "text": "configure routers",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "sql-data-querying",
+    "stem": "Which statement best describes sql data querying?",
+    "difficulty": "beginner",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of sql data querying: retrieve, filter, sort, join, and aggregate relational data with SQL.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "retrieve, filter, sort, join, and aggregate relational data with SQL",
+        "is_correct": true
+      },
+      {
+        "text": "design CSS",
+        "is_correct": false
+      },
+      {
+        "text": "train neural networks",
+        "is_correct": false
+      },
+      {
+        "text": "manage Linux services",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "sql-data-querying",
+    "stem": "What is the primary reason to learn sql data querying?",
+    "difficulty": "beginner",
+    "explanation": "sql data querying is useful because it enables the capability described by the correct option: retrieve, filter, sort, join, and aggregate relational data with SQL.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "design CSS",
+        "is_correct": false
+      },
+      {
+        "text": "train neural networks",
+        "is_correct": false
+      },
+      {
+        "text": "manage Linux services",
+        "is_correct": false
+      },
+      {
+        "text": "retrieve, filter, sort, join, and aggregate relational data with SQL",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "sql-data-querying",
+    "stem": "Which task is most directly associated with sql data querying?",
+    "difficulty": "beginner",
+    "explanation": "The correct task matches the central responsibility of sql data querying: retrieve, filter, sort, join, and aggregate relational data with SQL.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "train neural networks",
+        "is_correct": false
+      },
+      {
+        "text": "manage Linux services",
+        "is_correct": false
+      },
+      {
+        "text": "retrieve, filter, sort, join, and aggregate relational data with SQL",
+        "is_correct": true
+      },
+      {
+        "text": "design CSS",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "authentication-authorization",
+    "stem": "Which statement best describes authentication authorization?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of authentication authorization: verify identities and enforce what authenticated users are allowed to do.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "verify identities and enforce what authenticated users are allowed to do",
+        "is_correct": true
+      },
+      {
+        "text": "style pages",
+        "is_correct": false
+      },
+      {
+        "text": "sort arrays",
+        "is_correct": false
+      },
+      {
+        "text": "compress images",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "authentication-authorization",
+    "stem": "What is the primary reason to learn authentication authorization?",
+    "difficulty": "intermediate",
+    "explanation": "authentication authorization is useful because it enables the capability described by the correct option: verify identities and enforce what authenticated users are allowed to do.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "style pages",
+        "is_correct": false
+      },
+      {
+        "text": "sort arrays",
+        "is_correct": false
+      },
+      {
+        "text": "compress images",
+        "is_correct": false
+      },
+      {
+        "text": "verify identities and enforce what authenticated users are allowed to do",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "authentication-authorization",
+    "stem": "Which task is most directly associated with authentication authorization?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of authentication authorization: verify identities and enforce what authenticated users are allowed to do.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "sort arrays",
+        "is_correct": false
+      },
+      {
+        "text": "compress images",
+        "is_correct": false
+      },
+      {
+        "text": "verify identities and enforce what authenticated users are allowed to do",
+        "is_correct": true
+      },
+      {
+        "text": "style pages",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "deployment-web-apps",
+    "stem": "Which statement best describes deployment web apps?",
+    "difficulty": "advanced",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of deployment web apps: prepare and release web applications to a production environment with appropriate configuration.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "prepare and release web applications to a production environment with appropriate configuration",
+        "is_correct": true
+      },
+      {
+        "text": "write only local HTML",
+        "is_correct": false
+      },
+      {
+        "text": "replace Git with FTP",
+        "is_correct": false
+      },
+      {
+        "text": "remove environment configuration",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "deployment-web-apps",
+    "stem": "What is the primary reason to learn deployment web apps?",
+    "difficulty": "advanced",
+    "explanation": "deployment web apps is useful because it enables the capability described by the correct option: prepare and release web applications to a production environment with appropriate configuration.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "write only local HTML",
+        "is_correct": false
+      },
+      {
+        "text": "replace Git with FTP",
+        "is_correct": false
+      },
+      {
+        "text": "remove environment configuration",
+        "is_correct": false
+      },
+      {
+        "text": "prepare and release web applications to a production environment with appropriate configuration",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "deployment-web-apps",
+    "stem": "Which task is most directly associated with deployment web apps?",
+    "difficulty": "advanced",
+    "explanation": "The correct task matches the central responsibility of deployment web apps: prepare and release web applications to a production environment with appropriate configuration.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "replace Git with FTP",
+        "is_correct": false
+      },
+      {
+        "text": "remove environment configuration",
+        "is_correct": false
+      },
+      {
+        "text": "prepare and release web applications to a production environment with appropriate configuration",
+        "is_correct": true
+      },
+      {
+        "text": "write only local HTML",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "dom-browser-apis",
+    "stem": "Which statement best describes dom browser apis?",
+    "difficulty": "beginner",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of dom browser apis: interact with browser documents, events, storage, and other client-side APIs.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "interact with browser documents, events, storage, and other client-side APIs",
+        "is_correct": true
+      },
+      {
+        "text": "configure cloud IAM",
+        "is_correct": false
+      },
+      {
+        "text": "normalize databases",
+        "is_correct": false
+      },
+      {
+        "text": "train ML models",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "dom-browser-apis",
+    "stem": "What is the primary reason to learn dom browser apis?",
+    "difficulty": "beginner",
+    "explanation": "dom browser apis is useful because it enables the capability described by the correct option: interact with browser documents, events, storage, and other client-side APIs.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "configure cloud IAM",
+        "is_correct": false
+      },
+      {
+        "text": "normalize databases",
+        "is_correct": false
+      },
+      {
+        "text": "train ML models",
+        "is_correct": false
+      },
+      {
+        "text": "interact with browser documents, events, storage, and other client-side APIs",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "dom-browser-apis",
+    "stem": "Which task is most directly associated with dom browser apis?",
+    "difficulty": "beginner",
+    "explanation": "The correct task matches the central responsibility of dom browser apis: interact with browser documents, events, storage, and other client-side APIs.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "normalize databases",
+        "is_correct": false
+      },
+      {
+        "text": "train ML models",
+        "is_correct": false
+      },
+      {
+        "text": "interact with browser documents, events, storage, and other client-side APIs",
+        "is_correct": true
+      },
+      {
+        "text": "configure cloud IAM",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "git-github-workflow",
+    "stem": "Which statement best describes git github workflow?",
+    "difficulty": "beginner",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of git github workflow: track changes and collaborate through commits, branches, pull requests, and reviews.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "track changes and collaborate through commits, branches, pull requests, and reviews",
+        "is_correct": true
+      },
+      {
+        "text": "store passwords",
+        "is_correct": false
+      },
+      {
+        "text": "run SQL migrations automatically",
+        "is_correct": false
+      },
+      {
+        "text": "design CSS",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "git-github-workflow",
+    "stem": "What is the primary reason to learn git github workflow?",
+    "difficulty": "beginner",
+    "explanation": "git github workflow is useful because it enables the capability described by the correct option: track changes and collaborate through commits, branches, pull requests, and reviews.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "store passwords",
+        "is_correct": false
+      },
+      {
+        "text": "run SQL migrations automatically",
+        "is_correct": false
+      },
+      {
+        "text": "design CSS",
+        "is_correct": false
+      },
+      {
+        "text": "track changes and collaborate through commits, branches, pull requests, and reviews",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "git-github-workflow",
+    "stem": "Which task is most directly associated with git github workflow?",
+    "difficulty": "beginner",
+    "explanation": "The correct task matches the central responsibility of git github workflow: track changes and collaborate through commits, branches, pull requests, and reviews.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "run SQL migrations automatically",
+        "is_correct": false
+      },
+      {
+        "text": "design CSS",
+        "is_correct": false
+      },
+      {
+        "text": "track changes and collaborate through commits, branches, pull requests, and reviews",
+        "is_correct": true
+      },
+      {
+        "text": "store passwords",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "html-css-foundations",
+    "stem": "Which statement best describes html css foundations?",
+    "difficulty": "beginner",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of html css foundations: define semantic web structure and control presentation and layout.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "define semantic web structure and control presentation and layout",
+        "is_correct": true
+      },
+      {
+        "text": "query databases",
+        "is_correct": false
+      },
+      {
+        "text": "configure networks",
+        "is_correct": false
+      },
+      {
+        "text": "train models",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "html-css-foundations",
+    "stem": "What is the primary reason to learn html css foundations?",
+    "difficulty": "beginner",
+    "explanation": "html css foundations is useful because it enables the capability described by the correct option: define semantic web structure and control presentation and layout.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "query databases",
+        "is_correct": false
+      },
+      {
+        "text": "configure networks",
+        "is_correct": false
+      },
+      {
+        "text": "train models",
+        "is_correct": false
+      },
+      {
+        "text": "define semantic web structure and control presentation and layout",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "html-css-foundations",
+    "stem": "Which task is most directly associated with html css foundations?",
+    "difficulty": "beginner",
+    "explanation": "The correct task matches the central responsibility of html css foundations: define semantic web structure and control presentation and layout.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "configure networks",
+        "is_correct": false
+      },
+      {
+        "text": "train models",
+        "is_correct": false
+      },
+      {
+        "text": "define semantic web structure and control presentation and layout",
+        "is_correct": true
+      },
+      {
+        "text": "query databases",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "http-rest-apis",
+    "stem": "Which statement best describes http rest apis?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of http rest apis: exchange resources and operations between clients and servers using HTTP conventions.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "exchange resources and operations between clients and servers using HTTP conventions",
+        "is_correct": true
+      },
+      {
+        "text": "render CSS",
+        "is_correct": false
+      },
+      {
+        "text": "manage Git history",
+        "is_correct": false
+      },
+      {
+        "text": "train neural networks",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "http-rest-apis",
+    "stem": "What is the primary reason to learn http rest apis?",
+    "difficulty": "intermediate",
+    "explanation": "http rest apis is useful because it enables the capability described by the correct option: exchange resources and operations between clients and servers using HTTP conventions.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "render CSS",
+        "is_correct": false
+      },
+      {
+        "text": "manage Git history",
+        "is_correct": false
+      },
+      {
+        "text": "train neural networks",
+        "is_correct": false
+      },
+      {
+        "text": "exchange resources and operations between clients and servers using HTTP conventions",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "http-rest-apis",
+    "stem": "Which task is most directly associated with http rest apis?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of http rest apis: exchange resources and operations between clients and servers using HTTP conventions.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "manage Git history",
+        "is_correct": false
+      },
+      {
+        "text": "train neural networks",
+        "is_correct": false
+      },
+      {
+        "text": "exchange resources and operations between clients and servers using HTTP conventions",
+        "is_correct": true
+      },
+      {
+        "text": "render CSS",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "javascript-fundamentals",
+    "stem": "Which statement best describes javascript fundamentals?",
+    "difficulty": "beginner",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of javascript fundamentals: program browser and server behavior using JavaScript variables, functions, objects, arrays, and control flow.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "program browser and server behavior using JavaScript variables, functions, objects, arrays, and control flow",
+        "is_correct": true
+      },
+      {
+        "text": "define SQL schemas",
+        "is_correct": false
+      },
+      {
+        "text": "configure Linux",
+        "is_correct": false
+      },
+      {
+        "text": "create Docker images",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "javascript-fundamentals",
+    "stem": "What is the primary reason to learn javascript fundamentals?",
+    "difficulty": "beginner",
+    "explanation": "javascript fundamentals is useful because it enables the capability described by the correct option: program browser and server behavior using JavaScript variables, functions, objects, arrays, and control flow.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "define SQL schemas",
+        "is_correct": false
+      },
+      {
+        "text": "configure Linux",
+        "is_correct": false
+      },
+      {
+        "text": "create Docker images",
+        "is_correct": false
+      },
+      {
+        "text": "program browser and server behavior using JavaScript variables, functions, objects, arrays, and control flow",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "javascript-fundamentals",
+    "stem": "Which task is most directly associated with javascript fundamentals?",
+    "difficulty": "beginner",
+    "explanation": "The correct task matches the central responsibility of javascript fundamentals: program browser and server behavior using JavaScript variables, functions, objects, arrays, and control flow.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "configure Linux",
+        "is_correct": false
+      },
+      {
+        "text": "create Docker images",
+        "is_correct": false
+      },
+      {
+        "text": "program browser and server behavior using JavaScript variables, functions, objects, arrays, and control flow",
+        "is_correct": true
+      },
+      {
+        "text": "define SQL schemas",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "node-express-backend",
+    "stem": "Which statement best describes node express backend?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of node express backend: build server-side APIs and web applications with Node.js and Express middleware/routing.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "build server-side APIs and web applications with Node.js and Express middleware/routing",
+        "is_correct": true
+      },
+      {
+        "text": "style components",
+        "is_correct": false
+      },
+      {
+        "text": "manage Git branches",
+        "is_correct": false
+      },
+      {
+        "text": "draw BI charts",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "node-express-backend",
+    "stem": "What is the primary reason to learn node express backend?",
+    "difficulty": "intermediate",
+    "explanation": "node express backend is useful because it enables the capability described by the correct option: build server-side APIs and web applications with Node.js and Express middleware/routing.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "style components",
+        "is_correct": false
+      },
+      {
+        "text": "manage Git branches",
+        "is_correct": false
+      },
+      {
+        "text": "draw BI charts",
+        "is_correct": false
+      },
+      {
+        "text": "build server-side APIs and web applications with Node.js and Express middleware/routing",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "node-express-backend",
+    "stem": "Which task is most directly associated with node express backend?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of node express backend: build server-side APIs and web applications with Node.js and Express middleware/routing.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "manage Git branches",
+        "is_correct": false
+      },
+      {
+        "text": "draw BI charts",
+        "is_correct": false
+      },
+      {
+        "text": "build server-side APIs and web applications with Node.js and Express middleware/routing",
+        "is_correct": true
+      },
+      {
+        "text": "style components",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "production-full-stack-integration",
+    "stem": "Which statement best describes production full stack integration?",
+    "difficulty": "advanced",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of production full stack integration: connect frontend, backend, authentication, databases, validation, and deployment into a coherent application.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "connect frontend, backend, authentication, databases, validation, and deployment into a coherent application",
+        "is_correct": true
+      },
+      {
+        "text": "put database credentials in frontend code",
+        "is_correct": false
+      },
+      {
+        "text": "skip server validation",
+        "is_correct": false
+      },
+      {
+        "text": "run everything only on a laptop",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "production-full-stack-integration",
+    "stem": "What is the primary reason to learn production full stack integration?",
+    "difficulty": "advanced",
+    "explanation": "production full stack integration is useful because it enables the capability described by the correct option: connect frontend, backend, authentication, databases, validation, and deployment into a coherent application.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "put database credentials in frontend code",
+        "is_correct": false
+      },
+      {
+        "text": "skip server validation",
+        "is_correct": false
+      },
+      {
+        "text": "run everything only on a laptop",
+        "is_correct": false
+      },
+      {
+        "text": "connect frontend, backend, authentication, databases, validation, and deployment into a coherent application",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "production-full-stack-integration",
+    "stem": "Which task is most directly associated with production full stack integration?",
+    "difficulty": "advanced",
+    "explanation": "The correct task matches the central responsibility of production full stack integration: connect frontend, backend, authentication, databases, validation, and deployment into a coherent application.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "skip server validation",
+        "is_correct": false
+      },
+      {
+        "text": "run everything only on a laptop",
+        "is_correct": false
+      },
+      {
+        "text": "connect frontend, backend, authentication, databases, validation, and deployment into a coherent application",
+        "is_correct": true
+      },
+      {
+        "text": "put database credentials in frontend code",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "react-frontend",
+    "stem": "Which statement best describes react frontend?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of react frontend: build component-based interactive user interfaces with React state, props, and rendering.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "build component-based interactive user interfaces with React state, props, and rendering",
+        "is_correct": true
+      },
+      {
+        "text": "write SQL queries",
+        "is_correct": false
+      },
+      {
+        "text": "configure DNS",
+        "is_correct": false
+      },
+      {
+        "text": "manage Linux services",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "react-frontend",
+    "stem": "What is the primary reason to learn react frontend?",
+    "difficulty": "intermediate",
+    "explanation": "react frontend is useful because it enables the capability described by the correct option: build component-based interactive user interfaces with React state, props, and rendering.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "write SQL queries",
+        "is_correct": false
+      },
+      {
+        "text": "configure DNS",
+        "is_correct": false
+      },
+      {
+        "text": "manage Linux services",
+        "is_correct": false
+      },
+      {
+        "text": "build component-based interactive user interfaces with React state, props, and rendering",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "react-frontend",
+    "stem": "Which task is most directly associated with react frontend?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of react frontend: build component-based interactive user interfaces with React state, props, and rendering.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "configure DNS",
+        "is_correct": false
+      },
+      {
+        "text": "manage Linux services",
+        "is_correct": false
+      },
+      {
+        "text": "build component-based interactive user interfaces with React state, props, and rendering",
+        "is_correct": true
+      },
+      {
+        "text": "write SQL queries",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "relational-databases-sql",
+    "stem": "Which statement best describes relational databases sql?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of relational databases sql: model related data in tables and query it using relational constraints and SQL.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "model related data in tables and query it using relational constraints and SQL",
+        "is_correct": true
+      },
+      {
+        "text": "design CSS layouts",
+        "is_correct": false
+      },
+      {
+        "text": "create Kubernetes Pods",
+        "is_correct": false
+      },
+      {
+        "text": "write neural-network layers",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "relational-databases-sql",
+    "stem": "What is the primary reason to learn relational databases sql?",
+    "difficulty": "intermediate",
+    "explanation": "relational databases sql is useful because it enables the capability described by the correct option: model related data in tables and query it using relational constraints and SQL.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "design CSS layouts",
+        "is_correct": false
+      },
+      {
+        "text": "create Kubernetes Pods",
+        "is_correct": false
+      },
+      {
+        "text": "write neural-network layers",
+        "is_correct": false
+      },
+      {
+        "text": "model related data in tables and query it using relational constraints and SQL",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "relational-databases-sql",
+    "stem": "Which task is most directly associated with relational databases sql?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of relational databases sql: model related data in tables and query it using relational constraints and SQL.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "create Kubernetes Pods",
+        "is_correct": false
+      },
+      {
+        "text": "write neural-network layers",
+        "is_correct": false
+      },
+      {
+        "text": "model related data in tables and query it using relational constraints and SQL",
+        "is_correct": true
+      },
+      {
+        "text": "design CSS layouts",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "responsive-accessible-web",
+    "stem": "Which statement best describes responsive accessible web?",
+    "difficulty": "beginner",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of responsive accessible web: make interfaces adapt to devices and remain usable with assistive technologies.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "make interfaces adapt to devices and remain usable with assistive technologies",
+        "is_correct": true
+      },
+      {
+        "text": "hide labels",
+        "is_correct": false
+      },
+      {
+        "text": "use desktop-only layouts",
+        "is_correct": false
+      },
+      {
+        "text": "remove semantic HTML",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "responsive-accessible-web",
+    "stem": "What is the primary reason to learn responsive accessible web?",
+    "difficulty": "beginner",
+    "explanation": "responsive accessible web is useful because it enables the capability described by the correct option: make interfaces adapt to devices and remain usable with assistive technologies.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "hide labels",
+        "is_correct": false
+      },
+      {
+        "text": "use desktop-only layouts",
+        "is_correct": false
+      },
+      {
+        "text": "remove semantic HTML",
+        "is_correct": false
+      },
+      {
+        "text": "make interfaces adapt to devices and remain usable with assistive technologies",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "responsive-accessible-web",
+    "stem": "Which task is most directly associated with responsive accessible web?",
+    "difficulty": "beginner",
+    "explanation": "The correct task matches the central responsibility of responsive accessible web: make interfaces adapt to devices and remain usable with assistive technologies.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "use desktop-only layouts",
+        "is_correct": false
+      },
+      {
+        "text": "remove semantic HTML",
+        "is_correct": false
+      },
+      {
+        "text": "make interfaces adapt to devices and remain usable with assistive technologies",
+        "is_correct": true
+      },
+      {
+        "text": "hide labels",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "testing-web-applications",
+    "stem": "Which statement best describes testing web applications?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of testing web applications: verify web behavior with unit, integration, and regression tests.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "verify web behavior with unit, integration, and regression tests",
+        "is_correct": true
+      },
+      {
+        "text": "deploy without tests",
+        "is_correct": false
+      },
+      {
+        "text": "store passwords",
+        "is_correct": false
+      },
+      {
+        "text": "configure DNS",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "testing-web-applications",
+    "stem": "What is the primary reason to learn testing web applications?",
+    "difficulty": "intermediate",
+    "explanation": "testing web applications is useful because it enables the capability described by the correct option: verify web behavior with unit, integration, and regression tests.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "deploy without tests",
+        "is_correct": false
+      },
+      {
+        "text": "store passwords",
+        "is_correct": false
+      },
+      {
+        "text": "configure DNS",
+        "is_correct": false
+      },
+      {
+        "text": "verify web behavior with unit, integration, and regression tests",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "testing-web-applications",
+    "stem": "Which task is most directly associated with testing web applications?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of testing web applications: verify web behavior with unit, integration, and regression tests.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "store passwords",
+        "is_correct": false
+      },
+      {
+        "text": "configure DNS",
+        "is_correct": false
+      },
+      {
+        "text": "verify web behavior with unit, integration, and regression tests",
+        "is_correct": true
+      },
+      {
+        "text": "deploy without tests",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "typescript-basics",
+    "stem": "Which statement best describes typescript basics?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of typescript basics: add static typing and related language features to JavaScript applications.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "add static typing and related language features to JavaScript applications",
+        "is_correct": true
+      },
+      {
+        "text": "replace SQL",
+        "is_correct": false
+      },
+      {
+        "text": "create containers",
+        "is_correct": false
+      },
+      {
+        "text": "configure routers",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "typescript-basics",
+    "stem": "What is the primary reason to learn typescript basics?",
+    "difficulty": "intermediate",
+    "explanation": "typescript basics is useful because it enables the capability described by the correct option: add static typing and related language features to JavaScript applications.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "replace SQL",
+        "is_correct": false
+      },
+      {
+        "text": "create containers",
+        "is_correct": false
+      },
+      {
+        "text": "configure routers",
+        "is_correct": false
+      },
+      {
+        "text": "add static typing and related language features to JavaScript applications",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "typescript-basics",
+    "stem": "Which task is most directly associated with typescript basics?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of typescript basics: add static typing and related language features to JavaScript applications.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "create containers",
+        "is_correct": false
+      },
+      {
+        "text": "configure routers",
+        "is_correct": false
+      },
+      {
+        "text": "add static typing and related language features to JavaScript applications",
+        "is_correct": true
+      },
+      {
+        "text": "replace SQL",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "classification-models",
+    "stem": "Which statement best describes classification models?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of classification models: predict discrete classes from input features.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "predict discrete classes from input features",
+        "is_correct": true
+      },
+      {
+        "text": "predict only continuous values",
+        "is_correct": false
+      },
+      {
+        "text": "group rows without labels",
+        "is_correct": false
+      },
+      {
+        "text": "style dashboards",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "classification-models",
+    "stem": "What is the primary reason to learn classification models?",
+    "difficulty": "intermediate",
+    "explanation": "classification models is useful because it enables the capability described by the correct option: predict discrete classes from input features.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "predict only continuous values",
+        "is_correct": false
+      },
+      {
+        "text": "group rows without labels",
+        "is_correct": false
+      },
+      {
+        "text": "style dashboards",
+        "is_correct": false
+      },
+      {
+        "text": "predict discrete classes from input features",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "classification-models",
+    "stem": "Which task is most directly associated with classification models?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of classification models: predict discrete classes from input features.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "group rows without labels",
+        "is_correct": false
+      },
+      {
+        "text": "style dashboards",
+        "is_correct": false
+      },
+      {
+        "text": "predict discrete classes from input features",
+        "is_correct": true
+      },
+      {
+        "text": "predict only continuous values",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "data-preparation-ml",
+    "stem": "Which statement best describes data preparation ml?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of data preparation ml: prepare features safely while preventing leakage and handling missing or categorical data.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "prepare features safely while preventing leakage and handling missing or categorical data",
+        "is_correct": true
+      },
+      {
+        "text": "publish passwords",
+        "is_correct": false
+      },
+      {
+        "text": "skip train/test separation",
+        "is_correct": false
+      },
+      {
+        "text": "use test labels during preprocessing",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "data-preparation-ml",
+    "stem": "What is the primary reason to learn data preparation ml?",
+    "difficulty": "intermediate",
+    "explanation": "data preparation ml is useful because it enables the capability described by the correct option: prepare features safely while preventing leakage and handling missing or categorical data.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "publish passwords",
+        "is_correct": false
+      },
+      {
+        "text": "skip train/test separation",
+        "is_correct": false
+      },
+      {
+        "text": "use test labels during preprocessing",
+        "is_correct": false
+      },
+      {
+        "text": "prepare features safely while preventing leakage and handling missing or categorical data",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "data-preparation-ml",
+    "stem": "Which task is most directly associated with data preparation ml?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of data preparation ml: prepare features safely while preventing leakage and handling missing or categorical data.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "skip train/test separation",
+        "is_correct": false
+      },
+      {
+        "text": "use test labels during preprocessing",
+        "is_correct": false
+      },
+      {
+        "text": "prepare features safely while preventing leakage and handling missing or categorical data",
+        "is_correct": true
+      },
+      {
+        "text": "publish passwords",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "linear-algebra-for-ml",
+    "stem": "Which statement best describes linear algebra for ml?",
+    "difficulty": "beginner",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of linear algebra for ml: use vectors, matrices, and related operations to represent and transform numerical data.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "use vectors, matrices, and related operations to represent and transform numerical data",
+        "is_correct": true
+      },
+      {
+        "text": "write HTTP routes",
+        "is_correct": false
+      },
+      {
+        "text": "normalize databases",
+        "is_correct": false
+      },
+      {
+        "text": "style HTML",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "linear-algebra-for-ml",
+    "stem": "What is the primary reason to learn linear algebra for ml?",
+    "difficulty": "beginner",
+    "explanation": "linear algebra for ml is useful because it enables the capability described by the correct option: use vectors, matrices, and related operations to represent and transform numerical data.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "write HTTP routes",
+        "is_correct": false
+      },
+      {
+        "text": "normalize databases",
+        "is_correct": false
+      },
+      {
+        "text": "style HTML",
+        "is_correct": false
+      },
+      {
+        "text": "use vectors, matrices, and related operations to represent and transform numerical data",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "linear-algebra-for-ml",
+    "stem": "Which task is most directly associated with linear algebra for ml?",
+    "difficulty": "beginner",
+    "explanation": "The correct task matches the central responsibility of linear algebra for ml: use vectors, matrices, and related operations to represent and transform numerical data.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "normalize databases",
+        "is_correct": false
+      },
+      {
+        "text": "style HTML",
+        "is_correct": false
+      },
+      {
+        "text": "use vectors, matrices, and related operations to represent and transform numerical data",
+        "is_correct": true
+      },
+      {
+        "text": "write HTTP routes",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "linear-regression",
+    "stem": "Which statement best describes linear regression?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of linear regression: model a continuous target using a weighted combination of input features.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "model a continuous target using a weighted combination of input features",
+        "is_correct": true
+      },
+      {
+        "text": "predict fixed class labels only",
+        "is_correct": false
+      },
+      {
+        "text": "cluster unlabeled points",
+        "is_correct": false
+      },
+      {
+        "text": "manage containers",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "linear-regression",
+    "stem": "What is the primary reason to learn linear regression?",
+    "difficulty": "intermediate",
+    "explanation": "linear regression is useful because it enables the capability described by the correct option: model a continuous target using a weighted combination of input features.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "predict fixed class labels only",
+        "is_correct": false
+      },
+      {
+        "text": "cluster unlabeled points",
+        "is_correct": false
+      },
+      {
+        "text": "manage containers",
+        "is_correct": false
+      },
+      {
+        "text": "model a continuous target using a weighted combination of input features",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "linear-regression",
+    "stem": "Which task is most directly associated with linear regression?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of linear regression: model a continuous target using a weighted combination of input features.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "cluster unlabeled points",
+        "is_correct": false
+      },
+      {
+        "text": "manage containers",
+        "is_correct": false
+      },
+      {
+        "text": "model a continuous target using a weighted combination of input features",
+        "is_correct": true
+      },
+      {
+        "text": "predict fixed class labels only",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "ml-pipelines",
+    "stem": "Which statement best describes ml pipelines?",
+    "difficulty": "advanced",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of ml pipelines: chain preprocessing and modeling steps reproducibly while avoiding data leakage.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "chain preprocessing and modeling steps reproducibly while avoiding data leakage",
+        "is_correct": true
+      },
+      {
+        "text": "remove evaluation",
+        "is_correct": false
+      },
+      {
+        "text": "fit preprocessing on all data indiscriminately",
+        "is_correct": false
+      },
+      {
+        "text": "replace version control",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "ml-pipelines",
+    "stem": "What is the primary reason to learn ml pipelines?",
+    "difficulty": "advanced",
+    "explanation": "ml pipelines is useful because it enables the capability described by the correct option: chain preprocessing and modeling steps reproducibly while avoiding data leakage.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "remove evaluation",
+        "is_correct": false
+      },
+      {
+        "text": "fit preprocessing on all data indiscriminately",
+        "is_correct": false
+      },
+      {
+        "text": "replace version control",
+        "is_correct": false
+      },
+      {
+        "text": "chain preprocessing and modeling steps reproducibly while avoiding data leakage",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "ml-pipelines",
+    "stem": "Which task is most directly associated with ml pipelines?",
+    "difficulty": "advanced",
+    "explanation": "The correct task matches the central responsibility of ml pipelines: chain preprocessing and modeling steps reproducibly while avoiding data leakage.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "fit preprocessing on all data indiscriminately",
+        "is_correct": false
+      },
+      {
+        "text": "replace version control",
+        "is_correct": false
+      },
+      {
+        "text": "chain preprocessing and modeling steps reproducibly while avoiding data leakage",
+        "is_correct": true
+      },
+      {
+        "text": "remove evaluation",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "ml-project-delivery",
+    "stem": "Which statement best describes ml project delivery?",
+    "difficulty": "advanced",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of ml project delivery: package, document, validate, version, and deploy ML models reproducibly.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "package, document, validate, version, and deploy ML models reproducibly",
+        "is_correct": true
+      },
+      {
+        "text": "hide evaluation details",
+        "is_correct": false
+      },
+      {
+        "text": "ship unvalidated inputs",
+        "is_correct": false
+      },
+      {
+        "text": "delete model versions",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "ml-project-delivery",
+    "stem": "What is the primary reason to learn ml project delivery?",
+    "difficulty": "advanced",
+    "explanation": "ml project delivery is useful because it enables the capability described by the correct option: package, document, validate, version, and deploy ML models reproducibly.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "hide evaluation details",
+        "is_correct": false
+      },
+      {
+        "text": "ship unvalidated inputs",
+        "is_correct": false
+      },
+      {
+        "text": "delete model versions",
+        "is_correct": false
+      },
+      {
+        "text": "package, document, validate, version, and deploy ML models reproducibly",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "ml-project-delivery",
+    "stem": "Which task is most directly associated with ml project delivery?",
+    "difficulty": "advanced",
+    "explanation": "The correct task matches the central responsibility of ml project delivery: package, document, validate, version, and deploy ML models reproducibly.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "ship unvalidated inputs",
+        "is_correct": false
+      },
+      {
+        "text": "delete model versions",
+        "is_correct": false
+      },
+      {
+        "text": "package, document, validate, version, and deploy ML models reproducibly",
+        "is_correct": true
+      },
+      {
+        "text": "hide evaluation details",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "model-evaluation",
+    "stem": "Which statement best describes model evaluation?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of model evaluation: measure model performance with appropriate metrics and validation procedures.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "measure model performance with appropriate metrics and validation procedures",
+        "is_correct": true
+      },
+      {
+        "text": "skip test data",
+        "is_correct": false
+      },
+      {
+        "text": "guarantee accuracy",
+        "is_correct": false
+      },
+      {
+        "text": "replace labels with code",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "model-evaluation",
+    "stem": "What is the primary reason to learn model evaluation?",
+    "difficulty": "intermediate",
+    "explanation": "model evaluation is useful because it enables the capability described by the correct option: measure model performance with appropriate metrics and validation procedures.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "skip test data",
+        "is_correct": false
+      },
+      {
+        "text": "guarantee accuracy",
+        "is_correct": false
+      },
+      {
+        "text": "replace labels with code",
+        "is_correct": false
+      },
+      {
+        "text": "measure model performance with appropriate metrics and validation procedures",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "model-evaluation",
+    "stem": "Which task is most directly associated with model evaluation?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of model evaluation: measure model performance with appropriate metrics and validation procedures.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "guarantee accuracy",
+        "is_correct": false
+      },
+      {
+        "text": "replace labels with code",
+        "is_correct": false
+      },
+      {
+        "text": "measure model performance with appropriate metrics and validation procedures",
+        "is_correct": true
+      },
+      {
+        "text": "skip test data",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "neural-network-foundations",
+    "stem": "Which statement best describes neural network foundations?",
+    "difficulty": "advanced",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of neural network foundations: understand neurons, activations, losses, and gradient-based training.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "understand neurons, activations, losses, and gradient-based training",
+        "is_correct": true
+      },
+      {
+        "text": "write SQL joins",
+        "is_correct": false
+      },
+      {
+        "text": "configure DNS",
+        "is_correct": false
+      },
+      {
+        "text": "normalize HTML",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "neural-network-foundations",
+    "stem": "What is the primary reason to learn neural network foundations?",
+    "difficulty": "advanced",
+    "explanation": "neural network foundations is useful because it enables the capability described by the correct option: understand neurons, activations, losses, and gradient-based training.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "write SQL joins",
+        "is_correct": false
+      },
+      {
+        "text": "configure DNS",
+        "is_correct": false
+      },
+      {
+        "text": "normalize HTML",
+        "is_correct": false
+      },
+      {
+        "text": "understand neurons, activations, losses, and gradient-based training",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "neural-network-foundations",
+    "stem": "Which task is most directly associated with neural network foundations?",
+    "difficulty": "advanced",
+    "explanation": "The correct task matches the central responsibility of neural network foundations: understand neurons, activations, losses, and gradient-based training.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "configure DNS",
+        "is_correct": false
+      },
+      {
+        "text": "normalize HTML",
+        "is_correct": false
+      },
+      {
+        "text": "understand neurons, activations, losses, and gradient-based training",
+        "is_correct": true
+      },
+      {
+        "text": "write SQL joins",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "numpy-data-arrays",
+    "stem": "Which statement best describes numpy data arrays?",
+    "difficulty": "beginner",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of numpy data arrays: perform efficient numerical computation with multidimensional arrays.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "perform efficient numerical computation with multidimensional arrays",
+        "is_correct": true
+      },
+      {
+        "text": "manage Git history",
+        "is_correct": false
+      },
+      {
+        "text": "create HTTP endpoints",
+        "is_correct": false
+      },
+      {
+        "text": "design BI dashboards",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "numpy-data-arrays",
+    "stem": "What is the primary reason to learn numpy data arrays?",
+    "difficulty": "beginner",
+    "explanation": "numpy data arrays is useful because it enables the capability described by the correct option: perform efficient numerical computation with multidimensional arrays.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "manage Git history",
+        "is_correct": false
+      },
+      {
+        "text": "create HTTP endpoints",
+        "is_correct": false
+      },
+      {
+        "text": "design BI dashboards",
+        "is_correct": false
+      },
+      {
+        "text": "perform efficient numerical computation with multidimensional arrays",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "numpy-data-arrays",
+    "stem": "Which task is most directly associated with numpy data arrays?",
+    "difficulty": "beginner",
+    "explanation": "The correct task matches the central responsibility of numpy data arrays: perform efficient numerical computation with multidimensional arrays.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "create HTTP endpoints",
+        "is_correct": false
+      },
+      {
+        "text": "design BI dashboards",
+        "is_correct": false
+      },
+      {
+        "text": "perform efficient numerical computation with multidimensional arrays",
+        "is_correct": true
+      },
+      {
+        "text": "manage Git history",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "probability-statistics-for-ml",
+    "stem": "Which statement best describes probability statistics for ml?",
+    "difficulty": "beginner",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of probability statistics for ml: use probability, variance, distributions, and correlation to reason about ML data and uncertainty.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "use probability, variance, distributions, and correlation to reason about ML data and uncertainty",
+        "is_correct": true
+      },
+      {
+        "text": "deploy containers",
+        "is_correct": false
+      },
+      {
+        "text": "write CSS",
+        "is_correct": false
+      },
+      {
+        "text": "manage DNS",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "probability-statistics-for-ml",
+    "stem": "What is the primary reason to learn probability statistics for ml?",
+    "difficulty": "beginner",
+    "explanation": "probability statistics for ml is useful because it enables the capability described by the correct option: use probability, variance, distributions, and correlation to reason about ML data and uncertainty.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "deploy containers",
+        "is_correct": false
+      },
+      {
+        "text": "write CSS",
+        "is_correct": false
+      },
+      {
+        "text": "manage DNS",
+        "is_correct": false
+      },
+      {
+        "text": "use probability, variance, distributions, and correlation to reason about ML data and uncertainty",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "probability-statistics-for-ml",
+    "stem": "Which task is most directly associated with probability statistics for ml?",
+    "difficulty": "beginner",
+    "explanation": "The correct task matches the central responsibility of probability statistics for ml: use probability, variance, distributions, and correlation to reason about ML data and uncertainty.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "write CSS",
+        "is_correct": false
+      },
+      {
+        "text": "manage DNS",
+        "is_correct": false
+      },
+      {
+        "text": "use probability, variance, distributions, and correlation to reason about ML data and uncertainty",
+        "is_correct": true
+      },
+      {
+        "text": "deploy containers",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "python-for-ml",
+    "stem": "Which statement best describes python for ml?",
+    "difficulty": "beginner",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of python for ml: use Python and its numerical/ML ecosystem to implement machine-learning workflows.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "use Python and its numerical/ML ecosystem to implement machine-learning workflows",
+        "is_correct": true
+      },
+      {
+        "text": "configure firewalls",
+        "is_correct": false
+      },
+      {
+        "text": "write HTML only",
+        "is_correct": false
+      },
+      {
+        "text": "replace mathematics with libraries",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "python-for-ml",
+    "stem": "What is the primary reason to learn python for ml?",
+    "difficulty": "beginner",
+    "explanation": "python for ml is useful because it enables the capability described by the correct option: use Python and its numerical/ML ecosystem to implement machine-learning workflows.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "configure firewalls",
+        "is_correct": false
+      },
+      {
+        "text": "write HTML only",
+        "is_correct": false
+      },
+      {
+        "text": "replace mathematics with libraries",
+        "is_correct": false
+      },
+      {
+        "text": "use Python and its numerical/ML ecosystem to implement machine-learning workflows",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "python-for-ml",
+    "stem": "Which task is most directly associated with python for ml?",
+    "difficulty": "beginner",
+    "explanation": "The correct task matches the central responsibility of python for ml: use Python and its numerical/ML ecosystem to implement machine-learning workflows.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "write HTML only",
+        "is_correct": false
+      },
+      {
+        "text": "replace mathematics with libraries",
+        "is_correct": false
+      },
+      {
+        "text": "use Python and its numerical/ML ecosystem to implement machine-learning workflows",
+        "is_correct": true
+      },
+      {
+        "text": "configure firewalls",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "pytorch-deep-learning",
+    "stem": "Which statement best describes pytorch deep learning?",
+    "difficulty": "advanced",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of pytorch deep learning: build and train neural models with tensors, automatic differentiation, and PyTorch tooling.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "build and train neural models with tensors, automatic differentiation, and PyTorch tooling",
+        "is_correct": true
+      },
+      {
+        "text": "query SQL tables",
+        "is_correct": false
+      },
+      {
+        "text": "manage Git branches",
+        "is_correct": false
+      },
+      {
+        "text": "style webpages",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "pytorch-deep-learning",
+    "stem": "What is the primary reason to learn pytorch deep learning?",
+    "difficulty": "advanced",
+    "explanation": "pytorch deep learning is useful because it enables the capability described by the correct option: build and train neural models with tensors, automatic differentiation, and PyTorch tooling.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "query SQL tables",
+        "is_correct": false
+      },
+      {
+        "text": "manage Git branches",
+        "is_correct": false
+      },
+      {
+        "text": "style webpages",
+        "is_correct": false
+      },
+      {
+        "text": "build and train neural models with tensors, automatic differentiation, and PyTorch tooling",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "pytorch-deep-learning",
+    "stem": "Which task is most directly associated with pytorch deep learning?",
+    "difficulty": "advanced",
+    "explanation": "The correct task matches the central responsibility of pytorch deep learning: build and train neural models with tensors, automatic differentiation, and PyTorch tooling.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "manage Git branches",
+        "is_correct": false
+      },
+      {
+        "text": "style webpages",
+        "is_correct": false
+      },
+      {
+        "text": "build and train neural models with tensors, automatic differentiation, and PyTorch tooling",
+        "is_correct": true
+      },
+      {
+        "text": "query SQL tables",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "tree-ensemble-models",
+    "stem": "Which statement best describes tree ensemble models?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of tree ensemble models: use decision trees and ensembles such as random forests and gradient boosting.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "use decision trees and ensembles such as random forests and gradient boosting",
+        "is_correct": true
+      },
+      {
+        "text": "build only linear models",
+        "is_correct": false
+      },
+      {
+        "text": "configure Kubernetes",
+        "is_correct": false
+      },
+      {
+        "text": "write CSS",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "tree-ensemble-models",
+    "stem": "What is the primary reason to learn tree ensemble models?",
+    "difficulty": "intermediate",
+    "explanation": "tree ensemble models is useful because it enables the capability described by the correct option: use decision trees and ensembles such as random forests and gradient boosting.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "build only linear models",
+        "is_correct": false
+      },
+      {
+        "text": "configure Kubernetes",
+        "is_correct": false
+      },
+      {
+        "text": "write CSS",
+        "is_correct": false
+      },
+      {
+        "text": "use decision trees and ensembles such as random forests and gradient boosting",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "tree-ensemble-models",
+    "stem": "Which task is most directly associated with tree ensemble models?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of tree ensemble models: use decision trees and ensembles such as random forests and gradient boosting.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "configure Kubernetes",
+        "is_correct": false
+      },
+      {
+        "text": "write CSS",
+        "is_correct": false
+      },
+      {
+        "text": "use decision trees and ensembles such as random forests and gradient boosting",
+        "is_correct": true
+      },
+      {
+        "text": "build only linear models",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "unsupervised-learning",
+    "stem": "Which statement best describes unsupervised learning?",
+    "difficulty": "intermediate",
+    "explanation": "The correct answer is the statement that directly describes the core purpose of unsupervised learning: discover structure in unlabeled data using methods such as clustering and dimensionality reduction.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "discover structure in unlabeled data using methods such as clustering and dimensionality reduction",
+        "is_correct": true
+      },
+      {
+        "text": "predict labeled classes only",
+        "is_correct": false
+      },
+      {
+        "text": "deploy web servers",
+        "is_correct": false
+      },
+      {
+        "text": "normalize SQL",
+        "is_correct": false
+      }
+    ]
+  },
+  {
+    "concept_slug": "unsupervised-learning",
+    "stem": "What is the primary reason to learn unsupervised learning?",
+    "difficulty": "intermediate",
+    "explanation": "unsupervised learning is useful because it enables the capability described by the correct option: discover structure in unlabeled data using methods such as clustering and dimensionality reduction.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "predict labeled classes only",
+        "is_correct": false
+      },
+      {
+        "text": "deploy web servers",
+        "is_correct": false
+      },
+      {
+        "text": "normalize SQL",
+        "is_correct": false
+      },
+      {
+        "text": "discover structure in unlabeled data using methods such as clustering and dimensionality reduction",
+        "is_correct": true
+      }
+    ]
+  },
+  {
+    "concept_slug": "unsupervised-learning",
+    "stem": "Which task is most directly associated with unsupervised learning?",
+    "difficulty": "intermediate",
+    "explanation": "The correct task matches the central responsibility of unsupervised learning: discover structure in unlabeled data using methods such as clustering and dimensionality reduction.",
+    "source": "human",
+    "status": "approved",
+    "options": [
+      {
+        "text": "deploy web servers",
+        "is_correct": false
+      },
+      {
+        "text": "normalize SQL",
+        "is_correct": false
+      },
+      {
+        "text": "discover structure in unlabeled data using methods such as clustering and dimensionality reduction",
+        "is_correct": true
+      },
+      {
+        "text": "predict labeled classes only",
+        "is_correct": false
+      }
+    ]
+  }
+]

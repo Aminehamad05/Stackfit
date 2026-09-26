@@ -1,1 +1,42 @@
-{"todo":"clubs seed data per AGENT_SPEC §8"}
+[
+  {
+    "name": "IEEE INSAT Student Branch",
+    "description": "Student technical community at the National Institute of Applied Sciences and Technology (INSAT), Tunis. Its site documents activities, events, membership and subunits; the branch focuses on learning, professional growth and technical community building.",
+    "contact_email": null
+  },
+  {
+    "name": "IEEE SUP'COM Student Branch",
+    "description": "IEEE student branch at the Higher School of Communication of Tunis (SUP'COM). Its official site says the branch was founded in 2011 and describes technical, educational and networking activity.",
+    "contact_email": null
+  },
+  {
+    "name": "IEEE ESSTHS Student Branch",
+    "description": "IEEE student branch at the Higher School of Sciences and Technologies of Hammam Sousse. The branch site documents Computer Society and other technical chapters, student activities and recent activity evidence.",
+    "contact_email": "essths@ieee.tn"
+  },
+  {
+    "name": "IEEE ISIMM Student Branch",
+    "description": "IEEE student branch at the Higher Institute of Mathematics and Computer Science of Monastir (ISIMM). It documents workshops, events, training, Computer Society and Computational Intelligence communities.",
+    "contact_email": "sb-isimm@ieee.org"
+  },
+  {
+    "name": "IEEE ENIS Student Branch",
+    "description": "Student branch at the National Engineering School of Sfax (ENIS), founded in 2009. The current site documents training, competitions, workshops and technical subunits including Computer Society, Computational Intelligence, Robotics and Cyber Security.",
+    "contact_email": null
+  },
+  {
+    "name": "IEEE FST Student Branch",
+    "description": "IEEE student branch at the Faculty of Sciences of Tunis. Its official site describes a large student community with technical chapters, events and skill-development activities.",
+    "contact_email": "mahdi.aouni22@ieee.org"
+  },
+  {
+    "name": "IEEE CS ISIMA Student Branch Chapter",
+    "description": "IEEE Computer Society chapter at the Higher Institute of Computer Science Mahdia (ISIMA). Its site describes workshops, hackathons, training, networking and technical development for computing students.",
+    "contact_email": null
+  },
+  {
+    "name": "IEEE CS EPS Student Branch Chapter",
+    "description": "IEEE Computer Society student branch chapter at the Polytechnic School of Sousse (EPS), listed in the IEEE Computer Society Tunisia student-branch directory.",
+    "contact_email": null
+  }
+]

@@ -1,1 +1,394 @@
-{"todo":"concepts seed data per AGENT_SPEC §8"}
+[
+  {
+    "slug": "html-css-foundations",
+    "name": "HTML/CSS fundamentals",
+    "description": "HTML/CSS fundamentals. Builds toward entry-level web development; use the Tunisian course vocabulary where relevant (e.g. Programmation orientée objet, Bases de données, Génie logiciel).",
+    "level": "beginner",
+    "status": "approved"
+  },
+  {
+    "slug": "responsive-accessible-web",
+    "name": "Responsive and accessible web design",
+    "description": "Responsive and accessible web design. Builds toward entry-level web development; use the Tunisian course vocabulary where relevant (e.g. Programmation orientée objet, Bases de données, Génie logiciel).",
+    "level": "beginner",
+    "status": "approved"
+  },
+  {
+    "slug": "javascript-fundamentals",
+    "name": "JavaScript fundamentals",
+    "description": "JavaScript fundamentals. Builds toward entry-level web development; use the Tunisian course vocabulary where relevant (e.g. Programmation orientée objet, Bases de données, Génie logiciel).",
+    "level": "beginner",
+    "status": "approved"
+  },
+  {
+    "slug": "dom-browser-apis",
+    "name": "DOM, browser APIs and asynchronous JavaScript",
+    "description": "DOM, browser APIs and asynchronous JavaScript. Builds toward entry-level web development; use the Tunisian course vocabulary where relevant (e.g. Programmation orientée objet, Bases de données, Génie logiciel).",
+    "level": "beginner",
+    "status": "approved"
+  },
+  {
+    "slug": "git-github-workflow",
+    "name": "Git and GitHub workflow",
+    "description": "Git and GitHub workflow. Builds toward entry-level web development; use the Tunisian course vocabulary where relevant (e.g. Programmation orientée objet, Bases de données, Génie logiciel).",
+    "level": "beginner",
+    "status": "approved"
+  },
+  {
+    "slug": "react-frontend",
+    "name": "React frontend development",
+    "description": "React frontend development. Builds toward entry-level web development; use the Tunisian course vocabulary where relevant (e.g. Programmation orientée objet, Bases de données, Génie logiciel).",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "typescript-basics",
+    "name": "TypeScript basics",
+    "description": "TypeScript basics. Builds toward entry-level web development; use the Tunisian course vocabulary where relevant (e.g. Programmation orientée objet, Bases de données, Génie logiciel).",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "http-rest-apis",
+    "name": "HTTP and REST API design",
+    "description": "HTTP and REST API design. Builds toward entry-level web development; use the Tunisian course vocabulary where relevant (e.g. Programmation orientée objet, Bases de données, Génie logiciel).",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "node-express-backend",
+    "name": "Node.js and Express backend development",
+    "description": "Node.js and Express backend development. Builds toward entry-level web development; use the Tunisian course vocabulary where relevant (e.g. Programmation orientée objet, Bases de données, Génie logiciel).",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "relational-databases-sql",
+    "name": "Relational databases and SQL",
+    "description": "Relational databases and SQL. Builds toward entry-level web development; use the Tunisian course vocabulary where relevant (e.g. Programmation orientée objet, Bases de données, Génie logiciel).",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "authentication-authorization",
+    "name": "Authentication and authorization",
+    "description": "Authentication and authorization. Builds toward entry-level web development; use the Tunisian course vocabulary where relevant (e.g. Programmation orientée objet, Bases de données, Génie logiciel).",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "testing-web-applications",
+    "name": "Web application testing",
+    "description": "Web application testing. Builds toward entry-level web development; use the Tunisian course vocabulary where relevant (e.g. Programmation orientée objet, Bases de données, Génie logiciel).",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "deployment-web-apps",
+    "name": "Web application deployment basics",
+    "description": "Web application deployment basics. Builds toward entry-level web development; use the Tunisian course vocabulary where relevant (e.g. Programmation orientée objet, Bases de données, Génie logiciel).",
+    "level": "advanced",
+    "status": "approved"
+  },
+  {
+    "slug": "production-full-stack-integration",
+    "name": "Production full-stack integration",
+    "description": "Production full-stack integration. Builds toward entry-level web development; use the Tunisian course vocabulary where relevant (e.g. Programmation orientée objet, Bases de données, Génie logiciel).",
+    "level": "advanced",
+    "status": "approved"
+  },
+  {
+    "slug": "linux-cli",
+    "name": "Linux and command-line administration",
+    "description": "Linux and command-line administration. Connects to Tunisian engineering vocabulary such as Réseaux informatiques, Systèmes d'exploitation and Architecture des ordinateurs.",
+    "level": "beginner",
+    "status": "approved"
+  },
+  {
+    "slug": "networking-fundamentals",
+    "name": "Networking fundamentals (Réseaux informatiques)",
+    "description": "Networking fundamentals (Réseaux informatiques). Connects to Tunisian engineering vocabulary such as Réseaux informatiques, Systèmes d'exploitation and Architecture des ordinateurs.",
+    "level": "beginner",
+    "status": "approved"
+  },
+  {
+    "slug": "cloud-concepts",
+    "name": "Cloud computing concepts and shared responsibility",
+    "description": "Cloud computing concepts and shared responsibility. Connects to Tunisian engineering vocabulary such as Réseaux informatiques, Systèmes d'exploitation and Architecture des ordinateurs.",
+    "level": "beginner",
+    "status": "approved"
+  },
+  {
+    "slug": "cloud-core-services",
+    "name": "Core cloud compute, storage and IAM services",
+    "description": "Core cloud compute, storage and IAM services. Connects to Tunisian engineering vocabulary such as Réseaux informatiques, Systèmes d'exploitation and Architecture des ordinateurs.",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "cloud-networking-security",
+    "name": "Cloud networking and security basics",
+    "description": "Cloud networking and security basics. Connects to Tunisian engineering vocabulary such as Réseaux informatiques, Systèmes d'exploitation and Architecture des ordinateurs.",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "infrastructure-as-code",
+    "name": "Infrastructure as Code with Terraform",
+    "description": "Infrastructure as Code with Terraform. Connects to Tunisian engineering vocabulary such as Réseaux informatiques, Systèmes d'exploitation and Architecture des ordinateurs.",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "containers-docker",
+    "name": "Containers and Docker",
+    "description": "Containers and Docker. Connects to Tunisian engineering vocabulary such as Réseaux informatiques, Systèmes d'exploitation and Architecture des ordinateurs.",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "kubernetes-basics",
+    "name": "Kubernetes fundamentals",
+    "description": "Kubernetes fundamentals. Connects to Tunisian engineering vocabulary such as Réseaux informatiques, Systèmes d'exploitation and Architecture des ordinateurs.",
+    "level": "advanced",
+    "status": "approved"
+  },
+  {
+    "slug": "cicd-automation",
+    "name": "CI/CD automation",
+    "description": "CI/CD automation. Connects to Tunisian engineering vocabulary such as Réseaux informatiques, Systèmes d'exploitation and Architecture des ordinateurs.",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "configuration-automation",
+    "name": "Configuration and deployment automation",
+    "description": "Configuration and deployment automation. Connects to Tunisian engineering vocabulary such as Réseaux informatiques, Systèmes d'exploitation and Architecture des ordinateurs.",
+    "level": "advanced",
+    "status": "approved"
+  },
+  {
+    "slug": "observability-monitoring",
+    "name": "Monitoring, logging and observability",
+    "description": "Monitoring, logging and observability. Connects to Tunisian engineering vocabulary such as Réseaux informatiques, Systèmes d'exploitation and Architecture des ordinateurs.",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "cloud-cost-reliability",
+    "name": "Cloud reliability and cost awareness",
+    "description": "Cloud reliability and cost awareness. Connects to Tunisian engineering vocabulary such as Réseaux informatiques, Systèmes d'exploitation and Architecture des ordinateurs.",
+    "level": "advanced",
+    "status": "approved"
+  },
+  {
+    "slug": "cloud-security-practices",
+    "name": "Cloud security practices",
+    "description": "Cloud security practices. Connects to Tunisian engineering vocabulary such as Réseaux informatiques, Systèmes d'exploitation and Architecture des ordinateurs.",
+    "level": "advanced",
+    "status": "approved"
+  },
+  {
+    "slug": "production-cloud-project",
+    "name": "Production cloud architecture integration",
+    "description": "Production cloud architecture integration. Connects to Tunisian engineering vocabulary such as Réseaux informatiques, Systèmes d'exploitation and Architecture des ordinateurs.",
+    "level": "advanced",
+    "status": "approved"
+  },
+  {
+    "slug": "linear-algebra-for-ml",
+    "name": "Algèbre linéaire (Linear algebra) for ML",
+    "description": "Algèbre linéaire (Linear algebra) for ML. Uses the academic foundations of Algèbre linéaire and Probabilités et statistiques before model-building work.",
+    "level": "beginner",
+    "status": "approved"
+  },
+  {
+    "slug": "probability-statistics-for-ml",
+    "name": "Probabilités et statistiques for ML",
+    "description": "Probabilités et statistiques for ML. Uses the academic foundations of Algèbre linéaire and Probabilités et statistiques before model-building work.",
+    "level": "beginner",
+    "status": "approved"
+  },
+  {
+    "slug": "python-for-ml",
+    "name": "Python for machine learning",
+    "description": "Python for machine learning. Uses the academic foundations of Algèbre linéaire and Probabilités et statistiques before model-building work.",
+    "level": "beginner",
+    "status": "approved"
+  },
+  {
+    "slug": "numpy-data-arrays",
+    "name": "NumPy and numerical arrays",
+    "description": "NumPy and numerical arrays. Uses the academic foundations of Algèbre linéaire and Probabilités et statistiques before model-building work.",
+    "level": "beginner",
+    "status": "approved"
+  },
+  {
+    "slug": "data-preparation-ml",
+    "name": "Data preparation and feature engineering",
+    "description": "Data preparation and feature engineering. Uses the academic foundations of Algèbre linéaire and Probabilités et statistiques before model-building work.",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "linear-regression",
+    "name": "Linear regression",
+    "description": "Linear regression. Uses the academic foundations of Algèbre linéaire and Probabilités et statistiques before model-building work.",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "classification-models",
+    "name": "Classification models",
+    "description": "Classification models. Uses the academic foundations of Algèbre linéaire and Probabilités et statistiques before model-building work.",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "tree-ensemble-models",
+    "name": "Decision trees and ensemble methods",
+    "description": "Decision trees and ensemble methods. Uses the academic foundations of Algèbre linéaire and Probabilités et statistiques before model-building work.",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "model-evaluation",
+    "name": "Model evaluation and validation",
+    "description": "Model evaluation and validation. Uses the academic foundations of Algèbre linéaire and Probabilités et statistiques before model-building work.",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "unsupervised-learning",
+    "name": "Unsupervised learning",
+    "description": "Unsupervised learning. Uses the academic foundations of Algèbre linéaire and Probabilités et statistiques before model-building work.",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "ml-pipelines",
+    "name": "Reproducible ML pipelines",
+    "description": "Reproducible ML pipelines. Uses the academic foundations of Algèbre linéaire and Probabilités et statistiques before model-building work.",
+    "level": "advanced",
+    "status": "approved"
+  },
+  {
+    "slug": "neural-network-foundations",
+    "name": "Neural network foundations",
+    "description": "Neural network foundations. Uses the academic foundations of Algèbre linéaire and Probabilités et statistiques before model-building work.",
+    "level": "advanced",
+    "status": "approved"
+  },
+  {
+    "slug": "pytorch-deep-learning",
+    "name": "Introductory deep learning with PyTorch",
+    "description": "Introductory deep learning with PyTorch. Uses the academic foundations of Algèbre linéaire and Probabilités et statistiques before model-building work.",
+    "level": "advanced",
+    "status": "approved"
+  },
+  {
+    "slug": "ml-project-delivery",
+    "name": "ML project delivery and communication",
+    "description": "ML project delivery and communication. Uses the academic foundations of Algèbre linéaire and Probabilités et statistiques before model-building work.",
+    "level": "advanced",
+    "status": "approved"
+  },
+  {
+    "slug": "sql-data-querying",
+    "name": "SQL data querying",
+    "description": "SQL data querying. Emphasizes analysis, data quality, visualization and communication rather than training predictive ML models.",
+    "level": "beginner",
+    "status": "approved"
+  },
+  {
+    "slug": "python-data-basics",
+    "name": "Python for data work",
+    "description": "Python for data work. Emphasizes analysis, data quality, visualization and communication rather than training predictive ML models.",
+    "level": "beginner",
+    "status": "approved"
+  },
+  {
+    "slug": "data-types-quality",
+    "name": "Data types, quality and validation",
+    "description": "Data types, quality and validation. Emphasizes analysis, data quality, visualization and communication rather than training predictive ML models.",
+    "level": "beginner",
+    "status": "approved"
+  },
+  {
+    "slug": "pandas-data-cleaning",
+    "name": "Data cleaning and transformation with pandas",
+    "description": "Data cleaning and transformation with pandas. Emphasizes analysis, data quality, visualization and communication rather than training predictive ML models.",
+    "level": "beginner",
+    "status": "approved"
+  },
+  {
+    "slug": "descriptive-statistics",
+    "name": "Descriptive statistics",
+    "description": "Descriptive statistics. Emphasizes analysis, data quality, visualization and communication rather than training predictive ML models.",
+    "level": "beginner",
+    "status": "approved"
+  },
+  {
+    "slug": "probability-inference",
+    "name": "Probability and statistical inference",
+    "description": "Probability and statistical inference. Emphasizes analysis, data quality, visualization and communication rather than training predictive ML models.",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "exploratory-data-analysis",
+    "name": "Exploratory data analysis (EDA)",
+    "description": "Exploratory data analysis (EDA). Emphasizes analysis, data quality, visualization and communication rather than training predictive ML models.",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "data-visualization",
+    "name": "Data visualization",
+    "description": "Data visualization. Emphasizes analysis, data quality, visualization and communication rather than training predictive ML models.",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "dashboard-bi",
+    "name": "BI dashboards with Power BI or Tableau",
+    "description": "BI dashboards with Power BI or Tableau. Emphasizes analysis, data quality, visualization and communication rather than training predictive ML models.",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "data-modeling-bi",
+    "name": "Dimensional data modeling for BI",
+    "description": "Dimensional data modeling for BI. Emphasizes analysis, data quality, visualization and communication rather than training predictive ML models.",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "business-metrics-kpis",
+    "name": "Business metrics and KPI analysis",
+    "description": "Business metrics and KPI analysis. Emphasizes analysis, data quality, visualization and communication rather than training predictive ML models.",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "data-storytelling",
+    "name": "Data storytelling and communication",
+    "description": "Data storytelling and communication. Emphasizes analysis, data quality, visualization and communication rather than training predictive ML models.",
+    "level": "intermediate",
+    "status": "approved"
+  },
+  {
+    "slug": "advanced-sql-analytics",
+    "name": "Advanced SQL for analytics",
+    "description": "Advanced SQL for analytics. Emphasizes analysis, data quality, visualization and communication rather than training predictive ML models.",
+    "level": "advanced",
+    "status": "approved"
+  },
+  {
+    "slug": "end-to-end-data-analysis",
+    "name": "End-to-end data analysis project",
+    "description": "End-to-end data analysis project. Emphasizes analysis, data quality, visualization and communication rather than training predictive ML models.",
+    "level": "advanced",
+    "status": "approved"
+  }
+]

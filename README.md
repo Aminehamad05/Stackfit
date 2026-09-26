@@ -12,9 +12,21 @@ Docker Compose (`web`, `api`, `worker`, `postgres`).
 > (`POST /api/interviews/*`) return `503 ai_disabled`; AI scripts exit with a
 > SKIP message. Re-enable via `apps/api/src/ai/` + `AI_ENABLED=true`.
 
-## Quickstart
+## Quickstart (teammates: one command)
 ```bash
-cp .env.example .env          # fill JWT_SECRET (LLM vars stay commented out)
+git clone <repo> && cd <repo>
+docker compose up --build
+```
+That's it — no `.env` needed for the compose path (sane defaults kick in).
+First boot does everything automatically: `postgres` starts on the fixed
+volume → `api` runs `migrate deploy`, then `bootstrap` (creates the 7 views,
+seeds all content **only if the DB is empty**), then serves. Open
+http://localhost:5173 (web) — API at http://localhost:4000/api.
+Copy `.env.example` → `.env` only if you run host-side commands
+(`npm run db:seed`, `psql`, `prisma studio`).
+
+Local dev loop (host):
+```bash
 npm install                   # single workspace install (root lockfile)
 npx prisma generate --schema prisma/schema.prisma
 docker compose up -d postgres # fixed volume careerpath_pgdata — survives down/rebuilds

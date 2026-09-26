@@ -1,0 +1,174 @@
+[
+  {
+    "field_slug": "full-stack-dev",
+    "slug": "full-stack-crud-taster",
+    "title": "Mini CRUD Task Tracker",
+    "description": "Build a tiny task-tracking web app with a React or plain-JS frontend, a REST API, and a relational database. Keep scope to create/read/update/delete tasks and a minimal responsive UI.",
+    "level": "beginner",
+    "est_hours": 3,
+    "deliverable_type": "github_repo",
+    "starter_repo_url": null,
+    "rubric": [
+      {
+        "id": "crud",
+        "criterion": "Create, read, update and delete operations all work end-to-end.",
+        "weight": 30,
+        "required": true
+      },
+      {
+        "id": "database",
+        "criterion": "Tasks persist in a relational database and are not only stored in browser memory.",
+        "weight": 20,
+        "required": true
+      },
+      {
+        "id": "api",
+        "criterion": "A documented REST endpoint is used between UI and backend.",
+        "weight": 20,
+        "required": true
+      },
+      {
+        "id": "responsive",
+        "criterion": "The interface remains usable on a narrow mobile viewport.",
+        "weight": 15,
+        "required": true
+      },
+      {
+        "id": "repo",
+        "criterion": "Repository contains a README with setup/run instructions and a clear project structure.",
+        "weight": 15,
+        "required": true
+      }
+    ],
+    "status": "approved"
+  },
+  {
+    "field_slug": "cloud-engineering",
+    "slug": "container-ci-cloud-taster",
+    "title": "Containerize and CI-check a Web Service",
+    "description": "Take a tiny HTTP service, containerize it with Docker, and add a GitHub Actions workflow that builds the image and runs a basic smoke test. Deployment can use a free-tier/cloud sandbox if available, but the CI artifact is mandatory.",
+    "level": "beginner",
+    "est_hours": 3,
+    "deliverable_type": "github_repo",
+    "starter_repo_url": null,
+    "rubric": [
+      {
+        "id": "dockerfile",
+        "criterion": "A working Dockerfile is present and builds successfully.",
+        "weight": 25,
+        "required": true
+      },
+      {
+        "id": "ci",
+        "criterion": "A .github/workflows/*.yml CI workflow file is present and runs on push or pull request.",
+        "weight": 25,
+        "required": true
+      },
+      {
+        "id": "smoke-test",
+        "criterion": "CI starts or checks the service and verifies a successful HTTP response.",
+        "weight": 20,
+        "required": true
+      },
+      {
+        "id": "readme",
+        "criterion": "README documents local build/run commands and the architecture in brief.",
+        "weight": 15,
+        "required": true
+      },
+      {
+        "id": "security",
+        "criterion": "No secret keys or credentials are committed to the repository.",
+        "weight": 15,
+        "required": true
+      }
+    ],
+    "status": "approved"
+  },
+  {
+    "field_slug": "machine-learning",
+    "slug": "classifier-taster",
+    "title": "Public-Dataset Classifier",
+    "description": "Train a simple classifier on a public tabular dataset, evaluate it with at least two appropriate metrics, and explain the result and limitations in the README. Keep the model classical; no deep-learning requirement.",
+    "level": "beginner",
+    "est_hours": 2,
+    "deliverable_type": "github_repo",
+    "starter_repo_url": null,
+    "rubric": [
+      {
+        "id": "notebook",
+        "criterion": "Notebook runs top to bottom without error from a clean kernel.",
+        "weight": 30,
+        "required": true
+      },
+      {
+        "id": "model",
+        "criterion": "A supervised classifier is trained on a public dataset with a documented train/test split.",
+        "weight": 25,
+        "required": true
+      },
+      {
+        "id": "metrics",
+        "criterion": "At least two relevant evaluation metrics are reported and interpreted.",
+        "weight": 20,
+        "required": true
+      },
+      {
+        "id": "explanation",
+        "criterion": "README explains the dataset, model choice, main result and at least one limitation.",
+        "weight": 15,
+        "required": true
+      },
+      {
+        "id": "reproducible",
+        "criterion": "Dependencies or environment instructions are recorded in the repository.",
+        "weight": 10,
+        "required": true
+      }
+    ],
+    "status": "approved"
+  },
+  {
+    "field_slug": "data",
+    "slug": "messy-dataset-insights-taster",
+    "title": "Messy Dataset to Three Insights",
+    "description": "Take a public CSV with missing, inconsistent or duplicated values; clean it with pandas/SQL, make three clear visualizations, and write three evidence-backed insights for a non-technical reader.",
+    "level": "beginner",
+    "est_hours": 2,
+    "deliverable_type": "github_repo",
+    "starter_repo_url": null,
+    "rubric": [
+      {
+        "id": "notebook",
+        "criterion": "Notebook runs top to bottom without error and produces the final tables/charts.",
+        "weight": 25,
+        "required": true
+      },
+      {
+        "id": "quality",
+        "criterion": "Cleaning steps explicitly address at least two real data-quality issues found in the dataset.",
+        "weight": 25,
+        "required": true
+      },
+      {
+        "id": "visuals",
+        "criterion": "At least three appropriate visualizations are included and labeled.",
+        "weight": 20,
+        "required": true
+      },
+      {
+        "id": "insights",
+        "criterion": "Exactly three documented insights cite the underlying fields/aggregations supporting them.",
+        "weight": 20,
+        "required": true
+      },
+      {
+        "id": "communication",
+        "criterion": "README or report explains limitations and avoids claiming causation from descriptive analysis alone.",
+        "weight": 10,
+        "required": true
+      }
+    ],
+    "status": "approved"
+  }
+]

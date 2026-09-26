@@ -1,0 +1,500 @@
+[
+  {
+    "item_name": "Algèbre linéaire (Linear Algebra)",
+    "item_kind": "uni_course",
+    "concept_slug": "linear-algebra-for-ml",
+    "strength": 5
+  },
+  {
+    "item_name": "Algèbre linéaire (Linear Algebra)",
+    "item_kind": "uni_course",
+    "concept_slug": "neural-network-foundations",
+    "strength": 2
+  },
+  {
+    "item_name": "Algèbre linéaire (Linear Algebra)",
+    "item_kind": "uni_course",
+    "concept_slug": "numpy-data-arrays",
+    "strength": 3
+  },
+  {
+    "item_name": "Probabilités et statistiques (Probability & Statistics)",
+    "item_kind": "uni_course",
+    "concept_slug": "probability-statistics-for-ml",
+    "strength": 5
+  },
+  {
+    "item_name": "Probabilités et statistiques (Probability & Statistics)",
+    "item_kind": "uni_course",
+    "concept_slug": "probability-inference",
+    "strength": 5
+  },
+  {
+    "item_name": "Probabilités et statistiques (Probability & Statistics)",
+    "item_kind": "uni_course",
+    "concept_slug": "model-evaluation",
+    "strength": 3
+  },
+  {
+    "item_name": "Probabilités et statistiques (Probability & Statistics)",
+    "item_kind": "uni_course",
+    "concept_slug": "descriptive-statistics",
+    "strength": 5
+  },
+  {
+    "item_name": "Bases de données (Databases)",
+    "item_kind": "uni_course",
+    "concept_slug": "relational-databases-sql",
+    "strength": 5
+  },
+  {
+    "item_name": "Bases de données (Databases)",
+    "item_kind": "uni_course",
+    "concept_slug": "sql-data-querying",
+    "strength": 5
+  },
+  {
+    "item_name": "Bases de données (Databases)",
+    "item_kind": "uni_course",
+    "concept_slug": "data-modeling-bi",
+    "strength": 4
+  },
+  {
+    "item_name": "Bases de données (Databases)",
+    "item_kind": "uni_course",
+    "concept_slug": "node-express-backend",
+    "strength": 2
+  },
+  {
+    "item_name": "Réseaux informatiques (Computer Networks)",
+    "item_kind": "uni_course",
+    "concept_slug": "networking-fundamentals",
+    "strength": 5
+  },
+  {
+    "item_name": "Réseaux informatiques (Computer Networks)",
+    "item_kind": "uni_course",
+    "concept_slug": "http-rest-apis",
+    "strength": 3
+  },
+  {
+    "item_name": "Réseaux informatiques (Computer Networks)",
+    "item_kind": "uni_course",
+    "concept_slug": "cloud-networking-security",
+    "strength": 4
+  },
+  {
+    "item_name": "Systèmes d'exploitation (Operating Systems)",
+    "item_kind": "uni_course",
+    "concept_slug": "linux-cli",
+    "strength": 5
+  },
+  {
+    "item_name": "Systèmes d'exploitation (Operating Systems)",
+    "item_kind": "uni_course",
+    "concept_slug": "cloud-core-services",
+    "strength": 3
+  },
+  {
+    "item_name": "Systèmes d'exploitation (Operating Systems)",
+    "item_kind": "uni_course",
+    "concept_slug": "containers-docker",
+    "strength": 3
+  },
+  {
+    "item_name": "Architecture des ordinateurs (Computer Architecture)",
+    "item_kind": "uni_course",
+    "concept_slug": "linux-cli",
+    "strength": 2
+  },
+  {
+    "item_name": "Architecture des ordinateurs (Computer Architecture)",
+    "item_kind": "uni_course",
+    "concept_slug": "cloud-core-services",
+    "strength": 3
+  },
+  {
+    "item_name": "Architecture des ordinateurs (Computer Architecture)",
+    "item_kind": "uni_course",
+    "concept_slug": "networking-fundamentals",
+    "strength": 3
+  },
+  {
+    "item_name": "Programmation orientée objet (Object-Oriented Programming)",
+    "item_kind": "uni_course",
+    "concept_slug": "javascript-fundamentals",
+    "strength": 3
+  },
+  {
+    "item_name": "Programmation orientée objet (Object-Oriented Programming)",
+    "item_kind": "uni_course",
+    "concept_slug": "python-for-ml",
+    "strength": 3
+  },
+  {
+    "item_name": "Programmation orientée objet (Object-Oriented Programming)",
+    "item_kind": "uni_course",
+    "concept_slug": "python-data-basics",
+    "strength": 3
+  },
+  {
+    "item_name": "Programmation orientée objet (Object-Oriented Programming)",
+    "item_kind": "uni_course",
+    "concept_slug": "node-express-backend",
+    "strength": 3
+  },
+  {
+    "item_name": "Génie logiciel (Software Engineering)",
+    "item_kind": "uni_course",
+    "concept_slug": "git-github-workflow",
+    "strength": 5
+  },
+  {
+    "item_name": "Génie logiciel (Software Engineering)",
+    "item_kind": "uni_course",
+    "concept_slug": "testing-web-applications",
+    "strength": 4
+  },
+  {
+    "item_name": "Génie logiciel (Software Engineering)",
+    "item_kind": "uni_course",
+    "concept_slug": "production-full-stack-integration",
+    "strength": 4
+  },
+  {
+    "item_name": "Génie logiciel (Software Engineering)",
+    "item_kind": "uni_course",
+    "concept_slug": "ml-project-delivery",
+    "strength": 3
+  },
+  {
+    "item_name": "Génie logiciel (Software Engineering)",
+    "item_kind": "uni_course",
+    "concept_slug": "cicd-automation",
+    "strength": 3
+  },
+  {
+    "item_name": "Algorithmique et structures de données (Algorithms & Data Structures)",
+    "item_kind": "uni_course",
+    "concept_slug": "javascript-fundamentals",
+    "strength": 4
+  },
+  {
+    "item_name": "Algorithmique et structures de données (Algorithms & Data Structures)",
+    "item_kind": "uni_course",
+    "concept_slug": "python-for-ml",
+    "strength": 4
+  },
+  {
+    "item_name": "Algorithmique et structures de données (Algorithms & Data Structures)",
+    "item_kind": "uni_course",
+    "concept_slug": "python-data-basics",
+    "strength": 3
+  },
+  {
+    "item_name": "Programmation web (Web Programming)",
+    "item_kind": "uni_course",
+    "concept_slug": "html-css-foundations",
+    "strength": 5
+  },
+  {
+    "item_name": "Programmation web (Web Programming)",
+    "item_kind": "uni_course",
+    "concept_slug": "javascript-fundamentals",
+    "strength": 5
+  },
+  {
+    "item_name": "Programmation web (Web Programming)",
+    "item_kind": "uni_course",
+    "concept_slug": "http-rest-apis",
+    "strength": 4
+  },
+  {
+    "item_name": "Programmation web (Web Programming)",
+    "item_kind": "uni_course",
+    "concept_slug": "react-frontend",
+    "strength": 4
+  },
+  {
+    "item_name": "Git",
+    "item_kind": "skill",
+    "concept_slug": "git-github-workflow",
+    "strength": 5
+  },
+  {
+    "item_name": "Git",
+    "item_kind": "skill",
+    "concept_slug": "cicd-automation",
+    "strength": 4
+  },
+  {
+    "item_name": "Git",
+    "item_kind": "skill",
+    "concept_slug": "ml-pipelines",
+    "strength": 3
+  },
+  {
+    "item_name": "Git",
+    "item_kind": "skill",
+    "concept_slug": "production-full-stack-integration",
+    "strength": 3
+  },
+  {
+    "item_name": "GitHub",
+    "item_kind": "skill",
+    "concept_slug": "git-github-workflow",
+    "strength": 5
+  },
+  {
+    "item_name": "GitHub",
+    "item_kind": "skill",
+    "concept_slug": "cicd-automation",
+    "strength": 4
+  },
+  {
+    "item_name": "Linux CLI",
+    "item_kind": "skill",
+    "concept_slug": "linux-cli",
+    "strength": 5
+  },
+  {
+    "item_name": "Linux CLI",
+    "item_kind": "skill",
+    "concept_slug": "containers-docker",
+    "strength": 4
+  },
+  {
+    "item_name": "Linux CLI",
+    "item_kind": "skill",
+    "concept_slug": "cicd-automation",
+    "strength": 4
+  },
+  {
+    "item_name": "Linux CLI",
+    "item_kind": "skill",
+    "concept_slug": "infrastructure-as-code",
+    "strength": 3
+  },
+  {
+    "item_name": "Python",
+    "item_kind": "skill",
+    "concept_slug": "python-for-ml",
+    "strength": 5
+  },
+  {
+    "item_name": "Python",
+    "item_kind": "skill",
+    "concept_slug": "python-data-basics",
+    "strength": 5
+  },
+  {
+    "item_name": "Python",
+    "item_kind": "skill",
+    "concept_slug": "ml-pipelines",
+    "strength": 3
+  },
+  {
+    "item_name": "Python",
+    "item_kind": "skill",
+    "concept_slug": "pandas-data-cleaning",
+    "strength": 4
+  },
+  {
+    "item_name": "JavaScript",
+    "item_kind": "skill",
+    "concept_slug": "javascript-fundamentals",
+    "strength": 5
+  },
+  {
+    "item_name": "JavaScript",
+    "item_kind": "skill",
+    "concept_slug": "dom-browser-apis",
+    "strength": 5
+  },
+  {
+    "item_name": "JavaScript",
+    "item_kind": "skill",
+    "concept_slug": "react-frontend",
+    "strength": 5
+  },
+  {
+    "item_name": "JavaScript",
+    "item_kind": "skill",
+    "concept_slug": "node-express-backend",
+    "strength": 5
+  },
+  {
+    "item_name": "TypeScript",
+    "item_kind": "skill",
+    "concept_slug": "typescript-basics",
+    "strength": 5
+  },
+  {
+    "item_name": "TypeScript",
+    "item_kind": "skill",
+    "concept_slug": "react-frontend",
+    "strength": 3
+  },
+  {
+    "item_name": "TypeScript",
+    "item_kind": "skill",
+    "concept_slug": "node-express-backend",
+    "strength": 3
+  },
+  {
+    "item_name": "TypeScript",
+    "item_kind": "skill",
+    "concept_slug": "production-full-stack-integration",
+    "strength": 4
+  },
+  {
+    "item_name": "SQL",
+    "item_kind": "skill",
+    "concept_slug": "relational-databases-sql",
+    "strength": 5
+  },
+  {
+    "item_name": "SQL",
+    "item_kind": "skill",
+    "concept_slug": "sql-data-querying",
+    "strength": 5
+  },
+  {
+    "item_name": "SQL",
+    "item_kind": "skill",
+    "concept_slug": "advanced-sql-analytics",
+    "strength": 5
+  },
+  {
+    "item_name": "SQL",
+    "item_kind": "skill",
+    "concept_slug": "data-modeling-bi",
+    "strength": 4
+  },
+  {
+    "item_name": "React",
+    "item_kind": "skill",
+    "concept_slug": "react-frontend",
+    "strength": 5
+  },
+  {
+    "item_name": "React",
+    "item_kind": "skill",
+    "concept_slug": "testing-web-applications",
+    "strength": 3
+  },
+  {
+    "item_name": "React",
+    "item_kind": "skill",
+    "concept_slug": "production-full-stack-integration",
+    "strength": 3
+  },
+  {
+    "item_name": "Node.js",
+    "item_kind": "skill",
+    "concept_slug": "node-express-backend",
+    "strength": 5
+  },
+  {
+    "item_name": "Node.js",
+    "item_kind": "skill",
+    "concept_slug": "http-rest-apis",
+    "strength": 4
+  },
+  {
+    "item_name": "Node.js",
+    "item_kind": "skill",
+    "concept_slug": "production-full-stack-integration",
+    "strength": 3
+  },
+  {
+    "item_name": "Docker",
+    "item_kind": "skill",
+    "concept_slug": "containers-docker",
+    "strength": 5
+  },
+  {
+    "item_name": "Docker",
+    "item_kind": "skill",
+    "concept_slug": "cicd-automation",
+    "strength": 4
+  },
+  {
+    "item_name": "Docker",
+    "item_kind": "skill",
+    "concept_slug": "kubernetes-basics",
+    "strength": 3
+  },
+  {
+    "item_name": "University coding club project",
+    "item_kind": "experience",
+    "concept_slug": "git-github-workflow",
+    "strength": 3
+  },
+  {
+    "item_name": "University coding club project",
+    "item_kind": "experience",
+    "concept_slug": "production-full-stack-integration",
+    "strength": 3
+  },
+  {
+    "item_name": "University coding club project",
+    "item_kind": "experience",
+    "concept_slug": "ml-project-delivery",
+    "strength": 3
+  },
+  {
+    "item_name": "University coding club project",
+    "item_kind": "experience",
+    "concept_slug": "end-to-end-data-analysis",
+    "strength": 3
+  },
+  {
+    "item_name": "Internship / stage informatique",
+    "item_kind": "experience",
+    "concept_slug": "production-full-stack-integration",
+    "strength": 4
+  },
+  {
+    "item_name": "Internship / stage informatique",
+    "item_kind": "experience",
+    "concept_slug": "cicd-automation",
+    "strength": 4
+  },
+  {
+    "item_name": "Internship / stage informatique",
+    "item_kind": "experience",
+    "concept_slug": "data-storytelling",
+    "strength": 3
+  },
+  {
+    "item_name": "Internship / stage informatique",
+    "item_kind": "experience",
+    "concept_slug": "ml-project-delivery",
+    "strength": 4
+  },
+  {
+    "item_name": "Hackathon or technical competition",
+    "item_kind": "experience",
+    "concept_slug": "production-full-stack-integration",
+    "strength": 3
+  },
+  {
+    "item_name": "Hackathon or technical competition",
+    "item_kind": "experience",
+    "concept_slug": "ml-project-delivery",
+    "strength": 3
+  },
+  {
+    "item_name": "Hackathon or technical competition",
+    "item_kind": "experience",
+    "concept_slug": "end-to-end-data-analysis",
+    "strength": 3
+  },
+  {
+    "item_name": "Hackathon or technical competition",
+    "item_kind": "experience",
+    "concept_slug": "cicd-automation",
+    "strength": 3
+  }
+]

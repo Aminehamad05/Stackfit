@@ -1,1 +1,22 @@
-{"todo":"fields seed data per AGENT_SPEC §8"}
+[
+  {
+    "slug": "full-stack-dev",
+    "name": "Full-Stack Development",
+    "description": "Web application development from semantic HTML/CSS/JavaScript through a frontend framework, REST APIs, databases, authentication, testing, and basic deployment. Tunisian academic anchors include Programmation orientée objet, Bases de données, Génie logiciel and Systèmes d'exploitation."
+  },
+  {
+    "slug": "cloud-engineering",
+    "name": "Cloud Engineering",
+    "description": "Operating and automating cloud infrastructure: Linux/CLI, networking, cloud compute/storage/identity, Infrastructure as Code, containers, CI/CD and monitoring. Tunisian academic anchors include Réseaux informatiques, Systèmes d'exploitation and Architecture des ordinateurs."
+  },
+  {
+    "slug": "machine-learning",
+    "name": "Machine Learning",
+    "description": "Data-driven predictive modeling: linear algebra and probability/statistics foundations, Python/NumPy, classical supervised learning, evaluation, feature engineering, and introductory deep learning. This field emphasizes model building rather than dashboard/reporting work."
+  },
+  {
+    "slug": "data",
+    "name": "Data Analysis & Data Science",
+    "description": "Turning structured data into reliable analysis and business communication: SQL/Python, cleaning with pandas, descriptive and inferential statistics, visualization, BI/dashboarding, and data storytelling. It deliberately stops short of making ML model training the core competency."
+  }
+]

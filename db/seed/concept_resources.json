@@ -1,0 +1,617 @@
+[
+  {
+    "concept_slug": "html-css-foundations",
+    "resource_url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core",
+    "rank": 1
+  },
+  {
+    "concept_slug": "html-css-foundations",
+    "resource_url": "https://www.coursera.org/learn/introduction-to-front-end-development",
+    "rank": 2
+  },
+  {
+    "concept_slug": "responsive-accessible-web",
+    "resource_url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core",
+    "rank": 1
+  },
+  {
+    "concept_slug": "responsive-accessible-web",
+    "resource_url": "https://www.coursera.org/learn/introduction-to-front-end-development",
+    "rank": 2
+  },
+  {
+    "concept_slug": "javascript-fundamentals",
+    "resource_url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core",
+    "rank": 1
+  },
+  {
+    "concept_slug": "javascript-fundamentals",
+    "resource_url": "https://fullstackopen.com/en/",
+    "rank": 2
+  },
+  {
+    "concept_slug": "dom-browser-apis",
+    "resource_url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core",
+    "rank": 1
+  },
+  {
+    "concept_slug": "dom-browser-apis",
+    "resource_url": "https://fullstackopen.com/en/",
+    "rank": 2
+  },
+  {
+    "concept_slug": "git-github-workflow",
+    "resource_url": "https://git-scm.com/book/en/v2",
+    "rank": 1
+  },
+  {
+    "concept_slug": "git-github-workflow",
+    "resource_url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core",
+    "rank": 2
+  },
+  {
+    "concept_slug": "react-frontend",
+    "resource_url": "https://fullstackopen.com/en/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "react-frontend",
+    "resource_url": "https://www.coursera.org/learn/introduction-to-front-end-development",
+    "rank": 2
+  },
+  {
+    "concept_slug": "react-frontend",
+    "resource_url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core",
+    "rank": 3
+  },
+  {
+    "concept_slug": "typescript-basics",
+    "resource_url": "https://fullstackopen.com/en/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "typescript-basics",
+    "resource_url": "https://www.coursera.org/professional-certificates/ibm-backend-development",
+    "rank": 2
+  },
+  {
+    "concept_slug": "http-rest-apis",
+    "resource_url": "https://expressjs.com/en/starter/basic-routing/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "http-rest-apis",
+    "resource_url": "https://fullstackopen.com/en/",
+    "rank": 2
+  },
+  {
+    "concept_slug": "node-express-backend",
+    "resource_url": "https://expressjs.com/en/starter/basic-routing/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "node-express-backend",
+    "resource_url": "https://fullstackopen.com/en/",
+    "rank": 2
+  },
+  {
+    "concept_slug": "node-express-backend",
+    "resource_url": "https://www.coursera.org/learn/introduction-to-back-end-development",
+    "rank": 3
+  },
+  {
+    "concept_slug": "relational-databases-sql",
+    "resource_url": "https://fullstackopen.com/en/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "relational-databases-sql",
+    "resource_url": "https://sqlbolt.com/",
+    "rank": 2
+  },
+  {
+    "concept_slug": "authentication-authorization",
+    "resource_url": "https://top10.owasp.org/2025/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "authentication-authorization",
+    "resource_url": "https://fullstackopen.com/en/",
+    "rank": 2
+  },
+  {
+    "concept_slug": "testing-web-applications",
+    "resource_url": "https://fullstackopen.com/en/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "testing-web-applications",
+    "resource_url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core",
+    "rank": 2
+  },
+  {
+    "concept_slug": "deployment-web-apps",
+    "resource_url": "https://fullstackopen.com/en/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "deployment-web-apps",
+    "resource_url": "https://www.coursera.org/professional-certificates/ibm-backend-development",
+    "rank": 2
+  },
+  {
+    "concept_slug": "production-full-stack-integration",
+    "resource_url": "https://fullstackopen.com/en/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "production-full-stack-integration",
+    "resource_url": "https://www.coursera.org/professional-certificates/ibm-backend-development",
+    "rank": 2
+  },
+  {
+    "concept_slug": "production-full-stack-integration",
+    "resource_url": "https://www.coursera.org/professional-certificates/devops-and-software-engineering",
+    "rank": 3
+  },
+  {
+    "concept_slug": "linux-cli",
+    "resource_url": "https://ubuntu.com/tutorials/command-line-for-beginners",
+    "rank": 1
+  },
+  {
+    "concept_slug": "linux-cli",
+    "resource_url": "https://www.coursera.org/professional-certificates/devops-and-software-engineering",
+    "rank": 2
+  },
+  {
+    "concept_slug": "networking-fundamentals",
+    "resource_url": "https://learn.microsoft.com/en-us/training/paths/microsoft-azure-fundamentals-describe-cloud-concepts/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "networking-fundamentals",
+    "resource_url": "https://learn.microsoft.com/en-us/training/azure/",
+    "rank": 2
+  },
+  {
+    "concept_slug": "cloud-concepts",
+    "resource_url": "https://learn.microsoft.com/en-us/training/paths/microsoft-azure-fundamentals-describe-cloud-concepts/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "cloud-concepts",
+    "resource_url": "https://aws.amazon.com/free/",
+    "rank": 2
+  },
+  {
+    "concept_slug": "cloud-core-services",
+    "resource_url": "https://learn.microsoft.com/en-us/training/azure/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "cloud-core-services",
+    "resource_url": "https://aws.amazon.com/free/",
+    "rank": 2
+  },
+  {
+    "concept_slug": "cloud-core-services",
+    "resource_url": "https://www.coursera.org/professional-certificates/devops-and-software-engineering",
+    "rank": 3
+  },
+  {
+    "concept_slug": "cloud-networking-security",
+    "resource_url": "https://learn.microsoft.com/en-us/training/azure/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "cloud-networking-security",
+    "resource_url": "https://top10.owasp.org/2025/",
+    "rank": 2
+  },
+  {
+    "concept_slug": "infrastructure-as-code",
+    "resource_url": "https://developer.hashicorp.com/terraform/tutorials",
+    "rank": 1
+  },
+  {
+    "concept_slug": "infrastructure-as-code",
+    "resource_url": "https://developer.hashicorp.com/terraform/tutorials/aws-get-started",
+    "rank": 2
+  },
+  {
+    "concept_slug": "containers-docker",
+    "resource_url": "https://docs.docker.com/get-started/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "containers-docker",
+    "resource_url": "https://www.coursera.org/professional-certificates/devops-and-software-engineering",
+    "rank": 2
+  },
+  {
+    "concept_slug": "kubernetes-basics",
+    "resource_url": "https://kubernetes.io/docs/tutorials/kubernetes-basics/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "kubernetes-basics",
+    "resource_url": "https://www.coursera.org/professional-certificates/devops-and-software-engineering",
+    "rank": 2
+  },
+  {
+    "concept_slug": "cicd-automation",
+    "resource_url": "https://docs.github.com/en/actions/get-started",
+    "rank": 1
+  },
+  {
+    "concept_slug": "cicd-automation",
+    "resource_url": "https://docs.github.com/en/actions",
+    "rank": 2
+  },
+  {
+    "concept_slug": "cicd-automation",
+    "resource_url": "https://www.coursera.org/professional-certificates/devops-and-software-engineering",
+    "rank": 3
+  },
+  {
+    "concept_slug": "configuration-automation",
+    "resource_url": "https://developer.hashicorp.com/terraform/tutorials",
+    "rank": 1
+  },
+  {
+    "concept_slug": "configuration-automation",
+    "resource_url": "https://www.coursera.org/professional-certificates/devops-and-software-engineering",
+    "rank": 2
+  },
+  {
+    "concept_slug": "observability-monitoring",
+    "resource_url": "https://prometheus.io/docs/introduction/overview/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "observability-monitoring",
+    "resource_url": "https://grafana.com/tutorials/",
+    "rank": 2
+  },
+  {
+    "concept_slug": "observability-monitoring",
+    "resource_url": "https://www.coursera.org/professional-certificates/devops-and-software-engineering",
+    "rank": 3
+  },
+  {
+    "concept_slug": "cloud-cost-reliability",
+    "resource_url": "https://aws.amazon.com/free/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "cloud-cost-reliability",
+    "resource_url": "https://www.coursera.org/professional-certificates/devops-and-software-engineering",
+    "rank": 2
+  },
+  {
+    "concept_slug": "cloud-security-practices",
+    "resource_url": "https://top10.owasp.org/2025/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "cloud-security-practices",
+    "resource_url": "https://learn.microsoft.com/en-us/training/azure/",
+    "rank": 2
+  },
+  {
+    "concept_slug": "cloud-security-practices",
+    "resource_url": "https://www.coursera.org/professional-certificates/devops-and-software-engineering",
+    "rank": 3
+  },
+  {
+    "concept_slug": "production-cloud-project",
+    "resource_url": "https://www.coursera.org/professional-certificates/devops-and-software-engineering",
+    "rank": 1
+  },
+  {
+    "concept_slug": "production-cloud-project",
+    "resource_url": "https://developer.hashicorp.com/terraform/tutorials",
+    "rank": 2
+  },
+  {
+    "concept_slug": "production-cloud-project",
+    "resource_url": "https://kubernetes.io/docs/tutorials/kubernetes-basics/",
+    "rank": 3
+  },
+  {
+    "concept_slug": "linear-algebra-for-ml",
+    "resource_url": "https://numpy.org/learn/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "linear-algebra-for-ml",
+    "resource_url": "https://www.coursera.org/specializations/machine-learning-introduction",
+    "rank": 2
+  },
+  {
+    "concept_slug": "probability-statistics-for-ml",
+    "resource_url": "https://developers.google.com/machine-learning/crash-course",
+    "rank": 1
+  },
+  {
+    "concept_slug": "probability-statistics-for-ml",
+    "resource_url": "https://www.coursera.org/specializations/machine-learning-introduction",
+    "rank": 2
+  },
+  {
+    "concept_slug": "python-for-ml",
+    "resource_url": "https://docs.python.org/3/tutorial/index.html",
+    "rank": 1
+  },
+  {
+    "concept_slug": "python-for-ml",
+    "resource_url": "https://www.coursera.org/specializations/machine-learning-introduction",
+    "rank": 2
+  },
+  {
+    "concept_slug": "numpy-data-arrays",
+    "resource_url": "https://numpy.org/learn/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "numpy-data-arrays",
+    "resource_url": "https://developers.google.com/machine-learning/crash-course",
+    "rank": 2
+  },
+  {
+    "concept_slug": "data-preparation-ml",
+    "resource_url": "https://developers.google.com/machine-learning/crash-course",
+    "rank": 1
+  },
+  {
+    "concept_slug": "data-preparation-ml",
+    "resource_url": "https://www.coursera.org/specializations/machine-learning-introduction",
+    "rank": 2
+  },
+  {
+    "concept_slug": "linear-regression",
+    "resource_url": "https://developers.google.com/machine-learning/crash-course/linear-regression",
+    "rank": 1
+  },
+  {
+    "concept_slug": "linear-regression",
+    "resource_url": "https://www.coursera.org/specializations/machine-learning-introduction",
+    "rank": 2
+  },
+  {
+    "concept_slug": "classification-models",
+    "resource_url": "https://developers.google.com/machine-learning/crash-course/classification",
+    "rank": 1
+  },
+  {
+    "concept_slug": "classification-models",
+    "resource_url": "https://www.coursera.org/specializations/machine-learning-introduction",
+    "rank": 2
+  },
+  {
+    "concept_slug": "tree-ensemble-models",
+    "resource_url": "https://developers.google.com/machine-learning/crash-course",
+    "rank": 1
+  },
+  {
+    "concept_slug": "tree-ensemble-models",
+    "resource_url": "https://www.coursera.org/specializations/machine-learning-introduction",
+    "rank": 2
+  },
+  {
+    "concept_slug": "model-evaluation",
+    "resource_url": "https://developers.google.com/machine-learning/crash-course/classification",
+    "rank": 1
+  },
+  {
+    "concept_slug": "model-evaluation",
+    "resource_url": "https://www.coursera.org/specializations/machine-learning-introduction",
+    "rank": 2
+  },
+  {
+    "concept_slug": "unsupervised-learning",
+    "resource_url": "https://developers.google.com/machine-learning/crash-course",
+    "rank": 1
+  },
+  {
+    "concept_slug": "unsupervised-learning",
+    "resource_url": "https://www.coursera.org/specializations/machine-learning-introduction",
+    "rank": 2
+  },
+  {
+    "concept_slug": "ml-pipelines",
+    "resource_url": "https://developers.google.com/machine-learning/crash-course",
+    "rank": 1
+  },
+  {
+    "concept_slug": "ml-pipelines",
+    "resource_url": "https://www.coursera.org/specializations/machine-learning-introduction",
+    "rank": 2
+  },
+  {
+    "concept_slug": "neural-network-foundations",
+    "resource_url": "https://docs.pytorch.org/tutorials/beginner/basics/intro",
+    "rank": 1
+  },
+  {
+    "concept_slug": "neural-network-foundations",
+    "resource_url": "https://course.fast.ai/",
+    "rank": 2
+  },
+  {
+    "concept_slug": "pytorch-deep-learning",
+    "resource_url": "https://docs.pytorch.org/tutorials/beginner/basics/intro",
+    "rank": 1
+  },
+  {
+    "concept_slug": "pytorch-deep-learning",
+    "resource_url": "https://course.fast.ai/",
+    "rank": 2
+  },
+  {
+    "concept_slug": "ml-project-delivery",
+    "resource_url": "https://course.fast.ai/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "ml-project-delivery",
+    "resource_url": "https://www.coursera.org/specializations/machine-learning-introduction",
+    "rank": 2
+  },
+  {
+    "concept_slug": "sql-data-querying",
+    "resource_url": "https://sqlbolt.com/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "sql-data-querying",
+    "resource_url": "https://www.coursera.org/professional-certificates/google-data-analytics",
+    "rank": 2
+  },
+  {
+    "concept_slug": "python-data-basics",
+    "resource_url": "https://docs.python.org/3/tutorial/index.html",
+    "rank": 1
+  },
+  {
+    "concept_slug": "python-data-basics",
+    "resource_url": "https://www.coursera.org/professional-certificates/google-data-analytics",
+    "rank": 2
+  },
+  {
+    "concept_slug": "data-types-quality",
+    "resource_url": "https://www.coursera.org/professional-certificates/google-data-analytics",
+    "rank": 1
+  },
+  {
+    "concept_slug": "data-types-quality",
+    "resource_url": "https://pandas.pydata.org/docs/getting_started/intro_tutorials/",
+    "rank": 2
+  },
+  {
+    "concept_slug": "pandas-data-cleaning",
+    "resource_url": "https://www.kaggle.com/learn/pandas/1000",
+    "rank": 1
+  },
+  {
+    "concept_slug": "pandas-data-cleaning",
+    "resource_url": "https://pandas.pydata.org/docs/getting_started/intro_tutorials/",
+    "rank": 2
+  },
+  {
+    "concept_slug": "pandas-data-cleaning",
+    "resource_url": "https://www.coursera.org/professional-certificates/google-data-analytics",
+    "rank": 3
+  },
+  {
+    "concept_slug": "descriptive-statistics",
+    "resource_url": "https://www.coursera.org/professional-certificates/google-data-analytics",
+    "rank": 1
+  },
+  {
+    "concept_slug": "descriptive-statistics",
+    "resource_url": "https://www.kaggle.com/learn/pandas/1000",
+    "rank": 2
+  },
+  {
+    "concept_slug": "probability-inference",
+    "resource_url": "https://www.coursera.org/professional-certificates/google-data-analytics",
+    "rank": 1
+  },
+  {
+    "concept_slug": "probability-inference",
+    "resource_url": "https://www.kaggle.com/learn/pandas/1000",
+    "rank": 2
+  },
+  {
+    "concept_slug": "exploratory-data-analysis",
+    "resource_url": "https://www.kaggle.com/learn/pandas/1000",
+    "rank": 1
+  },
+  {
+    "concept_slug": "exploratory-data-analysis",
+    "resource_url": "https://www.coursera.org/professional-certificates/google-data-analytics",
+    "rank": 2
+  },
+  {
+    "concept_slug": "data-visualization",
+    "resource_url": "https://www.kaggle.com/learn/data-visualization/course",
+    "rank": 1
+  },
+  {
+    "concept_slug": "data-visualization",
+    "resource_url": "https://www.coursera.org/professional-certificates/google-data-analytics",
+    "rank": 2
+  },
+  {
+    "concept_slug": "dashboard-bi",
+    "resource_url": "https://learn.microsoft.com/en-us/training/powerplatform/power-bi/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "dashboard-bi",
+    "resource_url": "https://www.tableau.com/learn/training",
+    "rank": 2
+  },
+  {
+    "concept_slug": "dashboard-bi",
+    "resource_url": "https://www.coursera.org/professional-certificates/google-data-analytics",
+    "rank": 3
+  },
+  {
+    "concept_slug": "data-modeling-bi",
+    "resource_url": "https://learn.microsoft.com/en-us/training/powerplatform/power-bi/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "data-modeling-bi",
+    "resource_url": "https://www.tableau.com/learn/training",
+    "rank": 2
+  },
+  {
+    "concept_slug": "business-metrics-kpis",
+    "resource_url": "https://www.coursera.org/professional-certificates/google-data-analytics",
+    "rank": 1
+  },
+  {
+    "concept_slug": "business-metrics-kpis",
+    "resource_url": "https://learn.microsoft.com/en-us/training/powerplatform/power-bi/",
+    "rank": 2
+  },
+  {
+    "concept_slug": "data-storytelling",
+    "resource_url": "https://www.coursera.org/professional-certificates/google-data-analytics",
+    "rank": 1
+  },
+  {
+    "concept_slug": "data-storytelling",
+    "resource_url": "https://www.kaggle.com/learn/data-visualization/course",
+    "rank": 2
+  },
+  {
+    "concept_slug": "advanced-sql-analytics",
+    "resource_url": "https://sqlbolt.com/",
+    "rank": 1
+  },
+  {
+    "concept_slug": "advanced-sql-analytics",
+    "resource_url": "https://www.coursera.org/professional-certificates/google-data-analytics",
+    "rank": 2
+  },
+  {
+    "concept_slug": "end-to-end-data-analysis",
+    "resource_url": "https://www.coursera.org/professional-certificates/google-data-analytics",
+    "rank": 1
+  },
+  {
+    "concept_slug": "end-to-end-data-analysis",
+    "resource_url": "https://www.kaggle.com/learn/data-visualization/course",
+    "rank": 2
+  },
+  {
+    "concept_slug": "end-to-end-data-analysis",
+    "resource_url": "https://www.kaggle.com/learn/pandas/1000",
+    "rank": 3
+  }
+]

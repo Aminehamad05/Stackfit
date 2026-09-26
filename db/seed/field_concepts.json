@@ -1,0 +1,282 @@
+[
+  {
+    "field_slug": "full-stack-dev",
+    "concept_slug": "html-css-foundations",
+    "importance": 5
+  },
+  {
+    "field_slug": "full-stack-dev",
+    "concept_slug": "responsive-accessible-web",
+    "importance": 4
+  },
+  {
+    "field_slug": "full-stack-dev",
+    "concept_slug": "javascript-fundamentals",
+    "importance": 5
+  },
+  {
+    "field_slug": "full-stack-dev",
+    "concept_slug": "dom-browser-apis",
+    "importance": 4
+  },
+  {
+    "field_slug": "full-stack-dev",
+    "concept_slug": "git-github-workflow",
+    "importance": 5
+  },
+  {
+    "field_slug": "full-stack-dev",
+    "concept_slug": "react-frontend",
+    "importance": 5
+  },
+  {
+    "field_slug": "full-stack-dev",
+    "concept_slug": "typescript-basics",
+    "importance": 3
+  },
+  {
+    "field_slug": "full-stack-dev",
+    "concept_slug": "http-rest-apis",
+    "importance": 5
+  },
+  {
+    "field_slug": "full-stack-dev",
+    "concept_slug": "node-express-backend",
+    "importance": 5
+  },
+  {
+    "field_slug": "full-stack-dev",
+    "concept_slug": "relational-databases-sql",
+    "importance": 5
+  },
+  {
+    "field_slug": "full-stack-dev",
+    "concept_slug": "authentication-authorization",
+    "importance": 4
+  },
+  {
+    "field_slug": "full-stack-dev",
+    "concept_slug": "testing-web-applications",
+    "importance": 3
+  },
+  {
+    "field_slug": "full-stack-dev",
+    "concept_slug": "deployment-web-apps",
+    "importance": 4
+  },
+  {
+    "field_slug": "full-stack-dev",
+    "concept_slug": "production-full-stack-integration",
+    "importance": 4
+  },
+  {
+    "field_slug": "cloud-engineering",
+    "concept_slug": "linux-cli",
+    "importance": 5
+  },
+  {
+    "field_slug": "cloud-engineering",
+    "concept_slug": "networking-fundamentals",
+    "importance": 5
+  },
+  {
+    "field_slug": "cloud-engineering",
+    "concept_slug": "cloud-concepts",
+    "importance": 4
+  },
+  {
+    "field_slug": "cloud-engineering",
+    "concept_slug": "cloud-core-services",
+    "importance": 5
+  },
+  {
+    "field_slug": "cloud-engineering",
+    "concept_slug": "cloud-networking-security",
+    "importance": 4
+  },
+  {
+    "field_slug": "cloud-engineering",
+    "concept_slug": "infrastructure-as-code",
+    "importance": 5
+  },
+  {
+    "field_slug": "cloud-engineering",
+    "concept_slug": "containers-docker",
+    "importance": 5
+  },
+  {
+    "field_slug": "cloud-engineering",
+    "concept_slug": "kubernetes-basics",
+    "importance": 3
+  },
+  {
+    "field_slug": "cloud-engineering",
+    "concept_slug": "cicd-automation",
+    "importance": 5
+  },
+  {
+    "field_slug": "cloud-engineering",
+    "concept_slug": "configuration-automation",
+    "importance": 4
+  },
+  {
+    "field_slug": "cloud-engineering",
+    "concept_slug": "observability-monitoring",
+    "importance": 4
+  },
+  {
+    "field_slug": "cloud-engineering",
+    "concept_slug": "cloud-cost-reliability",
+    "importance": 3
+  },
+  {
+    "field_slug": "cloud-engineering",
+    "concept_slug": "cloud-security-practices",
+    "importance": 3
+  },
+  {
+    "field_slug": "cloud-engineering",
+    "concept_slug": "production-cloud-project",
+    "importance": 4
+  },
+  {
+    "field_slug": "machine-learning",
+    "concept_slug": "linear-algebra-for-ml",
+    "importance": 4
+  },
+  {
+    "field_slug": "machine-learning",
+    "concept_slug": "probability-statistics-for-ml",
+    "importance": 5
+  },
+  {
+    "field_slug": "machine-learning",
+    "concept_slug": "python-for-ml",
+    "importance": 5
+  },
+  {
+    "field_slug": "machine-learning",
+    "concept_slug": "numpy-data-arrays",
+    "importance": 4
+  },
+  {
+    "field_slug": "machine-learning",
+    "concept_slug": "data-preparation-ml",
+    "importance": 5
+  },
+  {
+    "field_slug": "machine-learning",
+    "concept_slug": "linear-regression",
+    "importance": 4
+  },
+  {
+    "field_slug": "machine-learning",
+    "concept_slug": "classification-models",
+    "importance": 5
+  },
+  {
+    "field_slug": "machine-learning",
+    "concept_slug": "tree-ensemble-models",
+    "importance": 4
+  },
+  {
+    "field_slug": "machine-learning",
+    "concept_slug": "model-evaluation",
+    "importance": 5
+  },
+  {
+    "field_slug": "machine-learning",
+    "concept_slug": "unsupervised-learning",
+    "importance": 3
+  },
+  {
+    "field_slug": "machine-learning",
+    "concept_slug": "ml-pipelines",
+    "importance": 3
+  },
+  {
+    "field_slug": "machine-learning",
+    "concept_slug": "neural-network-foundations",
+    "importance": 4
+  },
+  {
+    "field_slug": "machine-learning",
+    "concept_slug": "pytorch-deep-learning",
+    "importance": 4
+  },
+  {
+    "field_slug": "machine-learning",
+    "concept_slug": "ml-project-delivery",
+    "importance": 4
+  },
+  {
+    "field_slug": "data",
+    "concept_slug": "sql-data-querying",
+    "importance": 5
+  },
+  {
+    "field_slug": "data",
+    "concept_slug": "python-data-basics",
+    "importance": 5
+  },
+  {
+    "field_slug": "data",
+    "concept_slug": "data-types-quality",
+    "importance": 5
+  },
+  {
+    "field_slug": "data",
+    "concept_slug": "pandas-data-cleaning",
+    "importance": 5
+  },
+  {
+    "field_slug": "data",
+    "concept_slug": "descriptive-statistics",
+    "importance": 4
+  },
+  {
+    "field_slug": "data",
+    "concept_slug": "probability-inference",
+    "importance": 4
+  },
+  {
+    "field_slug": "data",
+    "concept_slug": "exploratory-data-analysis",
+    "importance": 5
+  },
+  {
+    "field_slug": "data",
+    "concept_slug": "data-visualization",
+    "importance": 5
+  },
+  {
+    "field_slug": "data",
+    "concept_slug": "dashboard-bi",
+    "importance": 5
+  },
+  {
+    "field_slug": "data",
+    "concept_slug": "data-modeling-bi",
+    "importance": 4
+  },
+  {
+    "field_slug": "data",
+    "concept_slug": "business-metrics-kpis",
+    "importance": 5
+  },
+  {
+    "field_slug": "data",
+    "concept_slug": "data-storytelling",
+    "importance": 5
+  },
+  {
+    "field_slug": "data",
+    "concept_slug": "advanced-sql-analytics",
+    "importance": 4
+  },
+  {
+    "field_slug": "data",
+    "concept_slug": "end-to-end-data-analysis",
+    "importance": 4
+  }
+]

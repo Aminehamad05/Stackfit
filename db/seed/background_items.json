@@ -1,1 +1,94 @@
-{"todo":"background_items seed data per AGENT_SPEC §8"}
+[
+  {
+    "kind": "uni_course",
+    "name": "Algèbre linéaire (Linear Algebra)"
+  },
+  {
+    "kind": "uni_course",
+    "name": "Probabilités et statistiques (Probability & Statistics)"
+  },
+  {
+    "kind": "uni_course",
+    "name": "Bases de données (Databases)"
+  },
+  {
+    "kind": "uni_course",
+    "name": "Réseaux informatiques (Computer Networks)"
+  },
+  {
+    "kind": "uni_course",
+    "name": "Systèmes d'exploitation (Operating Systems)"
+  },
+  {
+    "kind": "uni_course",
+    "name": "Architecture des ordinateurs (Computer Architecture)"
+  },
+  {
+    "kind": "uni_course",
+    "name": "Programmation orientée objet (Object-Oriented Programming)"
+  },
+  {
+    "kind": "uni_course",
+    "name": "Génie logiciel (Software Engineering)"
+  },
+  {
+    "kind": "uni_course",
+    "name": "Algorithmique et structures de données (Algorithms & Data Structures)"
+  },
+  {
+    "kind": "uni_course",
+    "name": "Programmation web (Web Programming)"
+  },
+  {
+    "kind": "skill",
+    "name": "Git"
+  },
+  {
+    "kind": "skill",
+    "name": "GitHub"
+  },
+  {
+    "kind": "skill",
+    "name": "Linux CLI"
+  },
+  {
+    "kind": "skill",
+    "name": "Python"
+  },
+  {
+    "kind": "skill",
+    "name": "JavaScript"
+  },
+  {
+    "kind": "skill",
+    "name": "TypeScript"
+  },
+  {
+    "kind": "skill",
+    "name": "SQL"
+  },
+  {
+    "kind": "skill",
+    "name": "React"
+  },
+  {
+    "kind": "skill",
+    "name": "Node.js"
+  },
+  {
+    "kind": "skill",
+    "name": "Docker"
+  },
+  {
+    "kind": "experience",
+    "name": "University coding club project"
+  },
+  {
+    "kind": "experience",
+    "name": "Internship / stage informatique"
+  },
+  {
+    "kind": "experience",
+    "name": "Hackathon or technical competition"
+  }
+]

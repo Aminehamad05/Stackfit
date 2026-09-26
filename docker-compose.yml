@@ -45,9 +45,10 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
-    # Apply Prisma migrations on boot, then start. Prisma is the ONLY migration path —
-    # never apply db/*.sql by hand against this container (they are the source for `prisma migrate dev`).
-    command: sh -c "npx prisma migrate deploy --schema /app/prisma/schema.prisma && node apps/api/dist/server.js"
+    # Boot chain (all idempotent, safe on every restart):
+    # migrate deploy (tables) -> bootstrap (views + seed-if-empty) -> serve.
+    # Prisma is the ONLY migration path — never apply db/*.sql by hand.
+    command: sh -c "npx prisma migrate deploy --schema /app/prisma/schema.prisma && npx tsx /app/scripts/bootstrap.ts && node apps/api/dist/server.js"
     volumes:
       - ./prisma:/app/prisma:ro
 

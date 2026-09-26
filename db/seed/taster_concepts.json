@@ -1,0 +1,78 @@
+[
+  {
+    "taster_slug": "full-stack-crud-taster",
+    "concept_slug": "html-css-foundations"
+  },
+  {
+    "taster_slug": "full-stack-crud-taster",
+    "concept_slug": "javascript-fundamentals"
+  },
+  {
+    "taster_slug": "full-stack-crud-taster",
+    "concept_slug": "react-frontend"
+  },
+  {
+    "taster_slug": "full-stack-crud-taster",
+    "concept_slug": "http-rest-apis"
+  },
+  {
+    "taster_slug": "full-stack-crud-taster",
+    "concept_slug": "node-express-backend"
+  },
+  {
+    "taster_slug": "full-stack-crud-taster",
+    "concept_slug": "relational-databases-sql"
+  },
+  {
+    "taster_slug": "container-ci-cloud-taster",
+    "concept_slug": "linux-cli"
+  },
+  {
+    "taster_slug": "container-ci-cloud-taster",
+    "concept_slug": "cloud-concepts"
+  },
+  {
+    "taster_slug": "container-ci-cloud-taster",
+    "concept_slug": "containers-docker"
+  },
+  {
+    "taster_slug": "container-ci-cloud-taster",
+    "concept_slug": "cicd-automation"
+  },
+  {
+    "taster_slug": "classifier-taster",
+    "concept_slug": "python-for-ml"
+  },
+  {
+    "taster_slug": "classifier-taster",
+    "concept_slug": "data-preparation-ml"
+  },
+  {
+    "taster_slug": "classifier-taster",
+    "concept_slug": "classification-models"
+  },
+  {
+    "taster_slug": "classifier-taster",
+    "concept_slug": "model-evaluation"
+  },
+  {
+    "taster_slug": "messy-dataset-insights-taster",
+    "concept_slug": "python-data-basics"
+  },
+  {
+    "taster_slug": "messy-dataset-insights-taster",
+    "concept_slug": "data-types-quality"
+  },
+  {
+    "taster_slug": "messy-dataset-insights-taster",
+    "concept_slug": "pandas-data-cleaning"
+  },
+  {
+    "taster_slug": "messy-dataset-insights-taster",
+    "concept_slug": "data-visualization"
+  },
+  {
+    "taster_slug": "messy-dataset-insights-taster",
+    "concept_slug": "data-storytelling"
+  }
+]
