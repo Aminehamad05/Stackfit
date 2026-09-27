@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { api } from '../../lib/api';
 import { apiErrorMessage } from '../../lib/errors';
 import type { ProjectSuggestion, Taster } from '../../lib/types';
@@ -24,7 +24,8 @@ interface Tasting {
 }
 
 export default function Taster(): JSX.Element {
-  const [fieldId, setFieldId] = useState('4');
+  const [fields, setFields] = useState<Array<{ id: number; name: string }>>([]);
+  const [fieldId, setFieldId] = useState('');
   const [tasting, setTasting] = useState<Tasting | null>(null);
   const [taster, setTaster] = useState<Taster | null>(null);
   const [tasterId, setTasterId] = useState('');
@@ -49,26 +50,45 @@ export default function Taster(): JSX.Element {
     }
   }
 
+  useEffect(() => {
+    api<{ fields: Array<{ id: number; name: string }> }>('/fields')
+      .then((r) => {
+        setFields(r.fields);
+        if (r.fields.length > 0) setFieldId((v) => v || String(r.fields[0].id));
+      })
+      .catch((e: unknown) => setError(apiErrorMessage(e)));
+  }, []);
+
   return (
     <div className="container">
       <div className="page-head">
         <h1>Taster projects</h1>
         <p>Short hands-on taste of a field (1–3h) before you commit.</p>
       </div>
-      <div style={{ display: 'flex', gap: 10, alignItems: 'end' }}>
-        <Field label="Field id" name="fieldId" value={fieldId} onChange={(e) => setFieldId(e.target.value)} />
-        <Button variant="primary" onClick={() => void wrap(async () => {
-          const r = await api<Tasting>(`/fields/${fieldId}/tasting`);
-          setTasting(r);
-          setTaster(null);
-          setTasterId('');
-        })} disabled={busy}>Taste this field</Button>
-        <Button variant="secondary" onClick={() => void wrap(async () => {
-          const r = await api<{ taster: Taster }>(`/fields/${fieldId}/taster`);
-          setTaster(r.taster);
-          setTasting(null);
-          setTasterId(String(r.taster.id));
-        })} disabled={busy}>Load taster</Button>
+      <div style={{ display: 'flex', gap: 10, alignItems: 'end', flexWrap: 'wrap' }}>
+        <div className="field" style={{ marginBottom: 0, minWidth: 240 }}>
+          <label className="field-label" htmlFor="t-field">Field</label>
+          <select id="t-field" className="select" value={fieldId} onChange={(e) => setFieldId(e.target.value)}>
+            {fields.map((f) => <option key={f.id} value={f.id}>{f.name}</option>)}
+          </select>
+        </div>
+        <div className="field" style={{ marginBottom: 0 }}>
+          <span className="field-label" aria-hidden="true">&nbsp;</span>
+          <div style={{ display: 'flex', gap: 10, minHeight: 46, alignItems: 'center' }}>
+            <Button variant="primary" onClick={() => void wrap(async () => {
+              const r = await api<Tasting>(`/fields/${fieldId}/tasting`);
+              setTasting(r);
+              setTaster(null);
+              setTasterId('');
+            })} disabled={busy}>Taste this field</Button>
+            <Button variant="secondary" onClick={() => void wrap(async () => {
+              const r = await api<{ taster: Taster }>(`/fields/${fieldId}/taster`);
+              setTaster(r.taster);
+              setTasting(null);
+              setTasterId(String(r.taster.id));
+            })} disabled={busy}>Load taster</Button>
+          </div>
+        </div>
       </div>
       {error ? <ErrorState title="Something went wrong" body={error} /> : null}
       {notice ? <p><Badge tone="teal">{notice}</Badge></p> : null}
@@ -78,16 +98,19 @@ export default function Taster(): JSX.Element {
             <h2>{tasting.field.name} — taste it</h2>
             <p>{tasting.field.description}</p>
           </Card>
-          <h2>Simplest 5 concepts</h2>
+          <h2 style={{ margin: '28px 0 4px' }}>Simplest 5 concepts</h2>
+          <div style={{ display: 'grid', gap: 12, marginBottom: 8 }}>
           {tasting.simplestConcepts.map((c, i) => (
             <Card key={c.slug}>
               <strong>{i + 1}. {c.name}</strong> <Badge tone="gray">{c.level}</Badge>
               {c.resource ? (
-                <div><a href={c.resource.url} target="_blank" rel="noreferrer">{c.resource.title}</a></div>
+                <div style={{ marginTop: 6 }}><a href={c.resource.url} target="_blank" rel="noreferrer">{c.resource.title}</a></div>
               ) : null}
             </Card>
           ))}
-          <h2>Starter projects (simplest first)</h2>
+          </div>
+          <h2 style={{ margin: '28px 0 4px' }}>Starter projects (simplest first)</h2>
+          <div style={{ display: 'grid', gap: 12, marginBottom: 8 }}>
           {tasting.starterProjects.map((p) => (
             <Card key={p.slug}>
               <strong>{p.ready ? '✅ ' : ''}{p.title}</strong> <Badge tone={p.ready ? 'teal' : 'gray'}>~{p.estHours}h</Badge>
@@ -95,18 +118,23 @@ export default function Taster(): JSX.Element {
               <ProgressBar value={p.total ? (p.mastered / p.total) * 100 : 0} label={`${p.mastered}/${p.total} concepts mastered`} />
             </Card>
           ))}
-          <h2>Guided tastings ({tasting.tastings.length})</h2>
+          </div>
+          <h2 style={{ margin: '28px 0 4px' }}>Guided tastings ({tasting.tastings.length})</h2>
+          <div style={{ display: 'grid', gap: 12, marginBottom: 8 }}>
           {tasting.tastings.map((t) => (
             <Card key={t.id}>
               <strong>{t.title}</strong> <Badge tone="blue">~{t.estHours}h · {t.level}</Badge>
               <p style={{ fontSize: '0.875rem' }}>{t.description}</p>
+              <div style={{ marginTop: 8 }}>
               <Button variant="secondary" onClick={() => {
                 setTaster(t);
                 setTasting(null);
                 setTasterId(String(t.id));
               }}>Open for start/submit ↓</Button>
+              </div>
             </Card>
           ))}
+          </div>
         </>
       ) : null}
       {taster ? (

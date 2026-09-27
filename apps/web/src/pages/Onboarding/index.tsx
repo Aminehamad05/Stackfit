@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useAuth } from '../../features/auth/auth-context';
 import { api } from '../../lib/api';
 import { apiErrorMessage } from '../../lib/errors';
 import type { BackgroundItem, ProfileConcept, SavedBackground } from '../../lib/types';
@@ -27,6 +28,7 @@ const KIND_LABEL: Record<string, string> = { uni_course: 'University courses', s
 export const ONBOARDING_STEPS = ['catalogue'] as const;
 
 export default function Onboarding(): JSX.Element {
+  const { account } = useAuth();
   const [items, setItems] = useState<BackgroundItem[]>([]);
   const [picks, setPicks] = useState<Record<number, Pick>>({});
   const [savedCount, setSavedCount] = useState(0);
@@ -59,8 +61,9 @@ export default function Onboarding(): JSX.Element {
   }
 
   useEffect(() => {
+    if (account === null) return; // signed-out users get the sign-in prompt below, no fetch.
     void load();
-  }, []);
+  }, [account]);
 
   const groups = useMemo(() => {
     const g = new Map<string, BackgroundItem[]>();
@@ -106,9 +109,12 @@ export default function Onboarding(): JSX.Element {
     <div className="container">
       <div className="page-head">
         <h1>What have you done before?</h1>
-        <p>Tick what applies and rate confidence + interest (1–5). Saved picks: {savedCount}.</p>
+        <p>Tick what applies and rate confidence + interest (1–5). Saved picks: {savedCount}</p>
       </div>
-      {loading ? (
+      {account === null ? (
+        <EmptyState title="Sign in to start" body="The assessment needs an account so we can match fields to your background." actionLabel="Sign in" actionTo="/login" />
+      ) : null}
+      {account === null ? null : loading ? (
         <LoadingSkeleton lines={5} />
       ) : error && items.length === 0 ? (
         <ErrorState title="Couldn't load the catalogue" body={error} onRetry={() => void load()} />

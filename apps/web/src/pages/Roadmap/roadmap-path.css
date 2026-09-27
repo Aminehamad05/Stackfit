@@ -1,0 +1,171 @@
+/* Roadmap skill-tree — tokens only (see index.css :root + [data-theme="dark"]).
+   New: layout/animation for path nodes. No new palette (gold = --warning). */
+
+.path-tree {
+  position: relative;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 12px 0 32px;
+}
+
+.path-station {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  min-height: 96px;
+}
+
+.path-spine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  transform: translateX(-50%);
+  background: var(--gradient-progress);
+  opacity: 0.35;
+  border-radius: 3px;
+}
+
+.side-left .path-node { grid-column: 1; justify-self: end; margin-right: 18px; }
+.side-left .path-caption { grid-column: 3; }
+.side-right .path-node { grid-column: 3; justify-self: start; margin-left: 18px; grid-row: 1; }
+.side-right .path-caption { grid-column: 1; text-align: right; }
+.side-right .path-certs { grid-column: 1 / -1; justify-self: end; }
+
+.path-node {
+  grid-row: 1;
+  position: relative;
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  border: 3px solid var(--border);
+  background: var(--surface);
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  z-index: 1;
+}
+
+.path-node .path-shape { font-size: 30px; line-height: 1; }
+.path-node .path-glyph {
+  position: absolute;
+  right: -4px;
+  bottom: -4px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.kind-course { width: 84px; height: 84px; border-color: var(--brand-blue); }
+.kind-course .path-shape { color: var(--brand-blue); font-size: 36px; }
+.kind-quiz, .kind-project { width: 60px; height: 60px; }
+.kind-quiz { border-color: var(--brand-purple); }
+.kind-quiz .path-shape { color: var(--brand-purple); font-size: 26px; }
+.kind-project { border-color: var(--brand-teal); border-radius: 22px; }
+.kind-project .path-shape { color: var(--brand-teal); font-size: 28px; }
+
+.state-locked { opacity: 0.45; cursor: not-allowed; filter: grayscale(0.7); }
+.state-locked .path-glyph { border-color: var(--border); }
+.state-current {
+  border-color: var(--brand-blue);
+  box-shadow: 0 0 0 4px var(--blue-soft), 0 0 18px var(--brand-blue);
+  animation: path-pulse 2s ease-in-out infinite;
+}
+.state-completed { border-color: var(--brand-teal); background: var(--teal-soft); }
+.state-completed .path-glyph { background: var(--brand-teal); border-color: var(--brand-teal); color: #fff; }
+.state-skip_eligible { border-style: dashed; border-color: var(--warning); }
+.path-node.selected { outline: 3px solid var(--brand-purple); outline-offset: 3px; }
+.path-node:focus-visible { outline: 3px solid var(--brand-cyan); outline-offset: 3px; }
+
+@keyframes path-pulse {
+  0%, 100% { box-shadow: 0 0 0 4px var(--blue-soft), 0 0 14px var(--brand-blue); }
+  50% { box-shadow: 0 0 0 8px var(--blue-soft), 0 0 26px var(--brand-blue); }
+}
+
+.just-unlocked { animation: path-unlock 1.6s ease-out 2; }
+@keyframes path-unlock {
+  0% { box-shadow: 0 0 0 0 var(--brand-teal); }
+  60% { box-shadow: 0 0 0 14px transparent, 0 0 30px var(--brand-teal); }
+  100% { box-shadow: 0 0 0 4px var(--blue-soft); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .state-current, .just-unlocked { animation: none; }
+}
+
+.path-caption { font-size: var(--text-sm); color: var(--text-primary); }
+.path-caption .path-sub { display: block; font-size: var(--text-xs); color: var(--text-secondary); }
+
+.path-certs { display: flex; gap: 6px; margin-top: 4px; flex-wrap: wrap; }
+.path-cert {
+  font-size: var(--text-xs);
+  background: var(--surface);
+  border: 2px solid var(--warning);
+  color: var(--text-primary);
+  border-radius: 999px;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+.path-cert.state-locked { opacity: 0.45; }
+.path-cert.state-completed { background: var(--warning); color: #fff; border-color: var(--warning); }
+
+/* Drawer */
+.path-drawer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 40;
+}
+.path-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(420px, 100%);
+  background: var(--surface);
+  color: var(--text-primary);
+  border-left: 1px solid var(--border);
+  padding: 16px;
+  overflow-y: auto;
+  z-index: 41;
+  animation: path-slide-in 0.22s ease-out;
+}
+@keyframes path-slide-in {
+  from { transform: translateX(40px); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .path-drawer { animation: none; }
+}
+
+/* Narrow screens: single centered column, labels below nodes. */
+@media (max-width: 480px) {
+  .path-station {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    min-height: 0;
+    padding: 10px 0;
+  }
+  .side-left .path-node, .side-right .path-node {
+    grid-column: 1;
+    grid-row: auto;
+    margin: 0;
+  }
+  .side-left .path-caption, .side-right .path-caption { grid-column: 1; text-align: center; }
+  .side-right .path-certs { grid-column: 1; justify-self: center; }
+  .path-node { width: 64px; height: 64px; }
+  .kind-course { width: 72px; height: 72px; }
+  .path-drawer { left: 0; width: 100%; border-left: none; }
+}

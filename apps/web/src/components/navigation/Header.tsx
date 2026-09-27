@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../features/auth/auth-context';
 import { useTheme } from '../../features/theme/theme-context';
+import { fetchDashboard } from '../../features/dashboard/api';
 
 // Step 3: fully separate navigation — no shared "Clubs" item, no org controls
 // in the student nav and nothing but event management in the org nav.
@@ -10,15 +11,10 @@ const GUEST_LINKS = [
   { to: '/networking', label: 'Networking' },
 ];
 
-const PERSON_LINKS = [
+const PERSON_BASE_LINKS = [
   { to: '/dashboard', label: 'Dashboard' },
   { to: '/careers', label: 'Explore' },
-  { to: '/onboarding', label: 'Onboarding' },
-  { to: '/field-choice', label: 'My fields' },
   { to: '/roadmap', label: 'Roadmap' },
-  { to: '/quiz', label: 'Quiz' },
-  { to: '/projects', label: 'Projects' },
-  { to: '/certs', label: 'Certs' },
   { to: '/networking', label: 'Networking' },
   { to: '/leaderboard', label: 'Ranks' },
 ];
@@ -32,7 +28,24 @@ export function Header(): JSX.Element {
   const navigate = useNavigate();
 
   const signedIn = account !== null;
-  const links = !signedIn ? GUEST_LINKS : account === 'organisation' ? ORG_LINKS : PERSON_LINKS;
+  // Phase-aware "My Fields" (plural, tasting) vs "My Field" (singular,
+  // committed) label per product-decisions.md nav reading. Defaults to plural
+  // until the dashboard call resolves; org/guest navs are phase-independent.
+  const [committedSlug, setCommittedSlug] = useState<string | null>(null);
+  useEffect(() => {
+    if (account !== 'person') {
+      setCommittedSlug(null);
+      return;
+    }
+    fetchDashboard()
+      .then((d) => setCommittedSlug(d.phase === 'committed' ? (d.committedField?.slug ?? 'mine') : null))
+      .catch(() => setCommittedSlug(null));
+  }, [account]);
+  const personLinks =
+    committedSlug !== null
+      ? [...PERSON_BASE_LINKS.slice(0, 3), { to: '/field-choice', label: 'My Field' }, ...PERSON_BASE_LINKS.slice(3)]
+      : [...PERSON_BASE_LINKS.slice(0, 3), { to: '/field-choice', label: 'My Fields' }, ...PERSON_BASE_LINKS.slice(3)];
+  const links = !signedIn ? GUEST_LINKS : account === 'organisation' ? ORG_LINKS : personLinks;
 
   function handleLogout(): void {
     logout();

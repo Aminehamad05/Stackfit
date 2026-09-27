@@ -101,8 +101,16 @@ is the engineering contract: how to build without breaking the project.
 - ✅ Quiz gate (`GET/POST /concepts/:id/quiz` — live_questions only, answers never
   leak; pass ≥0.7 → step `quiz_passed` → next `in_progress` → known concept +
   quiz points + `evaluateAndAward`) + `roadmap-lab.html` full walk-through.
-- Next (no AI needed): background → field-matches compute → taster
-  persist-only → roadmap → quiz → leaderboard → public events reads.
+- ✅ Visual skill-tree roadmap (`GET /roadmaps/:id/path` → course/quiz/project/
+  cert nodes derived from live relations; current auto-scroll, drawer with
+  inline quiz, unlock glow, keyboard nav, dark-mode + reduced-motion). Choice
+  without prior compute now upserts the match (was silently uncommitted).
+- ✅ Phase-aware roadmap (`GET /roadmaps` list + `GET /users/me/tasting`):
+  tasting renders 3 mini node-paths (shared components), all-complete surfaces
+  in-place final choice; committed shows the single full path. Assessment
+  (`/assessment`) renders the real question flow (signed-out sees sign-in
+  prompt); Onboarding removed from header; `/field-choice` auto-computes with
+  a single tasting CTA (no substitution UI).
 - Blocked on AI: interviews, taster auto-review, question gen/review, poster
   extraction, "why this fits" text. Hook points are marked; don't build around
   them.
