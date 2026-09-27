@@ -53,5 +53,75 @@
     "taster_slug": "messy-dataset-insights-taster",
     "resource_url": "https://www.coursera.org/professional-certificates/google-data-analytics",
     "rank": 3
+  },
+  {
+    "taster_slug": "cloud-engineering-tasting",
+    "resource_url": "https://ubuntu.com/tutorials/command-line-for-beginners",
+    "rank": 1
+  },
+  {
+    "taster_slug": "cloud-engineering-tasting",
+    "resource_url": "https://learn.microsoft.com/en-us/training/paths/microsoft-azure-fundamentals-describe-cloud-concepts/",
+    "rank": 2
+  },
+  {
+    "taster_slug": "cloud-engineering-tasting",
+    "resource_url": "https://docs.github.com/en/actions/get-started",
+    "rank": 3
+  },
+  {
+    "taster_slug": "cloud-engineering-tasting",
+    "resource_url": "https://learn.microsoft.com/en-us/training/azure/",
+    "rank": 4
+  },
+  {
+    "taster_slug": "data-tasting",
+    "resource_url": "https://www.coursera.org/professional-certificates/google-data-analytics",
+    "rank": 1
+  },
+  {
+    "taster_slug": "data-tasting",
+    "resource_url": "https://www.kaggle.com/learn/pandas/1000",
+    "rank": 2
+  },
+  {
+    "taster_slug": "data-tasting",
+    "resource_url": "https://docs.python.org/3/tutorial/index.html",
+    "rank": 3
+  },
+  {
+    "taster_slug": "data-tasting",
+    "resource_url": "https://sqlbolt.com/",
+    "rank": 4
+  },
+  {
+    "taster_slug": "full-stack-dev-tasting",
+    "resource_url": "https://git-scm.com/book/en/v2",
+    "rank": 1
+  },
+  {
+    "taster_slug": "full-stack-dev-tasting",
+    "resource_url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core",
+    "rank": 2
+  },
+  {
+    "taster_slug": "machine-learning-tasting",
+    "resource_url": "https://developers.google.com/machine-learning/crash-course",
+    "rank": 1
+  },
+  {
+    "taster_slug": "machine-learning-tasting",
+    "resource_url": "https://docs.python.org/3/tutorial/index.html",
+    "rank": 2
+  },
+  {
+    "taster_slug": "machine-learning-tasting",
+    "resource_url": "https://numpy.org/learn/",
+    "rank": 3
+  },
+  {
+    "taster_slug": "machine-learning-tasting",
+    "resource_url": "https://developers.google.com/machine-learning/crash-course/classification",
+    "rank": 4
   }
 ]

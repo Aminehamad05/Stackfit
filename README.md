@@ -63,9 +63,12 @@ field matching (top-3 % + fit + choice), club event CRUD
 ownership-enforced, draft→approved publish), user subscribe/unsubscribe
 (`POST/DELETE /events/:id/subscribe`, `GET /users/me/events` — approved-only),
 certifications (`GET /users/me/certifications`, `POST …/check` auto-award) +
-project suggestions (`GET /users/me/project-suggestions`, ready-first).
-❌ **Stubs (501, Zod schemas ready):** background, field-matches, tasters,
-roadmap, quiz, leaderboard, public events reads, `.ics`/GCal links.
+project suggestions (`GET /users/me/project-suggestions`, ready-first),
+field tastings (`GET /fields/:id/tasting` bundle + `GET /fields/:id/taster`
+primary read), roadmaps (`POST /api/roadmaps` generate + `GET /roadmaps/:id`
+— names, levels, resources, statuses), public events (`GET /events`, `/fields`, `.ics`, GCal link).
+❌ **Stubs (501, Zod schemas ready):** taster start/submit, roadmap, quiz,
+leaderboard.
 ⛔ **AI-blocked (503):** `POST /interviews*`, taster auto-review.
 
 ## Data (seeded)

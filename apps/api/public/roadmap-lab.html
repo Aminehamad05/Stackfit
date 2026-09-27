@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Roadmap Lab — test roadmap creation</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 900px; margin: 0 auto; padding: 16px; background: #f4f5f7; color: #222; }
+  .card { background: #fff; border: 1px solid #ddd; border-radius: 8px; padding: 12px; margin: 10px 0; }
+  input, select, button { padding: 6px 10px; font-size: 14px; margin: 2px; }
+  button { background: #e8ecff; border: 1px solid #888; border-radius: 4px; cursor: pointer; }
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { text-align: left; padding: 6px 8px; border-bottom: 1px solid #eee; vertical-align: top; }
+  .lvl { display: inline-block; font-size: 11px; padding: 1px 8px; border-radius: 10px; background: #eee; }
+  .beginner { background: #d8f3dc; } .intermediate { background: #fff3bf; } .advanced { background: #ffd6d6; }
+  .free { color: #2a7; } .paid { color: #c55; }
+  .status { font-size: 12px; color: #666; }
+  #log { background: #111; color: #cfc; font-family: monospace; font-size: 12px; padding: 10px; border-radius: 6px; white-space: pre-wrap; max-height: 200px; overflow: auto; }
+</style>
+</head>
+<body>
+<h1>Roadmap Lab</h1>
+<p>Generate a learning roadmap from <b>names, not ids</b>. Steps: ① sign in ② pick a field by name ③ generate.</p>
+<p style="font-size:13px">API base: <input id="base" size="34" /> <button onclick="setBase()">Use</button>
+<span style="color:#666">Open this page at <b>http://localhost:4000/console/roadmap-lab.html</b> (not via :5173, not as a file).</span></p>
+
+<div class="card">
+  <h2>① Who are you?</h2>
+  <input id="email" placeholder="email" value="tester@example.com" size="28" />
+  <input id="pass" type="password" placeholder="password" value="password123" />
+  <button onclick="register()">Register</button>
+  <button onclick="login()">Login</button>
+  <span id="who" style="margin-left:8px"></span>
+</div>
+
+<div class="card">
+  <h2>② Pick a field by name</h2>
+  <select id="field" style="min-width:280px"></select>
+  <label><input type="checkbox" id="paid" /> include paid resources</label>
+  <button onclick="generate()">Generate roadmap →</button>
+  <p style="font-size:13px;color:#555">Known concepts come from your saved background (+ proven concepts). Save background first in the <a href="/console/test-console.html">test console</a> if you have none.</p>
+</div>
+
+<div class="card">
+  <h2>③ Your roadmap</h2>
+  <div id="meta"></div>
+  <div id="known"></div>
+  <table id="steps" hidden>
+    <thead><tr><th>#</th><th>Concept</th><th>Level</th><th>Resource</th><th>Status</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+</div>
+
+<div class="card">
+  <h2>Reload by id</h2>
+  <input id="rid" placeholder="roadmap id" size="8" />
+  <button onclick="reload()">Reload</button>
+</div>
+
+<h2>Log</h2>
+<div id="log">Ready.</div>
+
+<script>
+const $ = (id) => document.getElementById(id);
+function defaultBase() {
+  try {
+    const o = location.origin;
+    if (o && o !== 'null' && !o.includes('5173')) return o + '/api';
+  } catch (_) { /* file:// or opaque origin falls through */ }
+  return 'http://localhost:4000/api';
+}
+let BASE = defaultBase();
+window.addEventListener('DOMContentLoaded', () => {
+  $('base').value = BASE;
+  log('Page ready. API base = ' + BASE);
+  loadFields().catch((e) => log('fields failed: ' + (e && e.message ? e.message : e)));
+});
+window.addEventListener('error', (ev) => log('JS error: ' + ev.message));
+function setBase() { BASE = $('base').value.replace(/\/$/, ''); log('API base set to ' + BASE); loadFields().catch((e) => log('fields failed: ' + (e && e.message ? e.message : e))); }
+let token = null;
+function log(m) {
+  const el = $('log');
+  const time = new Date().toLocaleTimeString();
+  el.textContent = `[${time}] ${m}\n` + el.textContent.slice(0, 4000);
+}
+async function req(method, path, body) {
+  const url = BASE + path;
+  log(`${method} ${url}`);
+  let r;
+  try {
+    r = await fetch(url, {
+      method, headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: 'Bearer ' + token } : {}) },
+      body: body ? JSON.stringify(body) : undefined,
+    });
+  } catch (e) {
+    throw new Error('network failed (is the API up at ' + BASE + '?): ' + (e && e.message ? e.message : e));
+  }
+  const t = await r.text();
+  let d; try { d = JSON.parse(t); } catch { d = t; }
+  log(`${method} ${path} → ${r.status}`);
+  if (!r.ok) throw new Error(typeof d === 'string' ? d : JSON.stringify(d));
+  return d;
+}
+async function register() { const d = await req('POST', '/auth/register', { email: $('email').value, password: $('pass').value }); token = d.token; $('who').textContent = 'signed in as ' + d.user.email; }
+async function login() { const d = await req('POST', '/auth/login', { email: $('email').value, password: $('pass').value }); token = d.token; $('who').textContent = 'signed in as ' + d.user.email; }
+async function loadFields() {
+  const d = await req('GET', '/fields');
+  $('field').innerHTML = d.fields.map((f) => `<option value="${f.id}">${f.name}</option>`).join('');
+}
+function render(data) {
+  $('meta').innerHTML = `<b>${data.roadmap.field.name}</b> (roadmap #${data.roadmap.id}) — ${data.steps.length} steps`;
+  $('known').innerHTML = data.knownConcepts && data.knownConcepts.length
+    ? `<p>Already known, skipped: ${data.knownConcepts.join(', ')}</p>` : '';
+  $('steps').hidden = false;
+  $('rows').innerHTML = data.steps.map((s) => `<tr>
+    <td>${s.position}</td>
+    <td><b>${s.concept.name}</b><br><span style="font-size:12px;color:#666">${s.concept.slug}</span></td>
+    <td><span class="lvl ${s.concept.level}">${s.concept.level}</span></td>
+    <td>${s.resource ? `<a href="${s.resource.url}" target="_blank" rel="noreferrer">${s.resource.title}</a><br><span class="${s.resource.isFree ? 'free' : 'paid'}" style="font-size:12px">${s.resource.isFree ? 'free' : 'paid'}</span>` : '<i>no resource linked</i>'}</td>
+    <td class="status">${s.status.replace('_', ' ')}</td>
+  </tr>`).join('');
+}
+async function generate() {
+  const d = await req('POST', '/roadmaps', { fieldId: +$('field').value, includePaid: $('paid').checked });
+  $('rid').value = d.roadmap.id;
+  render(d);
+}
+async function reload() {
+  const d = await req('GET', '/roadmaps/' + $('rid').value);
+  render({ roadmap: d.roadmap, knownConcepts: [], steps: d.steps });
+}
+// Boot is wired on DOMContentLoaded above (single call, no duplicates).
+
+</script>
+</body>
+</html>

@@ -170,5 +170,129 @@
       }
     ],
     "status": "approved"
+  },
+  {
+    "field_slug": "cloud-engineering",
+    "slug": "cloud-engineering-tasting",
+    "title": "Cloud Tasting: First Commands to First Pipeline",
+    "description": "A one-hour sampler of cloud engineering: run Linux commands, grasp core cloud ideas, then trigger a real CI workflow. If the terminal and the pipeline both make sense, this field fits.",
+    "level": "beginner",
+    "est_hours": 1,
+    "deliverable_type": "text",
+    "starter_repo_url": null,
+    "rubric": [
+      {
+        "id": "tried_all",
+        "criterion": "Tried a tiny exercise in each of: linux-cli, networking-fundamentals, cloud-concepts, cicd-automation, cloud-core-services.",
+        "weight": 50,
+        "required": true
+      },
+      {
+        "id": "reflection",
+        "criterion": "Wrote which of the five ideas clicked most and why, in plain words.",
+        "weight": 30,
+        "required": true
+      },
+      {
+        "id": "resource",
+        "criterion": "Followed at least one linked resource section end-to-end.",
+        "weight": 20,
+        "required": false
+      }
+    ],
+    "status": "approved"
+  },
+  {
+    "field_slug": "data",
+    "slug": "data-tasting",
+    "title": "Data Tasting: First Queries to First Chart",
+    "description": "A one-hour sampler of data analysis: query a table with SQL, poke data with Python/pandas, describe it with statistics. If finding the story in numbers feels fun, this field fits.",
+    "level": "beginner",
+    "est_hours": 1,
+    "deliverable_type": "text",
+    "starter_repo_url": null,
+    "rubric": [
+      {
+        "id": "tried_all",
+        "criterion": "Tried a tiny exercise in each of: data-types-quality, pandas-data-cleaning, python-data-basics, sql-data-querying, descriptive-statistics.",
+        "weight": 50,
+        "required": true
+      },
+      {
+        "id": "reflection",
+        "criterion": "Wrote which of the five ideas clicked most and why, in plain words.",
+        "weight": 30,
+        "required": true
+      },
+      {
+        "id": "resource",
+        "criterion": "Followed at least one linked resource section end-to-end.",
+        "weight": 20,
+        "required": false
+      }
+    ],
+    "status": "approved"
+  },
+  {
+    "field_slug": "full-stack-dev",
+    "slug": "full-stack-dev-tasting",
+    "title": "Web Tasting: First Page to First Push",
+    "description": "A one-hour sampler of full-stack development: structure a page, add JavaScript behavior, and push it with Git. If seeing your page live feels rewarding, this field fits.",
+    "level": "beginner",
+    "est_hours": 1,
+    "deliverable_type": "text",
+    "starter_repo_url": null,
+    "rubric": [
+      {
+        "id": "tried_all",
+        "criterion": "Tried a tiny exercise in each of: git-github-workflow, html-css-foundations, javascript-fundamentals, dom-browser-apis, responsive-accessible-web.",
+        "weight": 50,
+        "required": true
+      },
+      {
+        "id": "reflection",
+        "criterion": "Wrote which of the five ideas clicked most and why, in plain words.",
+        "weight": 30,
+        "required": true
+      },
+      {
+        "id": "resource",
+        "criterion": "Followed at least one linked resource section end-to-end.",
+        "weight": 20,
+        "required": false
+      }
+    ],
+    "status": "approved"
+  },
+  {
+    "field_slug": "machine-learning",
+    "slug": "machine-learning-tasting",
+    "title": "ML Tasting: Numbers to First Prediction",
+    "description": "A one-hour sampler of machine learning: refresh the math basics in Python, then train the simplest classifier. If teaching numbers to predict feels magical, this field fits.",
+    "level": "beginner",
+    "est_hours": 1,
+    "deliverable_type": "text",
+    "starter_repo_url": null,
+    "rubric": [
+      {
+        "id": "tried_all",
+        "criterion": "Tried a tiny exercise in each of: probability-statistics-for-ml, python-for-ml, linear-algebra-for-ml, numpy-data-arrays, classification-models.",
+        "weight": 50,
+        "required": true
+      },
+      {
+        "id": "reflection",
+        "criterion": "Wrote which of the five ideas clicked most and why, in plain words.",
+        "weight": 30,
+        "required": true
+      },
+      {
+        "id": "resource",
+        "criterion": "Followed at least one linked resource section end-to-end.",
+        "weight": 20,
+        "required": false
+      }
+    ],
+    "status": "approved"
   }
 ]

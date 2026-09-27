@@ -1,15 +1,31 @@
 import { useState } from 'react';
 import { api } from '../../lib/api';
 import { apiErrorMessage } from '../../lib/errors';
-import type { Taster } from '../../lib/types';
+import type { ProjectSuggestion, Taster } from '../../lib/types';
 import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
 import { Badge } from '../../components/ui/Badge';
-import { ErrorState } from '../../components/ui/States';
+import { ErrorState, ProgressBar } from '../../components/ui/States';
 import { Field } from '../../components/ui/Field';
+
+interface TastingConcept {
+  slug: string;
+  name: string;
+  level: string;
+  importance: number;
+  resource: { title: string; url: string } | null;
+}
+
+interface Tasting {
+  field: { id: number; slug: string; name: string; description: string };
+  simplestConcepts: TastingConcept[];
+  tastings: Array<Taster & { concepts: Array<{ slug: string; name: string }>; resources: Array<{ title: string; url: string }> }>;
+  starterProjects: ProjectSuggestion[];
+}
 
 export default function Taster(): JSX.Element {
   const [fieldId, setFieldId] = useState('4');
+  const [tasting, setTasting] = useState<Tasting | null>(null);
   const [taster, setTaster] = useState<Taster | null>(null);
   const [tasterId, setTasterId] = useState('');
   const [reflection, setReflection] = useState('');
@@ -41,14 +57,58 @@ export default function Taster(): JSX.Element {
       </div>
       <div style={{ display: 'flex', gap: 10, alignItems: 'end' }}>
         <Field label="Field id" name="fieldId" value={fieldId} onChange={(e) => setFieldId(e.target.value)} />
+        <Button variant="primary" onClick={() => void wrap(async () => {
+          const r = await api<Tasting>(`/fields/${fieldId}/tasting`);
+          setTasting(r);
+          setTaster(null);
+          setTasterId('');
+        })} disabled={busy}>Taste this field</Button>
         <Button variant="secondary" onClick={() => void wrap(async () => {
           const r = await api<{ taster: Taster }>(`/fields/${fieldId}/taster`);
           setTaster(r.taster);
+          setTasting(null);
           setTasterId(String(r.taster.id));
         })} disabled={busy}>Load taster</Button>
       </div>
       {error ? <ErrorState title="Something went wrong" body={error} /> : null}
       {notice ? <p><Badge tone="teal">{notice}</Badge></p> : null}
+      {tasting ? (
+        <>
+          <Card>
+            <h2>{tasting.field.name} — taste it</h2>
+            <p>{tasting.field.description}</p>
+          </Card>
+          <h2>Simplest 5 concepts</h2>
+          {tasting.simplestConcepts.map((c, i) => (
+            <Card key={c.slug}>
+              <strong>{i + 1}. {c.name}</strong> <Badge tone="gray">{c.level}</Badge>
+              {c.resource ? (
+                <div><a href={c.resource.url} target="_blank" rel="noreferrer">{c.resource.title}</a></div>
+              ) : null}
+            </Card>
+          ))}
+          <h2>Starter projects (simplest first)</h2>
+          {tasting.starterProjects.map((p) => (
+            <Card key={p.slug}>
+              <strong>{p.ready ? '✅ ' : ''}{p.title}</strong> <Badge tone={p.ready ? 'teal' : 'gray'}>~{p.estHours}h</Badge>
+              <p style={{ fontSize: '0.875rem' }}>{p.description}</p>
+              <ProgressBar value={p.total ? (p.mastered / p.total) * 100 : 0} label={`${p.mastered}/${p.total} concepts mastered`} />
+            </Card>
+          ))}
+          <h2>Guided tastings ({tasting.tastings.length})</h2>
+          {tasting.tastings.map((t) => (
+            <Card key={t.id}>
+              <strong>{t.title}</strong> <Badge tone="blue">~{t.estHours}h · {t.level}</Badge>
+              <p style={{ fontSize: '0.875rem' }}>{t.description}</p>
+              <Button variant="secondary" onClick={() => {
+                setTaster(t);
+                setTasting(null);
+                setTasterId(String(t.id));
+              }}>Open for start/submit ↓</Button>
+            </Card>
+          ))}
+        </>
+      ) : null}
       {taster ? (
         <Card>
           <h2>{taster.title} <Badge tone="blue">~{taster.estHours}h · {taster.level}</Badge></h2>

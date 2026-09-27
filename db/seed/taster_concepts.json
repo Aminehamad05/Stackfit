@@ -74,5 +74,85 @@
   {
     "taster_slug": "messy-dataset-insights-taster",
     "concept_slug": "data-storytelling"
+  },
+  {
+    "taster_slug": "cloud-engineering-tasting",
+    "concept_slug": "linux-cli"
+  },
+  {
+    "taster_slug": "cloud-engineering-tasting",
+    "concept_slug": "networking-fundamentals"
+  },
+  {
+    "taster_slug": "cloud-engineering-tasting",
+    "concept_slug": "cloud-concepts"
+  },
+  {
+    "taster_slug": "cloud-engineering-tasting",
+    "concept_slug": "cicd-automation"
+  },
+  {
+    "taster_slug": "cloud-engineering-tasting",
+    "concept_slug": "cloud-core-services"
+  },
+  {
+    "taster_slug": "data-tasting",
+    "concept_slug": "data-types-quality"
+  },
+  {
+    "taster_slug": "data-tasting",
+    "concept_slug": "pandas-data-cleaning"
+  },
+  {
+    "taster_slug": "data-tasting",
+    "concept_slug": "python-data-basics"
+  },
+  {
+    "taster_slug": "data-tasting",
+    "concept_slug": "sql-data-querying"
+  },
+  {
+    "taster_slug": "data-tasting",
+    "concept_slug": "descriptive-statistics"
+  },
+  {
+    "taster_slug": "full-stack-dev-tasting",
+    "concept_slug": "git-github-workflow"
+  },
+  {
+    "taster_slug": "full-stack-dev-tasting",
+    "concept_slug": "html-css-foundations"
+  },
+  {
+    "taster_slug": "full-stack-dev-tasting",
+    "concept_slug": "javascript-fundamentals"
+  },
+  {
+    "taster_slug": "full-stack-dev-tasting",
+    "concept_slug": "dom-browser-apis"
+  },
+  {
+    "taster_slug": "full-stack-dev-tasting",
+    "concept_slug": "responsive-accessible-web"
+  },
+  {
+    "taster_slug": "machine-learning-tasting",
+    "concept_slug": "probability-statistics-for-ml"
+  },
+  {
+    "taster_slug": "machine-learning-tasting",
+    "concept_slug": "python-for-ml"
+  },
+  {
+    "taster_slug": "machine-learning-tasting",
+    "concept_slug": "linear-algebra-for-ml"
+  },
+  {
+    "taster_slug": "machine-learning-tasting",
+    "concept_slug": "numpy-data-arrays"
+  },
+  {
+    "taster_slug": "machine-learning-tasting",
+    "concept_slug": "classification-models"
   }
 ]
