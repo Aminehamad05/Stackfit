@@ -11,6 +11,7 @@ import morgan from 'morgan';
 import { ZodError } from 'zod';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
 import { AiDisabledError } from './ai/index.js';
+import { ChatDisabledError } from './ai/provider.js';
 
 import auth from './modules/auth/routes.js';
 import background from './modules/background/routes.js';
@@ -25,6 +26,7 @@ import clubs from './modules/clubs/routes.js';
 import growth from './modules/growth/routes.js';
 import fields from './modules/fields/routes.js';
 import dashboard from './modules/dashboard/routes.js';
+import chat from './modules/chat/routes.js';
 
 export function createApp(): Express {
   const app = express();
@@ -54,6 +56,7 @@ export function createApp(): Express {
   app.use('/api', growth);
   app.use('/api', fields);
   app.use('/api', dashboard);
+  app.use('/api', chat);
 
   // 404 + typed error handler (must be last)
   app.use((_req: Request, res: Response) => res.status(404).json({ error: 'not_found' }));
@@ -64,7 +67,7 @@ export function createApp(): Express {
     res: Response,
     _next: NextFunction,
   ) => {
-    if (err instanceof AiDisabledError) {
+    if (err instanceof AiDisabledError || err instanceof ChatDisabledError) {
       res.status(err.status).json({ error: err.code, message: err.message });
       return;
     }

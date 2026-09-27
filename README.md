@@ -28,6 +28,7 @@ Stackfit helps CS students and career switchers **stop browsing courses and star
 | **Projects** | Readiness-ranked suggestions (ready first) tied to mastered concepts |
 | **Dashboard** | Phase-aware KPIs — one block per tasted domain while tasting, single committed-field block (completion %, quizzes, projects, certs, points, rank) after choosing |
 | **Networking** | Browse approved events (filter by field/city/date), one-tap subscribe, `.ics` download, Google Calendar links |
+| **Study assistant** | Floating AI chat (Gemini free tier) that knows your field, roadmap progress and known concepts |
 | **Leaderboard** | Points ledger (quiz/taster/project) with live ranking |
 
 ### For clubs (organisations)
@@ -119,6 +120,7 @@ Base `/api`. Auth: `Authorization: Bearer <jwt>` (`requireAuth` = students, `req
 | `POST /roadmaps` · `GET /roadmaps` · `GET /roadmaps/:id` · `GET …/path` | user | Generate (known-overlay + Kahn sort + resources) · list · read · skill-tree nodes |
 | `GET /concepts/:id/quiz` · `POST …/quiz/attempt` | user | Live QCMs (no answers leaked) · grade ≥ 0.7 → unlock + points + cert check |
 | `POST /interviews*` | user | ⛔ AI-disabled (`503`) |
+| `POST /chat/threads` · `GET …` · `GET …/:id/messages` · `POST …/:id/messages` · `DELETE …/:id` | user | AI study chat (threads persist; needs `LLM_API_KEY`, else guided `503`) |
 | `GET /users/me/certifications` · `POST …/check` | user | Progress + auto-award with evidence |
 | `GET /users/me/project-suggestions` | user | Readiness-ranked builds |
 | `GET /users/me/dashboard` | user | Phase-aware KPIs (N taste blocks / 1 committed block) |

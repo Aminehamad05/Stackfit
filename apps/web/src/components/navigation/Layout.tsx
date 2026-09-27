@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import { Header } from './Header';
 import { Footer } from './Footer';
+import ChatWidget from '../chat/ChatWidget';
 
 export function Layout({ children }: { children: ReactNode }): JSX.Element {
   return (
@@ -8,6 +9,7 @@ export function Layout({ children }: { children: ReactNode }): JSX.Element {
       <Header />
       <main style={{ flex: 1 }}>{children}</main>
       <Footer />
+      <ChatWidget />
     </div>
   );
 }

@@ -111,6 +111,8 @@ is the engineering contract: how to build without breaking the project.
   (`/assessment`) renders the real question flow (signed-out sees sign-in
   prompt); Onboarding removed from header; `/field-choice` auto-computes with
   a single tasting CTA (no substitution UI).
+- ✅ Study-buddy chat (`ChatThread/Message`, `POST /chat/threads/:id/messages`
+  injects live progress, OpenAI-compatible provider: Gemini/Groq/OpenRouter).
 - Blocked on AI: interviews, taster auto-review, question gen/review, poster
   extraction, "why this fits" text. Hook points are marked; don't build around
   them.
