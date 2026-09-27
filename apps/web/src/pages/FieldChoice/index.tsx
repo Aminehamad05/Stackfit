@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ApiError, api } from '../../lib/api';
+import { fetchDashboard } from '../../features/dashboard/api';
 import { apiErrorMessage } from '../../lib/errors';
 import type { FieldMatch, FitEntry } from '../../lib/types';
 import { Card } from '../../components/ui/Card';
@@ -8,7 +10,9 @@ import { EmptyState, ErrorState, LoadingSkeleton, ProgressBar } from '../../comp
 
 // Assessment submission lands here: top-3 auto-compute on mount, no manual
 // trigger, no field substitution — the only action is entering tasting.
+// Committed users are sent to their roadmap: this section is tasting-only.
 export default function FieldChoice(): JSX.Element {
+  const navigate = useNavigate();
   const [matches, setMatches] = useState<FieldMatch[]>([]);
   const [fit, setFit] = useState<FitEntry[]>([]);
   const [loading, setLoading] = useState(true);
@@ -18,6 +22,12 @@ export default function FieldChoice(): JSX.Element {
   useEffect(() => {
     (async () => {
       try {
+        // Final path already picked → this section is gone; go to the roadmap.
+        const dash = await fetchDashboard().catch(() => null);
+        if (dash?.phase === 'committed') {
+          navigate('/roadmap', { replace: true });
+          return;
+        }
         const r = await api<{ matches: FieldMatch[] }>('/users/me/field-matches/compute', { method: 'POST', body: {} });
         setMatches(r.matches);
         try {

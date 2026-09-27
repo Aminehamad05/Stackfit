@@ -16,6 +16,8 @@ export default function Dashboard(): JSX.Element {
   const [committed, setCommitted] = useState<CommittedBlock | null>(null);
   const [allFields, setAllFields] = useState<Array<{ slug: string; name: string }>>([]);
   const [tastingList, setList] = useState<string[]>([]);
+  const [draft, setDraft] = useState<string[]>([]);
+  const [applying, setApplying] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -35,8 +37,10 @@ export default function Dashboard(): JSX.Element {
           const seed = d.taste.map((b) => b.field.slug);
           setTastingList(seed);
           setList(seed);
+          setDraft(seed);
         } else {
           setList(stored);
+          setDraft(stored);
         }
       } catch (e: unknown) {
         setError(apiErrorMessage(e));
@@ -46,13 +50,27 @@ export default function Dashboard(): JSX.Element {
     })();
   }, []);
 
+  // Toggles only stage into a draft — Apply commits, so only kept fields remain.
   function toggle(slug: string): void {
-    setList((prev) => {
-      const next = toggleTastingSlug(prev, slug);
-      setTastingList(next);
-      return next;
-    });
+    setDraft((prev) => toggleTastingSlug(prev, slug));
   }
+
+  function sameList(a: string[], b: string[]): boolean {
+    return a.length === b.length && a.every((s) => b.includes(s));
+  }
+
+  function apply(): void {
+    setApplying(true);
+    try {
+      setTastingList(draft);
+      setList(draft);
+    } finally {
+      setApplying(false);
+    }
+  }
+
+  const dirty = !sameList(draft, tastingList);
+  const visibleTaste = taste.filter((b) => tastingList.includes(b.field.slug));
 
   return (
     <div className="container">
@@ -64,33 +82,36 @@ export default function Dashboard(): JSX.Element {
       {!loading && !error && phase === 'tasting' ? (
         <>
           <p>One block per domain you are tasting.</p>
+          <div style={{ display: 'grid', gap: 14, marginTop: 12 }}>
           {taste.length === 0 ? (
             <Card>
               <p>Nothing tasted yet.</p>
               <Button variant="primary" to="/onboarding">Tell us your background →</Button>
             </Card>
           ) : null}
-          {taste.map((b) => (
+          {visibleTaste.map((b) => (
             <Card key={b.field.slug}>
-              <h2>{b.field.name}</h2>
+              <h2 style={{ margin: '0 0 10px' }}>{b.field.name}</h2>
               <ProgressBar
                 value={b.tasters.total > 0 ? (b.tasters.done / b.tasters.total) * 100 : 0}
                 label={`Tasters reviewed ${b.tasters.done}/${b.tasters.total} · quizzes passed ${b.quizzesPassed}`}
               />
-              <p style={{ fontSize: '0.875rem' }}>
+              <p style={{ fontSize: '0.875rem', margin: '10px 0' }}>
                 {b.enjoyment !== null ? `Enjoyment ${b.enjoyment}/5 · ` : ''}
                 {b.performance !== null ? `Performance ${Math.round(b.performance * 100)}%` : 'No reviewed taster yet'}
               </p>
-              <Button variant="secondary" to="/field-choice">Compare fields →</Button>
+              <div style={{ marginTop: 12 }}>
+                <Button variant="secondary" to="/field-choice">Compare fields →</Button>
+              </div>
             </Card>
           ))}
           {allFields.length > 0 ? (
             <Card>
-              <h2>Tasting list</h2>
-              <p style={{ fontSize: '0.875rem' }}>Pick which fields appear as mini roadmaps on your roadmap page.</p>
+              <h2 style={{ margin: '0 0 6px' }}>Tasting list</h2>
+              <p style={{ fontSize: '0.875rem', margin: '0 0 12px' }}>Pick fields, then apply — only kept fields stay on this page and your roadmap.</p>
               <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                 {allFields.map((f) => {
-                  const on = tastingList.includes(f.slug);
+                  const on = draft.includes(f.slug);
                   return (
                     <Button
                       key={f.slug}
@@ -104,8 +125,14 @@ export default function Dashboard(): JSX.Element {
                   );
                 })}
               </div>
+              <div style={{ marginTop: 14 }}>
+                <Button variant="primary" onClick={apply} disabled={!dirty || applying}>
+                  {applying ? 'Applying…' : dirty ? `Apply changes (${draft.length} kept)` : 'Up to date ✓'}
+                </Button>
+              </div>
             </Card>
           ) : null}
+          </div>
         </>
       ) : null}
       {!loading && !error && phase === 'committed' && committed ? (
