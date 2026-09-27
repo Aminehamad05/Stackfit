@@ -67,8 +67,7 @@ project suggestions (`GET /users/me/project-suggestions`, ready-first),
 field tastings (`GET /fields/:id/tasting` bundle + `GET /fields/:id/taster`
 primary read), roadmaps (`POST /api/roadmaps` generate + `GET /roadmaps/:id`
 — names, levels, resources, statuses), public events (`GET /events`, `/fields`, `.ics`, GCal link).
-❌ **Stubs (501, Zod schemas ready):** taster start/submit, roadmap, quiz,
-leaderboard.
+❌ **Stubs (501, Zod schemas ready):** taster start/submit, leaderboard.
 ⛔ **AI-blocked (503):** `POST /interviews*`, taster auto-review.
 
 ## Data (seeded)
