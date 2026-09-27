@@ -684,6 +684,59 @@ a:hover {
   }
 }
 
+/* ---------- Dashboard KPIs ---------- */
+.kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 12px;
+  margin: 16px 0;
+}
+.kpi {
+  background: var(--surface-soft);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 12px 14px;
+}
+.kpi-value {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--brand-navy);
+}
+.kpi-label {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+}
+.taste-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+.part-row {
+  display: grid;
+  grid-template-columns: 110px 1fr 44px;
+  gap: 8px;
+  align-items: center;
+  font-size: var(--text-sm);
+  margin-top: 8px;
+}
+.part-row > span:last-child {
+  text-align: right;
+  color: var(--text-secondary);
+}
+.rule-note {
+  font-size: var(--text-sm);
+  color: var(--text-secondary);
+  margin-top: 12px;
+}
+.section-title {
+  margin: 32px 0 4px;
+}
+
+[data-theme="dark"] .kpi-value {
+  color: #f2f5fc;
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import { AuthProvider } from './features/auth/auth-context';
+import { JourneyProvider } from './features/journey/journey-context';
 import { ThemeProvider } from './features/theme/theme-context';
 import './index.css';
 
@@ -14,7 +15,9 @@ ReactDOM.createRoot(root).render(
     <BrowserRouter>
       <ThemeProvider>
         <AuthProvider>
-          <App />
+          <JourneyProvider>
+            <App />
+          </JourneyProvider>
         </AuthProvider>
       </ThemeProvider>
     </BrowserRouter>

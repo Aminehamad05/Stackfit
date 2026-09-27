@@ -39,6 +39,11 @@ services:
         required: false
     environment:
       DATABASE_URL: postgresql://${POSTGRES_USER:-careerpath}:${POSTGRES_PASSWORD:-careerpath}@postgres:5432/${POSTGRES_DB:-careerpath}?schema=public
+      # Auth tokens can't be minted without this (API runs NODE_ENV=production,
+      # where a missing JWT_SECRET is a hard error → login/register 500).
+      # Real .env value wins; the default below is local-dev-only — override it
+      # for anything shared or demoed.
+      JWT_SECRET: ${JWT_SECRET:-local-dev-only-secret-change-me}
       PORT: 4000
     ports:
       - "4000:4000"
@@ -67,6 +72,7 @@ services:
         required: false
     environment:
       DATABASE_URL: postgresql://${POSTGRES_USER:-careerpath}:${POSTGRES_PASSWORD:-careerpath}@postgres:5432/${POSTGRES_DB:-careerpath}?schema=public
+      JWT_SECRET: ${JWT_SECRET:-local-dev-only-secret-change-me}
     depends_on:
       postgres:
         condition: service_healthy

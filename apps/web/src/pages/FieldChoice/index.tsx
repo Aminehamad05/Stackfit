@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { api } from '../../lib/api';
 import { apiErrorMessage } from '../../lib/errors';
+import { useJourney } from '../../features/journey/journey-context';
 import type { FieldMatch, FitEntry } from '../../lib/types';
 import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
@@ -8,6 +9,9 @@ import { Badge } from '../../components/ui/Badge';
 import { EmptyState, ErrorState, ProgressBar } from '../../components/ui/States';
 
 export default function FieldChoice(): JSX.Element {
+  // Refresh the shared journey after compute/choose so the header link set
+  // (taste-phase aware) updates without a reload.
+  const { refresh: refreshJourney } = useJourney();
   const [matches, setMatches] = useState<FieldMatch[]>([]);
   const [fit, setFit] = useState<FitEntry[]>([]);
   const [busy, setBusy] = useState(false);
@@ -22,6 +26,7 @@ export default function FieldChoice(): JSX.Element {
       setMatches(r.matches);
       setFit([]);
       setRoadmapId(null);
+      await refreshJourney();
     } catch (e) {
       setError(apiErrorMessage(e));
     } finally {
@@ -47,8 +52,10 @@ export default function FieldChoice(): JSX.Element {
     try {
       const r = await api<{ roadmap: { id: number } }>('/users/me/field-choice', { method: 'POST', body: { fieldId } });
       setRoadmapId(r.roadmap.id);
+      setMatches((ms) => ms.map((m) => ({ ...m, chosen: m.fieldId === fieldId })));
       // Dashboard's "Continue your roadmap" action reads this key.
       localStorage.setItem('cp_roadmap_id', String(r.roadmap.id));
+      await refreshJourney();
     } catch (e) {
       setError(apiErrorMessage(e));
     } finally {
