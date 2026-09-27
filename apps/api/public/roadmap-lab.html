@@ -28,8 +28,8 @@
   <h2>① Who are you?</h2>
   <input id="email" placeholder="email" value="tester@example.com" size="28" />
   <input id="pass" type="password" placeholder="password" value="password123" />
-  <button onclick="register()">Register</button>
-  <button onclick="login()">Login</button>
+  <button onclick="doRegister()">Register</button>
+  <button onclick="doLogin()">Login</button>
   <span id="who" style="margin-left:8px"></span>
 </div>
 
@@ -37,7 +37,7 @@
   <h2>② Pick a field by name</h2>
   <select id="field" style="min-width:280px"></select>
   <label><input type="checkbox" id="paid" /> include paid resources</label>
-  <button onclick="generate()">Generate roadmap →</button>
+  <button onclick="doGenerate()">Generate roadmap →</button>
   <p style="font-size:13px;color:#555">Known concepts come from your saved background (+ proven concepts). Save background first in the <a href="/console/test-console.html">test console</a> if you have none.</p>
 </div>
 
@@ -46,15 +46,21 @@
   <div id="meta"></div>
   <div id="known"></div>
   <table id="steps" hidden>
-    <thead><tr><th>#</th><th>Concept</th><th>Level</th><th>Resource</th><th>Status</th></tr></thead>
+    <thead><tr><th>#</th><th>Concept</th><th>Level</th><th>Resource</th><th>Status</th><th>Verify</th></tr></thead>
     <tbody id="rows"></tbody>
   </table>
 </div>
 
 <div class="card">
+  <h2>④ Walk the roadmap: verify each module, quiz to unlock</h2>
+  <p style="font-size:13px">Open the quiz on an <b>in_progress</b> step, answer, submit — a pass flips it to <b>quiz passed</b> and unlocks the next locked step. Locked steps stay shut.</p>
+  <div id="walk"></div>
+</div>
+
+<div class="card">
   <h2>Reload by id</h2>
   <input id="rid" placeholder="roadmap id" size="8" />
-  <button onclick="reload()">Reload</button>
+  <button onclick="doReload()">Reload</button>
 </div>
 
 <h2>Log</h2>
@@ -63,10 +69,14 @@
 <script>
 const $ = (id) => document.getElementById(id);
 function defaultBase() {
+  // Only trust same-origin for real http(s) pages (the :4000 console).
+  // file:// gives origin "file://" in Chrome — never build an API URL from that.
   try {
-    const o = location.origin;
-    if (o && o !== 'null' && !o.includes('5173')) return o + '/api';
-  } catch (_) { /* file:// or opaque origin falls through */ }
+    if (location.protocol === 'http:' || location.protocol === 'https:') {
+      const o = location.origin;
+      if (o && !o.includes('5173')) return o.replace(/\/$/, '') + '/api';
+    }
+  } catch (_) { /* opaque origin falls through */ }
   return 'http://localhost:4000/api';
 }
 let BASE = defaultBase();
@@ -101,8 +111,14 @@ async function req(method, path, body) {
   if (!r.ok) throw new Error(typeof d === 'string' ? d : JSON.stringify(d));
   return d;
 }
-async function register() { const d = await req('POST', '/auth/register', { email: $('email').value, password: $('pass').value }); token = d.token; $('who').textContent = 'signed in as ' + d.user.email; }
-async function login() { const d = await req('POST', '/auth/login', { email: $('email').value, password: $('pass').value }); token = d.token; $('who').textContent = 'signed in as ' + d.user.email; }
+async function register() { const d = await req('POST', '/auth/register', { email: $('email').value, password: $('pass').value }); token = d.token; $('who').textContent = 'signed in as ' + d.user.email; log('signed in as ' + d.user.email); }
+async function login() { const d = await req('POST', '/auth/login', { email: $('email').value, password: $('pass').value }); token = d.token; $('who').textContent = 'signed in as ' + d.user.email; log('signed in as ' + d.user.email); }
+// Every button goes through guarded() so failures always land in the log.
+async function guarded(fn) { try { await fn(); } catch (e) { log('ERROR: ' + (e && e.message ? e.message : e)); } }
+function doRegister() { guarded(register); }
+function doLogin() { guarded(login); }
+function doGenerate() { guarded(generate); }
+function doReload() { guarded(reload); }
 async function loadFields() {
   const d = await req('GET', '/fields');
   $('field').innerHTML = d.fields.map((f) => `<option value="${f.id}">${f.name}</option>`).join('');
@@ -112,15 +128,69 @@ function render(data) {
   $('known').innerHTML = data.knownConcepts && data.knownConcepts.length
     ? `<p>Already known, skipped: ${data.knownConcepts.join(', ')}</p>` : '';
   $('steps').hidden = false;
+  renderWalk(data.steps);
   $('rows').innerHTML = data.steps.map((s) => `<tr>
     <td>${s.position}</td>
     <td><b>${s.concept.name}</b><br><span style="font-size:12px;color:#666">${s.concept.slug}</span></td>
     <td><span class="lvl ${s.concept.level}">${s.concept.level}</span></td>
     <td>${s.resource ? `<a href="${s.resource.url}" target="_blank" rel="noreferrer">${s.resource.title}</a><br><span class="${s.resource.isFree ? 'free' : 'paid'}" style="font-size:12px">${s.resource.isFree ? 'free' : 'paid'}</span>` : '<i>no resource linked</i>'}</td>
     <td class="status">${s.status.replace('_', ' ')}</td>
+    <td>${s.status === 'in_progress' ? '↓ below' : s.status === 'quiz_passed' ? '✅' : '🔒'}</td>
   </tr>`).join('');
 }
+// Walk view: one card per step with its verify action.
+function renderWalk(steps) {
+  $('walk').innerHTML = steps.map((s) => `
+    <div class="card" id="step-${s.position}">
+      <b>${s.position}. ${s.concept.name}</b>
+      <span class="lvl ${s.concept.level}">${s.concept.level}</span>
+      <span class="status">[${s.status.replace('_', ' ')}]</span>
+      ${s.resource ? `<div style="font-size:13px">Verify the module: <a href="${s.resource.url}" target="_blank" rel="noreferrer">${s.resource.title}</a> <span class="${s.resource.isFree ? 'free' : 'paid'}">(${s.resource.isFree ? 'free' : 'paid'})</span></div>` : '<div><i>no resource linked</i></div>'}
+      <div id="quiz-${s.position}"></div>
+      ${s.status === 'in_progress' ? `<button onclick="openQuiz(${s.concept.id}, ${s.position})">Take quiz to validate →</button>` : ''}
+    </div>`).join('');
+}
+let currentQuiz = null;
+async function openQuiz(conceptId, position) {
+  try {
+    const d = await req('GET', `/concepts/${conceptId}/quiz?limit=5`);
+    currentQuiz = { conceptId, questions: d.questions };
+    $('quiz-' + position).innerHTML =
+      d.questions.map((q, qi) => `<div style="margin:8px 0"><b>Q: ${q.stem}</b>` +
+        q.options.map((o) => `<label style="display:block;font-size:13px"><input type="radio" name="wq${qi}" value="${o.id}" /> ${o.text}</label>`).join('') +
+        `</div>`).join('') +
+      `<button onclick="answerQuiz()">Submit answers</button><div id="qres"></div>`;
+  } catch (e) { log('ERROR: ' + (e && e.message ? e.message : e)); }
+}
+async function answerQuiz() {
+  if (!currentQuiz) return;
+  const answers = [];
+  currentQuiz.questions.forEach((q, qi) => {
+    const sel = document.querySelector(`input[name="wq${qi}"]:checked`);
+    if (sel) answers.push({ questionId: q.id, optionId: +sel.value });
+  });
+  if (!answers.length) { log('ERROR: pick at least one answer.'); return; }
+  try {
+    const d = await req('POST', `/concepts/${currentQuiz.conceptId}/quiz/attempt`, { answers });
+    const msg = `score ${Math.round(d.score * 100)}% — ${d.passed ? 'PASSED ✅' : 'failed ❌'}` +
+      (d.unlocked ? ` → step ${d.unlocked.stepPosition} unlocked` : '') +
+      (d.newlyAwarded && d.newlyAwarded.length ? ` → 🏅 ${d.newlyAwarded.join(', ')}` : '');
+    log(msg);
+    const box = $('qres');
+    if (box) box.innerHTML = `<b>${msg}</b>`;
+    currentQuiz = null;
+    await refreshWalk();
+  } catch (e) { log('ERROR: ' + (e && e.message ? e.message : e)); }
+}
+async function refreshWalk() {
+  const id = $('rid').value;
+  if (!id) return;
+  const d = await req('GET', '/roadmaps/' + id);
+  render({ roadmap: d.roadmap, knownConcepts: [], steps: d.steps });
+}
 async function generate() {
+  if (!token) { log('ERROR: sign in first (step 1).'); return; }
+  if (!$('field').value) { log('ERROR: no field loaded — check the API base / connection above.'); return; }
   const d = await req('POST', '/roadmaps', { fieldId: +$('field').value, includePaid: $('paid').checked });
   $('rid').value = d.roadmap.id;
   render(d);

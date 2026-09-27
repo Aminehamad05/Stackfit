@@ -98,9 +98,9 @@ is the engineering contract: how to build without breaking the project.
 - ✅ Onboarding has zero pro-experience fields; deferred free-text AI step is a
   documented backlog item (`ONBOARDING_STEPS` in Onboarding page,
   `KnownSource.experience_ai` reserved in DB via 0003 migration).
-- ✅ Roadmap generation (`POST /roadmaps` → known overlay → buildRoadmap →
-  rank-1 resources w/ free default → `GET /roadmaps/:id` owner-only) +
-  `roadmap-lab.html` plain-text test page.
+- ✅ Quiz gate (`GET/POST /concepts/:id/quiz` — live_questions only, answers never
+  leak; pass ≥0.7 → step `quiz_passed` → next `in_progress` → known concept +
+  quiz points + `evaluateAndAward`) + `roadmap-lab.html` full walk-through.
 - Next (no AI needed): background → field-matches compute → taster
   persist-only → roadmap → quiz → leaderboard → public events reads.
 - Blocked on AI: interviews, taster auto-review, question gen/review, poster
