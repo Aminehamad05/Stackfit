@@ -21,14 +21,14 @@ export function Footer(): JSX.Element {
               <li><Link to="/careers">Career paths</Link></li>
               <li><Link to="/assessment">Skill assessment</Link></li>
               <li><Link to="/roadmap">My roadmap</Link></li>
-              <li><Link to="/projects">Taster projects</Link></li>
+              <li><Link to="/taster">Taster projects</Link></li>
             </ul>
           </div>
           <div>
             <h4>Community</h4>
             <ul>
-              <li><Link to="/clubs">Student clubs</Link></li>
-              <li><Link to="/events">Events</Link></li>
+              <li><Link to="/networking">Student clubs</Link></li>
+              <li><Link to="/networking">Events</Link></li>
               <li><Link to="/leaderboard">Leaderboard</Link></li>
             </ul>
           </div>

@@ -57,6 +57,7 @@ interface ProjRow {
   est_hours: number; deliverable_hint: string | null;
   status: 'draft' | 'ai_reviewed' | 'approved' | 'rejected';
 }
+interface PlayerRow { name: string; points: number }
 interface EventRow {
   title: string; type: EventType; city: string | null; country: string; location: string | null;
   description: string | null; starts_at: string; ends_at: string | null; url: string | null;
@@ -312,6 +313,30 @@ async function main(): Promise<void> {
     oCount += q.options.length;
   }
   console.log(`[seed] questions: ${qCount} (+${oCount} options)`);
+
+  // 10. Fake leaderboard players (demo/gamification).
+  // One deterministic quiz event each; UNIQUE(user_id,type,ref_id) blocks dups.
+  const players = load<PlayerRow[]>('leaderboard.json');
+  let pCount = 0;
+  for (const p of players) {
+    const email = p.name.toLowerCase().replace(/[^a-z0-9]+/g, '.').replace(/^\.|\.$/g, '') + '@example.com';
+    const user = await prisma.user.upsert({
+      where: { email },
+      update: { displayName: p.name },
+      create: {
+        email,
+        passwordHash: '$2a$10$fake00000000000000000000000000000000000000000000000000000000',
+        displayName: p.name,
+      },
+    });
+    await prisma.pointEvent.upsert({
+      where: { userId_type_refId: { userId: user.id, type: 'quiz', refId: `seed:${user.id}` } },
+      update: { points: p.points },
+      create: { userId: user.id, type: 'quiz', points: p.points, refId: `seed:${user.id}` },
+    });
+    pCount += 1;
+  }
+  console.log(`[seed] leaderboard players: ${pCount}`);
 
   console.log('[seed] DONE — all approved content is live via live_* views.');
 }

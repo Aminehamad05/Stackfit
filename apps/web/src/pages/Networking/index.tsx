@@ -116,15 +116,19 @@ export default function Networking(): JSX.Element {
       </div>
       <Card>
         <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'end' }}>
-          <label>Field
-            <select value={field} onChange={(e) => setField(e.target.value)}>
+          <div className="field">
+            <label className="field-label" htmlFor="nf-field">Field</label>
+            <select id="nf-field" className="select" value={field} onChange={(e) => setField(e.target.value)}>
               <option value="">All fields</option>
               {fields.map((f) => <option key={f.id} value={f.slug}>{f.name}</option>)}
             </select>
-          </label>
+          </div>
           <Field label="City" name="city" value={city} onChange={(e) => setCity(e.target.value)} placeholder="Tunis" />
           <Field label="From date" name="from" type="date" value={from} onChange={(e) => setFrom(e.target.value)} />
-          <Button variant="primary" onClick={() => void search()} disabled={busy}>Filter</Button>
+          <div className="field">
+            <span className="field-label" aria-hidden="true">&nbsp;</span>
+            <Button variant="primary" onClick={() => void search()} disabled={busy}>Filter</Button>
+          </div>
         </div>
       </Card>
       {loading ? <LoadingSkeleton lines={4} /> : null}

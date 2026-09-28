@@ -291,6 +291,7 @@ model User {
   knownConcepts UserKnownConcept[]
   tasters       UserTaster[]
   certifications UserCertification[]
+  chatThreads   ChatThread[]
 
   @@map("users")
 }
@@ -518,6 +519,33 @@ model UserEvent {
 
   @@id([userId, eventId])
   @@map("user_events")
+}
+
+// ============ 7. Chat assistant (first live AI feature) ============
+
+model ChatThread {
+  id        Int           @id @default(autoincrement())
+  userId    Int           @map("user_id")
+  title     String          @default("New chat")
+  createdAt DateTime        @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt DateTime        @updatedAt @map("updated_at") @db.Timestamptz
+  user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  messages  ChatMessage[]
+
+  @@index([userId])
+  @@map("chat_threads")
+}
+
+model ChatMessage {
+  id        BigInt   @id @default(autoincrement())
+  threadId  Int      @map("thread_id")
+  role      String   // user | assistant | system-context (audit only, never sent raw)
+  content   String   @db.Text
+  createdAt DateTime @default(now()) @map("created_at") @db.Timestamptz
+  thread    ChatThread @relation(fields: [threadId], references: [id], onDelete: Cascade)
+
+  @@index([threadId])
+  @@map("chat_messages")
 }
 
 // ============ 6. Growth: certifications + project suggestions ============

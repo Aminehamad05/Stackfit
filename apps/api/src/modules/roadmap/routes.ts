@@ -146,7 +146,34 @@ r.post(
   },
 );
 
-// GET /api/roadmaps/:id — read back (owner only), names included, no bare ids.
+// GET /api/roadmaps — list mine (newest first) with step counts.
+r.get(
+  '/roadmaps',
+  requireAuth,
+  async (req: AuthenticatedRequest, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const rows = await prisma.roadmap.findMany({
+        where: { userId: userIdOf(req) },
+        include: {
+          field: { select: { slug: true, name: true } },
+          _count: { select: { steps: true } },
+        },
+        orderBy: { id: 'desc' },
+      });
+      res.json({
+        roadmaps: rows.map((m) => ({
+          id: m.id,
+          field: m.field,
+          steps: m._count.steps,
+          includePaid: m.includePaid,
+          createdAt: m.createdAt,
+        })),
+      });
+    } catch (e) {
+      next(e);
+    }
+  },
+);
 r.get(
   '/roadmaps/:id',
   requireAuth,
@@ -166,6 +193,135 @@ r.get(
         roadmap: { id: roadmap.id, field: roadmap.field, includePaid: roadmap.includePaid },
         steps: await stepsView(roadmap.id),
       });
+    } catch (e) {
+      next(e);
+    }
+  },
+);
+
+export type PathNodeState = 'locked' | 'current' | 'completed' | 'skip_eligible';
+
+// GET /api/roadmaps/:id/path — visual skill-tree nodes (owner only).
+// Node kinds are DERIVED from real relations (no step_type column yet, Step 4
+// pending — see apps/web/task.md mapping): course ← roadmap_steps row,
+// quiz ← live questions + pass state, project ← taster_projects via
+// taster_concepts, cert ← certifications whose criteria.required_concepts
+// include the step's concept. skip_eligible is never emitted (no source data).
+r.get(
+  '/roadmaps/:id/path',
+  requireAuth,
+  validate({ params: idParam }),
+  async (req: AuthenticatedRequest, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const { id } = idParam.parse(req.params);
+      const userId = userIdOf(req);
+      const roadmap = await prisma.roadmap.findFirst({
+        where: { id, userId },
+        include: { field: { select: { slug: true, name: true } } },
+      });
+      if (!roadmap) {
+        res.status(404).json({ error: 'not_found' });
+        return;
+      }
+      const [steps, attempts, tasterLinks, userTasters, certs, earned, qCounts] = await Promise.all([
+        prisma.roadmapStep.findMany({
+          where: { roadmapId: id },
+          include: { concept: true, resource: true },
+          orderBy: { position: 'asc' },
+        }),
+        prisma.quizAttempt.findMany({
+          where: { userId, passed: true },
+          select: { conceptId: true },
+        }),
+        prisma.tasterConcept.findMany({
+          include: { taster: { select: { id: true, slug: true, title: true, level: true, estHours: true, status: true } } },
+        }),
+        prisma.userTaster.findMany({ where: { userId }, select: { tasterId: true, status: true } }),
+        prisma.certification.findMany({
+          where: { status: 'approved' },
+          select: { slug: true, title: true, criteria: true },
+        }),
+        prisma.userCertification.findMany({ where: { userId }, select: { certification: { select: { slug: true } } } }),
+        prisma.question.groupBy({ by: ['conceptId'], where: { status: 'approved' }, _count: { id: true } }),
+      ]);
+      const passedConcepts = new Set(attempts.map((a) => a.conceptId));
+      const tasterStatus = new Map(userTasters.map((t) => [t.tasterId, t.status]));
+      const earnedSlugs = new Set(earned.map((e) => e.certification.slug));
+      const quizCount = new Map(qCounts.map((q) => [q.conceptId, q._count.id]));
+      const tastersByConcept = new Map<number, typeof tasterLinks>();
+      for (const l of tasterLinks) {
+        if (l.taster.status !== 'approved') continue;
+        const arr = tastersByConcept.get(l.conceptId) ?? [];
+        arr.push(l);
+        tastersByConcept.set(l.conceptId, arr);
+      }
+
+      const nodes: Array<Record<string, unknown>> = [];
+      let currentKey: string | null = null;
+      const markCurrent = (key: string): void => {
+        if (currentKey === null) currentKey = key;
+      };
+
+      for (const s of steps) {
+        const stepDone = s.status === 'quiz_passed' || s.status === 'interview_passed';
+        const courseState: PathNodeState = s.status === 'locked' ? 'locked' : stepDone ? 'completed' : 'current';
+        nodes.push({
+          key: `step-${s.position}-course`,
+          kind: 'course',
+          position: s.position,
+          state: courseState,
+          concept: { id: s.concept.id, slug: s.concept.slug, name: s.concept.name, level: s.concept.level },
+          resource: s.resource
+            ? { id: s.resource.id, title: s.resource.title, url: s.resource.url, isFree: s.resource.isFree }
+            : null,
+        });
+        if (courseState === 'current') markCurrent(`step-${s.position}-course`);
+
+        const quizPassed = stepDone || passedConcepts.has(s.conceptId);
+        const quizState: PathNodeState = s.status === 'locked' ? 'locked' : quizPassed ? 'completed' : 'current';
+        nodes.push({
+          key: `step-${s.position}-quiz`,
+          kind: 'quiz',
+          position: s.position,
+          state: quizState,
+          concept: { id: s.concept.id, slug: s.concept.slug, name: s.concept.name },
+          questionCount: quizCount.get(s.conceptId) ?? 0,
+          passThreshold: 0.7,
+        });
+        if (quizState === 'current') markCurrent(`step-${s.position}-quiz`);
+
+        for (const l of tastersByConcept.get(s.conceptId) ?? []) {
+          const st = tasterStatus.get(l.tasterId);
+          const pState: PathNodeState =
+            st === 'reviewed' ? 'completed' : s.status === 'locked' ? 'locked' : 'current';
+          nodes.push({
+            key: `step-${s.position}-project-${l.tasterId}`,
+            kind: 'project',
+            position: s.position,
+            state: pState,
+            locking: true,
+            taster: { id: l.taster.id, slug: l.taster.slug, title: l.taster.title, level: l.taster.level, estHours: l.taster.estHours },
+            userStatus: st ?? null,
+          });
+          if (pState === 'current') markCurrent(`step-${s.position}-project-${l.tasterId}`);
+        }
+
+        for (const c of certs) {
+          const required = ((c.criteria as unknown as { required_concepts?: string[] })?.required_concepts) ?? [];
+          if (!required.includes(s.concept.slug)) continue;
+          const isEarned = earnedSlugs.has(c.slug);
+          nodes.push({
+            key: `step-${s.position}-cert-${c.slug}`,
+            kind: 'cert',
+            position: s.position,
+            state: isEarned ? 'completed' : s.status === 'locked' ? 'locked' : 'current',
+            locking: false,
+            cert: { slug: c.slug, title: c.title },
+          });
+        }
+      }
+
+      res.json({ roadmap: { id: roadmap.id, field: roadmap.field }, nodes, currentKey });
     } catch (e) {
       next(e);
     }

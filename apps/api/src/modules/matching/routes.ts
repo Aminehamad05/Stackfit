@@ -198,11 +198,100 @@ r.post(
       const [roadmap] = await prisma.$transaction([
         prisma.roadmap.create({ data: { userId, fieldId, includePaid: includePaid ?? false } }),
         prisma.userFieldMatch.updateMany({ where: { userId }, data: { chosen: false } }),
-        prisma.userFieldMatch.updateMany({ where: { userId, fieldId }, data: { chosen: true } }),
+        // Upsert (not bare update): choice without a prior compute still commits.
+        prisma.userFieldMatch.upsert({
+          where: { userId_fieldId: { userId, fieldId } },
+          update: { chosen: true },
+          create: { userId, fieldId, score: 0, chosen: true },
+        }),
       ]);
       res.status(201).json({
         roadmap: { id: roadmap.id, fieldId, slug: field.slug, includePaid: roadmap.includePaid },
       });
+    } catch (e) {
+      next(e);
+    }
+  },
+);
+
+// GET /api/users/me/tasting[?fields=slug,slug] — per-field tasting status:
+/// latest roadmap id (or null), live-vs-reviewed taster counts, complete gate.
+// Default set = saved top-3 matches; ?fields= overrides with an explicit
+// slug list (used by the dashboard tasting list). Unknown slugs → 400.
+// Complete = every live taster of the field reviewed (see task.md Q2 note).
+const tastingQuery = z.object({ fields: z.string().max(500).optional() });
+
+r.get(
+  '/users/me/tasting',
+  requireAuth,
+  validate({ query: tastingQuery }),
+  async (req: AuthenticatedRequest, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const userId = userIdOf(req);
+      const { fields: fieldsParam } = tastingQuery.parse(req.query);
+      const matches = await prisma.userFieldMatch.findMany({
+        where: { userId },
+        include: { field: { select: { id: true, slug: true, name: true } } },
+        orderBy: { score: 'desc' },
+      });
+      const matchBySlug = new Map(matches.map((m) => [m.field.slug, m]));
+      let targets: Array<{ fieldId: number; slug: string; name: string; compatibility: number }>;
+      if (fieldsParam !== undefined) {
+        const slugs = [...new Set(fieldsParam.split(',').map((s) => s.trim()).filter(Boolean))];
+        const rows = await prisma.field.findMany({ where: { slug: { in: slugs } } });
+        const unknown = slugs.filter((s) => !rows.some((r) => r.slug === s));
+        if (unknown.length > 0) {
+          res.status(400).json({ error: 'validation_error', details: [{ path: ['fields'], message: `unknown slugs: ${unknown.join(', ')}` }] });
+          return;
+        }
+        const best = matches[0]?.score || 1;
+        targets = slugs.map((s) => {
+          const row = rows.find((r) => r.slug === s) as { id: number; slug: string; name: string };
+          const m = matchBySlug.get(s);
+          return { fieldId: row.id, slug: row.slug, name: row.name, compatibility: m ? pct(m.score / best) : 0 };
+        });
+      } else {
+        if (matches.length === 0) {
+          res.status(404).json({ error: 'not_computed', message: 'run POST /users/me/field-matches/compute first' });
+          return;
+        }
+        targets = matches.map((m) => ({
+          fieldId: m.fieldId,
+          slug: m.field.slug,
+          name: m.field.name,
+          compatibility: pct(m.score / (matches[0].score || 1)),
+        }));
+      }
+      const fields = [];
+      for (const t of targets) {
+        const [roadmap, liveTasters, reviewed] = await Promise.all([
+          prisma.roadmap.findFirst({
+            where: { userId, fieldId: t.fieldId },
+            orderBy: { id: 'desc' },
+            select: { id: true },
+          }),
+          prisma.tasterProject.findMany({
+            where: { fieldId: t.fieldId, status: 'approved' },
+            select: { id: true },
+          }),
+          prisma.userTaster.findMany({
+            where: { userId, status: 'reviewed', taster: { fieldId: t.fieldId, status: 'approved' } },
+            select: { tasterId: true },
+          }),
+        ]);
+        const reviewedIds = new Set(reviewed.map((r) => r.tasterId));
+        const done = liveTasters.filter((l) => reviewedIds.has(l.id)).length;
+        fields.push({
+          fieldId: t.fieldId,
+          slug: t.slug,
+          name: t.name,
+          compatibility: t.compatibility,
+          roadmapId: roadmap?.id ?? null,
+          tasters: { reviewed: done, total: liveTasters.length },
+          complete: liveTasters.length > 0 && done >= liveTasters.length,
+        });
+      }
+      res.json({ fields });
     } catch (e) {
       next(e);
     }

@@ -1,28 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../features/auth/auth-context';
-import { useJourney } from '../../features/journey/journey-context';
 import { useTheme } from '../../features/theme/theme-context';
+import { fetchDashboard } from '../../features/dashboard/api';
 
 // Step 3: fully separate navigation — no shared "Clubs" item, no org controls
 // in the student nav and nothing but event management in the org nav.
-//
-// Person link rule: default is Explore + Onboard + My Fields. While the user
-// is in the taste phase (see features/journey — matches computed, none
-// chosen), Networking + Ranks are added. Quiz / Certs / Projects live on
-// their own pages, not in the header.
 const GUEST_LINKS = [
   { to: '/careers', label: 'Explore' },
   { to: '/networking', label: 'Networking' },
 ];
 
 const PERSON_BASE_LINKS = [
+  { to: '/dashboard', label: 'Dashboard' },
   { to: '/careers', label: 'Explore' },
-  { to: '/onboarding', label: 'Onboard' },
-  { to: '/field-choice', label: 'My Fields' },
-];
-
-const TASTE_PHASE_LINKS = [
+  { to: '/roadmap', label: 'Roadmap' },
   { to: '/networking', label: 'Networking' },
   { to: '/leaderboard', label: 'Ranks' },
 ];
@@ -31,19 +23,29 @@ const ORG_LINKS = [{ to: '/org', label: 'Org dashboard' }];
 
 export function Header(): JSX.Element {
   const { account, userEmail, clubName, logout } = useAuth();
-  const { tastePhase } = useJourney();
   const { theme, toggle: toggleTheme } = useTheme();
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
 
   const signedIn = account !== null;
-  const links = !signedIn
-    ? GUEST_LINKS
-    : account === 'organisation'
-      ? ORG_LINKS
-      : tastePhase
-        ? [...PERSON_BASE_LINKS, ...TASTE_PHASE_LINKS]
-        : PERSON_BASE_LINKS;
+  // Phase-aware "My Fields" (plural, tasting) vs "My Field" (singular,
+  // committed) label per product-decisions.md nav reading. Defaults to plural
+  // until the dashboard call resolves; org/guest navs are phase-independent.
+  const [committedSlug, setCommittedSlug] = useState<string | null>(null);
+  useEffect(() => {
+    if (account !== 'person') {
+      setCommittedSlug(null);
+      return;
+    }
+    fetchDashboard()
+      .then((d) => setCommittedSlug(d.phase === 'committed' ? (d.committedField?.slug ?? 'mine') : null))
+      .catch(() => setCommittedSlug(null));
+  }, [account]);
+  const personLinks =
+    committedSlug !== null
+      ? [...PERSON_BASE_LINKS.slice(0, 3), { to: '/field-choice', label: 'My Field' }, ...PERSON_BASE_LINKS.slice(3)]
+      : [...PERSON_BASE_LINKS.slice(0, 3), { to: '/field-choice', label: 'My Fields' }, ...PERSON_BASE_LINKS.slice(3)];
+  const links = !signedIn ? GUEST_LINKS : account === 'organisation' ? ORG_LINKS : personLinks;
 
   function handleLogout(): void {
     logout();
