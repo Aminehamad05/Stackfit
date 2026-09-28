@@ -9,6 +9,7 @@ import { fetchDashboard } from '../../features/dashboard/api';
 const GUEST_LINKS = [
   { to: '/careers', label: 'Explore' },
   { to: '/networking', label: 'Networking' },
+  { to: '/data-trust', label: 'Data & Trust' },
 ];
 
 const PERSON_BASE_LINKS = [
@@ -17,12 +18,13 @@ const PERSON_BASE_LINKS = [
   { to: '/roadmap', label: 'Roadmap' },
   { to: '/networking', label: 'Networking' },
   { to: '/leaderboard', label: 'Ranks' },
+  { to: '/data-trust', label: 'Data & Trust' },
 ];
 
 const ORG_LINKS = [{ to: '/org', label: 'Org dashboard' }];
 
 export function Header(): JSX.Element {
-  const { account, userEmail, clubName, logout } = useAuth();
+  const { account, userEmail, displayName, avatarUrl, clubName, logout } = useAuth();
   const { theme, toggle: toggleTheme } = useTheme();
   const [open, setOpen] = useState(false);
   const navigate = useNavigate();
@@ -70,6 +72,9 @@ export function Header(): JSX.Element {
           ))}
         </nav>
         <div className="header-actions">
+          <Link to="/settings" className="btn btn-ghost btn-sm" aria-label="Parameters" title="Parameters">
+            <span aria-hidden="true">⚙️</span>
+          </Link>
           <button
             type="button"
             className="btn btn-ghost btn-sm"
@@ -81,9 +86,19 @@ export function Header(): JSX.Element {
           </button>
           {signedIn ? (
             <>
-              <span className="account-chip" title={account === 'person' ? userEmail ?? '' : clubName ?? ''}>
-                {account === 'person' ? '👤' : '🏛️'} {account === 'person' ? 'Student' : 'Club'}
-              </span>
+              <Link
+                to="/profile"
+                className="account-chip account-chip-link"
+                title={account === 'person' ? (userEmail ?? '') : (clubName ?? '')}
+                aria-label="Open your profile"
+              >
+                {account === 'person' && avatarUrl ? (
+                  <img className="account-chip-avatar" src={avatarUrl} alt="" aria-hidden="true" />
+                ) : (
+                  <span aria-hidden="true">{account === 'person' ? '👤' : '🏛️'}</span>
+                )}
+                <span className="account-chip-name">{account === 'person' ? displayName || 'Student' : 'Club'}</span>
+              </Link>
               <button type="button" className="btn btn-secondary btn-sm" onClick={handleLogout}>
                 Sign out
               </button>

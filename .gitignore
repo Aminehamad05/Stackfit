@@ -13,3 +13,4 @@ prisma/migrations/**/migration.sql.bak
 pgdata/
 # Vite
 apps/web/dist/
+apps/web/.vite/

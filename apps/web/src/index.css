@@ -147,6 +147,14 @@ a:hover {
   background: var(--brand-teal);
   color: #fff;
 }
+.btn-danger {
+  background: var(--danger);
+  color: #fff;
+}
+.btn-danger:hover:not(:disabled) {
+  background: #b93a50;
+  box-shadow: var(--shadow);
+}
 .btn-ghost {
   background: transparent;
   color: var(--brand-navy);
@@ -293,7 +301,7 @@ a:hover {
 .site-header-inner {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 16px;
   height: 68px;
 }
 .brand {
@@ -312,6 +320,7 @@ a:hover {
   height: 36px;
   width: auto;
   display: block;
+  border-radius: 8px;
 }
 .brand-fit {
   color: var(--brand-blue);
@@ -321,6 +330,13 @@ a:hover {
   align-items: center;
   gap: 4px;
   margin-left: 8px;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.nav-links::-webkit-scrollbar {
+  display: none;
 }
 .nav-links a {
   color: var(--text-secondary);
@@ -328,6 +344,8 @@ a:hover {
   font-size: var(--text-sm);
   padding: 8px 12px;
   border-radius: 8px;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .nav-links a:hover,
 .nav-links a.active {
@@ -339,7 +357,8 @@ a:hover {
   margin-left: auto;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  flex-shrink: 0;
 }
 .account-chip {
   display: inline-flex;
@@ -352,6 +371,13 @@ a:hover {
   border-radius: 999px;
   padding: 6px 12px;
   color: var(--brand-navy);
+  max-width: 180px;
+}
+.account-chip-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
 }
 .mobile-menu-btn {
   display: none;
@@ -451,6 +477,7 @@ a:hover {
   width: min(280px, 70%);
   display: block;
   margin: 0 auto 16px;
+  border-radius: 20px;
 }
 .path-grid {
   display: grid;
@@ -521,9 +548,7 @@ a:hover {
 }
 .auth-side img {
   width: 180px;
-  background: #fff;
   border-radius: 16px;
-  padding: 12px;
 }
 .auth-side ul {
   list-style: none;
@@ -666,6 +691,13 @@ a:hover {
   .mobile-menu-btn {
     display: inline-flex;
   }
+  .account-chip {
+    max-width: none;
+    padding: 6px 10px;
+  }
+  .account-chip-name {
+    display: none;
+  }
   .mobile-nav {
     display: grid;
     gap: 4px;
@@ -733,6 +765,195 @@ a:hover {
   margin: 32px 0 4px;
 }
 
+/* ---------- Networking ---------- */
+.filter-bar {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+.filter-bar .field {
+  flex: 1 1 160px;
+  min-width: 0;
+  margin-bottom: 0;
+}
+/* Short id-style inputs (roadmap / field / concept ids, limits): compact,
+   never stretched full-row. */
+.filter-bar .id-field {
+  flex: 0 1 150px;
+  min-width: 120px;
+}
+.filter-actions {
+  display: flex;
+  gap: 10px;
+  padding-bottom: 1px;
+}
+.event-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.event-head h2 {
+  margin: 0;
+}
+.event-meta {
+  font-size: var(--text-sm);
+  margin: 6px 0 0;
+}
+.event-meta strong {
+  color: var(--text-primary);
+}
+.event-desc {
+  font-size: var(--text-sm);
+  margin: 8px 0 0;
+}
+.event-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+/* ---------- Profile ---------- */
+.account-chip-link:hover {
+  text-decoration: none;
+  border-color: var(--brand-blue);
+}
+.account-chip-avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+.profile-cover {
+  height: 148px;
+  border-radius: var(--radius-panel);
+  background: var(--gradient-brand);
+  margin-top: 16px;
+}
+.profile-head {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+  margin: -56px 0 8px 16px;
+  flex-wrap: wrap;
+}
+.profile-avatar {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--surface);
+  box-shadow: var(--shadow);
+  background: var(--surface-soft);
+  flex-shrink: 0;
+}
+.profile-avatar-fallback {
+  display: inline-grid;
+  place-items: center;
+  font-weight: 800;
+  color: #fff;
+  background: var(--gradient-brand);
+}
+.profile-email {
+  margin: 2px 0 0;
+}
+/* Photo adjust editor: fixed square viewport, drag to reposition. */
+.avatar-editor {
+  position: relative;
+  width: 240px;
+  max-width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  background: var(--surface-soft);
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+}
+.avatar-editor:active {
+  cursor: grabbing;
+}
+.avatar-editor img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  max-width: none;
+  pointer-events: none;
+}
+.range {
+  width: 100%;
+  accent-color: var(--brand-blue);
+}
+
+/* ---------- Rating (1–5 segmented number buttons, onboarding) ---------- */
+.rating-row {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.rating {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.rating-label {
+  font-size: var(--text-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+.rating-group {
+  display: flex;
+  gap: 6px;
+}
+.rating-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: var(--text-sm);
+  cursor: pointer;
+  padding: 0;
+  transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease, background 150ms ease, color 150ms ease;
+}
+.rating-btn:hover {
+  border-color: var(--brand-blue);
+  color: var(--brand-blue);
+  transform: translateY(-1px);
+}
+.rating-btn.on {
+  color: #fff;
+  border-color: transparent;
+}
+.rating-blue .rating-btn.on {
+  background: linear-gradient(135deg, var(--brand-blue), var(--brand-purple));
+  box-shadow: 0 6px 16px rgba(50, 85, 253, 0.4);
+}
+.rating-teal .rating-btn.on {
+  background: linear-gradient(135deg, var(--brand-teal), var(--brand-cyan));
+  box-shadow: 0 6px 16px rgba(1, 200, 177, 0.4);
+}
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+@media (max-width: 640px) {
+  .profile-cover {
+    height: 110px;
+  }
+  .profile-head {
+    margin: -48px 0 8px 8px;
+  }
+}
+
 [data-theme="dark"] .kpi-value {
   color: #f2f5fc;
 }
@@ -796,17 +1017,16 @@ body {
   background: rgba(13, 21, 38, 0.92);
 }
 
-/* logo.png sits on a light backdrop — give it a white pill so it stays
-   crisp on dark navy instead of floating as a white box. */
-[data-theme="dark"] .brand img {
-  background: #fff;
-  border-radius: 8px;
-  padding: 2px;
-}
+/* The mark sits on its own dark tile — no backdrop needed in either theme. */
 
 [data-theme="dark"] .nav-links a:hover,
 [data-theme="dark"] .nav-links a.active,
 [data-theme="dark"] .mobile-nav a.active {
+  color: #f2f5fc;
+}
+
+/* Account chip hardcodes navy (near-black) — follow the theme font instead. */
+[data-theme="dark"] .account-chip {
   color: #f2f5fc;
 }
 

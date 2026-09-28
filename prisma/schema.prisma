@@ -276,6 +276,7 @@ model User {
   email         String             @unique
   passwordHash  String             @map("password_hash") // F2: required for JWT email/password auth
   displayName   String             @map("display_name")
+  avatarUrl     String?            @map("avatar_url") // profile photo: https URL or image dataURL (≤400KB)
   city          String?
   country       String?
   budgetCents   Int                @default(0) @map("budget_cents") // 0 = free resources only

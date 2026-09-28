@@ -11,6 +11,9 @@ import Interview from './pages/Interview';
 import Leaderboard from './pages/Leaderboard';
 import Events from './pages/Events';
 import DashboardPage from './pages/Dashboard';
+import DataTrust from './pages/DataTrust';
+import ProfilePage from './pages/Profile';
+import Settings from './pages/Settings';
 import Networking from './pages/Networking';
 import Org from './pages/Org';
 import Careers from './pages/Careers';
@@ -18,7 +21,6 @@ import { RequireOrg } from './components/guards';
 import {
   CareerDetail,
   Dashboard,
-  Profile,
   Resources,
 } from './pages/Placeholders';
 
@@ -52,9 +54,11 @@ export default function App(): JSX.Element {
         <Route path="/certs" element={<Navigate to="/roadmap" replace />} />
         <Route path="/projects" element={<Navigate to="/roadmap" replace />} />
         <Route path="/events" element={<Events />} />
+        <Route path="/data-trust" element={<DataTrust />} />
+        <Route path="/settings" element={<Settings />} />
         <Route path="/leaderboard" element={<Leaderboard />} />
         <Route path="/dashboard" element={<DashboardPage />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="/profile" element={<ProfilePage />} />
 
         {/* Legacy deep links */}
         <Route path="*" element={<Navigate to="/" replace />} />

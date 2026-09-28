@@ -17,6 +17,28 @@ interface Pick {
 
 const KIND_LABEL: Record<string, string> = { uni_course: 'University courses', skill: 'Skills', experience: 'Experience' };
 
+function Rating({ label, value, tone = 'blue', onChange }: { label: string; value: number; tone?: 'blue' | 'teal'; onChange: (v: number) => void }): JSX.Element {
+  return (
+    <div className="rating">
+      <span className="rating-label">{label}</span>
+      <div className={`rating-group rating-${tone}`} role="group" aria-label={`${label} (1 to 5)`}>
+        {[1, 2, 3, 4, 5].map((n) => (
+          <button
+            key={n}
+            type="button"
+            className={`rating-btn${n === value ? ' on' : ''}`}
+            aria-pressed={n === value}
+            aria-label={`${label} ${n} of 5`}
+            onClick={() => onChange(n)}
+          >
+            {n}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 // ONBOARDING STEPS (ordered — append future steps here without restructuring).
 //   1. 'catalogue' (this screen): uni courses + skills only. Zero fields for job
 //      titles, years of experience, or employers — background_items covers it.
@@ -132,21 +154,13 @@ export default function Onboarding(): JSX.Element {
                       <input type="checkbox" checked={!!p?.checked} onChange={() => toggle(item.id)} />
                       <strong>{item.name}</strong>
                     </label>
-                    <p style={{ fontSize: '0.875rem', color: 'var(--muted, #555)', margin: '6px 0' }}>
+                    <p style={{ fontSize: '0.875rem', color: 'var(--text-secondary)', margin: '6px 0' }}>
                       {item.concepts.map((c) => `${c.name} (${c.strength}/5)`).join(' · ')}
                     </p>
                     {p?.checked ? (
-                      <div style={{ display: 'flex', gap: 12 }}>
-                        <label>Confidence
-                          <select value={p.confidence} onChange={(e) => set(item.id, 'confidence', +e.target.value)}>
-                            {[1, 2, 3, 4, 5].map((n) => <option key={n} value={n}>{n}</option>)}
-                          </select>
-                        </label>
-                        <label>Interest
-                          <select value={p.interest} onChange={(e) => set(item.id, 'interest', +e.target.value)}>
-                            {[1, 2, 3, 4, 5].map((n) => <option key={n} value={n}>{n}</option>)}
-                          </select>
-                        </label>
+                      <div className="rating-row">
+                        <Rating label="Confidence" value={p.confidence} onChange={(v) => set(item.id, 'confidence', v)} />
+                        <Rating label="Interest" value={p.interest} tone="teal" onChange={(v) => set(item.id, 'interest', v)} />
                       </div>
                     ) : null}
                   </Card>

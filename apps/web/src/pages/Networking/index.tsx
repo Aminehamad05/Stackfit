@@ -108,6 +108,21 @@ export default function Networking(): JSX.Element {
 
   const subscribed = new Set(mine.map((e) => e.id));
 
+  async function reset(): Promise<void> {
+    setField('');
+    setCity('');
+    setFrom('');
+    setBusy(true);
+    setError(null);
+    try {
+      setEvents((await api<{ events: ClubEventItem[] }>('/events')).events);
+    } catch (err) {
+      setError(apiErrorMessage(err));
+    } finally {
+      setBusy(false);
+    }
+  }
+
   return (
     <div className="container">
       <div className="page-head">
@@ -115,19 +130,24 @@ export default function Networking(): JSX.Element {
         <p>Approved hackathons, meetups and conferences from uni clubs. One tap to join.</p>
       </div>
       <Card>
-        <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'end' }}>
+        <div className="filter-bar">
           <div className="field">
             <label className="field-label" htmlFor="nf-field">Field</label>
-            <select id="nf-field" className="select" value={field} onChange={(e) => setField(e.target.value)}>
+            <select
+              id="nf-field"
+              className="select"
+              value={field}
+              onChange={(e) => setField(e.target.value)}
+            >
               <option value="">All fields</option>
               {fields.map((f) => <option key={f.id} value={f.slug}>{f.name}</option>)}
             </select>
           </div>
           <Field label="City" name="city" value={city} onChange={(e) => setCity(e.target.value)} placeholder="Tunis" />
           <Field label="From date" name="from" type="date" value={from} onChange={(e) => setFrom(e.target.value)} />
-          <div className="field">
-            <span className="field-label" aria-hidden="true">&nbsp;</span>
+          <div className="filter-actions">
             <Button variant="primary" onClick={() => void search()} disabled={busy}>Filter</Button>
+            <Button variant="secondary" onClick={() => void reset()} disabled={busy}>Reset</Button>
           </div>
         </div>
       </Card>
@@ -135,16 +155,21 @@ export default function Networking(): JSX.Element {
       {error ? <ErrorState title="Something went wrong" body={error} onRetry={() => void load()} /> : null}
       {events.map((e) => (
         <Card key={e.id}>
-          <h2 style={{ margin: '0 0 4px' }}>{e.title} <Badge tone="blue">{e.type}</Badge></h2>
-          <p style={{ fontSize: '0.875rem', margin: '4px 0' }}>
-            by <strong>{e.club?.name ?? 'a club'}</strong> · {[e.city, e.country].filter(Boolean).join(', ')} ·{' '}
-            {new Date(e.startsAt).toLocaleString()}
+          <div className="event-head">
+            <h2>{e.title}</h2>
+            <Badge tone="blue">{e.type}</Badge>
+            {account === 'person' && subscribed.has(e.id) ? <Badge tone="teal">✓ Subscribed</Badge> : null}
+          </div>
+          <p className="event-meta">
+            by <strong>{e.club?.name ?? 'a club'}</strong>
+            <span aria-hidden="true"> · </span>{[e.city, e.country].filter(Boolean).join(', ')}
+            <span aria-hidden="true"> · </span>{new Date(e.startsAt).toLocaleString()}
           </p>
-          {e.description ? <p style={{ fontSize: '0.875rem' }}>{e.description}</p> : null}
-          <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+          {e.description ? <p className="event-desc">{e.description}</p> : null}
+          <div className="event-actions">
             {account === 'person' ? (
               subscribed.has(e.id) ? (
-                <Button variant="secondary" onClick={() => void unsubscribe(e.id)} disabled={busy}>Unsubscribe ✓</Button>
+                <Button variant="secondary" onClick={() => void unsubscribe(e.id)} disabled={busy}>Unsubscribe</Button>
               ) : (
                 <Button variant="primary" onClick={() => void subscribe(e.id)} disabled={busy}>Subscribe</Button>
               )

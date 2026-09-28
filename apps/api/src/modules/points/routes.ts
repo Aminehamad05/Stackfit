@@ -1,4 +1,4 @@
-import { Router, type Request, type Response } from 'express';
+import { Router, type NextFunction, type Request, type Response } from 'express';
 import { prisma } from '../../prisma.js';
 import { requireAuth } from '../../middleware/auth.js';
 
@@ -15,17 +15,21 @@ interface LeaderboardRow {
 r.get(
   '/leaderboard',
   requireAuth,
-  async (_req: Request, res: Response): Promise<void> => {
-    const rows = (await prisma.$queryRawUnsafe(
-      'SELECT id, display_name, total_points FROM leaderboard',
-    )) as LeaderboardRow[];
-    res.json({
-      leaderboard: rows.map((row) => ({
-        id: Number(row.id),
-        display_name: row.display_name,
-        total_points: Number(row.total_points),
-      })),
-    });
+  async (_req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const rows = (await prisma.$queryRawUnsafe(
+        'SELECT id, display_name, total_points FROM leaderboard',
+      )) as LeaderboardRow[];
+      res.json({
+        leaderboard: rows.map((row) => ({
+          id: Number(row.id),
+          display_name: row.display_name,
+          total_points: Number(row.total_points),
+        })),
+      });
+    } catch (e) {
+      next(e);
+    }
   },
 );
 

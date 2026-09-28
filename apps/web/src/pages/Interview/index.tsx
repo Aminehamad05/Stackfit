@@ -26,9 +26,13 @@ export default function Interview(): JSX.Element {
         <p>Technical understanding + explaining to a non-technical stakeholder. Disabled until the AI layer is re-enabled.</p>
       </div>
       <Card>
-        <div style={{ display: 'flex', gap: 10, alignItems: 'end' }}>
-          <Field label="Concept id" name="conceptId" value={conceptId} onChange={(e) => setConceptId(e.target.value)} />
-          <Button variant="primary" onClick={() => void start()}>Start interview</Button>
+        <div className="filter-bar">
+          <div className="id-field">
+            <Field label="Concept id" name="conceptId" value={conceptId} onChange={(e) => setConceptId(e.target.value)} />
+          </div>
+          <div className="filter-actions">
+            <Button variant="primary" onClick={() => void start()}>Start interview</Button>
+          </div>
         </div>
         {error ? <ErrorState title="Interview unavailable" body={error} /> : null}
       </Card>

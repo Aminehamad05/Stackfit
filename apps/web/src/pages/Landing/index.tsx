@@ -61,8 +61,8 @@ export default function Landing(): JSX.Element {
             roadmap to get there.
           </p>
           <div className="hero-cta">
-            <Link to="/register" className="btn btn-primary">
-              Find my path
+            <Link to="/leaderboard" className="btn btn-primary">
+              Open my leaderboard
             </Link>
             <Link to="/careers" className="btn btn-secondary">
               Explore careers

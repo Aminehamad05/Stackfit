@@ -20,7 +20,8 @@ export default function Register(): JSX.Element {
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errors, setErrors] = useState<{ displayName?: string; clubName?: string; email?: string; password?: string }>({});
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [errors, setErrors] = useState<{ displayName?: string; clubName?: string; email?: string; password?: string; confirmPassword?: string }>({});
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [pending, setPending] = useState(false);
 
@@ -35,6 +36,7 @@ export default function Register(): JSX.Element {
     if (!EMAIL_RE.test(email.trim())) next.email = 'Enter a valid email address.';
     if (password.length < 8) next.password = 'Password must be at least 8 characters.';
     if (password.length > 128) next.password = 'Password must be 128 characters or fewer.';
+    if (confirmPassword !== password) next.confirmPassword = 'Passwords do not match — please retype the same password.';
     setErrors(next);
     return Object.keys(next).length === 0;
   }
@@ -135,6 +137,16 @@ export default function Register(): JSX.Element {
                 onChange={(e) => setPassword(e.target.value)}
                 error={errors.password}
                 hint="At least 8 characters."
+              />
+              <Field
+                label="Confirm password"
+                name="confirmPassword"
+                type="password"
+                autoComplete="new-password"
+                placeholder="Retype your password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                error={errors.confirmPassword}
               />
               <button type="submit" className="btn btn-primary btn-block" disabled={pending}>
                 {pending ? 'Creating account…' : accountType === 'person' ? 'Create person account' : 'Register club'}

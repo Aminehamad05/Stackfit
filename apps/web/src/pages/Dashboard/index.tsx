@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { fetchDashboard, type CommittedBlock, type TasteBlock } from '../../features/dashboard/api';
 import { getTastingList, setTastingList, toggleTastingSlug } from '../../features/tasting/list';
 import { api } from '../../lib/api';
+import { useAuth } from '../../features/auth/auth-context';
 import { apiErrorMessage } from '../../lib/errors';
 import { Card } from '../../components/ui/Card';
 import { Button } from '../../components/ui/Button';
@@ -10,7 +11,15 @@ import { ErrorState, LoadingSkeleton, ProgressBar } from '../../components/ui/St
 
 // Phase-aware dashboard (product-decisions.md, confirmed by user, 2026-09-27):
 // tasting = one KPI block per tasted domain; committed = exactly one block.
+function greeting(): string {
+  const h = new Date().getHours();
+  if (h < 12) return 'Good morning';
+  if (h < 18) return 'Good afternoon';
+  return 'Good evening';
+}
+
 export default function Dashboard(): JSX.Element {
+  const { displayName, userEmail } = useAuth();
   const [phase, setPhase] = useState<'tasting' | 'committed' | null>(null);
   const [taste, setTaste] = useState<TasteBlock[]>([]);
   const [committed, setCommitted] = useState<CommittedBlock | null>(null);
@@ -76,6 +85,7 @@ export default function Dashboard(): JSX.Element {
     <div className="container">
       <div className="page-head">
         <h1>{phase === 'committed' ? 'My field' : 'My fields'}</h1>
+        <p>{greeting()}, {displayName || (userEmail ?? '').split('@')[0] || 'there'} — here is where you stand.</p>
       </div>
       {loading ? <LoadingSkeleton lines={4} /> : null}
       {error ? <ErrorState title="Couldn't load your dashboard" body={error} /> : null}

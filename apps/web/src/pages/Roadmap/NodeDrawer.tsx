@@ -92,9 +92,11 @@ function QuizRunner({ node, onUnlocked }: { node: PathNode; onUnlocked: () => vo
   const conceptId = node.concept?.id;
   const [questions, setQuestions] = useState<QuizQuestion[]>([]);
   const [picked, setPicked] = useState<Record<number, number>>({});
-  const [result, setResult] = useState<{ score: number; passed: boolean } | null>(null);
+  const [result, setResult] = useState<{ score: number; passed: boolean; correct: number; total: number; newlyAwarded: string[] } | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const answered = questions.filter((q) => picked[q.id] !== undefined).length;
 
   useEffect(() => {
     if (conceptId === undefined) return;
@@ -110,10 +112,8 @@ function QuizRunner({ node, onUnlocked }: { node: PathNode; onUnlocked: () => vo
     setBusy(true);
     setError(null);
     try {
-      const answers = questions
-        .filter((q) => picked[q.id] !== undefined)
-        .map((q) => ({ questionId: q.id, optionId: picked[q.id] }));
-      const r = await api<{ score: number; passed: boolean }>(`/concepts/${conceptId}/quiz/attempt`, {
+      const answers = questions.map((q) => ({ questionId: q.id, optionId: picked[q.id] }));
+      const r = await api<{ score: number; passed: boolean; correct: number; total: number; newlyAwarded: string[] }>(`/concepts/${conceptId}/quiz/attempt`, {
         method: 'POST',
         body: { answers },
       });
@@ -144,8 +144,20 @@ function QuizRunner({ node, onUnlocked }: { node: PathNode; onUnlocked: () => vo
           ))}
         </div>
       ))}
-      {questions.length > 0 ? <Button variant="accent" onClick={() => void submit()} disabled={busy}>Submit attempt</Button> : null}
-      {result ? <p><strong>Score {Math.round(result.score * 100)}% — {result.passed ? 'passed ✅ watch the lock open!' : 'try again ❌'}</strong></p> : null}
+      {questions.length > 0 ? (
+        <Button variant="accent" onClick={() => void submit()} disabled={busy || answered < questions.length}>
+          Submit attempt ({answered}/{questions.length})
+        </Button>
+      ) : null}
+      {answered < questions.length && questions.length > 0 ? (
+        <p style={{ fontSize: '0.875rem' }}>Answer every question to submit.</p>
+      ) : null}
+      {result ? (
+        <p>
+          <strong>Score {Math.round(result.score * 100)}% ({result.correct}/{result.total}) — {result.passed ? 'passed ✅ watch the lock open!' : 'try again ❌'}</strong>
+          {result.newlyAwarded.length > 0 ? <> New certification: {result.newlyAwarded.join(', ')} 🏅</> : null}
+        </p>
+      ) : null}
     </div>
   );
 }
