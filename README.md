@@ -61,7 +61,7 @@ Separate auth world (`type:'club'` JWTs) with its own dashboard: club login/regi
 └──────────┘     └────────────────────────────────────────────┘
        ▲                         │  reads live_* views only
        │ same-origin /api        ▼
-谁也不欠谁                  ┌────────────┐
+                  ┌────────────┐
                          │ Postgres 16│  30 models · 9 views
                          │ + pgvector │  fixed volume pgdata
                          └────────────┘
