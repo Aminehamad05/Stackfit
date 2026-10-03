@@ -35,7 +35,7 @@ COPY db ./db
 COPY scripts ./scripts
 USER node
 
-CMD ["sh", "-c","npx prsima migrate deploy && npx tsx scripts/bootstrap.ts"]
+CMD ["sh", "-c","npx prisma migrate deploy && npx tsx scripts/bootstrap.ts"]
 
 
 FROM base AS runner
@@ -47,7 +47,6 @@ COPY --from=prod-deps /app/node_modules ./node_modules
 COPY --from=prod-deps /app/prisma ./prisma
 COPY --from=builder /app/apps/api/dist ./apps/api/dist
 COPY --from=builder /app/apps/api/package.json ./apps/api/package.json
-
 USER node
 EXPOSE 4000
-CMD ["node", "apps/api/dist/main.js"]
+CMD ["node", "apps/api/dist/server.js"]

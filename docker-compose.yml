@@ -1,9 +1,8 @@
 name: careerpath
 
 services:
+  # 1. Database with pgvector extension
   postgres:
-    # pgvector image ships the `vector` extension required by schema.sql / Prisma `vector` type.
-    # Pin the major version so `vector(1024)` data survives upgrades.
     image: pgvector/pgvector:pg16
     container_name: careerpath-postgres
     restart: unless-stopped
@@ -15,12 +14,9 @@ services:
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-careerpath}
       POSTGRES_DB: ${POSTGRES_DB:-careerpath}
     ports:
-      # Host 5433 — 5432 is taken by the machine's local Postgres 16.
-      # In-code / inter-service URL stays postgres:5432; only the host mapping changes.
+      # Host port 5433 to avoid conflict with local Postgres
       - "5433:5432"
     volumes:
-      # FIXED named volume: data persists across `down`, rebuilds and image upgrades.
-      # Only `docker compose down -v` (or `docker volume rm`) destroys it — never do that with live data.
       - pgdata:/var/lib/postgresql/data
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER:-careerpath} -d $${POSTGRES_DB:-careerpath}"]
@@ -28,10 +24,30 @@ services:
       timeout: 5s
       retries: 10
 
+  # 2. Ephemeral migration container (runs migrations + bootstrap then exits cleanly)
+  migration:
+    build:
+      context: .
+      dockerfile: apps/api/Dockerfile
+      target: migration
+    container_name: careerpath-migration
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      DATABASE_URL: postgresql://${POSTGRES_USER:-careerpath}:${POSTGRES_PASSWORD:-careerpath}@postgres:5432/${POSTGRES_DB:-careerpath}?schema=public
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./prisma:/app/prisma:ro
+
+  # 3. Main Node.js API (runs production image stage once migrations complete)
   api:
     build:
       context: .
       dockerfile: apps/api/Dockerfile
+      target: runner
     container_name: careerpath-api
     restart: unless-stopped
     env_file:
@@ -43,23 +59,16 @@ services:
     ports:
       - "4000:4000"
     depends_on:
-      postgres:
-        condition: service_healthy
-    # Boot chain (all idempotent, safe on every restart):
-    # migrate deploy (tables) -> bootstrap (views + seed-if-empty) -> serve.
-    # Prisma is the ONLY migration path — never apply db/*.sql by hand.
-    command: sh -c "npx prisma migrate deploy --schema /app/prisma/schema.prisma && npx tsx /app/scripts/bootstrap.ts && node apps/api/dist/server.js"
-    volumes:
-      - ./prisma:/app/prisma:ro
+      migration:
+        condition: service_completed_successfully
 
+  # 4. On-demand worker tool for ad-hoc scripts
   worker:
     build:
       context: .
       dockerfile: apps/api/Dockerfile
+      target: migration
     container_name: careerpath-worker
-    # One-shot jobs only — excluded from plain `docker compose up` so a missing
-    # worker image can never block the main stack (also skips it on rebuilds).
-    # Run on demand: `docker compose --profile tools run --rm worker npx tsx scripts/generate-questions.ts`
     profiles: ["tools"]
     restart: "no"
     env_file:
@@ -76,12 +85,11 @@ services:
       - ./prisma:/app/prisma:ro
     command: ["npx", "tsx", "scripts/review-content.ts"]
 
+  # 5. React Web SPA served by NGINX
   web:
     build:
       context: .
       dockerfile: apps/web/Dockerfile
-      # Same-origin default (/api → nginx → api:4000). Override in .env with
-      # VITE_API_URL=http://localhost:4000/api to point at a remote API.
       args:
         VITE_API_URL: ${VITE_API_URL:-/api}
     container_name: careerpath-web
@@ -93,8 +101,5 @@ services:
         condition: service_started
 
 volumes:
-  # FIXED volume declaration: explicit external-style name keeps the same volume
-  # even if the compose project is renamed. Back it up with:
-  #   docker run --rm -v careerpath_pgdata:/data -v $(pwd):/backup alpine tar czf /backup/pgdata-backup.tgz /data
   pgdata:
     name: careerpath_pgdata
