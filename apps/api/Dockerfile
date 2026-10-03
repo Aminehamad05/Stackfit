@@ -3,8 +3,8 @@ WORKDIR /app
 RUN apt-get update && apt-get install -y openssl ca-certificates && rm -rf /var/lib/apt/lists/*
 
 FROM base AS builder
-COPY package.* ./
-COPY apps/api/package.* ./apps/api/
+COPY package*.json ./
+COPY apps/api/package*.json ./apps/api/
 COPY prisma ./prisma/
 
 RUN npm ci
