@@ -30,7 +30,8 @@ WORKDIR /app
 COPY package*.json ./
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/prisma ./prisma
-
+COPY db ./db
+COPY scripts ./scripts
 USER node
 CMD ["npx", "prisma", "migrate", "deploy"]
 
