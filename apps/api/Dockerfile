@@ -15,6 +15,15 @@ COPY tsconfig*.json ./
 RUN npx prisma generate 
 RUN npm run build --workspace=apps/api || (cd apps/api && npm run build)
 
+FROM base AS prod-deps
+WORKDIR /app
+COPY package*.json ./
+COPY apps/api/package*.json ./apps/api/
+COPY prisma ./prisma/
+
+RUN npm ci --omit=dev
+RUN npx prisma generate
+
 FROM base AS migration
 
 WORKDIR /app
@@ -24,6 +33,8 @@ COPY --from=builder /app/prisma ./prisma
 
 USER node
 CMD ["npx", "prisma", "migrate", "deploy"]
+
+
 
 FROM base AS runner
 
