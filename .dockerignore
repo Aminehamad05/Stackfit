@@ -7,3 +7,5 @@ Dockerfile*
 README.md
 .env
 .env.local
+apps/api/dist
+apps/web/dist
