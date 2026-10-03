@@ -28,13 +28,14 @@ FROM base AS migration
 
 WORKDIR /app
 COPY package*.json ./
+COPY tsconfig*.json ./
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/prisma ./prisma
 COPY db ./db
 COPY scripts ./scripts
 USER node
-CMD ["npx", "prisma", "migrate", "deploy"]
 
+CMD ["sh", "-c","npx prsima migrate deploy && npx tsx scripts/bootstrap.ts"]
 
 
 FROM base AS runner
@@ -48,5 +49,5 @@ COPY --from=builder /app/apps/api/dist ./apps/api/dist
 COPY --from=builder /app/apps/api/package.json ./apps/api/package.json
 
 USER node
-EXPOSE 3000
+EXPOSE 4000
 CMD ["node", "apps/api/dist/main.js"]
