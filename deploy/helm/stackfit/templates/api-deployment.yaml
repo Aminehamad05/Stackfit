@@ -4,7 +4,7 @@ metadata:
   name: api
   namespace: stackfit
 spec:
-  replicas: 2
+  replicas: {{ .Values.api.replicas }}
   selector:
     matchLabels:
       app: api
@@ -15,68 +15,31 @@ spec:
     spec:
       containers:
         - name: api
-          image: aminehamad/careerpath-api:latest
+          image: {{ .Values.api.image }}: {{ .Values.api.tag }}
           ports:
-            - containerPort: 4000
-          env:
-            - name: DATABASE_URL
-              valueFrom:
-                secretKeyRef:
-                  name: db-secret
-                  key: DATABASE_URL
-            - name: POSTGRES_USER
-              valueFrom:
-                secretKeyRef:
-                  name: db-secret
-                  key: POSTGRES_USER
-            - name: POSTGRES_PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: db-secret
-                  key: POSTGRES_PASSWORD
-            - name: POSTGRES_DB
-              valueFrom:
-                secretKeyRef:
-                  name: db-secret
-                  key: POSTGRES_DB
-            - name: JWT_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: app-secret
-                  key: JWT_SECRET
-            - name: LLM_BASE_URL
-              valueFrom:
-                secretKeyRef:
-                  name: app-secret
-                  key: LLM_BASE_URL
-            - name: LLM_MODEL_CHAT
-              valueFrom:
-                secretKeyRef:
-                  name: app-secret
-                  key: LLM_MODEL_CHAT
-            - name: LLM_API_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: app-secret
-                  key: LLM_API_KEY
+            - containerPort: {{ .Values.api.service.port }}
           envFrom:
             - configMapRef:
                 name: app-config
+            - secretRef:
+                name: app-secrets
+            - secretRef:
+                name: db-secrets
           resources:
             requests:
-              cpu: 100m
-              memory: 128Mi
+              cpu: {{ .Values.api.resources.requests.cpu }}
+              memory: {{ .Values.api.resources.requests.memory }}
             limits:
-              cpu: 500m
-              memory: 512Mi
+              cpu: {{ .Values.api.resources.limits.cpu }}
+              memory: {{ .Values.api.resources.limits.memory }}
           readinessProbe:
             tcpSocket:
-              port: 4000
+              port: {{ .Values.api.service.port }}
             initialDelaySeconds: 5
             periodSeconds: 10
           livenessProbe:
             tcpSocket:
-              port: 4000
+              port: {{ .Values.api.service.port }}
             initialDelaySeconds: 15
             periodSeconds: 20
 ---
@@ -88,8 +51,8 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - port: 4000
-      targetPort: 4000
+    - port: {{ .Values.api.service.port }}
+      targetPort: {{ .Values.api.service.port }}
       protocol: TCP
       name: http
   selector:

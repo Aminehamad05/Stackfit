@@ -4,5 +4,5 @@ metadata:
   name: app-config
   namespace: stackfit
 data:
-  PORT: "4000"
-  VITE_API_URL: http://localhost:4000/api
+  PORT: {{ .Values.configMapData.PORT }}
+  VITE_API_URL: {{ .Values.configMapData.VITE_API_URL }}
