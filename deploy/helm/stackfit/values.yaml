@@ -32,8 +32,8 @@ existingSecrets:
     dbsecretName: "db-secrets"
     appSecretName: "app-secrets"
 imagePullSecrets:
-  - name: regcred
-db-migration:
+   name: regcred
+migration:
   repository: aminehamad/careerpath-migration
   tag: latest
   pullPolicy: IfNotPresent
@@ -45,3 +45,7 @@ ingress:
     # nginx.ingress.kubernetes.io/ssl-redirect: "false"
   host: "" # Change to your domain, or set to "" for IP access
   tls: []
+web:
+  service:
+    name: web-service
+    port: 80
