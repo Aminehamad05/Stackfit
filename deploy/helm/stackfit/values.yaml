@@ -6,6 +6,7 @@ api:
   service:
     type: ClusterIP
     port: 4000
+    name: api
   resources:
     requests:
       cpu: 100m
@@ -27,12 +28,12 @@ db:
 configMapName: app-config
 configMapData:
     PORT: "4000"
-    VITE_API_URL: http://localhost:4000/api
+    VITE_API_URL: "/api"
 existingSecrets:
-    dbsecretName: "db-secrets"
-    appSecretName: "app-secrets"
+    dbsecretName: "db-secret"
+    appSecretName: "app-secret"
 imagePullSecrets:
-   name: regcred
+  - name: regcred
 migration:
   repository: aminehamad/careerpath-migration
   tag: latest

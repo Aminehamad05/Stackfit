@@ -2,13 +2,13 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    app: postgres
-  name: postgres
+    app: "{{ .Release.Name }}-postgres"
+  name: "{{ .Release.Name }}-postgres"
   namespace: {{ .Release.Namespace }}
 spec:
   ports:
   - name: postgres
-    port: {{ .Values.db.port | quote }}
+    port: {{ .Values.db.port }}
   selector:
-    app: postgres
+    app: "{{ .Release.Name }}-postgres"
   clusterIP: None

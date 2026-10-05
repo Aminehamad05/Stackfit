@@ -4,5 +4,4 @@ metadata:
   name: {{ .Values.configMapName }}
   namespace: {{ .Release.Namespace }}
 data:
-  PORT: {{ .Values.configMapData.PORT }}
-  VITE_API_URL: {{ .Values.configMapData.VITE_API_URL }}
+  PORT: {{ .Values.configMapData.PORT | quote }}

@@ -14,6 +14,10 @@ spec:
       labels:
         app: "{{ .Release.Name }}-postgres"
     spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       containers:
         - name: postgres
           image: "{{ .Values.db.repository }}:{{ .Values.db.tag }}"
@@ -21,19 +25,12 @@ spec:
           ports:
             - containerPort: {{ .Values.db.port }}
               name: postgres
+          envFrom:
+            - secretRef:
+                name: "{{ .Values.existingSecrets.dbsecretName }}"
           env:
             - name: PGDATA
               value: /var/lib/postgresql/data/pgdata
-            - name: DATABASE_URL
-              valueFrom:
-                secretKeyRef:
-                  name: db-secret
-                  key: DATABASE_URL
-            - name: POSTGRES_DB
-              valueFrom:
-                secretKeyRef:
-                  name: "{{ .Values.existingSecrets.dbsecretName }}"
-                  key: POSTGRES_DB
           readinessProbe:
             exec:
               command:
