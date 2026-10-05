@@ -4,11 +4,11 @@ metadata:
   labels:
     app: postgres
   name: postgres
-  namespace: stackfit
+  namespace: {{ .Release.Namespace }}
 spec:
   ports:
   - name: postgres
-    port: 5432
+    port: {{ .Values.db.port | quote }}
   selector:
     app: postgres
   clusterIP: None

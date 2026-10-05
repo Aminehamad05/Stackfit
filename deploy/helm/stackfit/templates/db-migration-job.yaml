@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: db-migration
-  namespace: stackfit
+  namespace: {{ .Release.Namespace }}
 spec: 
   template:
    metadata:
@@ -10,13 +10,14 @@ spec:
    spec:
     restartPolicy: OnFailure
     imagePullSecrets:
-      - name: regcred
+      - name: {{ .Values.imagePullSecrets.name }}
     containers:
      - name: prisma-migrate
-       image: aminehamad/careerpath-migration:latest
+       imagePullPolicy: {{ .Values.db-migration.pullPolicy }}
+       image: "{{ .Values.db-migration.repository }}:{{ .Values.db-migration.tag }}"
        env:
         - name: DATABASE_URL
           valueFrom:
             secretKeyRef:
-              name: db-secret
+              name: {{ .Values.existingSecrets.dbsecretName }}
               key: DATABASE_URL

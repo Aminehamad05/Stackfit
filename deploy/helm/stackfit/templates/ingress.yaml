@@ -1,24 +1,40 @@
+{{- if .Values.ingress.enabled -}}
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: stackfit-ingress
-  namespace: stackfit
+  name: {{ .Release.Name }}-ingress
+  labels:
+    app.kubernetes.io/name: stackfit
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+  {{- if and .Values.ingress.annotations (gt (len .Values.ingress.annotations) 0) }}
+  annotations:
+    {{- toYaml .Values.ingress.annotations | nindent 4 }}
+  {{- end }}
 spec:
-  ingressClassName: nginx
+  ingressClassName: {{ .Values.ingress.className | quote }}
+  {{- if and .Values.ingress.tls (gt (len .Values.ingress.tls) 0) }}
+  tls:
+    {{- toYaml .Values.ingress.tls | nindent 4 }}
+  {{- end }}
   rules:
-    - http:
+    - {{- if .Values.ingress.host }}
+      host: {{ .Values.ingress.host | quote }}
+      {{- end }}
+      http:
         paths:
           - path: /api
             pathType: Prefix
             backend:
               service:
-                name: api
+                name: {{ .Release.Name }}-{{ .Values.api.service.name }}
                 port:
-                  number: 4000
+                  number: {{ .Values.api.service.port }}
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: web-service
+                name: {{ .Release.Name }}-{{ .Values.web.service.name }}
                 port:
-                  number: 80
+                  number: {{ .Values.web.service.port }}
+{{- end }}

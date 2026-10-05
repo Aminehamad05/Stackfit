@@ -1,6 +1,6 @@
 api:
   replicas: 2
-  image: aminehamad/careerpath-api
+  repository: aminehamad/careerpath-api
   pullPolicy: IfNotPresent
   tag: "latest"
   service:
@@ -13,9 +13,35 @@ api:
     limits:
       cpu: 500m
       memory: 512Mi
-  existingSecrets:
-    dbsecretName: "db-secrets"
-    appSecretName: "app-secrets"
+db:
+  replicas: 1
+  repository: pgvector/pgvector
+  tag: pg16
+  imagepullPolicy: IfNotPresent
+  port: 5432
+  volumeClaimTemplates:
+    storageClassName: local-path
+    resources:
+      requests:
+        storage: 5Gi
+configMapName: app-config
 configMapData:
     PORT: "4000"
     VITE_API_URL: http://localhost:4000/api
+existingSecrets:
+    dbsecretName: "db-secrets"
+    appSecretName: "app-secrets"
+imagePullSecrets:
+  - name: regcred
+db-migration:
+  repository: aminehamad/careerpath-migration
+  tag: latest
+  pullPolicy: IfNotPresent
+ingress:
+  enabled: true
+  className: "nginx"
+  annotations: {}
+    # nginx.ingress.kubernetes.io/proxy-body-size: "8m"
+    # nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  host: "" # Change to your domain, or set to "" for IP access
+  tls: []
