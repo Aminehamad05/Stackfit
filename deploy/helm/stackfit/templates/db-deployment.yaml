@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: postgres
+  namespace: stackfit
+spec:
+  selector:
+    matchLabels:
+      app: postgres
+  serviceName: postgres
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: pgvector/pgvector:pg16
+        ports:
+        - containerPort: 5432
+          name: postgres
+        env:
+         - name: DATABASE_URL
+           valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: DATABASE_URL
+         - name: POSTGRES_DB
+           valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: POSTGRES_DB
+         - name: POSTGRES_USER
+           valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: POSTGRES_USER
+         - name: POSTGRES_PASSWORD
+           valueFrom:
+              secretKeyRef:
+                name: db-secret
+                key: POSTGRES_PASSWORD
+        readinessProbe:
+         exec:
+          command:
+           - sh
+           - -c 
+           - pg_isready -U careerpath -d careerpath
+         initialDelaySeconds: 5
+         periodSeconds: 10
+        volumeMounts:
+         - name: postgres-storage
+           mountPath: /var/lib/postgresql/data
+  volumeClaimTemplates:
+  - metadata:
+     name: postgres-storage
+    spec:
+     accessModes: [ "ReadWriteOnce" ]
+     storageClassName: local-path
+     resources:
+      requests:
+       storage: 5Gi

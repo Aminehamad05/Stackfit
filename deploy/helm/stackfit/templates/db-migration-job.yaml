@@ -1,0 +1,22 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: db-migration
+  namespace: stackfit
+spec: 
+  template:
+   metadata:
+    name: db-migration
+   spec:
+    restartPolicy: OnFailure
+    imagePullSecrets:
+      - name: regcred
+    containers:
+     - name: prisma-migrate
+       image: aminehamad/careerpath-migration:latest
+       env:
+        - name: DATABASE_URL
+          valueFrom:
+            secretKeyRef:
+              name: db-secret
+              key: DATABASE_URL
