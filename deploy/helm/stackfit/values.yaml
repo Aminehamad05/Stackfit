@@ -2,7 +2,7 @@ api:
   replicas: 2
   repository: aminehamad/careerpath-api
   pullPolicy: IfNotPresent
-  tag: "latest"
+  tag: latest
   service:
     type: ClusterIP
     port: 4000
@@ -27,7 +27,7 @@ db:
         storage: 5Gi
 configMapName: app-config
 configMapData:
-    PORT: "4000"
+    PORT: 4000
     VITE_API_URL: "/api"
 existingSecrets:
     dbsecretName: "db-secret"
@@ -35,16 +35,15 @@ existingSecrets:
 imagePullSecrets:
   - name: regcred
 migration:
+  backoffLimit: 6
   repository: aminehamad/careerpath-migration
   tag: latest
   pullPolicy: IfNotPresent
 ingress:
   enabled: true
-  className: "nginx"
+  className: nginx
   annotations: {}
-    # nginx.ingress.kubernetes.io/proxy-body-size: "8m"
-    # nginx.ingress.kubernetes.io/ssl-redirect: "false"
-  host: "" # Change to your domain, or set to "" for IP access
+  host: "" 
   tls: []
 web:
   service:

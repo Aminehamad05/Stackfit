@@ -39,12 +39,12 @@ spec:
               memory: {{ .Values.api.resources.limits.memory | quote }}
           readinessProbe:
             tcpSocket:
-              port: "{{ .Values.api.service.port }}"
+              port: {{ .Values.api.service.port }}
             initialDelaySeconds: 5
             periodSeconds: 10
           livenessProbe:
             tcpSocket:
-              port: "{{ .Values.api.service.port }}"
+              port: {{ .Values.api.service.port }}
             initialDelaySeconds: 15
             periodSeconds: 20
 ---
