@@ -19,7 +19,7 @@ spec:
       {{- end }}
       containers:
         - name: web
-          image: aminehamad/careerpath-web:latest
+          image: {{ .Values.web.repository }}:{{ .Values.web.tag }}
           ports:
            - containerPort: 80
           resources:

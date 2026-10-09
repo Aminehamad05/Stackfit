@@ -11,8 +11,6 @@
 {{- else }}
 {{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" }}
 {{- end }}
-Fixing the Stackfit Helm Chart: Step-by-Step Guide
-Page 4 of 17
 {{- end }}
 {{- end }}
 {{- define "stackfit.selectorLabels" -}}

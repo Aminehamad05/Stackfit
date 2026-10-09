@@ -8,13 +8,14 @@ pipeline {
         disableConcurrentBuilds(abortPrevious: true)
     }
     env {
+        DOCKER_REPO = 'stackfit'
+        CHART_DIR = 'deploy/helm/stackfit'
         REGISTRY_HOST = 'docker.io/aminehamad'
         WEB_IMAGE     = "${REGISTRY_HOST}/careerpath-web"
         API_IMAGE     = "${REGISTRY_HOST}/careerpath-api"
-        DOCKER_REPO = 'stackfit'
         DOCKER_CREDENTIALS_ID = 'docker-registry-credentials'
         KUBECONFIG_CREDENTIALS_ID = 'k8s-kubeconfig'
-        CHART_DIR='deploy/helm/stackfit'
+        DEPLOYMENT_NAME = 'stackfit'
         GIT_SHORT_COMMIT          = "${env.GIT_COMMIT ? env.GIT_COMMIT.take(8) : 'dev'}"
         IMAGE_TAG                 = "${env.BUILD_NUMBER}-${GIT_SHORT_COMMIT}"
     }
@@ -41,7 +42,7 @@ pipeline {
                     steps {
                         dir('apps/api') {
                             sh 'npm config set cache /var/jenkins_home/.npm-cache'
-                            sh 'npm -ci --prefer-offline'
+                            sh 'npm ci --prefer-offline'
                         }
                     }
                 }
@@ -65,6 +66,67 @@ pipeline {
                 }
             }
         }
+        stage('Build & Push Docker Images') {
+            steps {
+              withCredentials([usernamePassword(
+                credentialsId: "${DOCKER_CREDENTIALS_ID}",
+                usernameVariable: 'DOCKER_USERNAME',
+                passwordVariable: 'DOCKER_PASSWORD'
+              )]){
+                sh ' echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
+                parallel {
+                    stage('Build & Push Web Image') {
+                        steps {
+                            sh 'docker build -t ${WEB_IMAGE}:${IMAGE_TAG} ./apps/web'
+                            sh 'docker push ${WEB_IMAGE}:${IMAGE_TAG}'
+                            sh 'docker push ${WEB_IMAGE}:latest'
+                        }
+                    }
+                    stage('Build & Push Api Image') {
+                        steps {
+                            sh 'docker build -t ${API_IMAGE}:${IMAGE_TAG} ./apps/api'
+                            sh 'docker push ${API_IMAGE}:${IMAGE_TAG}'
+                            sh 'docker push ${API_IMAGE}:latest'
+                        }
+                    }
+                }               
+                sh 'docker logout'
+                }
+            }
+        }
+        stage('Helm render & dry run') {
+            steps {
+                sh '''
+                    helm template ${DEPLOYMENT_NAME} ${CHART_DIR} \
+                        --set api.repository=${API_IMAGE} \
+                        --set api.tag=${IMAGE_TAG} \
+                        --set web.repository=${WEB_IMAGE} \
+                        --set web.tag=${IMAGE_TAG} > rendered-manifests.yaml
+                '''
+            }
+        }
+        stage ('Deploying to kubernetes') {
+            steps {
+                withCredentials([file(credentialsId: "${KUBECONFIG_CREDENTIALS_ID}", variable: 'KUBECONFIG')]) {
+                    sh '''
+                        helm upgrade --install ${DEPLOYMENT_NAME} ${CHART_DIR} \
+                            --set api.repository=${API_IMAGE} \
+                            --set api.tag=${IMAGE_TAG} \
+                            --set web.repository=${WEB_IMAGE} \
+                            --set web.tag=${IMAGE_TAG} \
+                            --wait --timeout 5m 
+                    '''
+                }
+            }
+        }
     }
-
+    post {
+        always {
+            sh "docker rmi ${API_IMAGE}:${IMAGE_TAG} || true"
+            sh "docker rmi ${WEB_IMAGE}:${IMAGE_TAG} || true"
+            sh "docker rmi ${API_IMAGE}:latest || true"
+            sh "docker rmi ${WEB_IMAGE}:latest || true"
+            sh 'docker image prune -f'
+        }
+    }
 }

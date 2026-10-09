@@ -14,17 +14,6 @@ api:
     limits:
       cpu: 500m
       memory: 512Mi
-db:
-  replicas: 1
-  repository: pgvector/pgvector
-  tag: pg16
-  imagepullPolicy: IfNotPresent
-  port: 5432
-  volumeClaimTemplates:
-    storageClassName: local-path
-    resources:
-      requests:
-        storage: 5Gi
 configMapName: app-config
 configMapData:
     PORT: 4000
@@ -49,3 +38,6 @@ web:
   service:
     name: web-service
     port: 80
+  repository: aminehamad/careerpath-web
+  tag: latest
+  pullPolicy: IfNotPresent
