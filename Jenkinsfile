@@ -19,7 +19,7 @@ pipeline {
         IMAGE_TAG                 = "${env.BUILD_NUMBER}-${GIT_SHORT_COMMIT}"
     }
     stages {
-        stage('Pre-flight a Linting') {
+        stage('Pre-flight & Linting') {
             parallel {
                 stage('Lint Dockerfile') {
                     steps {
@@ -35,6 +35,32 @@ pipeline {
                 stage('Secret Scanning') {
                     steps {
                         sh 'docker run --rm -v $(pwd):/app -w /app zricethezav/gitleaks:latest detect --source . --verbose'
+                    }
+                }
+                stage('Install API Dependecies') {
+                    steps {
+                        dir('apps/api') {
+                            sh 'npm config set cache /var/jenkins_home/.npm-cache'
+                            sh 'npm -ci --prefer-offline'
+                        }
+                    }
+                }
+            }
+        }
+        stage('Api Quality Checks') {
+            parallel {
+                stage('Api Typecheck') {
+                    steps {
+                        dir('apps/api'){
+                            sh 'npm run typecheck'
+                        }
+                    }
+                }
+                stage ('Api Unit Tests') {
+                    steps {
+                        dir('apps/api'){
+                            sh 'npm run test'
+                        }
                     }
                 }
             }
