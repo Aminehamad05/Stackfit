@@ -24,8 +24,8 @@ pipeline {
             parallel {
                 stage('Lint Dockerfile') {
                     steps {
-                        sh 'docker run --rm -i hadolint/hadolint hadolint --ignore DL3003 < ./apps/web/Dockerfile'
-                        sh 'docker run --rm -i hadolint/hadolint hadolint--ignore DL3003 < ./apps/api/Dockerfile'
+                        sh 'docker run --rm -i hadolint/hadolint hadolint --ignore DL3003 ./apps/web/Dockerfile'
+                        sh 'docker run --rm -i hadolint/hadolint hadolint--ignore DL3003 ./apps/api/Dockerfile'
                     }
                 }
                 stage('Lint Helm Chart') {
