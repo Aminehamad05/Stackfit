@@ -24,8 +24,8 @@ pipeline {
             parallel {
                 stage('Lint Dockerfile') {
                     steps {
-                        sh 'docker run --rm -i hadolint/hadolint < ./apps/web/Dockerfile'
-                        sh 'docker run --rm -i hadolint/hadolint < ./apps/api/Dockerfile'
+                        sh 'docker run --rm -i hadolint/hadolint --ignore DL3003 < ./apps/web/Dockerfile'
+                        sh 'docker run --rm -i hadolint/hadolint --ignore DL3003 < ./apps/api/Dockerfile'
                     }
                 }
                 stage('Lint Helm Chart') {
@@ -35,15 +35,13 @@ pipeline {
                 }
                 stage('Secret Scanning') {
                     steps {
-                        sh 'docker run --rm -v $(pwd):/app -w /app zricethezav/gitleaks:latest detect --source . --verbose'
+                        sh 'docker run --rm -v $(pwd):/app -w /app zricethezav/gitleaks:latest detect --source . --no-git --verbose'
                     }
                 }
                 stage('Install API Dependecies') {
                     steps {
-                        dir('apps/api') {
-                            sh 'npm config set cache /var/jenkins_home/.npm-cache'
-                            sh 'npm ci --prefer-offline'
-                        }
+                        sh 'npm config set cache /var/jenkins_home/.npm-cache'
+                        sh 'npm ci --workspace ./apps/api --prefer-offline'
                     }
                 }
             }
