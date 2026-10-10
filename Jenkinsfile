@@ -115,7 +115,7 @@ pipeline {
                             --set api.tag=${IMAGE_TAG} \
                             --set web.repository=${WEB_IMAGE} \
                             --set web.tag=${IMAGE_TAG} \
-                            --wait --timeout 20m
+                            --wait --timeout 3m
                     '''
                 }
             }
