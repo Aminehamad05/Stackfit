@@ -7,7 +7,7 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '20', artifactNumToKeepStr: '5'))
         disableConcurrentBuilds(abortPrevious: true)
     }
-    env {
+    environment {
         DOCKER_REPO = 'stackfit'
         CHART_DIR = 'deploy/helm/stackfit'
         REGISTRY_HOST = 'docker.io/aminehamad'
@@ -73,25 +73,31 @@ pipeline {
                 usernameVariable: 'DOCKER_USERNAME',
                 passwordVariable: 'DOCKER_PASSWORD'
               )]){
-                sh ' echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
-                parallel {
-                    stage('Build & Push Web Image') {
-                        steps {
-                            sh 'docker build -t ${WEB_IMAGE}:${IMAGE_TAG} ./apps/web'
-                            sh 'docker push ${WEB_IMAGE}:${IMAGE_TAG}'
-                            sh 'docker push ${WEB_IMAGE}:latest'
+                script{
+                    sh ' echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin'
+                    try {
+                        parallel (
+                        'Build & Push Web Image' : {
+                            steps {
+                                sh 'docker build -t ${WEB_IMAGE}:${IMAGE_TAG} ./apps/web'
+                                sh 'docker push ${WEB_IMAGE}:${IMAGE_TAG}'
+                                sh 'docker push ${WEB_IMAGE}:latest'
+                            }
+                        },
+                        'Build & Push Api Image' : {
+                            steps {
+                                sh 'docker build -t ${API_IMAGE}:${IMAGE_TAG} ./apps/api'
+                                sh 'docker push ${API_IMAGE}:${IMAGE_TAG}'
+                                sh 'docker push ${API_IMAGE}:latest'
+                            }
                         }
+                        )
+                    }   
+                    finally {
+                        sh 'docker logout'
                     }
-                    stage('Build & Push Api Image') {
-                        steps {
-                            sh 'docker build -t ${API_IMAGE}:${IMAGE_TAG} ./apps/api'
-                            sh 'docker push ${API_IMAGE}:${IMAGE_TAG}'
-                            sh 'docker push ${API_IMAGE}:latest'
-                        }
-                    }
-                }               
-                sh 'docker logout'
                 }
+            }
             }
         }
         stage('Helm render & dry run') {
