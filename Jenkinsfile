@@ -76,13 +76,13 @@ pipeline {
                     try {
                         parallel (
                         'Build & Push Web Image' : {
-                            sh 'docker build -t ${WEB_IMAGE}:${IMAGE_TAG} ./apps/web'
+                            sh 'docker build -f ./apps/web/Dockerfile -t ${WEB_IMAGE}:${IMAGE_TAG} .'
                             sh 'docker push ${WEB_IMAGE}:${IMAGE_TAG}'
                             sh 'docker push ${WEB_IMAGE}:latest'
                                 
                         },
                         'Build & Push Api Image' : {
-                            sh 'docker build -t ${API_IMAGE}:${IMAGE_TAG} ./apps/api'
+                            sh 'docker build -f ./apps/api/Dockerfile -t ${API_IMAGE}:${IMAGE_TAG} .'
                             sh 'docker push ${API_IMAGE}:${IMAGE_TAG}'
                             sh 'docker push ${API_IMAGE}:latest'
                         }
