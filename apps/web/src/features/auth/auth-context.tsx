@@ -126,7 +126,7 @@ export function AuthProvider({ children }: { children: ReactNode }): JSX.Element
     const session = await registerPerson({
       email,
       password,
-      displayName: displayName.trim() ? displayName.trim() : undefined,
+      displayName: displayName.trim(),
     });
     setUserEmail(session.user.email);
     setDisplayName(session.user.displayName);

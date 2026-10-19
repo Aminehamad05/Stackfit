@@ -139,7 +139,7 @@ Seeded via `npm run db:seed` (idempotent upserts) or automatically on first cont
 
 4 fields · 56 concepts (81 prerequisite edges) · **280 QCMs + 1120 options (5/concept)** · 36 resources (123 links) · 8 tasters · 8 project suggestions · 4 certifications · 8 clubs · 16 events — plus `live_*` views, `field_fit_inputs`, and `leaderboard`.
 
-Key invariants: exactly one correct option per question (partial unique index) · append-only `point_events` with deterministic `ref_id` dedupe · taster `performance` computed in code, never from model output.
+Key invariants: exactly one correct option per question (partial unique index) · append-only `point_events` with deterministic `ref_id` dedupe · taster `performance` computed in code, never from model output · the leaderboard starts **empty** — no seeded/fake players, and the display name is always typed by the user at signup (never derived from the email).
 
 ---
 

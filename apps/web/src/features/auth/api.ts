@@ -21,7 +21,7 @@ export interface ClubSession {
 export async function registerPerson(input: {
   email: string;
   password: string;
-  displayName?: string;
+  displayName: string;
 }): Promise<PersonSession> {
   // POST /api/auth/register — student/user world (README "Auth: two worlds").
   const session = await api<PersonSession>('/auth/register', { method: 'POST', body: input });

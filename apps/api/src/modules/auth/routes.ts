@@ -132,7 +132,7 @@ r.post(
       const { email, password, displayName } = registerSchema.parse(req.body);
       const passwordHash = await bcrypt.hash(password, 10);
       const user = await prisma.user.create({
-        data: { email, displayName: displayName ?? email.split('@')[0], passwordHash },
+        data: { email, displayName, passwordHash },
       });
       res
         .status(201)

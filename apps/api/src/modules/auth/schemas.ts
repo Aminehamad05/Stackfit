@@ -4,7 +4,8 @@ import { emailSchema, passwordSchema } from '../../schemas/common.js';
 export const registerSchema = z.object({
   email: emailSchema,
   password: passwordSchema,
-  displayName: z.string().min(1).max(100).optional(),
+  // The name shown on the leaderboard is always typed by the user (no email fallback).
+  displayName: z.string().trim().min(1).max(100),
 });
 
 export const loginSchema = z.object({

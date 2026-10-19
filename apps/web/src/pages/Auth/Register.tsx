@@ -27,8 +27,9 @@ export default function Register(): JSX.Element {
 
   function validate(): boolean {
     const next: typeof errors = {};
-    if (accountType === 'person' && displayName.trim().length > 100) {
-      next.displayName = 'Display name must be 100 characters or fewer.';
+    if (accountType === 'person') {
+      if (displayName.trim().length < 1) next.displayName = 'Enter the name shown on the leaderboard.';
+      else if (displayName.trim().length > 100) next.displayName = 'Display name must be 100 characters or fewer.';
     }
     if (accountType === 'organisation' && clubName.trim().length < 1) {
       next.clubName = 'Enter your club name.';
@@ -95,7 +96,7 @@ export default function Register(): JSX.Element {
             <form onSubmit={onSubmit} noValidate>
               {accountType === 'person' ? (
                 <Field
-                  label="Display name (optional)"
+                  label="Display name"
                   name="displayName"
                   type="text"
                   autoComplete="nickname"
@@ -103,7 +104,7 @@ export default function Register(): JSX.Element {
                   value={displayName}
                   onChange={(e) => setDisplayName(e.target.value)}
                   error={errors.displayName}
-                  hint="Shown on the leaderboard."
+                  hint="Your own name — shown on the leaderboard."
                 />
               ) : (
                 <Field
