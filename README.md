@@ -178,7 +178,7 @@ AGENT_SPEC.md = product spec · AGENT.md = engineering contract · SCHEMA_FIXES.
 
 ## 🤝 Contributing
 
-1. Read `AGENT_SPEC(1).md`, `AGENT.md`, and `apps/api/product-decisions.md` before touching code.
+1. Read `AGENT.md` and `apps/api/product-decisions.md` before touching code.
 2. Keep `npm run typecheck` green; add Zod schemas + the right auth guard on every route; read via `live_*` views.
 3. Never commit `.env`; seed data lives in `db/seed/*.json`; migrations are hand-reviewed.
 4. Test with the consoles (`/console/*`) or the checklist in `apps/web/task.md`.
@@ -186,3 +186,9 @@ AGENT_SPEC.md = product spec · AGENT.md = engineering contract · SCHEMA_FIXES.
 ## 📄 License
 
 MIT — see [LICENSE](./LICENSE).
+
+---
+
+## Credits
+
+Projet realise en collaboration avec [@Aminehamad05](https://github.com/Aminehamad05).
