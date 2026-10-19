@@ -264,7 +264,7 @@ r.get(
       }
       const fields = [];
       for (const t of targets) {
-        const [roadmap, liveTasters, reviewed] = await Promise.all([
+        const [roadmap, liveTasters, completedTasters] = await Promise.all([
           prisma.roadmap.findFirst({
             where: { userId, fieldId: t.fieldId },
             orderBy: { id: 'desc' },
@@ -275,19 +275,24 @@ r.get(
             select: { id: true },
           }),
           prisma.userTaster.findMany({
-            where: { userId, status: 'reviewed', taster: { fieldId: t.fieldId, status: 'approved' } },
+            // 'submitted' counts while AI auto-review is disabled (see growth/service.ts).
+            where: {
+              userId,
+              status: { in: ['submitted', 'reviewed'] },
+              taster: { fieldId: t.fieldId, status: 'approved' },
+            },
             select: { tasterId: true },
           }),
         ]);
-        const reviewedIds = new Set(reviewed.map((r) => r.tasterId));
-        const done = liveTasters.filter((l) => reviewedIds.has(l.id)).length;
+        const completedIds = new Set(completedTasters.map((r) => r.tasterId));
+        const done = liveTasters.filter((l) => completedIds.has(l.id)).length;
         fields.push({
           fieldId: t.fieldId,
           slug: t.slug,
           name: t.name,
           compatibility: t.compatibility,
           roadmapId: roadmap?.id ?? null,
-          tasters: { reviewed: done, total: liveTasters.length },
+          tasters: { done, total: liveTasters.length },
           complete: liveTasters.length > 0 && done >= liveTasters.length,
         });
       }

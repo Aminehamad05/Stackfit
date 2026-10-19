@@ -16,7 +16,7 @@ export interface MasteryInput {
   bestScores: Map<string, number>; // concept slug -> best quiz score (-1 if never tried)
   stepPassed: Set<string>; // slugs passed via roadmap_steps (quiz/interview_passed)
   knownQuiz: Set<string>; // slugs in user_known_concepts(source=quiz)
-  reviewedTasterFieldIds: Set<number>; // field ids with a reviewed taster
+  reviewedTasterFieldIds: Set<number>; // field ids with a submitted/reviewed taster
   passedInterviews: number;
 }
 

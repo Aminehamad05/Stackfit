@@ -61,7 +61,7 @@ Separate auth world (`type:'club'` JWTs) with its own dashboard: club login/regi
 └──────────┘     └────────────────────────────────────────────┘
        ▲                         │  reads live_* views only
        │ same-origin /api        ▼
-谁也不欠谁                  ┌────────────┐
+                         ┌────────────┐
                          │ Postgres 16│  30 models · 9 views
                          │ + pgvector │  fixed volume pgdata
                          └────────────┘
@@ -170,9 +170,8 @@ AGENT_SPEC.md = product spec · AGENT.md = engineering contract · SCHEMA_FIXES.
 
 ## 🗺️ Roadmap (project status)
 
-**Done:** auth (both worlds) · background + inference · matching + fit · tastings · roadmap generation + skill-tree UI · quiz gates + unlocks · certifications + projects · dashboard KPIs + tasting list · club portal + subscriptions · events browsing + calendar export.
-**Stubbed:** taster start/submit persistence paths, leaderboard reads.
-**AI-gated:** interviews, taster auto-review, question gen/review, poster extraction.
+**Done:** auth (both worlds) · background + inference · matching + fit · tastings (browse + start/submit lifecycle with points) · roadmap generation + skill-tree UI · quiz gates + unlocks · certifications + projects · dashboard KPIs + tasting list · club portal + subscriptions · events browsing + calendar export · study chat.
+**AI-gated:** interviews, taster auto-review (submissions are self-reported and count as done meanwhile), question gen/review, poster extraction.
 **Next candidates:** Step 4 (`roadmap_steps.step_type` + paid-cert resources) · org signup verification · GitHub-activity points.
 
 ---

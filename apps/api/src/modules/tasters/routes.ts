@@ -1,13 +1,16 @@
-import { Router, type NextFunction, type Request, type Response } from 'express';
+import { Router, type NextFunction, type Response } from 'express';
 import { z } from 'zod';
 import { prisma } from '../../prisma.js';
 import { validate } from '../../middleware/validate.js';
 import { requireAuth, type AuthenticatedRequest } from '../../middleware/auth.js';
 import { idParam, tasterIdParam } from '../../schemas/common.js';
 import { projectReadiness } from '../../progress/progress.js';
-import { loadMastery } from '../growth/service.js';
+import { evaluateAndAward, loadMastery } from '../growth/service.js';
 
 const LEVEL_RANK: Record<string, number> = { beginner: 0, intermediate: 1, advanced: 2 };
+
+/** Ledger credit for a submitted taster (deterministic ref blocks double-counts). */
+const TASTER_SUBMIT_POINTS = 25;
 
 const r = Router();
 
@@ -182,8 +185,31 @@ r.post(
   '/users/me/tasters/:tasterId/start',
   requireAuth,
   validate({ params: tasterIdParam }),
-  (_req: Request, res: Response) => {
-    res.status(501).json({ error: 'not_implemented' });
+  async (req: AuthenticatedRequest, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const { tasterId } = tasterIdParam.parse(req.params);
+      const userId = userIdOf(req);
+      const taster = await prisma.tasterProject.findUnique({
+        where: { id: tasterId },
+        select: { id: true, status: true },
+      });
+      if (!taster || taster.status !== 'approved') {
+        res.status(404).json({ error: 'not_found', message: 'no live taster with this id' });
+        return;
+      }
+      const existing = await prisma.userTaster.findUnique({
+        where: { userId_tasterId: { userId, tasterId } },
+      });
+      if (existing) {
+        // Already started/submitted — idempotent, never resets a submission.
+        res.json({ taster: existing });
+        return;
+      }
+      const row = await prisma.userTaster.create({ data: { userId, tasterId } }); // status=in_progress
+      res.status(201).json({ taster: row });
+    } catch (e) {
+      next(e);
+    }
   },
 );
 
@@ -191,8 +217,60 @@ r.post(
   '/users/me/tasters/:tasterId/submit',
   requireAuth,
   validate({ params: tasterIdParam, body: submitBody }),
-  (_req: Request, res: Response) => {
-    res.status(501).json({ error: 'not_implemented' });
+  async (req: AuthenticatedRequest, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const { tasterId } = tasterIdParam.parse(req.params);
+      const body = submitBody.parse(req.body);
+      const userId = userIdOf(req);
+      const taster = await prisma.tasterProject.findUnique({
+        where: { id: tasterId },
+        select: { id: true, status: true },
+      });
+      if (!taster || taster.status !== 'approved') {
+        res.status(404).json({ error: 'not_found', message: 'no live taster with this id' });
+        return;
+      }
+      const started = await prisma.userTaster.findUnique({
+        where: { userId_tasterId: { userId, tasterId } },
+      });
+      if (!started) {
+        res.status(409).json({ error: 'not_started', message: 'POST …/start before submitting' });
+        return;
+      }
+      if (started.status !== 'in_progress') {
+        res.status(409).json({ error: 'already_submitted', status: started.status });
+        return;
+      }
+      const row = await prisma.userTaster.update({
+        where: { id: started.id },
+        data: {
+          status: 'submitted', // → 'reviewed' only when AI auto-review lands (ai/ is disabled)
+          submittedAt: new Date(),
+          submissionUrl: body.submissionUrl ?? null,
+          submissionText: body.submissionText ?? null,
+          enjoyment: body.enjoyment,
+          difficulty: body.difficulty,
+          wouldContinue: body.wouldContinue,
+          reflection: body.reflection ?? null,
+          // performance stays null — never invent a score in code
+        },
+      });
+      // Best-effort ledger (deterministic ref blocks double-counting, like quiz).
+      await prisma.pointEvent.upsert({
+        where: { userId_type_refId: { userId, type: 'taster', refId: `taster:${row.id}` } },
+        update: {},
+        create: { userId, type: 'taster', points: TASTER_SUBMIT_POINTS, refId: `taster:${row.id}` },
+      });
+      const { awarded } = await evaluateAndAward(userId);
+      res.status(201).json({
+        taster: row,
+        points: TASTER_SUBMIT_POINTS,
+        review: 'pending_ai_disabled', // self-reported fields saved; model review returns with the AI layer
+        newlyAwarded: awarded,
+      });
+    } catch (e) {
+      next(e);
+    }
   },
 );
 

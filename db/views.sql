@@ -28,7 +28,8 @@ CREATE OR REPLACE VIEW leaderboard AS
   FROM users u LEFT JOIN point_events p ON p.user_id = u.id
   GROUP BY u.id ORDER BY total_points DESC;
 
--- Inputs to fitScore(): averages per user+field over reviewed tasters
+-- Inputs to fitScore(): averages per user+field over submitted/reviewed tasters
+-- (submitted counts while AI auto-review is disabled; performance stays NULL then).
 CREATE OR REPLACE VIEW field_fit_inputs AS
   SELECT ut.user_id,
          tp.field_id,
@@ -38,5 +39,5 @@ CREATE OR REPLACE VIEW field_fit_inputs AS
          AVG(ut.would_continue::int) AS would_continue_rate
   FROM user_tasters ut
   JOIN taster_projects tp ON tp.id = ut.taster_id
-  WHERE ut.status = 'reviewed' AND ut.enjoyment IS NOT NULL
+  WHERE ut.status IN ('submitted', 'reviewed') AND ut.enjoyment IS NOT NULL
   GROUP BY ut.user_id, tp.field_id;

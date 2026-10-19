@@ -104,7 +104,7 @@ export default function Dashboard(): JSX.Element {
               <h2 style={{ margin: '0 0 10px' }}>{b.field.name}</h2>
               <ProgressBar
                 value={b.tasters.total > 0 ? (b.tasters.done / b.tasters.total) * 100 : 0}
-                label={`Tasters reviewed ${b.tasters.done}/${b.tasters.total} · quizzes passed ${b.quizzesPassed}`}
+                label={`Tasters done ${b.tasters.done}/${b.tasters.total} · quizzes passed ${b.quizzesPassed}`}
               />
               <p style={{ fontSize: '0.875rem', margin: '10px 0' }}>
                 {b.enjoyment !== null ? `Enjoyment ${b.enjoyment}/5 · ` : ''}

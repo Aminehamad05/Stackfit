@@ -49,7 +49,7 @@ r.get(
           ]);
           const liveIds = new Set(liveTasters.map((t) => t.id));
           const mine = tasterRows.filter((t) => t.taster.fieldId === fieldId && liveIds.has(t.tasterId));
-          const reviewed = mine.filter((t) => t.status === 'reviewed');
+          const completed = mine.filter((t) => t.status === 'submitted' || t.status === 'reviewed');
           const enjoyments = mine.map((t) => t.enjoyment).filter((e): e is number => e !== null);
           const performances = mine.map((t) => t.performance).filter((p): p is number => p !== null);
           const avg = (xs: number[]): number | null =>
@@ -63,7 +63,7 @@ r.get(
           });
           blocks.push({
             field: { slug: field.slug, name: field.name },
-            tasters: { done: reviewed.length, total: liveTasters.length },
+            tasters: { done: completed.length, total: liveTasters.length },
             enjoyment: avg(enjoyments),
             performance: avg(performances),
             quizzesPassed,
@@ -110,7 +110,7 @@ r.get(
           milestones: { done, total: steps.length },
           quizzesPassed,
           projects: {
-            done: tasterAgg.filter((t) => t.status === 'reviewed').length,
+            done: tasterAgg.filter((t) => t.status !== 'in_progress').length,
             total: liveTasterCount,
           },
           certsEarned: certs.map((c) => ({

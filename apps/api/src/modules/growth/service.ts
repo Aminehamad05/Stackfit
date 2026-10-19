@@ -15,7 +15,8 @@ export async function loadMastery(userId: number): Promise<MasteryInput> {
     }),
     prisma.userKnownConcept.findMany({ where: { userId, source: 'quiz' }, select: { conceptId: true } }),
     prisma.userTaster.findMany({
-      where: { userId, status: 'reviewed' },
+      // 'submitted' counts while AI auto-review is disabled; 'reviewed' once it lands.
+      where: { userId, status: { in: ['submitted', 'reviewed'] } },
       select: { taster: { select: { fieldId: true } } },
     }),
     prisma.interview.count({ where: { userId, passed: true } }),
@@ -38,7 +39,7 @@ export async function loadMastery(userId: number): Promise<MasteryInput> {
     bestScores,
     stepPassed: toSlugs(steps.map((s) => s.conceptId)),
     knownQuiz: toSlugs(known.map((k) => k.conceptId)),
-    reviewedTasterFieldIds: new Set(tasters.map((t) => t.taster.fieldId)),
+    reviewedTasterFieldIds: new Set(tasters.map((t) => t.taster.fieldId)), // submitted OR reviewed
     passedInterviews: interviews,
   };
 }

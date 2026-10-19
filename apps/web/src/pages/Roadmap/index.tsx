@@ -23,7 +23,7 @@ interface Mini {
   nodes: PathNode[];
   currentKey: string | null;
   complete: boolean;
-  tasters: { reviewed: number; total: number };
+  tasters: { done: number; total: number };
 }
 
 interface TasteField {
@@ -32,7 +32,7 @@ interface TasteField {
   name: string;
   compatibility: number;
   roadmapId: number | null;
-  tasters: { reviewed: number; total: number };
+  tasters: { done: number; total: number };
   complete: boolean;
 }
 
@@ -212,7 +212,7 @@ export default function Roadmap(): JSX.Element {
           ) : null}
           {minis.map((m) => (
             <section key={m.slug} aria-label={m.name}>
-              <h2>{m.name} <Badge tone={m.complete ? 'teal' : 'gray'}>{m.compatibility}% · tasters {m.tasters.reviewed}/{m.tasters.total}{m.complete ? ' · done' : ''}</Badge></h2>
+              <h2>{m.name} <Badge tone={m.complete ? 'teal' : 'gray'}>{m.compatibility}% · tasters {m.tasters.done}/{m.tasters.total}{m.complete ? ' · done' : ''}</Badge></h2>
               <div style={{ margin: '8px 0' }}>
                 <Button variant="secondary" onClick={() => void choose(m.fieldId)} disabled={busy}>
                   Pick as final path →
