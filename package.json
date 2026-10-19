@@ -22,6 +22,7 @@
     "check-links": "tsx scripts/check-links.ts",
     "generate-questions": "tsx scripts/generate-questions.ts",
     "review-content": "tsx scripts/review-content.ts",
+    "test": "npm run test --workspace apps/api",
     "typecheck": "tsc -p apps/api/tsconfig.json --noEmit && tsc -p apps/web/tsconfig.json --noEmit && tsc -p tsconfig.scripts.json --noEmit"
   },
   "devDependencies": {

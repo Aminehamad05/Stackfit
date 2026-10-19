@@ -1,0 +1,43 @@
+api:
+  replicas: 2
+  repository: aminehamad/careerpath-api
+  pullPolicy: IfNotPresent
+  tag: latest
+  service:
+    type: ClusterIP
+    port: 4000
+    name: api
+  resources:
+    requests:
+      cpu: 100m
+      memory: 128Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi
+configMapName: app-config
+configMapData:
+    PORT: 4000
+    VITE_API_URL: "/api"
+existingSecrets:
+    dbsecretName: "db-secret"
+    appSecretName: "app-secret"
+imagePullSecrets:
+  - name: regcred
+migration:
+  backoffLimit: 6
+  repository: aminehamad/careerpath-migration
+  tag: latest
+  pullPolicy: IfNotPresent
+ingress:
+  enabled: true
+  className: nginx
+  annotations: {}
+  host: "" 
+  tls: []
+web:
+  service:
+    name: web-service
+    port: 80
+  repository: aminehamad/careerpath-web
+  tag: latest
+  pullPolicy: IfNotPresent

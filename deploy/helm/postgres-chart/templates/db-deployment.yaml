@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: "{{ .Release.Name }}-postgres"
+  namespace: {{ .Release.Namespace }}
+spec:
+  selector:
+    matchLabels:
+      app: "{{ .Release.Name }}-postgres"
+  serviceName: "{{ .Release.Name }}-postgres"
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: "{{ .Release.Name }}-postgres"
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      containers:
+        - name: postgres
+          image: "{{ .Values.db.repository }}:{{ .Values.db.tag }}"
+          imagePullPolicy: "{{ .Values.db.imagepullPolicy }}"
+          ports:
+            - containerPort: {{ .Values.db.port }}
+              name: postgres
+          envFrom:
+            - secretRef:
+                name: "{{ .Values.existingSecrets.dbsecretName }}"
+          env:
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+          readinessProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - pg_isready -U careerpath -d careerpath
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
+  volumeClaimTemplates:
+    - metadata:
+        name: postgres-storage
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        storageClassName: "{{ .Values.db.volumeClaimTemplates.storageClassName }}"
+        resources:
+          requests:
+            storage: {{ .Values.db.volumeClaimTemplates.resources.requests.storage | quote }}

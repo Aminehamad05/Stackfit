@@ -1,0 +1,20 @@
+imagePullSecrets:
+  - name: regcred
+migration:
+  backoffLimit: 6
+  repository: aminehamad/careerpath-migration
+  tag: latest
+  pullPolicy: IfNotPresent
+db:
+  replicas: 1
+  repository: pgvector/pgvector
+  tag: pg16
+  imagepullPolicy: IfNotPresent
+  port: 5432
+  volumeClaimTemplates:
+    storageClassName: local-path
+    resources:
+      requests:
+        storage: 5Gi
+existingSecrets:
+    dbsecretName: "db-secret"
