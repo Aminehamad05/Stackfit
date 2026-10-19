@@ -23,8 +23,11 @@ export default function ChatWidget(): JSX.Element {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState('');
   const [busy, setBusy] = useState(false);
+  const [ready, setReady] = useState(false);
   const [notice, setNotice] = useState<string | null>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
+  // Monotonic id so a slow thread-switch fetch can't overwrite a newer one.
+  const loadSeq = useRef(0);
 
   const signedIn = getToken() !== null;
   useEffect(() => {
@@ -38,30 +41,47 @@ export default function ChatWidget(): JSX.Element {
     else if (r.threads.length > 0 && activeId === null) setActiveId(r.threads[0].id);
   }
 
-  async function openChat(): Promise<void> {
-    setOpen(true);
-    setNotice(null);
-    try {
-      await refreshThreads();
-    } catch (e) {
-      setNotice(e instanceof Error ? e.message : 'Could not load chats.');
-    }
-  }
-
   async function loadMessages(id: number): Promise<void> {
+    const seq = ++loadSeq.current;
     setActiveId(id);
+    setMessages([]);
+    setReady(false);
     setNotice(null);
     try {
       const r = await api<{ messages: Msg[] }>(`/chat/threads/${id}/messages`);
+      if (loadSeq.current !== seq) return;
       setMessages(r.messages);
     } catch (e) {
+      if (loadSeq.current !== seq) return;
       setNotice(e instanceof Error ? e.message : 'Could not load messages.');
+    } finally {
+      if (loadSeq.current === seq) setReady(true);
+    }
+  }
+
+  async function openChat(): Promise<void> {
+    setOpen(true);
+    setReady(false);
+    setNotice(null);
+    try {
+      // Rebuild the whole view from the server (page refresh wipes local
+      // state): newest thread selected AND its history loaded, so the panel
+      // always shows exactly what the model will see next.
+      const r = await api<{ threads: Thread[] }>('/chat/threads');
+      setThreads(r.threads);
+      const first = r.threads[0]?.id ?? null;
+      setActiveId(first);
+      if (first !== null) await loadMessages(first);
+      else setReady(true);
+    } catch (e) {
+      setReady(true);
+      setNotice(e instanceof Error ? e.message : 'Could not load chats.');
     }
   }
 
   async function send(): Promise<void> {
     const text = input.trim();
-    if (!text || busy) return;
+    if (!text || busy || !ready) return;
     setBusy(true);
     setNotice(null);
     try {
@@ -92,11 +112,14 @@ export default function ChatWidget(): JSX.Element {
   }
 
   async function newChat(): Promise<void> {
+    setReady(false);
     try {
       const t = await api<{ thread: Thread }>('/chat/threads', { method: 'POST', body: {} });
       setMessages([]);
       await refreshThreads(t.thread.id);
+      setReady(true);
     } catch (e) {
+      setReady(true);
       setNotice(e instanceof Error ? e.message : 'Could not start a chat.');
     }
   }
@@ -138,7 +161,9 @@ export default function ChatWidget(): JSX.Element {
         </div>
       ) : null}
       <div style={msgs}>
-        {messages.length === 0 ? (
+        {!ready ? (
+          <p style={{ color: 'var(--text-secondary)', fontSize: 13 }}>Loading your conversation…</p>
+        ) : messages.length === 0 ? (
           <p style={{ color: 'var(--text-secondary)', fontSize: 13 }}>Hi! Ask about your field, roadmap, or any concept you&apos;re learning. ✨</p>
         ) : null}
         {messages.map((m) => (
@@ -160,11 +185,12 @@ export default function ChatWidget(): JSX.Element {
               void send();
             }
           }}
-          placeholder="Ask anything…"
+          placeholder={ready ? 'Ask anything…' : 'Loading…'}
           aria-label="Chat message"
+          disabled={!ready}
           style={textInput}
         />
-        <button onClick={() => void send()} disabled={busy || input.trim() === ''} style={sendBtn}>
+        <button onClick={() => void send()} disabled={busy || !ready || input.trim() === ''} style={sendBtn}>
           ➤
         </button>
       </div>
